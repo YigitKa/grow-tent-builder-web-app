@@ -29,14 +29,22 @@ Error generating stack: `+e.message+`
                 
                 /* Mobile specific fixes */
                 @media (max-width: 768px) {
+                    .glass-header {
+                        padding: 0.5rem 0 !important;
+                    }
                     .settings-stack-mobile {
-                        flex-direction: column !important;
-                        align-items: stretch !important;
+                        flex-direction: row !important;
+                        align-items: center !important;
                         gap: 0.5rem !important;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                    }
+                    .setting-group {
+                        flex: 0 0 auto;
                     }
                     .modern-select {
-                        width: 100%;
-                        padding: 0.5rem 1rem;
+                        padding: 0.25rem 0.5rem;
+                        font-size: 0.75rem;
                     }
                 }
-            `})]})}function Ce(){let{state:e}=ae(),{currentStep:t}=e;switch(t){case 1:return(0,b.jsx)(T,{});case 2:return(0,b.jsx)(fe,{});case 3:return(0,b.jsx)(me,{});case 4:return(0,b.jsx)(O,{});case 5:return(0,b.jsx)(ge,{});case 6:return(0,b.jsx)(ve,{});case 7:return(0,b.jsx)(be,{});case 8:return(0,b.jsx)(xe,{});default:return(0,b.jsx)(T,{})}}function we(){return(0,b.jsx)(S,{children:(0,b.jsxs)(ie,{children:[(0,b.jsx)(Se,{}),(0,b.jsx)(le,{children:(0,b.jsx)(Ce,{})})]})})}var Te=we;(0,g.createRoot)(document.getElementById(`root`)).render((0,b.jsx)(_.StrictMode,{children:(0,b.jsx)(Te,{})}));
+            `})]})}function Ce(){let{state:e}=ae(),{currentStep:t}=e;switch((0,_.useEffect)(()=>{window.scrollTo({top:0,behavior:`smooth`})},[t]),t){case 1:return(0,b.jsx)(T,{});case 2:return(0,b.jsx)(fe,{});case 3:return(0,b.jsx)(me,{});case 4:return(0,b.jsx)(O,{});case 5:return(0,b.jsx)(ge,{});case 6:return(0,b.jsx)(ve,{});case 7:return(0,b.jsx)(be,{});case 8:return(0,b.jsx)(xe,{});default:return(0,b.jsx)(T,{})}}function we(){return(0,b.jsx)(S,{children:(0,b.jsxs)(ie,{children:[(0,b.jsx)(Se,{}),(0,b.jsx)(le,{children:(0,b.jsx)(Ce,{})})]})})}var Te=we;(0,g.createRoot)(document.getElementById(`root`)).render((0,b.jsx)(_.StrictMode,{children:(0,b.jsx)(Te,{})}));
