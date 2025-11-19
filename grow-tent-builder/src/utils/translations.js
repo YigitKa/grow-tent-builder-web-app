@@ -28,6 +28,8 @@ export const translations = {
         yourSpace: 'Your Space',
         recPower: 'Recommended Power',
         bestFit: 'Best Fit',
+        coverage: 'Coverage',
+        remainingCoverage: 'Remaining Coverage',
 
         // Ventilation
         reqCFM: 'Required Airflow',
@@ -63,6 +65,8 @@ export const translations = {
         estCost: 'Est. Cost',
         power: 'Power',
         reqCFM: 'Req. CFM',
+        fullycovered: 'Fully Covered!',
+        needMoreLight: 'Need more light coverage',
 
         // Summary
         yourSetup: 'Your Setup',
@@ -112,6 +116,8 @@ export const translations = {
         yourSpace: 'Alanınız',
         recPower: 'Önerilen Güç',
         bestFit: 'En Uygun',
+        coverage: 'Kapsama Alanı',
+        remainingCoverage: 'Kalan Kapsama Alanı',
 
         // Ventilation
         reqCFM: 'Gerekli Hava Akışı',
@@ -147,6 +153,8 @@ export const translations = {
         estCost: 'Tahmini Maliyet',
         power: 'Güç',
         reqCFM: 'Gerekli Hava Akışı',
+        fullycovered: 'Tamamen Kapsandı!',
+        needMoreLight: 'Daha fazla ışık kapsamı gerekiyor',
 
         // Summary
         yourSetup: 'Kurulumunuz',

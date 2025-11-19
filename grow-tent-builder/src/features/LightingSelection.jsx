@@ -17,7 +17,10 @@ export default function LightingSelection() {
     const selectedLights = selectedItems.lighting;
 
     const area = tentSize.width * tentSize.depth;
-    const recommendedWatts = area * 30; // Rule of thumb: 30w per sq ft for LED
+    const totalCoverage = selectedLights.reduce((sum, light) => sum + light.coverage, 0);
+    const remainingCoverage = Math.max(0, area - totalCoverage);
+    const isCovered = totalCoverage >= area;
+    const recommendedWatts = area * 30;
 
     const handleToggleItem = (item) => {
         const isSelected = selectedLights.find(i => i.id === item.id);
@@ -40,18 +43,59 @@ export default function LightingSelection() {
 
     return (
         <div>
-            <h2 style={{ marginBottom: '1rem', color: 'var(--color-primary)' }}>{t('step2')}</h2>
+            <h2 style={{ marginBottom: '1rem', color: 'var(--color-primary)' }}>💡 {t('step2')}</h2>
 
-            <div style={{ display: 'flex', gap: '2rem', marginBottom: '2rem', background: 'var(--bg-card)', padding: '1rem', borderRadius: 'var(--radius-md)' }}>
-                <div>
-                    <div style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>{t('yourSpace')}</div>
-                    <div style={{ fontWeight: 'bold' }}>{formatUnit(area, 'area')} {areaLabel}</div>
-                </div>
-                <div>
-                    <div style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>{t('recPower')}</div>
-                    <div style={{ fontWeight: 'bold' }}>~{recommendedWatts}W (LED)</div>
-                </div>
+            <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '1rem',
+                marginBottom: '1rem',
+                padding: '1.5rem',
+                background: 'var(--bg-surface)',
+                borderRadius: 'var(--radius-md)',
+                border: `2px solid ${isCovered ? 'var(--color-primary)' : 'rgba(255, 82, 82, 0.5)'}`
+            }}>
+                <InfoBox label={t('yourSpace')} value={`${formatUnit(area, 'area')} ${areaLabel}`} />
+                <InfoBox label={t('recPower')} value={`~${recommendedWatts}W`} />
+                <InfoBox
+                    label={t('remainingCoverage')}
+                    value={`${formatUnit(remainingCoverage, 'area')} ${areaLabel}`}
+                    highlight={!isCovered}
+                    success={isCovered}
+                />
             </div>
+
+            {isCovered && (
+                <div style={{
+                    marginBottom: '1.5rem',
+                    padding: '0.75rem',
+                    background: 'rgba(16, 185, 129, 0.1)',
+                    border: '1px solid var(--color-primary)',
+                    borderRadius: 'var(--radius-md)',
+                    color: 'var(--color-primary)',
+                    textAlign: 'center',
+                    fontWeight: 'bold',
+                    fontSize: '0.875rem'
+                }}>
+                    ✓ {t('fullycovered')}
+                </div>
+            )}
+
+            {!isCovered && remainingCoverage > 0 && (
+                <div style={{
+                    marginBottom: '1.5rem',
+                    padding: '0.75rem',
+                    background: 'rgba(255, 82, 82, 0.1)',
+                    border: '1px solid #ff5252',
+                    borderRadius: 'var(--radius-md)',
+                    color: '#ff5252',
+                    textAlign: 'center',
+                    fontWeight: 'bold',
+                    fontSize: '0.875rem'
+                }}>
+                    ⚠ {t('needMoreLight')}
+                </div>
+            )}
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
                 {LIGHT_OPTIONS.map((item) => {
@@ -89,7 +133,7 @@ export default function LightingSelection() {
                             )}
                             <div style={{ fontWeight: 'bold', marginBottom: '0.25rem' }}>{item.name}</div>
                             <div style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
-                                {item.watts}W • {formatUnit(item.coverage, 'area')} {areaLabel} coverage
+                                {item.watts}W • {formatUnit(item.coverage, 'area')} {areaLabel} {t('coverage')}
                             </div>
                             <div style={{ color: 'var(--color-primary)', fontWeight: 'bold' }}>{formatPrice(item.price)}</div>
                         </div>
@@ -126,6 +170,36 @@ export default function LightingSelection() {
                 >
                     {t('next')} &rarr;
                 </button>
+            </div>
+        </div>
+    );
+}
+
+function InfoBox({ label, value, highlight, success }) {
+    let borderColor = 'var(--border-color)';
+    let labelColor = 'var(--text-secondary)';
+
+    if (success) {
+        borderColor = 'var(--color-primary)';
+        labelColor = 'var(--color-primary)';
+    } else if (highlight) {
+        borderColor = '#ff5252';
+        labelColor = '#ff5252';
+    }
+
+    return (
+        <div style={{
+            padding: '1rem',
+            background: 'var(--bg-card)',
+            borderRadius: 'var(--radius-sm)',
+            border: `1px solid ${borderColor}`,
+            textAlign: 'center'
+        }}>
+            <div style={{ fontSize: '0.75rem', color: labelColor, marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                {label}
+            </div>
+            <div style={{ fontSize: '1.1rem', fontWeight: 'bold', color: 'var(--text-primary)' }}>
+                {value}
             </div>
         </div>
     );
