@@ -60,6 +60,21 @@ textarea {
   font-family: inherit;
 }
 
+/* Fix select dropdown visibility */
+select {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+select option {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+}
+
 /* Glassmorphism Utilities */
 .glass-panel {
   background: rgba(30, 41, 59, 0.7);
@@ -139,6 +154,43 @@ button,
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+
+  /* Make grids single column on mobile */
+  div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Adjust padding for mobile */
+  .glass-panel {
+    padding: 1rem;
+  }
+
+  /* Stack settings bar on mobile */
+  .settings-stack-mobile {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+
+  /* Full width buttons on mobile */
+  button {
+    width: 100%;
+  }
+
+  /* Smaller font sizes on mobile */
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
 }
 
 @media print {

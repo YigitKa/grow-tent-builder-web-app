@@ -2,9 +2,9 @@ import { useBuilder } from '../context/BuilderContext';
 import { useSettings } from '../context/SettingsContext';
 
 const MEDIA_OPTIONS = [
-    { id: 'soil', name: 'Soil', description: 'Traditional, forgiving, great for beginners.', icon: '🌱' },
-    { id: 'coco', name: 'Coco Coir', description: 'Hydroponic-like growth with soil-like feel.', icon: '🥥' },
-    { id: 'hydro', name: 'Hydroponics', description: 'Fastest growth, requires monitoring.', icon: '💧' },
+    { id: 'soil', nameKey: 'mediaSoil', descKey: 'mediaSoilDesc', icon: '🌱' },
+    { id: 'coco', nameKey: 'mediaCoco', descKey: 'mediaCocoDesc', icon: '🥥' },
+    { id: 'hydro', nameKey: 'mediaHydro', descKey: 'mediaHydroDesc', icon: '💧' },
 ];
 
 export default function MediaSelection() {
@@ -51,10 +51,10 @@ export default function MediaSelection() {
                                 {media.icon}
                             </div>
                             <h3 style={{ marginBottom: '0.5rem', color: isSelected ? 'var(--color-primary)' : 'var(--text-primary)' }}>
-                                {media.name}
+                                {t(media.nameKey)}
                             </h3>
                             <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
-                                {media.description}
+                                {t(media.descKey)}
                             </p>
                         </div>
                     );

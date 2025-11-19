@@ -19,7 +19,7 @@ export default function SettingsBar() {
                     <span style={{ fontSize: '1.5rem' }}>🌿</span> GrowBuilder
                 </div>
 
-                <div style={{ display: 'flex', gap: '1rem', fontSize: '0.875rem' }}>
+                <div className="settings-stack-mobile" style={{ display: 'flex', gap: '1rem', fontSize: '0.875rem' }}>
                     {/* Language Toggle */}
                     <div className="setting-group">
                         <select
@@ -77,6 +77,19 @@ export default function SettingsBar() {
                 .setting-group {
                     display: flex;
                     align-items: center;
+                }
+                
+                /* Mobile specific fixes */
+                @media (max-width: 768px) {
+                    .settings-stack-mobile {
+                        flex-direction: column !important;
+                        align-items: stretch !important;
+                        gap: 0.5rem !important;
+                    }
+                    .modern-select {
+                        width: 100%;
+                        padding: 0.5rem 1rem;
+                    }
                 }
             `}</style>
         </div>

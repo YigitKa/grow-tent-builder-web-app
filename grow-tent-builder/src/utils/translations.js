@@ -45,6 +45,12 @@ export const translations = {
         // Media
         selectMedia: 'Select Growing Medium',
         mediaDesc: 'Your choice of growing medium determines your watering style and nutrient requirements.',
+        mediaSoil: 'Soil',
+        mediaSoilDesc: 'Traditional, forgiving, great for beginners.',
+        mediaCoco: 'Coco Coir',
+        mediaCocoDesc: 'Hydroponic-like growth with soil-like feel.',
+        mediaHydro: 'Hydroponics',
+        mediaHydroDesc: 'Fastest growth, requires monitoring.',
 
         // Nutrients
         nutesDesc: 'Select nutrients and additives compatible with your chosen medium.',
@@ -101,6 +107,12 @@ export const translations = {
         // Media
         selectMedia: 'Yetiştirme Medyası Seçin',
         mediaDesc: 'Yetiştirme medyası seçiminiz, sulama tarzınızı ve besin gereksinimlerinizi belirler.',
+        mediaSoil: 'Toprak',
+        mediaSoilDesc: 'Geleneksel, bağışlayıcı, yeni başlayanlar için harika.',
+        mediaCoco: 'Hindistan Cevizi Lifi',
+        mediaCocoDesc: 'Toprak hissi ile hidroponik benzeri büyüme.',
+        mediaHydro: 'Hidroponik',
+        mediaHydroDesc: 'En hızlı büyüme, izleme gerektirir.',
 
         // Nutrients
         nutesDesc: 'Seçtiğiniz medyaya uygun besinleri ve katkı maddelerini seçin.',
