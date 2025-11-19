@@ -4,5 +4,5 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/agent/', // Repository name for GitHub Pages
+  base: '/grow-tent-builder-web-app/', // Repository name for GitHub Pages
 })
