@@ -15,7 +15,7 @@ export default function StatsBar() {
             borderBottom: '1px solid rgba(255,255,255,0.05)'
         }}>
             <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>
+                <div className="mobile-hide" style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>
                     Building your perfect setup...
                 </div>
                 <div style={{ display: 'flex', gap: '2.5rem' }}>

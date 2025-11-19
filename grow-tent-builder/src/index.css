@@ -158,6 +158,10 @@ button,
 
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
+  .mobile-hide {
+    display: none !important;
+  }
+
   .container {
     padding: 0 0.5rem;
   }
