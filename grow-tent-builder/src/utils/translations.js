@@ -13,6 +13,7 @@ export const translations = {
         // General
         next: 'Next Step',
         back: 'Back',
+        finish: 'Finish',
         selectTent: 'Select Tent Size',
         tentDesc: 'Choose a tent size that fits your space. This will determine the requirements for all other components.',
         customDim: 'Enter Custom Dimensions',
@@ -23,12 +24,33 @@ export const translations = {
         depth: 'Depth',
         height: 'Height',
 
+        // Lighting
+        yourSpace: 'Your Space',
+        recPower: 'Recommended Power',
+        bestFit: 'Best Fit',
+
+        // Ventilation
+        reqCFM: 'Required Airflow',
+        selFanPower: 'Selected Fan Power',
+        inlineFans: 'Inline Fans',
+        circFans: 'Circulation Fans',
+
+        // Environment
+        envDesc: 'Select equipment to control temperature and humidity.',
+        humidifiers: 'Humidifiers',
+        dehumidifiers: 'Dehumidifiers',
+        heaters: 'Heaters',
+        acs: 'AC Units',
+
         // Media
         selectMedia: 'Select Growing Medium',
         mediaDesc: 'Your choice of growing medium determines your watering style and nutrient requirements.',
 
         // Nutrients
         nutesDesc: 'Select nutrients and additives compatible with your chosen medium.',
+
+        // Monitoring
+        monitorDesc: 'Select devices to monitor and control your environment.',
 
         // Footer
         footer: 'Grow Tent Builder © 2024 - Built for growers, by growers.'
@@ -47,6 +69,7 @@ export const translations = {
         // General
         next: 'Sonraki Adım',
         back: 'Geri',
+        finish: 'Bitir',
         selectTent: 'Çadır Boyutu Seçin',
         tentDesc: 'Alanınıza uygun bir çadır boyutu seçin. Bu, diğer tüm bileşenlerin gereksinimlerini belirleyecektir.',
         customDim: 'Özel Boyut Girin',
@@ -57,12 +80,33 @@ export const translations = {
         depth: 'Derinlik',
         height: 'Yükseklik',
 
+        // Lighting
+        yourSpace: 'Alanınız',
+        recPower: 'Önerilen Güç',
+        bestFit: 'En Uygun',
+
+        // Ventilation
+        reqCFM: 'Gerekli Hava Akışı',
+        selFanPower: 'Seçilen Fan Gücü',
+        inlineFans: 'Kanal Tipi Fanlar',
+        circFans: 'Sirkülasyon Fanları',
+
+        // Environment
+        envDesc: 'Sıcaklık ve nemi kontrol etmek için ekipman seçin.',
+        humidifiers: 'Nemlendiriciler',
+        dehumidifiers: 'Nem Alma Cihazları',
+        heaters: 'Isıtıcılar',
+        acs: 'Klimalar',
+
         // Media
         selectMedia: 'Yetiştirme Medyası Seçin',
         mediaDesc: 'Yetiştirme medyası seçiminiz, sulama tarzınızı ve besin gereksinimlerinizi belirler.',
 
         // Nutrients
         nutesDesc: 'Seçtiğiniz medyaya uygun besinleri ve katkı maddelerini seçin.',
+
+        // Monitoring
+        monitorDesc: 'Ortamınızı izlemek ve kontrol etmek için cihazlar seçin.',
 
         // Footer
         footer: 'Grow Tent Builder © 2024 - Yetiştiriciler için, yetiştiriciler tarafından yapıldı.'
