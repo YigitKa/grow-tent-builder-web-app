@@ -127,7 +127,7 @@ export default function ElectricCostEstimator({ onClose } = {}) {
             <summary style={{ cursor: 'pointer' }}>Detaylı döküm</summary>
             <div style={{ marginTop: 8 }}>
               <strong>Işıklar ve Fanlar (aylık kWh / adet)</strong>
-              <ul>
+              <ul className="est-list">
                 {report.veg.items.map((it, idx) => (
                   <li key={idx}>{it.name}: {it.monthlyKwh} kWh</li>
                 ))}
