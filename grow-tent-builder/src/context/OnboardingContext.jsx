@@ -18,6 +18,7 @@ export const OnboardingProvider = ({ children }) => {
             experienceLevel: null,
             tentSize: null,
             lightPreference: null,
+            automationLevel: null,
             completed: false
         };
     });
@@ -47,6 +48,7 @@ export const OnboardingProvider = ({ children }) => {
             experienceLevel: null,
             tentSize: null,
             lightPreference: null,
+            automationLevel: null,
             completed: false
         });
         localStorage.removeItem('seenOnboarding');

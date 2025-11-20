@@ -10,54 +10,85 @@ export default function Onboarding() {
 
     const steps = [
         {
-            question: "Hangi bitki türünü yetiştirmek istiyorsunuz?",
+            question: "Hangi bitki türlerini yetiştirmeyi planlıyorsunuz?",
             field: "plantType",
             options: [
-                { value: "tomato", label: "🍅 Domates", icon: "🍅" },
-                { value: "pepper", label: "🌶️ Biber", icon: "🌶️" },
-                { value: "herbs", label: "🌿 Otlar", icon: "🌿" },
-                { value: "flowers", label: "🌺 Çiçek", icon: "🌺" }
+                { value: "herbs", label: "Aromatik otlar", detail: "(fesleğen, nane, kekik)", icon: "🌿" },
+                { value: "vegetables", label: "Sebzeler", detail: "(domates, biber, marul)", icon: "🥬" },
+                { value: "flowers", label: "Çiçekli bitkiler", detail: "(orkide, sardunya)", icon: "🌺" }
             ],
-            tooltip: "Seçtiğiniz bitkiye göre ışık ve besin gereksinimleri değişir; örneğin domates ve biber yüksek PPFD isterken, aromatik otlar daha düşük değerlerle yetinir."
+            tooltips: {
+                herbs: "Aromatik otlar düşük PPFD seviyelerinde bile gelişebilir, bu nedenle daha az güçlü ışıklarla da verimli yetiştirilebilir.",
+                vegetables: "Sebzeler özellikle çiçeklenme ve meyve verme dönemlerinde yüksek ışık (600+ µmol/m²/s) ister.",
+                flowers: "Çiçekli bitkiler için ışık sürekliliği kadar spektrum dengesi de önemlidir; kırmızı ve mavi ışık oranı çiçeklenmeyi etkiler."
+            }
         },
         {
             question: "Yetiştiricilik deneyiminiz nedir?",
             field: "experienceLevel",
             options: [
-                { value: "beginner", label: "Yeni Başlayan", icon: "🌱" },
-                { value: "intermediate", label: "Orta Seviye", icon: "🌿" },
-                { value: "expert", label: "Uzman", icon: "🏆" }
+                { value: "beginner", label: "Yeni başlıyorum", icon: "🌱" },
+                { value: "intermediate", label: "Orta seviye", icon: "🌿" },
+                { value: "expert", label: "Deneyimliyim", icon: "🏆" }
             ],
-            tooltip: "Yeni başlayanlar için otomatik sulama ve sabit LED kurulumları önerilir; uzman kullanıcılar hidroponik sistemleri tercih edebilir."
+            tooltips: {
+                beginner: "Yeni başlayanlar için otomatik zamanlayıcılı ışıklar ve basit toprak karışımları idealdir.",
+                intermediate: "Orta seviye kullanıcılar için düşük maliyetli sensörler ve küçük havalandırma sistemleri verimi artırabilir.",
+                expert: "Deneyimli kullanıcılar PPFD haritası çıkararak lamba konumlandırmasını optimize edebilir."
+            }
         },
         {
-            question: "Çadır boyutu ne kadar olacak?",
+            question: "Ne kadar alan ayırmayı planlıyorsunuz?",
             field: "tentSize",
             options: [
-                { value: "60x60", label: "60×60 cm", icon: "📦" },
-                { value: "80x80", label: "80×80 cm", icon: "📦" },
-                { value: "100x100", label: "100×100 cm", icon: "📦" },
-                { value: "120x120", label: "120×120 cm", icon: "📦" }
+                { value: "60x60", label: "Küçük kabin", detail: "(60×60 cm)", icon: "📦" },
+                { value: "100x100", label: "Orta boy çadır", detail: "(100×100 cm)", icon: "📦" },
+                { value: "120x120", label: "Büyük alan", detail: "(120×120 cm ve üzeri)", icon: "📦" }
             ],
-            tooltip: "Çadır boyutu arttıkça havalandırma kapasitesi ve ışık gücü doğru orantılı olarak artmalıdır."
+            tooltips: {
+                "60x60": "Küçük alanlarda sıcaklık kontrolü zor olabilir, bu yüzden sessiz fanlar ve düşük ısı yayan LED'ler tercih edilmeli.",
+                "100x100": "Bu boyutlar için 240–320W LED arası ürünler iyi bir başlangıç noktasıdır.",
+                "120x120": "Geniş alanlar güçlü havalandırma ve 480W+ LED gibi daha fazla ekipman gerektirir."
+            }
         },
         {
-            question: "Tercih ettiğiniz ışık türü nedir?",
+            question: "Aydınlatma sistemi tercihiniz nedir?",
             field: "lightPreference",
             options: [
-                { value: "led", label: "LED", icon: "💡" },
-                { value: "hps", label: "HPS", icon: "🔥" },
-                { value: "cmh", label: "CMH", icon: "⚡" }
+                { value: "led", label: "LED", detail: "(enerji verimli, düşük ısı)", icon: "💡" },
+                { value: "hps", label: "HPS", detail: "(yüksek basınçlı sodyum)", icon: "🔥" },
+                { value: "unsure", label: "Emin değilim", detail: "öneri almak istiyorum", icon: "❓" }
             ],
-            tooltip: "LED'ler enerji verimliliği ve düşük ısı ile popülerdir, HPS'ler çiçeklenme döneminde yüksek yoğunluk sağlar."
+            tooltips: {
+                led: "LED'ler uzun ömürlüdür ve farklı spektrumlara sahip modeller ile bitki gelişim evrelerine uygun ışık sunar.",
+                hps: "HPS lambalar çiçeklenme döneminde yoğun ışık sağlar, ancak daha fazla ısı yayar ve enerji tüketimi yüksektir.",
+                unsure: "LED teknolojisi çoğu kullanıcı için başlangıç ve uzun vadede daha avantajlıdır; düşük ısı ve modüler tasarımıyla öne çıkar."
+            }
+        },
+        {
+            question: "Otomasyon seviyeniz ne olacak?",
+            field: "automationLevel",
+            options: [
+                { value: "manual", label: "Tamamen manuel", detail: "(sulama, ışık kontrolü vb.)", icon: "✋" },
+                { value: "semi", label: "Yarı otomatik", detail: "(zamanlayıcı, fan kontrolü)", icon: "⚙️" },
+                { value: "full", label: "Tam otomatik", detail: "(iklim kontrolü, nem, sulama)", icon: "🤖" }
+            ],
+            tooltips: {
+                manual: "Manuel sistemler düşük bütçelidir ama dikkat gerektirir; günlük kontroller ihmal edilmemelidir.",
+                semi: "Basit zamanlayıcılar ve sensör destekli fanlar verimliliği artırır ve hata payını azaltır.",
+                full: "Tam otomasyon, verim artışı sağlar ancak başlangıç maliyeti yüksektir; ileri düzey kullanıcılar için idealdir."
+            }
         }
     ];
 
     const currentStepData = steps[currentStep - 1];
     const progress = (currentStep / steps.length) * 100;
 
+    const [selectedTooltip, setSelectedTooltip] = useState('');
+
     const handleSelect = (value) => {
         updateOnboarding(currentStepData.field, value);
+        setSelectedTooltip(currentStepData.tooltips[value]);
         setShowTooltip(true);
     };
 
@@ -123,7 +154,10 @@ export default function Onboarding() {
                                     }`}
                             >
                                 <span className="option-icon">{option.icon}</span>
-                                <span className="option-label">{option.label}</span>
+                                <div className="option-text">
+                                    <span className="option-label">{option.label}</span>
+                                    {option.detail && <span className="option-detail">{option.detail}</span>}
+                                </div>
                             </button>
                         ))}
                     </div>
@@ -131,7 +165,7 @@ export default function Onboarding() {
                     {/* Tooltip */}
                     {showTooltip && (
                         <div className="tooltip-box fade-in">
-                            <p>{currentStepData.tooltip}</p>
+                            <p>{selectedTooltip}</p>
                             <button onClick={handleContinue} className="btn-continue">
                                 Devam Et →
                             </button>
@@ -275,10 +309,23 @@ export default function Onboarding() {
                     font-size: 3rem;
                 }
 
+                .option-text {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.25rem;
+                    align-items: center;
+                }
+
                 .option-label {
                     font-size: 1.125rem;
                     font-weight: 600;
                     color: #ffffff;
+                }
+
+                .option-detail {
+                    font-size: 0.875rem;
+                    color: #94a3b8;
+                    font-weight: 400;
                 }
 
                 .tooltip-box {

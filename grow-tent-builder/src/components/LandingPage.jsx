@@ -2,11 +2,60 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useOnboarding } from '../context/OnboardingContext';
 
+const translations = {
+    en: {
+        title: "Design Your Perfect Harvest",
+        subtitle: "Advanced simulation for serious growers. Calculate PPFD, estimate costs, and optimize your environment before you buy.",
+        cta: "Start Building Now",
+        features: {
+            ppfd: {
+                title: "PPFD Simulation",
+                description: "Visualize light intensity and coverage with our advanced heatmap engine."
+            },
+            cost: {
+                title: "Cost Estimator",
+                description: "Calculate monthly electricity costs based on your local rates and equipment."
+            },
+            environment: {
+                title: "Environment Control",
+                description: "Match ventilation and filtration to your specific tent dimensions."
+            }
+        }
+    },
+    tr: {
+        title: "Mükemmel Hasadınızı Tasarlayın",
+        subtitle: "Ciddi yetiştiriciler için gelişmiş simülasyon. PPFD hesaplayın, maliyetleri tahmin edin ve satın almadan önce ortamınızı optimize edin.",
+        cta: "Hemen Başla",
+        features: {
+            ppfd: {
+                title: "PPFD Simülasyonu",
+                description: "Gelişmiş ısı haritası motorumuzla ışık yoğunluğunu ve kapsamını görselleştirin."
+            },
+            cost: {
+                title: "Maliyet Hesaplayıcı",
+                description: "Yerel tarifelerinize ve ekipmanınıza göre aylık elektrik maliyetlerini hesaplayın."
+            },
+            environment: {
+                title: "Ortam Kontrolü",
+                description: "Havalandırma ve filtrasyonu çadır boyutlarınıza göre eşleştirin."
+            }
+        }
+    }
+};
+
 export default function LandingPage() {
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
     const [scrollY, setScrollY] = useState(0);
     const { hasSeenOnboarding } = useOnboarding();
     const navigate = useNavigate();
+
+    // Detect system language
+    const [language, setLanguage] = useState(() => {
+        const browserLang = navigator.language || navigator.userLanguage;
+        return browserLang.startsWith('tr') ? 'tr' : 'en';
+    });
+
+    const t = translations[language];
 
     const handleStartBuilding = () => {
         if (hasSeenOnboarding()) {
@@ -39,6 +88,22 @@ export default function LandingPage() {
 
     return (
         <div className="landing-container">
+            {/* Language Toggle */}
+            <div className="lang-toggle">
+                <button
+                    onClick={() => setLanguage('en')}
+                    className={language === 'en' ? 'active' : ''}
+                >
+                    EN
+                </button>
+                <button
+                    onClick={() => setLanguage('tr')}
+                    className={language === 'tr' ? 'active' : ''}
+                >
+                    TR
+                </button>
+            </div>
+
             {/* Animated Background */}
             <div className="landing-bg">
                 <div className="glow-orb orb-1" style={{
@@ -55,15 +120,14 @@ export default function LandingPage() {
                 <div className="hero-content fade-in-up">
                     <div className="badge">🌱 Professional Grow Planner</div>
                     <h1 className="hero-title">
-                        Design Your <br />
-                        <span className="gradient-text">Perfect Harvest</span>
+                        {t.title.split(' ').slice(0, 2).join(' ')} <br />
+                        <span className="gradient-text">{t.title.split(' ').slice(2).join(' ')}</span>
                     </h1>
                     <p className="hero-subtitle">
-                        Advanced simulation for serious growers. Calculate PPFD, estimate costs,
-                        and optimize your environment before you buy.
+                        {t.subtitle}
                     </p>
                     <button onClick={handleStartBuilding} className="cta-button">
-                        Start Building Now
+                        {t.cta}
                         <span className="arrow">→</span>
                     </button>
                 </div>
@@ -83,18 +147,18 @@ export default function LandingPage() {
             <section className="features-section">
                 <div className="feature-card slide-in" style={{ transitionDelay: '0.1s' }}>
                     <div className="feature-icon">💡</div>
-                    <h3>PPFD Simulation</h3>
-                    <p>Visualize light intensity and coverage with our advanced heatmap engine.</p>
+                    <h3>{t.features.ppfd.title}</h3>
+                    <p>{t.features.ppfd.description}</p>
                 </div>
                 <div className="feature-card slide-in" style={{ transitionDelay: '0.2s' }}>
                     <div className="feature-icon">⚡</div>
-                    <h3>Cost Estimator</h3>
-                    <p>Calculate monthly electricity costs based on your local rates and equipment.</p>
+                    <h3>{t.features.cost.title}</h3>
+                    <p>{t.features.cost.description}</p>
                 </div>
                 <div className="feature-card slide-in" style={{ transitionDelay: '0.3s' }}>
                     <div className="feature-icon">🌬️</div>
-                    <h3>Environment Control</h3>
-                    <p>Match ventilation and filtration to your specific tent dimensions.</p>
+                    <h3>{t.features.environment.title}</h3>
+                    <p>{t.features.environment.description}</p>
                 </div>
             </section>
 
@@ -105,6 +169,40 @@ export default function LandingPage() {
                     color: white;
                     overflow-x: hidden;
                     position: relative;
+                }
+
+                .lang-toggle {
+                    position: fixed;
+                    top: 2rem;
+                    right: 2rem;
+                    z-index: 100;
+                    display: flex;
+                    gap: 0.5rem;
+                    background: rgba(255, 255, 255, 0.05);
+                    padding: 0.25rem;
+                    border-radius: 0.5rem;
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                }
+
+                .lang-toggle button {
+                    background: transparent;
+                    border: none;
+                    color: #94a3b8;
+                    padding: 0.5rem 1rem;
+                    border-radius: 0.375rem;
+                    cursor: pointer;
+                    font-weight: 600;
+                    transition: all 0.2s ease;
+                }
+
+                .lang-toggle button.active {
+                    background: #10b981;
+                    color: white;
+                }
+
+                .lang-toggle button:hover:not(.active) {
+                    background: rgba(255, 255, 255, 0.05);
+                    color: white;
                 }
 
                 .landing-bg {
