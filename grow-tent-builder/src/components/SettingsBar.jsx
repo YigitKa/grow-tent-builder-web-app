@@ -18,14 +18,42 @@ export default function SettingsBar() {
             zIndex: 1000,
             padding: '0.75rem 0'
         }}>
-            <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div style={{ fontWeight: '700', fontSize: '1.25rem', color: 'var(--color-primary)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <div className="container" style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                gap: '1rem',
+                flexWrap: 'wrap'
+            }}>
+                {/* Logo */}
+                <div style={{
+                    fontWeight: '700',
+                    fontSize: '1.25rem',
+                    color: 'var(--color-primary)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    minWidth: 'fit-content'
+                }}>
                     <span style={{ fontSize: '1.5rem' }}>🌿</span> GrowBuilder
                 </div>
 
-                <div className="settings-stack-mobile" style={{ display: 'flex', gap: '1rem', fontSize: '0.875rem' }}>
-                    {/* Language Toggle */}
-                    <div className="setting-group">
+                {/* Settings and Actions Container */}
+                <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '1rem',
+                    flexWrap: 'wrap',
+                    justifyContent: 'flex-end'
+                }}>
+                    {/* Settings Group */}
+                    <div className="settings-stack-mobile" style={{
+                        display: 'flex',
+                        gap: '0.5rem',
+                        fontSize: '0.875rem',
+                        alignItems: 'center'
+                    }}>
+                        {/* Language Toggle */}
                         <select
                             value={language}
                             onChange={(e) => setLanguage(e.target.value)}
@@ -34,10 +62,8 @@ export default function SettingsBar() {
                             <option value="en">🇺🇸 English</option>
                             <option value="tr">🇹🇷 Türkçe</option>
                         </select>
-                    </div>
 
-                    {/* Currency Toggle */}
-                    <div className="setting-group">
+                        {/* Currency Toggle */}
                         <select
                             value={currency}
                             onChange={(e) => setCurrency(e.target.value)}
@@ -47,10 +73,8 @@ export default function SettingsBar() {
                                 <option key={c} value={c}>{CURRENCIES[c].symbol} {c}</option>
                             ))}
                         </select>
-                    </div>
 
-                    {/* Unit Toggle */}
-                    <div className="setting-group">
+                        {/* Unit Toggle */}
                         <select
                             value={unitSystem}
                             onChange={(e) => setUnitSystem(e.target.value)}
@@ -60,9 +84,15 @@ export default function SettingsBar() {
                             <option value="METRIC">📏 Metric (cm)</option>
                         </select>
                     </div>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <button onClick={() => setShowEstimator(s => !s)} className="modern-select">⚡ Maliyet</button>
+
+                    {/* Cost Button */}
+                    <button
+                        onClick={() => setShowEstimator(s => !s)}
+                        className="modern-select cost-button"
+                        style={{ whiteSpace: 'nowrap' }}
+                    >
+                        ⚡ Maliyet
+                    </button>
                 </div>
             </div>
             {showEstimator && (
@@ -76,39 +106,53 @@ export default function SettingsBar() {
                     color: var(--text-primary);
                     border: 1px solid var(--border-color);
                     border-radius: var(--radius-full);
-                    padding: 0.35rem 1rem;
+                    padding: 0.5rem 1rem;
                     font-size: 0.875rem;
                     cursor: pointer;
                     transition: all 0.2s ease;
                     outline: none;
+                    white-space: nowrap;
+                    line-height: 1.2;
                 }
                 .modern-select:hover, .modern-select:focus {
                     background: rgba(255, 255, 255, 0.1);
                     border-color: var(--color-primary);
+                    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.1);
                 }
-                .setting-group {
-                    display: flex;
-                    align-items: center;
+                .cost-button {
+                    background: rgba(16, 185, 129, 0.15);
+                    border-color: var(--color-primary);
+                }
+                .cost-button:hover {
+                    background: rgba(16, 185, 129, 0.25);
+                    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
                 }
                 
                 /* Mobile specific fixes */
                 @media (max-width: 768px) {
+                    .glass-header .container {
+                        justify-content: center !important;
+                        text-align: center;
+                    }
                     .glass-header {
                         padding: 0.5rem 0 !important;
                     }
                     .settings-stack-mobile {
-                        flex-direction: row !important;
-                        align-items: center !important;
-                        gap: 0.5rem !important;
-                        flex-wrap: wrap;
-                        justify-content: center;
-                    }
-                    .setting-group {
-                        flex: 0 0 auto;
+                        flex-wrap: wrap !important;
+                        gap: 0.35rem !important;
+                        justify-content: center !important;
                     }
                     .modern-select {
-                        padding: 0.25rem 0.5rem;
+                        padding: 0.4rem 0.75rem;
                         font-size: 0.75rem;
+                    }
+                }
+                
+                @media (max-width: 480px) {
+                    .glass-header .container > div:first-child {
+                        width: 100%;
+                        justify-content: center;
+                        margin-bottom: 0.5rem;
                     }
                 }
             `}</style>
