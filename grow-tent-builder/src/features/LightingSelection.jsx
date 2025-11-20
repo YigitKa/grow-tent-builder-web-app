@@ -4,12 +4,12 @@ import { useSettings } from '../context/SettingsContext';
 import LightPlacementCanvas from '../components/LightPlacementCanvas';
 
 const LIGHT_OPTIONS = [
-    { id: 'led-100', name: 'Quantum Board 100W LED', type: 'LED', watts: 100, price: 85, coverage: 4, physicalWidth: 1, physicalDepth: 1 }, // ~30x30cm
-    { id: 'led-240', name: 'Quantum Board 240W LED', type: 'LED', watts: 240, price: 180, coverage: 9, physicalWidth: 2, physicalDepth: 1 }, // ~60x30cm
-    { id: 'led-480', name: 'Bar Style 480W LED', type: 'LED', watts: 480, price: 420, coverage: 16, physicalWidth: 3, physicalDepth: 3 }, // ~90x90cm
-    { id: 'led-650', name: 'Bar Style 650W LED', type: 'LED', watts: 650, price: 600, coverage: 25, physicalWidth: 3.6, physicalDepth: 3.6 }, // ~110x110cm
-    { id: 'hps-600', name: '600W HPS Kit', type: 'HPS', watts: 600, price: 150, coverage: 16, physicalWidth: 1.6, physicalDepth: 1 }, // ~50x30cm
-    { id: 'hps-1000', name: '1000W DE HPS Kit', type: 'HPS', watts: 1000, price: 220, coverage: 25, physicalWidth: 2.3, physicalDepth: 1.1 }, // ~70x35cm
+    { id: 'led-100', name: 'Quantum Board 100W LED', type: 'LED', watts: 100, price: 85, coverage: 4, physicalWidth: 1, physicalDepth: 1, maxPPFD: 800, beamAngle: 120, recommendedHeight: 12 }, // ~30x30cm
+    { id: 'led-240', name: 'Quantum Board 240W LED', type: 'LED', watts: 240, price: 180, coverage: 9, physicalWidth: 2, physicalDepth: 1, maxPPFD: 1800, beamAngle: 120, recommendedHeight: 18 }, // ~60x30cm
+    { id: 'led-480', name: 'Bar Style 480W LED', type: 'LED', watts: 480, price: 420, coverage: 16, physicalWidth: 3, physicalDepth: 3, maxPPFD: 2200, beamAngle: 120, recommendedHeight: 24 }, // ~90x90cm
+    { id: 'led-650', name: 'Bar Style 650W LED', type: 'LED', watts: 650, price: 600, coverage: 25, physicalWidth: 3.6, physicalDepth: 3.6, maxPPFD: 2600, beamAngle: 120, recommendedHeight: 30 }, // ~110x110cm
+    { id: 'hps-600', name: '600W HPS Kit', type: 'HPS', watts: 600, price: 150, coverage: 16, physicalWidth: 1.6, physicalDepth: 1, maxPPFD: 1100, beamAngle: 140, recommendedHeight: 24 }, // ~50x30cm
+    { id: 'hps-1000', name: '1000W DE HPS Kit', type: 'HPS', watts: 1000, price: 220, coverage: 25, physicalWidth: 2.3, physicalDepth: 1.1, maxPPFD: 1800, beamAngle: 140, recommendedHeight: 36 }, // ~70x35cm
 ];
 
 export default function LightingSelection() {
