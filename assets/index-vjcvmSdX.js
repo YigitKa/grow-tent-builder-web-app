@@ -586,6 +586,32 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
                         font-size: 0.75rem;
                         padding: 0.4rem 0.8rem;
                     }
+
+                    /* Cost Calculator Mobile Fixes */
+                    .cost-tool-section {
+                        padding: 2rem 5%;
+                    }
+
+                    .cost-tool-container {
+                        padding: 1.5rem;
+                    }
+
+                    .cost-tool-header h2 {
+                        font-size: 1.5rem;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        line-height: 1.4;
+                    }
+
+                    .input-group input {
+                        width: 100%;
+                        box-sizing: border-box;
+                    }
+
+                    .cost-tool-inputs {
+                        width: 100%;
+                    }
                 }
             `})]})}function qn(){let[e,t]=(0,_.useState)(1),[n,r]=(0,_.useState)(!1),{onboardingData:i,updateOnboarding:a,completeOnboarding:o}=Un(),s=Ze(),c=[{question:`Hangi bitki türlerini yetiştirmeyi planlıyorsunuz?`,field:`plantType`,options:[{value:`herbs`,label:`Aromatik otlar`,detail:`(fesleğen, nane, kekik)`,icon:`🌿`},{value:`vegetables`,label:`Sebzeler`,detail:`(domates, biber, marul)`,icon:`🥬`},{value:`flowers`,label:`Çiçekli bitkiler`,detail:`(orkide, sardunya)`,icon:`🌺`}],tooltips:{herbs:`Aromatik otlar düşük PPFD seviyelerinde bile gelişebilir, bu nedenle daha az güçlü ışıklarla da verimli yetiştirilebilir.`,vegetables:`Sebzeler özellikle çiçeklenme ve meyve verme dönemlerinde yüksek ışık (600+ µmol/m²/s) ister.`,flowers:`Çiçekli bitkiler için ışık sürekliliği kadar spektrum dengesi de önemlidir; kırmızı ve mavi ışık oranı çiçeklenmeyi etkiler.`}},{question:`Yetiştiricilik deneyiminiz nedir?`,field:`experienceLevel`,options:[{value:`beginner`,label:`Yeni başlıyorum`,icon:`🌱`},{value:`intermediate`,label:`Orta seviye`,icon:`🌿`},{value:`expert`,label:`Deneyimliyim`,icon:`🏆`}],tooltips:{beginner:`Yeni başlayanlar için otomatik zamanlayıcılı ışıklar ve basit toprak karışımları idealdir.`,intermediate:`Orta seviye kullanıcılar için düşük maliyetli sensörler ve küçük havalandırma sistemleri verimi artırabilir.`,expert:`Deneyimli kullanıcılar PPFD haritası çıkararak lamba konumlandırmasını optimize edebilir.`}},{question:`Ne kadar alan ayırmayı planlıyorsunuz?`,field:`tentSize`,options:[{value:`60x60`,label:`Küçük kabin`,detail:`(60×60 cm)`,icon:`📦`},{value:`100x100`,label:`Orta boy çadır`,detail:`(100×100 cm)`,icon:`📦`},{value:`120x120`,label:`Büyük alan`,detail:`(120×120 cm ve üzeri)`,icon:`📦`}],tooltips:{"60x60":`Küçük alanlarda sıcaklık kontrolü zor olabilir, bu yüzden sessiz fanlar ve düşük ısı yayan LED'ler tercih edilmeli.`,"100x100":`Bu boyutlar için 240–320W LED arası ürünler iyi bir başlangıç noktasıdır.`,"120x120":`Geniş alanlar güçlü havalandırma ve 480W+ LED gibi daha fazla ekipman gerektirir.`}},{question:`Aydınlatma sistemi tercihiniz nedir?`,field:`lightPreference`,options:[{value:`led`,label:`LED`,detail:`(enerji verimli, düşük ısı)`,icon:`💡`},{value:`hps`,label:`HPS`,detail:`(yüksek basınçlı sodyum)`,icon:`🔥`},{value:`unsure`,label:`Emin değilim`,detail:`öneri almak istiyorum`,icon:`❓`}],tooltips:{led:`LED'ler uzun ömürlüdür ve farklı spektrumlara sahip modeller ile bitki gelişim evrelerine uygun ışık sunar.`,hps:`HPS lambalar çiçeklenme döneminde yoğun ışık sağlar, ancak daha fazla ısı yayar ve enerji tüketimi yüksektir.`,unsure:`LED teknolojisi çoğu kullanıcı için başlangıç ve uzun vadede daha avantajlıdır; düşük ısı ve modüler tasarımıyla öne çıkar.`}},{question:`Otomasyon seviyeniz ne olacak?`,field:`automationLevel`,options:[{value:`manual`,label:`Tamamen manuel`,detail:`(sulama, ışık kontrolü vb.)`,icon:`✋`},{value:`semi`,label:`Yarı otomatik`,detail:`(zamanlayıcı, fan kontrolü)`,icon:`⚙️`},{value:`full`,label:`Tam otomatik`,detail:`(iklim kontrolü, nem, sulama)`,icon:`🤖`}],tooltips:{manual:`Manuel sistemler düşük bütçelidir ama dikkat gerektirir; günlük kontroller ihmal edilmemelidir.`,semi:`Basit zamanlayıcılar ve sensör destekli fanlar verimliliği artırır ve hata payını azaltır.`,full:`Tam otomasyon, verim artışı sağlar ancak başlangıç maliyeti yüksektir; ileri düzey kullanıcılar için idealdir.`}}],l=c[e-1],u=e/c.length*100,[d,f]=(0,_.useState)(``),p=e=>{a(l.field,e),f(l.tooltips[e]),r(!0)},m=()=>{r(!1),e<c.length?t(e+1):(o(),s(`/builder`))};return _.useEffect(()=>{if(n){let e=setTimeout(()=>{m()},1e4);return()=>clearTimeout(e)}},[n]),(0,A.jsxs)(`div`,{className:`onboarding-container`,children:[(0,A.jsxs)(`div`,{className:`onboarding-bg`,children:[(0,A.jsx)(`div`,{className:`glow-orb orb-green`}),(0,A.jsx)(`div`,{className:`grid-overlay`})]}),(0,A.jsxs)(`div`,{className:`onboarding-content`,children:[(0,A.jsxs)(`div`,{className:`progress-container`,children:[(0,A.jsx)(`div`,{className:`progress-bar`,style:{width:`${u}%`}}),(0,A.jsxs)(`span`,{className:`progress-text`,children:[`Adım `,e,` / `,c.length]})]}),(0,A.jsxs)(`div`,{className:`question-container fade-in`,children:[(0,A.jsx)(`h2`,{className:`question-title`,children:l.question}),(0,A.jsx)(`div`,{className:`options-grid`,children:l.options.map(e=>(0,A.jsxs)(`button`,{onClick:()=>p(e.value),className:`option-card ${i[l.field]===e.value?`selected`:``}`,children:[(0,A.jsx)(`span`,{className:`option-icon`,children:e.icon}),(0,A.jsxs)(`div`,{className:`option-text`,children:[(0,A.jsx)(`span`,{className:`option-label`,children:e.label}),e.detail&&(0,A.jsx)(`span`,{className:`option-detail`,children:e.detail})]})]},e.value))}),n&&(0,A.jsxs)(`div`,{className:`tooltip-box fade-in`,children:[(0,A.jsx)(`p`,{children:d}),(0,A.jsx)(`button`,{onClick:m,className:`btn-continue`,children:`Devam Et →`})]})]}),(0,A.jsxs)(`div`,{className:`nav-buttons`,children:[e>1&&(0,A.jsx)(`button`,{onClick:()=>{e>1&&(t(e-1),r(!1))},className:`btn-secondary`,children:`← Geri`}),(0,A.jsx)(`button`,{onClick:()=>{o(),s(`/builder`)},className:`btn-skip`,children:`Atla`})]})]}),(0,A.jsx)(`style`,{children:`
                 .onboarding-container {
