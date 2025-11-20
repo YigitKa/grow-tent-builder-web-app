@@ -178,22 +178,6 @@ export default function LandingPage() {
 
     return (
         <div className="landing-container">
-            {/* Language Toggle */}
-            <div className="lang-toggle">
-                <button
-                    onClick={() => setLanguage('en')}
-                    className={language === 'en' ? 'active' : ''}
-                >
-                    EN
-                </button>
-                <button
-                    onClick={() => setLanguage('tr')}
-                    className={language === 'tr' ? 'active' : ''}
-                >
-                    TR
-                </button>
-            </div>
-
             {/* Animated Background */}
             <div className="landing-bg">
                 <div className="glow-orb orb-1" style={{
@@ -354,6 +338,29 @@ export default function LandingPage() {
                 </div>
             </section>
 
+            {/* Footer / Künye */}
+            <footer className="landing-footer">
+                <div className="footer-content">
+                    <div className="footer-info">
+                        <p>© 2025 Grow Tent Builder. All rights reserved.</p>
+                    </div>
+                    <div className="footer-lang-toggle">
+                        <button
+                            onClick={() => setLanguage('en')}
+                            className={language === 'en' ? 'active' : ''}
+                        >
+                            EN
+                        </button>
+                        <button
+                            onClick={() => setLanguage('tr')}
+                            className={language === 'tr' ? 'active' : ''}
+                        >
+                            TR
+                        </button>
+                    </div>
+                </div>
+            </footer>
+
             <style>{`
                 .landing-container {
                     min-height: 100vh;
@@ -363,37 +370,57 @@ export default function LandingPage() {
                     position: relative;
                 }
 
-                .lang-toggle {
-                    position: fixed;
-                    top: 2rem;
-                    right: 2rem;
-                    z-index: 1000;
+                /* Footer Styles */
+                .landing-footer {
+                    background: rgba(15, 23, 42, 0.95);
+                    border-top: 1px solid rgba(255, 255, 255, 0.1);
+                    padding: 2rem 10%;
+                    position: relative;
+                    z-index: 10;
+                }
+
+                .footer-content {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    flex-wrap: wrap;
+                    gap: 1rem;
+                }
+
+                .footer-info p {
+                    color: #94a3b8;
+                    font-size: 0.875rem;
+                }
+
+                .footer-lang-toggle {
                     display: flex;
                     gap: 0.5rem;
                     background: rgba(255, 255, 255, 0.05);
                     padding: 0.25rem;
                     border-radius: 0.5rem;
                     border: 1px solid rgba(255, 255, 255, 0.1);
-                    backdrop-filter: blur(10px);
                 }
 
-                .lang-toggle button {
+                .footer-lang-toggle button {
                     background: transparent;
                     border: none;
                     color: #94a3b8;
-                    padding: 0.5rem 1rem;
+                    padding: 0.4rem 0.75rem;
                     border-radius: 0.375rem;
                     cursor: pointer;
                     font-weight: 600;
+                    font-size: 0.875rem;
                     transition: all 0.2s ease;
                 }
 
-                .lang-toggle button.active {
+                .footer-lang-toggle button.active {
                     background: #10b981;
                     color: white;
                 }
 
-                .lang-toggle button:hover:not(.active) {
+                .footer-lang-toggle button:hover:not(.active) {
                     background: rgba(255, 255, 255, 0.05);
                     color: white;
                 }
@@ -901,6 +928,16 @@ export default function LandingPage() {
 
                     .info-boxes-header h2 {
                         font-size: 1.75rem;
+                    }
+
+                    .footer-content {
+                        flex-direction: column;
+                        text-align: center;
+                    }
+
+                    .badge {
+                        font-size: 0.75rem;
+                        padding: 0.4rem 0.8rem;
                     }
                 }
             `}</style>
