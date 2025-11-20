@@ -3,7 +3,7 @@ import StatsBar from './StatsBar';
 import ProgressTracker from './ProgressTracker';
 
 export default function Layout({ children }) {
-    const { t } = useSettings();
+    const { t, language, setLanguage, currency, setCurrency, unitSystem, setUnitSystem } = useSettings();
 
     return (
         <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'radial-gradient(circle at top center, #1e293b 0%, #0f172a 50%)' }}>
@@ -37,7 +37,75 @@ export default function Layout({ children }) {
                 </div>
             </main>
 
-            <footer className="no-print" style={{ textAlign: 'center', padding: '2rem', color: 'var(--text-muted)', fontSize: '0.875rem' }}>
+            <footer className="no-print" style={{
+                textAlign: 'center',
+                padding: '2rem',
+                color: 'var(--text-muted)',
+                fontSize: '0.875rem',
+                borderTop: '1px solid rgba(255,255,255,0.05)'
+            }}>
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    gap: '1rem',
+                    marginBottom: '1rem',
+                    flexWrap: 'wrap'
+                }}>
+                    {/* Language */}
+                    <select
+                        value={language}
+                        onChange={(e) => setLanguage(e.target.value)}
+                        style={{
+                            padding: '0.5rem 1rem',
+                            background: 'var(--bg-surface)',
+                            color: 'var(--text-primary)',
+                            border: '1px solid var(--border-color)',
+                            borderRadius: 'var(--radius-sm)',
+                            cursor: 'pointer',
+                            fontSize: '0.875rem'
+                        }}
+                    >
+                        <option value="en">🇬🇧 EN</option>
+                        <option value="tr">🇹🇷 TR</option>
+                    </select>
+
+                    {/* Currency */}
+                    <select
+                        value={currency}
+                        onChange={(e) => setCurrency(e.target.value)}
+                        style={{
+                            padding: '0.5rem 1rem',
+                            background: 'var(--bg-surface)',
+                            color: 'var(--text-primary)',
+                            border: '1px solid var(--border-color)',
+                            borderRadius: 'var(--radius-sm)',
+                            cursor: 'pointer',
+                            fontSize: '0.875rem'
+                        }}
+                    >
+                        <option value="USD">$ USD</option>
+                        <option value="EUR">€ EUR</option>
+                        <option value="TRY">₺ TRY</option>
+                    </select>
+
+                    {/* Units */}
+                    <select
+                        value={unitSystem}
+                        onChange={(e) => setUnitSystem(e.target.value)}
+                        style={{
+                            padding: '0.5rem 1rem',
+                            background: 'var(--bg-surface)',
+                            color: 'var(--text-primary)',
+                            border: '1px solid var(--border-color)',
+                            borderRadius: 'var(--radius-sm)',
+                            cursor: 'pointer',
+                            fontSize: '0.875rem'
+                        }}
+                    >
+                        <option value="IMPERIAL">ft</option>
+                        <option value="METRIC">cm</option>
+                    </select>
+                </div>
                 <p>{t('footer')}</p>
             </footer>
         </div>
