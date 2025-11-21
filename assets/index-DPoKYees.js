@@ -164,10 +164,10 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
         .landing-footer {
           background: rgba(15, 23, 42, 0.95);
           border-top: 1px solid rgba(255, 255, 255, 0.1);
-          padding: 2rem 10%;
+          /* slightly more compact footer */
+          padding: 1.25rem 10%;
           position: relative;
           z-index: 10;
-          margin-top: auto;
         }
 
         .footer-content {
@@ -183,6 +183,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
         .footer-info p {
           color: #94a3b8;
           font-size: 0.875rem;
+          margin: 0; /* ensure compact layout */
         }
 
         .footer-lang-toggle {
@@ -1199,7 +1200,8 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
         .blog-container {
           min-height: 100vh;
           background: var(--bg-app);
-          padding-bottom: 4rem;
+          /* increase bottom padding so there's a visible gap above the footer */
+
         }
 
         .blog-hero {
@@ -1370,6 +1372,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
           gap: 2rem;
+          margin-bottom: 3rem; /* gap between last row and footer */
         }
 
         .blog-card {
