@@ -101,26 +101,6 @@ export default function LightingSelection() {
                 </div>
             )}
 
-            <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
-                gap: '1rem',
-                marginBottom: '1rem',
-                padding: '1.5rem',
-                background: 'var(--bg-surface)',
-                borderRadius: 'var(--radius-md)',
-                border: `2px solid ${isCovered ? 'var(--color-primary)' : 'rgba(255, 82, 82, 0.5)'}`
-            }}>
-                <InfoBox label={t('yourSpace')} value={`${formatUnit(area, 'area')} ${areaLabel}`} />
-                <InfoBox label={t('recPower')} value={`~${recommendedWatts}W`} />
-                <InfoBox
-                    label={t('remainingCoverage')}
-                    value={`${formatUnit(remainingCoverage, 'area')} ${areaLabel}`}
-                    highlight={!isCovered}
-                    success={isCovered}
-                />
-            </div>
-
             {selectedLights.length > 0 && <LightPlacementCanvas />}
 
             {isCovered && (
@@ -136,22 +116,6 @@ export default function LightingSelection() {
                     fontSize: '0.875rem'
                 }}>
                     ✓ {t('fullycovered')}
-                </div>
-            )}
-
-            {!isCovered && remainingCoverage > 0 && (
-                <div style={{
-                    marginBottom: '1.5rem',
-                    padding: '0.75rem',
-                    background: 'rgba(255, 82, 82, 0.1)',
-                    border: '1px solid #ff5252',
-                    borderRadius: 'var(--radius-md)',
-                    color: '#ff5252',
-                    textAlign: 'center',
-                    fontWeight: 'bold',
-                    fontSize: '0.875rem'
-                }}>
-                    ⚠ {t('needMoreLight')}
                 </div>
             )}
 
@@ -267,6 +231,26 @@ export default function LightingSelection() {
                 })}
             </div>
 
+ <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '1rem',
+                marginBottom: '1rem',
+                padding: '1.5rem',
+                background: 'var(--bg-surface)',
+                borderRadius: 'var(--radius-md)',
+                border: `2px solid ${isCovered ? 'var(--color-primary)' : 'rgba(255, 82, 82, 0.5)'}`
+            }}>
+                <InfoBox label={t('yourSpace')} value={`${formatUnit(area, 'area')} ${areaLabel}`} />
+                <InfoBox label={t('recPower')} value={`~${recommendedWatts}W`} />
+                <InfoBox
+                    label={t('remainingCoverage')}
+                    value={`${formatUnit(remainingCoverage, 'area')} ${areaLabel}`}
+                    highlight={!isCovered}
+                    success={isCovered}
+                />
+            </div>
+            
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <button
                     onClick={handleBack}
@@ -300,6 +284,7 @@ export default function LightingSelection() {
         </div>
     );
 }
+
 
 function InfoBox({ label, value, highlight, success }) {
     let borderColor = 'var(--border-color)';
