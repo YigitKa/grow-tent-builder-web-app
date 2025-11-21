@@ -49,6 +49,11 @@ Preview the production build locally:
 npm run preview
 ```
 
+Environment variables
+ - To enable Google Analytics (gtag) set `VITE_GTAG_ID` in your environment or in a `.env` file at the project root. Example provided in `.env.example`.
+
+The app injects the gtag script at runtime when `VITE_GTAG_ID` is present.
+
 Lint the code:
 
 ```bash
