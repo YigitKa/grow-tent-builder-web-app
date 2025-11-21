@@ -5,7 +5,7 @@ import { blogPosts, categories } from './blogData';
 import Footer from '../Footer';
 
 const BlogList = () => {
-  const { language } = useSettings();
+  const { language, t } = useSettings();
   const [activeCategory, setActiveCategory] = useState('All');
 
   // Scroll to top when component mounts
@@ -27,16 +27,16 @@ const BlogList = () => {
         <div className="container">
           <div className="blog-nav-header fade-in-up">
             <Link to="/" className="nav-btn home-btn">
-              🏠 Home
+              🏠 {language === 'tr' ? 'Ana Sayfa' : 'Home'}
             </Link>
             <Link to="/builder" className="nav-btn app-btn">
-              🚀 Launch App
+              🚀 {language === 'tr' ? 'Uygulama' : 'Launch App'}
             </Link>
           </div>
           <div className="blog-header fade-in-up">
-            <span className="badge">📚 Knowledge Base</span>
+            <span className="badge">📚 {t('knowledgeBase')}</span>
             <h1>Grow Wizard <span className="gradient-text">Blog</span></h1>
-            <p>Expert guides, tips, and deep dives into plant technology.</p>
+            <p>{t('knowledgeBaseSubtitle')}</p>
           </div>
 
           {activeCategory === 'All' && (
@@ -44,7 +44,7 @@ const BlogList = () => {
               <Link to={`/blog/${featuredPost.slug[language]}`} className="featured-card">
                 <div className="featured-image" style={{ backgroundImage: `url(${featuredPost.image})` }} />
                 <div className="featured-content">
-                  <span className="featured-badge">Featured Article</span>
+                  <span className="featured-badge">{t('featuredArticle')}</span>
                   <h2>{featuredPost.title[language]}</h2>
                   <p>{featuredPost.excerpt[language]}</p>
                   <div className="blog-meta">
@@ -61,6 +61,7 @@ const BlogList = () => {
 
       {/* Category Filter */}
       <div className="category-nav container">
+        <div className="category-label">{t('blogCategoriesLabel')}</div>
         <div className="category-scroll">
           {categories.map(cat => (
             <button
@@ -68,7 +69,7 @@ const BlogList = () => {
               className={`category-btn ${activeCategory === cat ? 'active' : ''}`}
               onClick={() => setActiveCategory(cat)}
             >
-              {cat}
+              {t(`category${cat}`)}
             </button>
           ))}
         </div>
@@ -81,7 +82,7 @@ const BlogList = () => {
             <div className="blog-card-image">
               <img src={post.image} alt={post.title[language]} loading="lazy" />
               <div className="blog-tags">
-                <span className="blog-tag">{post.category}</span>
+                <span className="blog-tag">{t(`category${post.category}`)}</span>
               </div>
             </div>
             <div className="blog-card-content">
@@ -177,6 +178,9 @@ const BlogList = () => {
           max-width: 600px;
           margin: 0 auto;
         }
+
+        .category-nav { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+        .category-label { color: var(--text-secondary); font-weight: 600; }
 
         /* Featured Post */
         .featured-post {

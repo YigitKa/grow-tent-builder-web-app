@@ -138,16 +138,13 @@ const translations = {
 
 export default function LandingPage() {
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-    const [scrollY, setScrollY] = useState(0);
+    // scrollY is intentionally unused in this component but kept for future effects
+    const [, setScrollY] = useState(0);
     const { hasSeenOnboarding } = useOnboarding();
     const navigate = useNavigate();
+    const { language } = useSettings();
 
-    // Detect system language
-    const [language, setLanguage] = useState(() => {
-        const browserLang = navigator.language || navigator.userLanguage;
-        return browserLang.startsWith('tr') ? 'tr' : 'en';
-    });
-
+    // Use page-local translations but driven by global language
     const t = translations[language];
 
     const handleStartBuilding = () => {
