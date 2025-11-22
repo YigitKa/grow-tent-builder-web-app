@@ -1488,7 +1488,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
                         order: -1;
                     }
                 }
-            `})]})}function Rr(){return(0,A.jsx)(`div`,{className:`glass-header no-print`,style:{position:`sticky`,top:0,zIndex:1e3,padding:`0.75rem 0`,borderBottom:`1px solid rgba(255,255,255,0.05)`},children:(0,A.jsx)(`div`,{className:`container`,style:{display:`flex`,justifyContent:`center`,alignItems:`center`},children:(0,A.jsxs)(`div`,{style:{fontWeight:`700`,fontSize:`1.25rem`,color:`var(--color-primary)`,display:`flex`,alignItems:`center`,gap:`0.5rem`},children:[(0,A.jsx)(`span`,{style:{fontSize:`1.5rem`},children:`🌿`}),` GroWizard`]})})})}function zr(){let{state:e}=Nn(),{currentStep:t}=e;switch((0,_.useEffect)(()=>{window.scrollTo({top:0,behavior:`smooth`})},[t]),t){case 1:return(0,A.jsx)(ir,{});case 2:return(0,A.jsx)(pr,{});case 3:return(0,A.jsx)(gr,{});case 4:return(0,A.jsx)(vr,{});case 5:return(0,A.jsx)(br,{});case 6:return(0,A.jsx)(Sr,{});case 7:return(0,A.jsx)(wr,{});case 8:return(0,A.jsx)(Lr,{});default:return(0,A.jsx)(ir,{})}}function Br(){return(0,A.jsxs)(A.Fragment,{children:[(0,A.jsx)(Rr,{}),(0,A.jsx)(nr,{children:(0,A.jsx)(zr,{})}),(0,A.jsx)(qn,{})]})}var Vr=()=>{let{language:e,t}=j(),[n,r]=(0,_.useState)(`All`);(0,_.useEffect)(()=>{window.scrollTo(0,0)},[]);let i=n===`All`?Gn:Gn.filter(e=>e.category===n),a=Gn[0],o=i.filter(e=>e.id!==a.id||n!==`All`);return(0,A.jsxs)(`div`,{className:`blog-container`,children:[(0,A.jsx)(Yn,{}),(0,A.jsx)(`section`,{className:`blog-hero`,children:(0,A.jsxs)(`div`,{className:`container`,children:[(0,A.jsxs)(`div`,{className:`blog-nav-header fade-in-up`,children:[(0,A.jsxs)(k,{to:`/`,className:`nav-btn home-btn`,children:[`🏠 `,e===`tr`?`Ana Sayfa`:`Home`]}),(0,A.jsxs)(k,{to:`/builder`,className:`nav-btn app-btn`,children:[`🚀 `,e===`tr`?`Uygulama`:`Launch App`]})]}),(0,A.jsxs)(`div`,{className:`blog-header fade-in-up`,children:[(0,A.jsxs)(`span`,{className:`badge`,children:[`📚 `,t(`knowledgeBase`)]}),(0,A.jsxs)(`h1`,{children:[`Grow Wizard `,(0,A.jsx)(`span`,{className:`gradient-text`,children:`Blog`})]}),(0,A.jsx)(`p`,{children:t(`knowledgeBaseSubtitle`)})]}),n===`All`&&(0,A.jsx)(`div`,{className:`featured-post fade-in-up`,style:{animationDelay:`0.1s`},children:(0,A.jsxs)(k,{to:`/blog/${a.slug[e]}`,className:`featured-card`,children:[(0,A.jsx)(`div`,{className:`featured-image`,style:{backgroundImage:`url(${a.image})`}}),(0,A.jsxs)(`div`,{className:`featured-content`,children:[(0,A.jsx)(`span`,{className:`featured-badge`,children:t(`featuredArticle`)}),(0,A.jsx)(`h2`,{children:a.title[e]}),(0,A.jsx)(`p`,{children:a.excerpt[e]}),(0,A.jsxs)(`div`,{className:`blog-meta`,children:[(0,A.jsx)(`span`,{children:a.date}),(0,A.jsx)(`span`,{className:`dot`,children:`•`}),(0,A.jsx)(`span`,{children:a.readTime})]})]})]})})]})}),(0,A.jsxs)(`div`,{className:`category-nav container`,children:[(0,A.jsx)(`div`,{className:`category-label`,children:t(`blogCategoriesLabel`)}),(0,A.jsx)(`div`,{className:`category-scroll`,children:Kn.map(e=>(0,A.jsx)(`button`,{className:`category-btn ${n===e?`active`:``}`,onClick:()=>r(e),children:t(`category${e}`)},e))})]}),(0,A.jsx)(`div`,{className:`blog-grid container`,children:o.map(n=>(0,A.jsxs)(k,{to:`/blog/${n.slug[e]}`,className:`blog-card card-interactive`,children:[(0,A.jsxs)(`div`,{className:`blog-card-image`,children:[(0,A.jsx)(`img`,{src:n.image,alt:n.title[e],loading:`lazy`}),(0,A.jsx)(`div`,{className:`blog-tags`,children:(0,A.jsx)(`span`,{className:`blog-tag`,children:t(`category${n.category}`)})})]}),(0,A.jsxs)(`div`,{className:`blog-card-content`,children:[(0,A.jsxs)(`div`,{className:`blog-meta`,children:[(0,A.jsx)(`span`,{children:n.date}),(0,A.jsx)(`span`,{className:`dot`,children:`•`}),(0,A.jsx)(`span`,{children:n.readTime})]}),(0,A.jsx)(`h3`,{children:n.title[e]}),(0,A.jsx)(`p`,{children:n.excerpt[e]}),(0,A.jsxs)(`div`,{className:`blog-author`,children:[(0,A.jsx)(`div`,{className:`author-avatar`,children:n.author.charAt(0)}),(0,A.jsx)(`span`,{children:n.author})]})]})]},n.id))}),(0,A.jsx)(qn,{}),(0,A.jsx)(`style`,{children:`
+            `})]})}function Rr(){return(0,A.jsx)(`div`,{className:`glass-header no-print`,style:{position:`sticky`,top:0,zIndex:1e3,padding:`0.75rem 0`,borderBottom:`1px solid rgba(255,255,255,0.05)`},children:(0,A.jsx)(`div`,{className:`container`,style:{display:`flex`,justifyContent:`center`,alignItems:`center`},children:(0,A.jsxs)(`div`,{style:{fontWeight:`700`,fontSize:`1.25rem`,color:`var(--color-primary)`,display:`flex`,alignItems:`center`,gap:`0.5rem`},children:[(0,A.jsx)(`span`,{style:{fontSize:`1.5rem`},children:`🌿`}),` GroWizard`]})})})}function zr(){let{state:e}=Nn(),{currentStep:t}=e;switch((0,_.useEffect)(()=>{window.scrollTo({top:0,behavior:`smooth`})},[t]),t){case 1:return(0,A.jsx)(ir,{});case 2:return(0,A.jsx)(pr,{});case 3:return(0,A.jsx)(gr,{});case 4:return(0,A.jsx)(vr,{});case 5:return(0,A.jsx)(br,{});case 6:return(0,A.jsx)(Sr,{});case 7:return(0,A.jsx)(wr,{});case 8:return(0,A.jsx)(Lr,{});default:return(0,A.jsx)(ir,{})}}function Br(){return(0,A.jsxs)(A.Fragment,{children:[(0,A.jsx)(Rr,{}),(0,A.jsx)(nr,{children:(0,A.jsx)(zr,{})}),(0,A.jsx)(qn,{})]})}var Vr=()=>{let{language:e,t}=j(),[n,r]=(0,_.useState)(`All`);(0,_.useEffect)(()=>{window.scrollTo(0,0)},[]);let i=n===`All`?Gn:Gn.filter(e=>e.category===n),a=Gn[0],o=i.filter(e=>e.id!==a.id||n!==`All`);return(0,A.jsxs)(`div`,{className:`blog-container`,children:[(0,A.jsx)(Yn,{}),(0,A.jsx)(`section`,{className:`blog-hero`,children:(0,A.jsxs)(`div`,{className:`container`,children:[(0,A.jsxs)(`div`,{className:`blog-header fade-in-up`,children:[(0,A.jsxs)(`span`,{className:`badge`,children:[`📚 `,t(`knowledgeBase`)]}),(0,A.jsxs)(`h1`,{children:[`Grow Wizard `,(0,A.jsx)(`span`,{className:`gradient-text`,children:`Blog`})]}),(0,A.jsx)(`p`,{children:t(`knowledgeBaseSubtitle`)})]}),n===`All`&&(0,A.jsx)(`div`,{className:`featured-post fade-in-up`,style:{animationDelay:`0.1s`},children:(0,A.jsxs)(k,{to:`/blog/${a.slug[e]}`,className:`featured-card`,children:[(0,A.jsx)(`div`,{className:`featured-image`,style:{backgroundImage:`url(${a.image})`}}),(0,A.jsxs)(`div`,{className:`featured-content`,children:[(0,A.jsx)(`span`,{className:`featured-badge`,children:t(`featuredArticle`)}),(0,A.jsx)(`h2`,{children:a.title[e]}),(0,A.jsx)(`p`,{children:a.excerpt[e]}),(0,A.jsxs)(`div`,{className:`blog-meta`,children:[(0,A.jsx)(`span`,{children:a.date}),(0,A.jsx)(`span`,{className:`dot`,children:`•`}),(0,A.jsx)(`span`,{children:a.readTime})]})]})]})})]})}),(0,A.jsxs)(`div`,{className:`category-nav container`,children:[(0,A.jsx)(`div`,{className:`category-label`,children:t(`blogCategoriesLabel`)}),(0,A.jsx)(`div`,{className:`category-scroll`,children:Kn.map(e=>(0,A.jsx)(`button`,{className:`category-btn ${n===e?`active`:``}`,onClick:()=>r(e),children:t(`category${e}`)},e))})]}),(0,A.jsx)(`div`,{className:`blog-grid container`,children:o.map(n=>(0,A.jsxs)(k,{to:`/blog/${n.slug[e]}`,className:`blog-card card-interactive`,children:[(0,A.jsxs)(`div`,{className:`blog-card-image`,children:[(0,A.jsx)(`img`,{src:n.image,alt:n.title[e],loading:`lazy`}),(0,A.jsx)(`div`,{className:`blog-tags`,children:(0,A.jsx)(`span`,{className:`blog-tag`,children:t(`category${n.category}`)})})]}),(0,A.jsxs)(`div`,{className:`blog-card-content`,children:[(0,A.jsxs)(`div`,{className:`blog-meta`,children:[(0,A.jsx)(`span`,{children:n.date}),(0,A.jsx)(`span`,{className:`dot`,children:`•`}),(0,A.jsx)(`span`,{children:n.readTime})]}),(0,A.jsx)(`h3`,{children:n.title[e]}),(0,A.jsx)(`p`,{children:n.excerpt[e]}),(0,A.jsxs)(`div`,{className:`blog-author`,children:[(0,A.jsx)(`div`,{className:`author-avatar`,children:n.author.charAt(0)}),(0,A.jsx)(`span`,{children:n.author})]})]})]},n.id))}),(0,A.jsx)(qn,{}),(0,A.jsx)(`style`,{children:`
         .blog-container {
           min-height: 100vh;
           background: var(--bg-app);
@@ -1506,47 +1506,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
           margin-bottom: 3rem;
         }
 
-        .blog-nav-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 2rem;
-        }
 
-        .nav-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.5rem;
-          padding: 0.75rem 1.5rem;
-          border-radius: 999px;
-          font-weight: 600;
-          text-decoration: none;
-          transition: all 0.2s;
-          font-size: 0.9rem;
-        }
-
-        .home-btn {
-          background: rgba(255, 255, 255, 0.1);
-          color: var(--text-primary);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .home-btn:hover {
-          background: rgba(255, 255, 255, 0.2);
-          transform: translateY(-2px);
-        }
-
-        .app-btn {
-          background: var(--color-primary);
-          color: white;
-          box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-        }
-
-        .app-btn:hover {
-          background: #059669;
-          transform: translateY(-2px);
-          box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
-        }
 
         .blog-header h1 {
           font-size: 3.5rem;
@@ -1798,7 +1758,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
             grid-template-columns: 1fr;
           }
         }
-      `})]})},Hr=({data:e})=>{let{language:t}=j(),[n,r]=(0,_.useState)(0),[i,a]=(0,_.useState)(null),[o,s]=(0,_.useState)(!1),[c,l]=(0,_.useState)(0),[u,d]=(0,_.useState)(!1);(0,_.useEffect)(()=>{r(0),a(null),s(!1),l(0),d(!1)},[e]);let f=e=>{o||a(e)},p=()=>{s(!0),i===e[n].correctAnswer&&l(c+1)},m=()=>{n<e.length-1?(r(n+1),a(null),s(!1)):d(!0)},h=()=>{r(0),a(null),s(!1),l(0),d(!1)};if(u)return(0,A.jsx)(`div`,{className:`quiz-container fade-in-up`,children:(0,A.jsxs)(`div`,{className:`quiz-result`,children:[(0,A.jsxs)(`h3`,{children:[`🎉 `,t===`tr`?`Test Tamamlandı!`:`Quiz Completed!`]}),(0,A.jsxs)(`div`,{className:`score-circle`,children:[(0,A.jsx)(`span`,{className:`score-number`,children:c}),(0,A.jsxs)(`span`,{className:`score-total`,children:[`/ `,e.length]})]}),(0,A.jsx)(`p`,{className:`score-message`,children:c===e.length?t===`tr`?`Mükemmel skor! Sen bir usta yetiştiricisin! 🌿`:`Perfect score! You're a master grower! 🌿`:c>=e.length/2?t===`tr`?`İyi iş! Konuya hakimsin. 👍`:`Good job! You know your stuff. 👍`:t===`tr`?`Öğrenmeye devam! Bir dahaki sefere yaparsın. 📚`:`Keep learning! You'll get it next time. 📚`}),(0,A.jsx)(`button`,{className:`quiz-submit-btn`,onClick:h,children:t===`tr`?`Testi Tekrarla`:`Retake Quiz`})]})});let g=e[n],v=i===g.correctAnswer,y=Array.isArray(g.options)?g.options:g.options?.[t]||[];return(0,A.jsxs)(`div`,{className:`quiz-container fade-in-up`,children:[(0,A.jsxs)(`div`,{className:`quiz-header`,children:[(0,A.jsxs)(`div`,{className:`quiz-progress`,children:[(0,A.jsxs)(`span`,{children:[t===`tr`?`Soru`:`Question`,` `,n+1,` / `,e.length]}),(0,A.jsx)(`div`,{className:`progress-bar`,children:(0,A.jsx)(`div`,{className:`progress-fill`,style:{width:`${(n+1)/e.length*100}%`}})})]}),(0,A.jsxs)(`h3`,{children:[`🧠 `,t===`tr`?`Bilgini Test Et`:`Test Your Knowledge`]})]}),(0,A.jsxs)(`div`,{className:`quiz-body`,children:[(0,A.jsx)(`p`,{className:`quiz-question`,children:g.question[t]}),(0,A.jsx)(`div`,{className:`quiz-options`,children:y.map((e,t)=>(0,A.jsxs)(`button`,{className:`quiz-option ${i===t?`selected`:``} ${o&&t===g.correctAnswer?`correct`:``} ${o&&i===t&&!v?`incorrect`:``}`,onClick:()=>f(t),disabled:o,children:[e,o&&t===g.correctAnswer&&(0,A.jsx)(`span`,{className:`icon`,children:`✅`}),o&&i===t&&!v&&(0,A.jsx)(`span`,{className:`icon`,children:`❌`})]},t))}),o?(0,A.jsxs)(`div`,{className:`quiz-feedback-container`,children:[(0,A.jsxs)(`div`,{className:`quiz-feedback ${v?`success`:`error`}`,children:[(0,A.jsx)(`h4`,{children:v?t===`tr`?`Doğru!`:`Correct!`:t===`tr`?`Tam olarak değil...`:`Not quite...`}),(0,A.jsx)(`p`,{children:g.explanation[t]})]}),(0,A.jsx)(`button`,{className:`quiz-next-btn`,onClick:m,children:n<e.length-1?t===`tr`?`Sonraki Soru →`:`Next Question →`:t===`tr`?`Sonuçları Gör →`:`See Results →`})]}):(0,A.jsx)(`button`,{className:`quiz-submit-btn`,onClick:p,disabled:i===null,children:t===`tr`?`Cevabı Kontrol Et`:`Check Answer`})]})]})},Ur=()=>{let{language:e,setLanguage:t}=j(),{slug:n}=$e(),r=Ze(),i=Gn.find(e=>e.slug.en===n||e.slug.tr===n);return(0,_.useEffect)(()=>{if(!i||!n)return;let r=i.slug.en===n?`en`:`tr`;e!==r&&t(r)},[n]),(0,_.useEffect)(()=>{if(!(!i||!n)&&e!==(i.slug.en===n?`en`:`tr`)){let t=i.slug[e];t&&t!==n&&r(`/blog/${t}`)}},[e]),(0,_.useEffect)(()=>{i&&(document.title=`${i.title[e]} | Grow Wizard Blog`)},[e,i]),(0,_.useEffect)(()=>{window.scrollTo(0,0)},[n]),i?(0,A.jsxs)(`div`,{className:`blog-post-container`,children:[(0,A.jsx)(Yn,{}),(0,A.jsxs)(`div`,{className:`post-hero`,style:{backgroundImage:`url(${i.image})`},children:[(0,A.jsx)(`div`,{className:`hero-overlay`}),(0,A.jsxs)(`div`,{className:`hero-content container`,children:[(0,A.jsxs)(`div`,{className:`post-nav`,children:[(0,A.jsxs)(k,{to:`/blog`,className:`back-link`,children:[`← `,e===`tr`?`Bloga Dön`:`Back to Blog`]}),(0,A.jsxs)(`div`,{className:`nav-actions`,children:[(0,A.jsxs)(k,{to:`/`,className:`nav-btn home-btn`,children:[`🏠 `,e===`tr`?`Ana Sayfa`:`Home`]}),(0,A.jsxs)(k,{to:`/builder`,className:`nav-btn app-btn`,children:[`🚀 `,e===`tr`?`Uygulama`:`App`]})]})]}),(0,A.jsx)(`div`,{className:`post-tags`,children:(0,A.jsx)(`span`,{className:`post-category`,children:i.category})}),(0,A.jsx)(`h1`,{children:i.title[e]}),(0,A.jsxs)(`div`,{className:`post-meta`,children:[(0,A.jsxs)(`span`,{className:`author`,children:[e===`tr`?`Yazar:`:`By`,` `,i.author]}),(0,A.jsx)(`span`,{className:`dot`,children:`•`}),(0,A.jsx)(`span`,{className:`date`,children:i.date}),(0,A.jsx)(`span`,{className:`dot`,children:`•`}),(0,A.jsx)(`span`,{className:`read-time`,children:i.readTime})]})]})]}),(0,A.jsxs)(`article`,{className:`post-content container`,children:[(0,A.jsx)(`div`,{className:`content-body`,dangerouslySetInnerHTML:{__html:i.content[e]}}),i.quiz&&i.quiz.length>0&&(0,A.jsx)(Hr,{data:i.quiz}),(0,A.jsx)(`div`,{className:`post-footer`,children:(0,A.jsxs)(`div`,{className:`share-section`,children:[(0,A.jsx)(`span`,{children:e===`tr`?`Bu makaleyi paylaş:`:`Share this article:`}),(0,A.jsxs)(`div`,{className:`share-buttons`,children:[(0,A.jsx)(`button`,{className:`share-btn twitter`,children:`Twitter`}),(0,A.jsx)(`button`,{className:`share-btn facebook`,children:`Facebook`}),(0,A.jsx)(`button`,{className:`share-btn linkedin`,children:`LinkedIn`})]})]})})]}),(0,A.jsx)(qn,{}),(0,A.jsx)(`style`,{children:`
+      `})]})},Hr=({data:e})=>{let{language:t}=j(),[n,r]=(0,_.useState)(0),[i,a]=(0,_.useState)(null),[o,s]=(0,_.useState)(!1),[c,l]=(0,_.useState)(0),[u,d]=(0,_.useState)(!1);(0,_.useEffect)(()=>{r(0),a(null),s(!1),l(0),d(!1)},[e]);let f=e=>{o||a(e)},p=()=>{s(!0),i===e[n].correctAnswer&&l(c+1)},m=()=>{n<e.length-1?(r(n+1),a(null),s(!1)):d(!0)},h=()=>{r(0),a(null),s(!1),l(0),d(!1)};if(u)return(0,A.jsx)(`div`,{className:`quiz-container fade-in-up`,children:(0,A.jsxs)(`div`,{className:`quiz-result`,children:[(0,A.jsxs)(`h3`,{children:[`🎉 `,t===`tr`?`Test Tamamlandı!`:`Quiz Completed!`]}),(0,A.jsxs)(`div`,{className:`score-circle`,children:[(0,A.jsx)(`span`,{className:`score-number`,children:c}),(0,A.jsxs)(`span`,{className:`score-total`,children:[`/ `,e.length]})]}),(0,A.jsx)(`p`,{className:`score-message`,children:c===e.length?t===`tr`?`Mükemmel skor! Sen bir usta yetiştiricisin! 🌿`:`Perfect score! You're a master grower! 🌿`:c>=e.length/2?t===`tr`?`İyi iş! Konuya hakimsin. 👍`:`Good job! You know your stuff. 👍`:t===`tr`?`Öğrenmeye devam! Bir dahaki sefere yaparsın. 📚`:`Keep learning! You'll get it next time. 📚`}),(0,A.jsx)(`button`,{className:`quiz-submit-btn`,onClick:h,children:t===`tr`?`Testi Tekrarla`:`Retake Quiz`})]})});let g=e[n],v=i===g.correctAnswer,y=Array.isArray(g.options)?g.options:g.options?.[t]||[];return(0,A.jsxs)(`div`,{className:`quiz-container fade-in-up`,children:[(0,A.jsxs)(`div`,{className:`quiz-header`,children:[(0,A.jsxs)(`div`,{className:`quiz-progress`,children:[(0,A.jsxs)(`span`,{children:[t===`tr`?`Soru`:`Question`,` `,n+1,` / `,e.length]}),(0,A.jsx)(`div`,{className:`progress-bar`,children:(0,A.jsx)(`div`,{className:`progress-fill`,style:{width:`${(n+1)/e.length*100}%`}})})]}),(0,A.jsxs)(`h3`,{children:[`🧠 `,t===`tr`?`Bilgini Test Et`:`Test Your Knowledge`]})]}),(0,A.jsxs)(`div`,{className:`quiz-body`,children:[(0,A.jsx)(`p`,{className:`quiz-question`,children:g.question[t]}),(0,A.jsx)(`div`,{className:`quiz-options`,children:y.map((e,t)=>(0,A.jsxs)(`button`,{className:`quiz-option ${i===t?`selected`:``} ${o&&t===g.correctAnswer?`correct`:``} ${o&&i===t&&!v?`incorrect`:``}`,onClick:()=>f(t),disabled:o,children:[e,o&&t===g.correctAnswer&&(0,A.jsx)(`span`,{className:`icon`,children:`✅`}),o&&i===t&&!v&&(0,A.jsx)(`span`,{className:`icon`,children:`❌`})]},t))}),o?(0,A.jsxs)(`div`,{className:`quiz-feedback-container`,children:[(0,A.jsxs)(`div`,{className:`quiz-feedback ${v?`success`:`error`}`,children:[(0,A.jsx)(`h4`,{children:v?t===`tr`?`Doğru!`:`Correct!`:t===`tr`?`Tam olarak değil...`:`Not quite...`}),(0,A.jsx)(`p`,{children:g.explanation[t]})]}),(0,A.jsx)(`button`,{className:`quiz-next-btn`,onClick:m,children:n<e.length-1?t===`tr`?`Sonraki Soru →`:`Next Question →`:t===`tr`?`Sonuçları Gör →`:`See Results →`})]}):(0,A.jsx)(`button`,{className:`quiz-submit-btn`,onClick:p,disabled:i===null,children:t===`tr`?`Cevabı Kontrol Et`:`Check Answer`})]})]})},Ur=()=>{let{language:e,setLanguage:t}=j(),{slug:n}=$e(),r=Ze(),i=Gn.find(e=>e.slug.en===n||e.slug.tr===n);return(0,_.useEffect)(()=>{if(!i||!n)return;let r=i.slug.en===n?`en`:`tr`;e!==r&&t(r)},[n]),(0,_.useEffect)(()=>{if(!(!i||!n)&&e!==(i.slug.en===n?`en`:`tr`)){let t=i.slug[e];t&&t!==n&&r(`/blog/${t}`)}},[e]),(0,_.useEffect)(()=>{i&&(document.title=`${i.title[e]} | Grow Wizard Blog`)},[e,i]),(0,_.useEffect)(()=>{window.scrollTo(0,0)},[n]),i?(0,A.jsxs)(`div`,{className:`blog-post-container`,children:[(0,A.jsx)(Yn,{}),(0,A.jsxs)(`div`,{className:`post-hero`,style:{backgroundImage:`url(${i.image})`},children:[(0,A.jsx)(`div`,{className:`hero-overlay`}),(0,A.jsxs)(`div`,{className:`hero-content container`,children:[(0,A.jsx)(`div`,{className:`post-nav`,children:(0,A.jsxs)(k,{to:`/blog`,className:`back-link`,children:[`← `,e===`tr`?`Bloga Dön`:`Back to Blog`]})}),(0,A.jsx)(`div`,{className:`post-tags`,children:(0,A.jsx)(`span`,{className:`post-category`,children:i.category})}),(0,A.jsx)(`h1`,{children:i.title[e]}),(0,A.jsxs)(`div`,{className:`post-meta`,children:[(0,A.jsxs)(`span`,{className:`author`,children:[e===`tr`?`Yazar:`:`By`,` `,i.author]}),(0,A.jsx)(`span`,{className:`dot`,children:`•`}),(0,A.jsx)(`span`,{className:`date`,children:i.date}),(0,A.jsx)(`span`,{className:`dot`,children:`•`}),(0,A.jsx)(`span`,{className:`read-time`,children:i.readTime})]})]})]}),(0,A.jsxs)(`article`,{className:`post-content container`,children:[(0,A.jsx)(`div`,{className:`content-body`,dangerouslySetInnerHTML:{__html:i.content[e]}}),i.quiz&&i.quiz.length>0&&(0,A.jsx)(Hr,{data:i.quiz}),(0,A.jsx)(`div`,{className:`post-footer`,children:(0,A.jsxs)(`div`,{className:`share-section`,children:[(0,A.jsx)(`span`,{children:e===`tr`?`Bu makaleyi paylaş:`:`Share this article:`}),(0,A.jsxs)(`div`,{className:`share-buttons`,children:[(0,A.jsx)(`button`,{className:`share-btn twitter`,children:`Twitter`}),(0,A.jsx)(`button`,{className:`share-btn facebook`,children:`Facebook`}),(0,A.jsx)(`button`,{className:`share-btn linkedin`,children:`LinkedIn`})]})]})})]}),(0,A.jsx)(qn,{}),(0,A.jsx)(`style`,{children:`
         .blog-post-container {
           background: var(--bg-app);
           min-height: 100vh;
@@ -1848,41 +1808,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
           margin-bottom: 2rem;
         }
 
-        .nav-actions {
-          display: flex;
-          gap: 1rem;
-        }
 
-        .nav-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.5rem;
-          padding: 0.5rem 1rem;
-          border-radius: 999px;
-          font-weight: 600;
-          text-decoration: none;
-          transition: all 0.2s;
-          font-size: 0.875rem;
-        }
-
-        .home-btn {
-          background: rgba(255, 255, 255, 0.1);
-          color: white;
-          border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .home-btn:hover {
-          background: rgba(255, 255, 255, 0.2);
-        }
-
-        .app-btn {
-          background: var(--color-primary);
-          color: white;
-        }
-
-        .app-btn:hover {
-          background: #059669;
-        }
 
         .post-category {
           color: var(--color-primary);
