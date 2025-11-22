@@ -209,10 +209,7 @@ const BlogPost = () => {
         <div className="hero-content container">
           <div className="post-nav">
             <Link to="/blog" className="back-link">← {language === 'tr' ? 'Bloga Dön' : 'Back to Blog'}</Link>
-            <div className="nav-actions">
-              <Link to="/" className="nav-btn home-btn">🏠 {language === 'tr' ? 'Ana Sayfa' : 'Home'}</Link>
-              <Link to="/builder" className="nav-btn app-btn">🚀 {language === 'tr' ? 'Uygulama' : 'App'}</Link>
-            </div>
+
           </div>
           <div className="post-tags">
             <span className="post-category">{post.category}</span>
@@ -297,41 +294,7 @@ const BlogPost = () => {
           margin-bottom: 2rem;
         }
 
-        .nav-actions {
-          display: flex;
-          gap: 1rem;
-        }
 
-        .nav-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.5rem;
-          padding: 0.5rem 1rem;
-          border-radius: 999px;
-          font-weight: 600;
-          text-decoration: none;
-          transition: all 0.2s;
-          font-size: 0.875rem;
-        }
-
-        .home-btn {
-          background: rgba(255, 255, 255, 0.1);
-          color: white;
-          border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .home-btn:hover {
-          background: rgba(255, 255, 255, 0.2);
-        }
-
-        .app-btn {
-          background: var(--color-primary);
-          color: white;
-        }
-
-        .app-btn:hover {
-          background: #059669;
-        }
 
         .post-category {
           color: var(--color-primary);

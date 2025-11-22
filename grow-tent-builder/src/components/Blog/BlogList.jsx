@@ -28,14 +28,7 @@ const BlogList = () => {
       {/* Blog Hero & Featured Post */}
       <section className="blog-hero">
         <div className="container">
-          <div className="blog-nav-header fade-in-up">
-            <Link to="/" className="nav-btn home-btn">
-              🏠 {language === 'tr' ? 'Ana Sayfa' : 'Home'}
-            </Link>
-            <Link to="/builder" className="nav-btn app-btn">
-              🚀 {language === 'tr' ? 'Uygulama' : 'Launch App'}
-            </Link>
-          </div>
+
           <div className="blog-header fade-in-up">
             <span className="badge">📚 {t('knowledgeBase')}</span>
             <h1>Grow Wizard <span className="gradient-text">Blog</span></h1>
@@ -127,47 +120,7 @@ const BlogList = () => {
           margin-bottom: 3rem;
         }
 
-        .blog-nav-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 2rem;
-        }
 
-        .nav-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.5rem;
-          padding: 0.75rem 1.5rem;
-          border-radius: 999px;
-          font-weight: 600;
-          text-decoration: none;
-          transition: all 0.2s;
-          font-size: 0.9rem;
-        }
-
-        .home-btn {
-          background: rgba(255, 255, 255, 0.1);
-          color: var(--text-primary);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .home-btn:hover {
-          background: rgba(255, 255, 255, 0.2);
-          transform: translateY(-2px);
-        }
-
-        .app-btn {
-          background: var(--color-primary);
-          color: white;
-          box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-        }
-
-        .app-btn:hover {
-          background: #059669;
-          transform: translateY(-2px);
-          box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
-        }
 
         .blog-header h1 {
           font-size: 3.5rem;
