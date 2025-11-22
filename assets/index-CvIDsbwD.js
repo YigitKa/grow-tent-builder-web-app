@@ -2521,7 +2521,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
                     font-weight: 800;
                     color: white;
                 }
-            `})]})},Gr={cubic_km:{factor:0xe8d4a51000,label:`Kübik kilometre (km³)`,category:`Metric`},cubic_m:{factor:1e3,label:`Metreküp (m³)`,category:`Metric`},hl:{factor:100,label:`Hektolitre (hl)`,category:`Metric`},dal:{factor:10,label:`Dekalitre (dal)`,category:`Metric`},l:{factor:1,label:`Litre (l)`,category:`Metric`},dl:{factor:.1,label:`Desilitre (dl)`,category:`Metric`},cl:{factor:.01,label:`Centiliter (cl)`,category:`Metric`},cubic_cm:{factor:.001,label:`Santimetre küp (cm³)`,category:`Metric`},ml:{factor:.001,label:`Mililitre (ml)`,category:`Metric`},cubic_mm:{factor:1e-6,label:`Kübik milimetre (mm³)`,category:`Metric`},ul:{factor:1e-6,label:`Mikrolitre (µl)`,category:`Metric`},uk_barrel:{factor:163.659,label:`Barrel (UK)`,category:`Imperial`},uk_bushel:{factor:36.3687,label:`Bushel (UK)`,category:`Imperial`},uk_peck:{factor:9.09218,label:`Peck (UK)`,category:`Imperial`},uk_gal:{factor:4.54609,label:`Galon (UK)`,category:`Imperial`},uk_qt:{factor:1.13652,label:`Quart (UK)`,category:`Imperial`},uk_pt:{factor:.568261,label:`Pint (UK)`,category:`Imperial`},uk_fl_oz:{factor:.0284131,label:`Sıvı ons (UK oz)`,category:`Imperial`},acre_foot:{factor:1233480,label:`Acre foot`,category:`US Liquid`},cubic_yd:{factor:764.555,label:`Yard küp (yd³)`,category:`US Liquid`},us_barrel:{factor:119.24,label:`Barrel (US)`,category:`US Liquid`},cubic_ft:{factor:28.3168,label:`Foot küp (ft³)`,category:`US Liquid`},us_gal:{factor:3.78541,label:`Galon (US)`,category:`US Liquid`},us_qt:{factor:.946353,label:`Quart (US)`,category:`US Liquid`},us_pt:{factor:.473176,label:`Pint (US)`,category:`US Liquid`},us_gill:{factor:.118294,label:`Gill (US)`,category:`US Liquid`},us_fl_oz:{factor:.0295735,label:`Sıvı ons (US oz)`,category:`US Liquid`},cubic_in:{factor:.0163871,label:`İnç küp (in³)`,category:`US Liquid`},us_fl_dram:{factor:.00369669,label:`Sıvı dram (US)`,category:`US Liquid`},us_minim:{factor:616115e-10,label:`Minim (US)`,category:`US Liquid`},us_dry_barrel:{factor:115.627,label:`Barrel (US Dry)`,category:`US Dry`},us_dry_bushel:{factor:35.2391,label:`Bushel (US Dry)`,category:`US Dry`},us_dry_peck:{factor:8.80977,label:`Peck (US Dry)`,category:`US Dry`},us_dry_gal:{factor:4.40488,label:`Galon (US Dry)`,category:`US Dry`},us_dry_qt:{factor:1.10122,label:`Quart (US Dry)`,category:`US Dry`},us_dry_pt:{factor:.55061,label:`Pint (US Dry)`,category:`US Dry`},us_dry_gill:{factor:.137652,label:`Gill (US Dry)`,category:`US Dry`},board_foot:{factor:2.35974,label:`Board foot (FBM)`,category:`US Dry`},jp_koku:{factor:180.39,label:`Koku`,category:`Japanese`},jp_to:{factor:18.039,label:`To`,category:`Japanese`},jp_sho:{factor:1.8039,label:`Sho`,category:`Japanese`},jp_go:{factor:.18039,label:`Go`,category:`Japanese`},us_cup:{factor:.236588,label:`Cup (US)`,category:`Cooking (US)`},us_tbsp:{factor:.0147868,label:`Yemek kaşığı (US)`,category:`Cooking (US)`},us_tsp:{factor:.00492892,label:`Tatlı kaşığı (US)`,category:`Cooking (US)`},metric_tbsp:{factor:.015,label:`Yemek kaşığı (Metric)`,category:`Cooking (Metric)`},metric_tsp:{factor:.005,label:`Tatlı kaşığı (Metric)`,category:`Cooking (Metric)`},metric_spice:{factor:.001,label:`Baharat ölçüsü`,category:`Cooking (Metric)`}},Kr=()=>{let{language:e}=j(),[t,n]=(0,_.useState)(1),[r,i]=(0,_.useState)(`l`),[a,o]=(0,_.useState)(`us_gal`),[s,c]=(0,_.useState)(0);(0,_.useEffect)(()=>{let e=Gr[r].factor,n=Gr[a].factor;c(t*e/n)},[t,r,a]);let l={en:{title:`Universal Unit Converter`,subtitle:`Convert between Metric, Imperial, US, Japanese, and Cooking units`,amount:`Amount`,from:`From`,to:`To`,result:`Result`,tableTitle:`Conversion Table (Reference to 1 Liter)`},tr:{title:`Evrensel Birim Dönüştürücü`,subtitle:`Metrik, İngiliz, ABD, Japon ve Mutfak birimleri arasında dönüşüm yapın`,amount:`Miktar`,from:`Şuradan`,to:`Şuna`,result:`Sonuç`,tableTitle:`Dönüşüm Tablosu (1 Litre Referans)`}}[e],u=[...new Set(Object.values(Gr).map(e=>e.category))];return(0,A.jsxs)(`div`,{className:`page-container`,children:[(0,A.jsx)(Jn,{}),(0,A.jsxs)(`div`,{className:`tool-content`,children:[(0,A.jsxs)(`div`,{className:`tool-card`,children:[(0,A.jsxs)(`div`,{className:`tool-header`,children:[(0,A.jsx)(`div`,{className:`tool-icon`,children:`🔄`}),(0,A.jsx)(`h1`,{children:l.title}),(0,A.jsx)(`p`,{children:l.subtitle})]}),(0,A.jsxs)(`div`,{className:`converter-form`,children:[(0,A.jsxs)(`div`,{className:`input-group`,children:[(0,A.jsx)(`label`,{children:l.amount}),(0,A.jsx)(`input`,{type:`number`,value:t,onChange:e=>n(parseFloat(e.target.value)||0),className:`amount-input`})]}),(0,A.jsxs)(`div`,{className:`conversion-row`,children:[(0,A.jsxs)(`div`,{className:`select-group`,children:[(0,A.jsx)(`label`,{children:l.from}),(0,A.jsx)(`select`,{value:r,onChange:e=>i(e.target.value),children:u.map(e=>(0,A.jsx)(`optgroup`,{label:e,children:Object.entries(Gr).filter(([t,n])=>n.category===e).map(([e,t])=>(0,A.jsx)(`option`,{value:e,children:t.label},e))},e))})]}),(0,A.jsx)(`div`,{className:`arrow-icon`,children:`➜`}),(0,A.jsxs)(`div`,{className:`select-group`,children:[(0,A.jsx)(`label`,{children:l.to}),(0,A.jsx)(`select`,{value:a,onChange:e=>o(e.target.value),children:u.map(e=>(0,A.jsx)(`optgroup`,{label:e,children:Object.entries(Gr).filter(([t,n])=>n.category===e).map(([e,t])=>(0,A.jsx)(`option`,{value:e,children:t.label},e))},e))})]})]}),(0,A.jsxs)(`div`,{className:`result-display`,children:[(0,A.jsxs)(`span`,{className:`result-label`,children:[l.result,`:`]}),(0,A.jsx)(`span`,{className:`result-value`,children:s<1e-4&&s>0?s.toExponential(4):s.toLocaleString(void 0,{maximumFractionDigits:6})}),(0,A.jsx)(`span`,{className:`result-unit`,children:Gr[a].label})]})]})]}),(0,A.jsxs)(`div`,{className:`reference-table-container`,children:[(0,A.jsx)(`h2`,{children:l.tableTitle}),(0,A.jsx)(`div`,{className:`table-wrapper`,children:(0,A.jsxs)(`table`,{children:[(0,A.jsx)(`thead`,{children:(0,A.jsxs)(`tr`,{children:[(0,A.jsx)(`th`,{children:`Category`}),(0,A.jsx)(`th`,{children:`Unit`}),(0,A.jsx)(`th`,{children:`Liters (Approx)`})]})}),(0,A.jsx)(`tbody`,{children:Object.entries(Gr).map(([e,t])=>(0,A.jsxs)(`tr`,{children:[(0,A.jsx)(`td`,{children:t.category}),(0,A.jsx)(`td`,{children:t.label}),(0,A.jsxs)(`td`,{children:[t.factor.toExponential(2),` L`]})]},e))})]})})]})]}),(0,A.jsx)(qn,{}),(0,A.jsx)(`style`,{children:`
+            `})]})},Gr=()=>{let{language:e}=j(),[t,n]=(0,_.useState)(1),r={ml:.001,l:1,gal:3.78541,qt:.946353,pt:.473176,cup:.236588,floz:.0295735,tbsp:.0147868,tsp:.00492892,m3:1e3,ft3:28.3168},i=(e,t)=>{let i=parseFloat(t);isNaN(i)?t===``&&n(0):n(i*r[e])},a=e=>{let n=t/r[e];return n===0?``:parseFloat(n.toFixed(6))},o={en:{title:`Volume Converter`,subtitle:`Convert freely between imperial and metric volume units`,units:{ml:`Milliliters (ml)`,l:`Liters (L)`,gal:`Gallons (US gal)`,qt:`Quarts (US qt)`,pt:`Pints (US pt)`,cup:`Cups (US cup)`,floz:`Fluid Ounces (US fl oz)`,tbsp:`Tablespoons (tbsp)`,tsp:`Teaspoons (tsp)`,m3:`Cubic Meters (m³)`,ft3:`Cubic Feet (ft³)`},content:{introTitle:`Volume units`,introText:`Choose the unit and convert freely between imperial and metric systems. Our calculator contains the following:`,introList:[`cubic millimeters (mm³)*`,`cubic centimeters (cm³)*`,`cubic decimeters (dm³)*`,`cubic meters (m³)*`,`cubic inches (cu in)*`,`cubic feet (cu ft)*`,`cubic yards (cu yd)*`,`milliliters (ml)`,`liters (l)`,`gallons (US) / gallons (UK) (gal)`,`quarts (US) / quarts (UK) (qt)`,`pints (US) / pints (UK) (pt)`,`fluid ounces (US) / fluid ounces (UK) (fl oz)`,`US customary cups/glasses (236.59ml) (cups)`,`tablespoons (15 ml) (tablespoons)`,`teaspoons (5 ml) (teaspoons)`],introNote:`*Some units are simplified in this view for common usage.`,chartTitle:`Volume conversion chart`,chartText:`One quick way of changing imperial volume units to the most popular metric, one milliliter, is using this conversion chart:`,chartHeaders:[`Measure`,`US (ml)`,`Metric (ml)`],chartRows:[[`Teaspoon`,`4.93`,`5`],[`Tablespoon`,`14.79`,`15`],[`Fluid ounce`,`29.57`,`30`],[`Cup`,`236.59`,`250`],[`Pint`,`473.18`,`568.26 (UK)`],[`Quart`,`946.35`,`1136.52 (UK)`],[`Gallon`,`3785.41`,`4546.09 (UK)`]],howtoTitle:`How to find the volume in a different unit`,howtoText:`Let's imagine that you want to bake a cake, but the problem is that the recipe comes from a different part of the world. You are used to your standard units, such as cups or pints, but you have no idea how much is 550 ml of milk. What can you do? Put that value in the calculator next to the milliliters unit, and immediately you will get the answer in cups (2.32), pints (1.16), or even teaspoons (110) if you wish.`,faqTitle:`FAQs`,faqs:[{q:`How do I convert from liters to gallons?`,a:`To convert from liters to gallons, use the formula: 1 L = 0.264 gal (US). You can roughly divide by 4 for a quick estimate.`},{q:`How much is 5 liters in cubic feet?`,a:`5 liters equal to 0.177 cubic feet (ft³). Formula: 5 L / 1000 * 35.315 = 0.177 ft³.`},{q:`Why do we measure volume in cubic meters?`,a:`We measure volume in cubic meters because volume measures the space occupied in three dimensions. Since the meter is a measure of length, the cubic meter (m³) represents a three-dimensional quantity.`}]}},tr:{title:`Hacim Çevirici`,subtitle:`İmperyal ve metrik hacim birimleri arasında özgürce dönüşüm yapın`,units:{ml:`Mililitre (ml)`,l:`Litre (L)`,gal:`Galon (US gal)`,qt:`Çeyrek (US qt)`,pt:`Pint (US pt)`,cup:`Fincan (US cup)`,floz:`Sıvı Ons (US fl oz)`,tbsp:`Yemek Kaşığı (tbsp)`,tsp:`Çay Kaşığı (tsp)`,m3:`Metreküp (m³)`,ft3:`Fitküp (ft³)`},content:{introTitle:`Hacim birimleri`,introText:`Birimi seçin ve imperyal ve metrik sistemler arasında özgürce dönüştürün. Hesaplayıcımız şunları içerir:`,introList:[`milimetreküp (mm³)*`,`santimetreküp (cm³)*`,`desimetreküp (dm³)*`,`metreküp (m³)*`,`inçküp (cu in)*`,`fitküp (cu ft)*`,`yardaküp (cu yd)*`,`mililitre (ml)`,`litre (l)`,`galon (ABD) / galon (BK) (gal)`,`çeyrek (ABD) / çeyrek (BK) (qt)`,`pint (ABD) / pint (BK) (pt)`,`sıvı ons (ABD) / sıvı ons (BK) (fl oz)`,`ABD standart fincan/bardak (236.59ml) (cups)`,`yemek kaşığı (15 ml) (tablespoons)`,`çay kaşığı (5 ml) (teaspoons)`],introNote:`*Bazı birimler yaygın kullanım için bu görünümde basitleştirilmiştir.`,chartTitle:`Hacim dönüşüm tablosu`,chartText:`İmperyal hacim birimlerini en popüler metrik birim olan mililitreye değiştirmenin hızlı bir yolu bu dönüşüm tablosunu kullanmaktır:`,chartHeaders:[`Ölçü`,`ABD (ml)`,`Metrik (ml)`],chartRows:[[`Çay Kaşığı`,`4.93`,`5`],[`Yemek Kaşığı`,`14.79`,`15`],[`Sıvı Ons`,`29.57`,`30`],[`Fincan`,`236.59`,`250`],[`Pint`,`473.18`,`568.26 (BK)`],[`Çeyrek`,`946.35`,`1136.52 (BK)`],[`Galon`,`3785.41`,`4546.09 (BK)`]],howtoTitle:`Farklı bir birimde hacim nasıl bulunur`,howtoText:`Diyelim ki bir kek yapmak istiyorsunuz, ancak sorun şu ki tarif dünyanın farklı bir yerinden geliyor. Fincan veya pint gibi standart birimlerinize alışkınsınız, ancak 550 ml sütün ne kadar olduğu hakkında hiçbir fikriniz yok. Ne yapabilirsiniz? Bu değeri hesaplayıcıda mililitre biriminin yanına koyun ve hemen fincan (2.32), pint (1.16) veya isterseniz çay kaşığı (110) cinsinden cevabı alacaksınız.`,faqTitle:`SSS`,faqs:[{q:`Litreyi galona nasıl çeviririm?`,a:`Litreyi galona çevirmek için şu formülü kullanın: 1 L = 0.264 gal (ABD). Hızlı bir tahmin için 4'e bölebilirsiniz.`},{q:`5 litre kaç fitküptür?`,a:`5 litre 0.177 fitküpe (ft³) eşittir. Formül: 5 L / 1000 * 35.315 = 0.177 ft³.`},{q:`Neden hacmi metreküp olarak ölçüyoruz?`,a:`Hacmi metreküp olarak ölçüyoruz çünkü hacim, bir nesnenin üç boyutta kapladığı alanı ölçer. Metre bir uzunluk ölçüsü olduğundan, metreküp (m³) üç boyutlu bir niceliği temsil eder.`}]}}}[e];return(0,A.jsxs)(`div`,{className:`page-container`,children:[(0,A.jsx)(Jn,{}),(0,A.jsxs)(`div`,{className:`tool-content`,children:[(0,A.jsxs)(`div`,{className:`tool-card`,children:[(0,A.jsxs)(`div`,{className:`tool-header`,children:[(0,A.jsx)(`div`,{className:`tool-icon`,children:`💧`}),(0,A.jsx)(`h1`,{children:o.title}),(0,A.jsx)(`p`,{children:o.subtitle})]}),(0,A.jsx)(`div`,{className:`converter-grid`,children:[`ml`,`l`,`gal`,`qt`,`pt`,`cup`,`floz`,`tbsp`,`tsp`,`m3`,`ft3`].map(e=>(0,A.jsxs)(`div`,{className:`input-group`,children:[(0,A.jsx)(`label`,{children:o.units[e]}),(0,A.jsx)(`input`,{type:`number`,value:a(e),onChange:t=>i(e,t.target.value),placeholder:`0`})]},e))})]}),(0,A.jsxs)(`div`,{className:`info-section`,children:[(0,A.jsx)(`h2`,{children:o.content.introTitle}),(0,A.jsx)(`p`,{children:o.content.introText}),(0,A.jsx)(`ul`,{children:o.content.introList.map((e,t)=>(0,A.jsx)(`li`,{children:e},t))}),(0,A.jsx)(`p`,{className:`note`,children:o.content.introNote}),(0,A.jsx)(`h2`,{children:o.content.chartTitle}),(0,A.jsx)(`p`,{children:o.content.chartText}),(0,A.jsx)(`div`,{className:`chart-container`,children:(0,A.jsxs)(`table`,{className:`conversion-table`,children:[(0,A.jsx)(`thead`,{children:(0,A.jsx)(`tr`,{children:o.content.chartHeaders.map((e,t)=>(0,A.jsx)(`th`,{children:e},t))})}),(0,A.jsx)(`tbody`,{children:o.content.chartRows.map((e,t)=>(0,A.jsx)(`tr`,{children:e.map((e,t)=>(0,A.jsx)(`td`,{children:e},t))},t))})]})}),(0,A.jsx)(`h2`,{children:o.content.howtoTitle}),(0,A.jsx)(`p`,{children:o.content.howtoText}),(0,A.jsx)(`h2`,{children:o.content.faqTitle}),(0,A.jsx)(`div`,{className:`faq-list`,children:o.content.faqs.map((e,t)=>(0,A.jsxs)(`div`,{className:`faq-item`,children:[(0,A.jsx)(`h3`,{children:e.q}),(0,A.jsx)(`p`,{children:e.a})]},t))})]})]}),(0,A.jsx)(qn,{}),(0,A.jsx)(`style`,{children:`
                 .page-container {
                     min-height: 100vh;
                     background: #0a0a0a;
@@ -2535,8 +2535,11 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    padding: 4rem 1rem;
+                    padding: 4rem 1.5rem;
                     gap: 4rem;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    width: 100%;
                 }
 
                 .tool-card {
@@ -2544,7 +2547,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
                     border: 1px solid rgba(255, 255, 255, 0.1);
                     border-radius: 1.5rem;
                     padding: 3rem;
-                    max-width: 800px;
+                    max-width: 600px;
                     width: 100%;
                     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
                 }
@@ -2562,7 +2565,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
                 .tool-header h1 {
                     font-size: 2rem;
                     margin-bottom: 0.5rem;
-                    background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+                    background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                 }
@@ -2571,10 +2574,9 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
                     color: #94a3b8;
                 }
 
-                .converter-form {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 2rem;
+                .converter-grid {
+                    display: grid;
+                    gap: 1.5rem;
                 }
 
                 .input-group {
@@ -2583,137 +2585,133 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
                     gap: 0.5rem;
                 }
 
-                .amount-input {
-                    background: rgba(255, 255, 255, 0.05);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    color: white;
-                    padding: 1rem;
-                    border-radius: 0.75rem;
-                    font-size: 1.5rem;
-                    width: 100%;
-                    text-align: center;
-                }
-
-                .conversion-row {
-                    display: flex;
-                    align-items: flex-end;
-                    gap: 1rem;
-                }
-
-                .select-group {
-                    flex: 1;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 0.5rem;
-                }
-
-                select {
-                    background: rgba(255, 255, 255, 0.05);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    color: white;
-                    padding: 1rem;
-                    border-radius: 0.75rem;
-                    font-size: 1rem;
-                    width: 100%;
-                    cursor: pointer;
-                }
-
-                select option {
-                    background: #1e293b;
-                }
-
-                .arrow-icon {
-                    font-size: 1.5rem;
+                .input-group label {
                     color: #94a3b8;
-                    padding-bottom: 0.75rem;
-                }
-
-                .result-display {
-                    background: rgba(168, 85, 247, 0.1);
-                    border: 1px solid rgba(168, 85, 247, 0.2);
-                    padding: 2rem;
-                    border-radius: 1rem;
-                    text-align: center;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 0.5rem;
-                }
-
-                .result-label {
-                    color: #a855f7;
                     font-size: 0.875rem;
                     font-weight: 600;
-                    text-transform: uppercase;
                 }
 
-                .result-value {
-                    font-size: 2.5rem;
-                    font-weight: 800;
+                .input-group input[type="number"] {
+                    background: rgba(255, 255, 255, 0.05);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
                     color: white;
-                    word-break: break-all;
-                }
-
-                .result-unit {
-                    color: #e2e8f0;
-                    font-size: 1.1rem;
-                }
-
-                .reference-table-container {
+                    padding: 1rem;
+                    border-radius: 0.75rem;
+                    font-size: 1.25rem;
                     width: 100%;
+                    transition: all 0.2s;
+                }
+
+                .input-group input[type="number"]:focus {
+                    outline: none;
+                    border-color: #3b82f6;
+                    background: rgba(59, 130, 246, 0.1);
+                }
+
+                .info-section {
                     max-width: 800px;
+                    width: 100%;
+                    color: #cbd5e1;
+                    line-height: 1.7;
                 }
 
-                .reference-table-container h2 {
+                .info-section h2 {
                     color: white;
-                    margin-bottom: 1.5rem;
-                    font-size: 1.5rem;
-                    text-align: center;
+                    font-size: 1.75rem;
+                    margin: 3rem 0 1.5rem;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                    padding-bottom: 0.5rem;
                 }
 
-                .table-wrapper {
+                .info-section h2:first-child {
+                    margin-top: 0;
+                }
+
+                .info-section p {
+                    margin-bottom: 1.5rem;
+                }
+
+                .info-section ul {
+                    margin-bottom: 1.5rem;
+                    padding-left: 1.5rem;
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    gap: 0.5rem;
+                }
+
+                .info-section li {
+                    margin-bottom: 0.5rem;
+                }
+
+                .note {
+                    font-style: italic;
+                    color: #94a3b8;
+                    font-size: 0.9rem;
+                }
+
+                .chart-container {
                     overflow-x: auto;
-                    background: rgba(255, 255, 255, 0.03);
+                    margin-bottom: 2rem;
                     border-radius: 1rem;
                     border: 1px solid rgba(255, 255, 255, 0.1);
                 }
 
-                table {
+                .conversion-table {
                     width: 100%;
                     border-collapse: collapse;
-                    color: #cbd5e1;
+                    background: rgba(255, 255, 255, 0.02);
                 }
 
-                th, td {
+                .conversion-table th,
+                .conversion-table td {
                     padding: 1rem;
                     text-align: left;
                     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
                 }
 
-                th {
+                .conversion-table th {
                     background: rgba(255, 255, 255, 0.05);
-                    color: #a855f7;
                     font-weight: 600;
+                    color: white;
                 }
 
-                tr:last-child td {
+                .conversion-table tr:last-child td {
                     border-bottom: none;
                 }
 
-                tr:hover {
-                    background: rgba(255, 255, 255, 0.02);
+                .faq-list {
+                    display: grid;
+                    gap: 1.5rem;
                 }
 
-                @media (max-width: 640px) {
-                    .conversion-row {
-                        flex-direction: column;
-                        align-items: center;
+                .faq-item {
+                    background: rgba(255, 255, 255, 0.03);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    border-radius: 1rem;
+                    padding: 1.5rem;
+                }
+
+                .faq-item h3 {
+                    color: #e2e8f0;
+                    font-size: 1.1rem;
+                    margin-bottom: 0.75rem;
+                }
+
+                .faq-item p {
+                    margin-bottom: 0;
+                    color: #94a3b8;
+                }
+
+                @media (max-width: 768px) {
+                    .tool-content {
+                        padding: 2rem 1rem;
                     }
-                    .arrow-icon {
-                        transform: rotate(90deg);
-                        padding: 0;
+                    
+                    .tool-card {
+                        padding: 1.5rem;
                     }
                 }
-            `})]})},qr=()=>{let{language:e}=j(),[t,n]=(0,_.useState)(120),[r,i]=(0,_.useState)(120),[a,o]=(0,_.useState)(200),[s,c]=(0,_.useState)(1200),[l,u]=(0,_.useState)(15),d=t*r*a/1e6,f=d*35.3147,p=f*Math.max(0,s-400)/1e6,m=p*28.3168,h=p/l,g=m/l,v={en:{title:`CO₂ Grow Room Calculator`,subtitle:`Optimize your grow space with precise CO₂ calculations`,dims:`Room Dimensions (cm)`,target:`Target CO₂ Level (PPM)`,fillTime:`Desired Fill Time (minutes)`,volume:`Room Volume`,required:`Required CO₂ Amount`,flow:`Required Flow Rate`,calculate:`Calculate`,content:{introTitle:`How much CO₂ to add to a grow room?`,introText:`Find out how much CO2 to add to a grow room with our CO2 grow room calculator! Read on to learn the optimum CO2 level for plant growth and how to calculate the CO2 flow rate of a tank to reach that level. But first, let's answer the most critical question: why would you add CO2 to a grow room?`,introText2:`As you may or may not know, plants perform photosynthesis, transforming carbon dioxide, water, and sunlight into oxygen and compounds they use to grow. While we have plenty of CO2 in the atmosphere (around 420 ppm), adding more CO2 may be beneficial if you care about yield. However, adding CO2 alone won't do much. You also need to provide enough nutrients, water, and light. Even if you add plenty of CO2, the amount of light can be a limiting factor if it's not intense enough, and the CO2 will go to waste.`,calcTitle:`How to use the CO₂ grow room calculator?`,calcText:`To calculate the volume of CO2 for a grow tent, you need to know the following:`,calcList:[`The dimensions or volume of the room/tent`,`The current and desired CO2 levels in parts per million (ppm)`],calcText2:`Then you can use the calculator above to find how much CO2 you need to add to your grow room.`,faqTitle:`FAQs`,faqs:[{q:`What is the optimal CO2 level?`,a:`For most plants, 1200-1500 PPM is considered optimal during the flowering stage with high light intensity.`},{q:`When should I add CO2?`,a:`CO2 should only be added when the lights are ON. Plants do not use CO2 during the dark period.`},{q:`Do I need to seal my room?`,a:`Yes, a sealed room is best to prevent CO2 from escaping. If using an exhaust fan, it should be timed or controlled to minimize waste.`}]}},tr:{title:`CO₂ Yetiştirme Odası Hesaplayıcı`,subtitle:`Hassas CO₂ hesaplamalarıyla yetiştirme alanınızı optimize edin`,dims:`Oda Boyutları (cm)`,target:`Hedef CO₂ Seviyesi (PPM)`,fillTime:`İstenen Dolum Süresi (dakika)`,volume:`Oda Hacmi`,required:`Gerekli CO₂ Miktarı`,flow:`Gerekli Akış Hızı`,calculate:`Hesapla`,content:{introTitle:`Yetiştirme odasına ne kadar CO₂ eklenmeli?`,introText:`CO2 yetiştirme odası hesaplayıcımızla yetiştirme odasına ne kadar CO2 ekleneceğini öğrenin! Bitki büyümesi için optimum CO2 seviyesini ve bu seviyeye ulaşmak için bir tankın CO2 akış hızını nasıl hesaplayacağınızı öğrenmek için okumaya devam edin. Ama önce en kritik soruyu cevaplayalım: neden bir yetiştirme odasına CO2 ekleyesiniz?`,introText2:`Bildiğiniz veya bilmediğiniz gibi, bitkiler fotosentez yapar; karbondioksit, su ve güneş ışığını oksijene ve büyümek için kullandıkları bileşiklere dönüştürür. Atmosferde bol miktarda CO2 (yaklaşık 420 ppm) bulunsa da, verimi önemsiyorsanız daha fazla CO2 eklemek faydalı olabilir. Ancak, sadece CO2 eklemek pek bir işe yaramaz. Ayrıca yeterli besin, su ve ışık sağlamanız gerekir. Bol miktarda CO2 ekleseniz bile, ışık miktarı yeterince yoğun değilse sınırlayıcı bir faktör olabilir ve CO2 boşa gider.`,calcTitle:`CO₂ yetiştirme odası hesaplayıcısı nasıl kullanılır?`,calcText:`Bir yetiştirme çadırı için CO2 hacmini hesaplamak için aşağıdakileri bilmeniz gerekir:`,calcList:[`Odanın/çadırın boyutları veya hacmi`,`Milyonda parça (ppm) cinsinden mevcut ve istenen CO2 seviyeleri`],calcText2:`Ardından, yetiştirme odanıza ne kadar CO2 eklemeniz gerektiğini bulmak için yukarıdaki hesaplayıcıyı kullanabilirsiniz.`,faqTitle:`Sıkça Sorulan Sorular`,faqs:[{q:`Optimal CO2 seviyesi nedir?`,a:`Çoğu bitki için, yüksek ışık yoğunluğuyla çiçeklenme döneminde 1200-1500 PPM optimal kabul edilir.`},{q:`Ne zaman CO2 eklemeliyim?`,a:`CO2 sadece ışıklar AÇIKKEN eklenmelidir. Bitkiler karanlık dönemde CO2 kullanmazlar.`},{q:`Odamı yalıtmam gerekir mi?`,a:`Evet, CO2'nin kaçmasını önlemek için yalıtılmış bir oda en iyisidir. Egzoz fanı kullanıyorsanız, israfı en aza indirmek için zamanlanmalı veya kontrol edilmelidir.`}]}}}[e];return(0,A.jsxs)(`div`,{className:`page-container`,children:[(0,A.jsx)(Jn,{}),(0,A.jsxs)(`div`,{className:`tool-content`,children:[(0,A.jsxs)(`div`,{className:`tool-card`,children:[(0,A.jsxs)(`div`,{className:`tool-header`,children:[(0,A.jsx)(`div`,{className:`tool-icon`,children:`🌫️`}),(0,A.jsx)(`h1`,{children:v.title}),(0,A.jsx)(`p`,{children:v.subtitle})]}),(0,A.jsxs)(`div`,{className:`calculator-form`,children:[(0,A.jsx)(`div`,{className:`section-label`,children:v.dims}),(0,A.jsxs)(`div`,{className:`dims-grid`,children:[(0,A.jsxs)(`div`,{className:`input-group`,children:[(0,A.jsx)(`label`,{children:`W (cm)`}),(0,A.jsx)(`input`,{type:`number`,value:t,onChange:e=>n(parseFloat(e.target.value)||0)})]}),(0,A.jsxs)(`div`,{className:`input-group`,children:[(0,A.jsx)(`label`,{children:`L (cm)`}),(0,A.jsx)(`input`,{type:`number`,value:r,onChange:e=>i(parseFloat(e.target.value)||0)})]}),(0,A.jsxs)(`div`,{className:`input-group`,children:[(0,A.jsx)(`label`,{children:`H (cm)`}),(0,A.jsx)(`input`,{type:`number`,value:a,onChange:e=>o(parseFloat(e.target.value)||0)})]})]}),(0,A.jsxs)(`div`,{className:`input-group`,children:[(0,A.jsx)(`label`,{children:v.target}),(0,A.jsxs)(`div`,{className:`range-wrapper`,children:[(0,A.jsx)(`input`,{type:`range`,min:`400`,max:`2000`,step:`50`,value:s,onChange:e=>c(parseFloat(e.target.value)),className:`range-slider`}),(0,A.jsxs)(`span`,{className:`range-value`,children:[s,` PPM`]})]})]}),(0,A.jsxs)(`div`,{className:`input-group`,children:[(0,A.jsx)(`label`,{children:v.fillTime}),(0,A.jsxs)(`div`,{className:`range-wrapper`,children:[(0,A.jsx)(`input`,{type:`range`,min:`1`,max:`60`,step:`1`,value:l,onChange:e=>u(parseFloat(e.target.value)),className:`range-slider`}),(0,A.jsxs)(`span`,{className:`range-value`,children:[l,` min`]})]})]}),(0,A.jsxs)(`div`,{className:`results-grid`,children:[(0,A.jsxs)(`div`,{className:`result-item`,children:[(0,A.jsx)(`span`,{className:`label`,children:v.volume}),(0,A.jsxs)(`span`,{className:`value`,children:[d.toFixed(2),` m³`]}),(0,A.jsxs)(`span`,{className:`sub-value`,children:[`(`,f.toFixed(2),` ft³)`]})]}),(0,A.jsxs)(`div`,{className:`result-item highlight`,children:[(0,A.jsx)(`span`,{className:`label`,children:v.required}),(0,A.jsxs)(`span`,{className:`value`,children:[p.toFixed(4),` ft³`]}),(0,A.jsxs)(`span`,{className:`sub-value`,children:[`(`,m.toFixed(2),` L)`]})]}),(0,A.jsxs)(`div`,{className:`result-item highlight-green`,children:[(0,A.jsx)(`span`,{className:`label`,children:v.flow}),(0,A.jsxs)(`span`,{className:`value`,children:[g.toFixed(2),` L/min`]}),(0,A.jsxs)(`span`,{className:`sub-value`,children:[`(`,h.toFixed(4),` CFM)`]})]})]})]})]}),(0,A.jsxs)(`div`,{className:`info-section`,children:[(0,A.jsx)(`h2`,{children:v.content.introTitle}),(0,A.jsx)(`p`,{children:v.content.introText}),(0,A.jsx)(`p`,{children:v.content.introText2}),(0,A.jsx)(`h2`,{children:v.content.calcTitle}),(0,A.jsx)(`p`,{children:v.content.calcText}),(0,A.jsx)(`ul`,{children:v.content.calcList.map((e,t)=>(0,A.jsx)(`li`,{children:e},t))}),(0,A.jsx)(`p`,{children:v.content.calcText2}),(0,A.jsx)(`h2`,{children:v.content.faqTitle}),(0,A.jsx)(`div`,{className:`faq-list`,children:v.content.faqs.map((e,t)=>(0,A.jsxs)(`div`,{className:`faq-item`,children:[(0,A.jsx)(`h3`,{children:e.q}),(0,A.jsx)(`p`,{children:e.a})]},t))})]})]}),(0,A.jsx)(qn,{}),(0,A.jsx)(`style`,{children:`
+            `})]})},Kr=()=>{let{language:e}=j(),[t,n]=(0,_.useState)(120),[r,i]=(0,_.useState)(120),[a,o]=(0,_.useState)(200),[s,c]=(0,_.useState)(1200),[l,u]=(0,_.useState)(15),d=t*r*a/1e6,f=d*35.3147,p=f*Math.max(0,s-400)/1e6,m=p*28.3168,h=p/l,g=m/l,v={en:{title:`CO₂ Grow Room Calculator`,subtitle:`Optimize your grow space with precise CO₂ calculations`,dims:`Room Dimensions (cm)`,target:`Target CO₂ Level (PPM)`,fillTime:`Desired Fill Time (minutes)`,volume:`Room Volume`,required:`Required CO₂ Amount`,flow:`Required Flow Rate`,calculate:`Calculate`,content:{introTitle:`How much CO₂ to add to a grow room?`,introText:`Find out how much CO2 to add to a grow room with our CO2 grow room calculator! Read on to learn the optimum CO2 level for plant growth and how to calculate the CO2 flow rate of a tank to reach that level. But first, let's answer the most critical question: why would you add CO2 to a grow room?`,introText2:`As you may or may not know, plants perform photosynthesis, transforming carbon dioxide, water, and sunlight into oxygen and compounds they use to grow. While we have plenty of CO2 in the atmosphere (around 420 ppm), adding more CO2 may be beneficial if you care about yield. However, adding CO2 alone won't do much. You also need to provide enough nutrients, water, and light. Even if you add plenty of CO2, the amount of light can be a limiting factor if it's not intense enough, and the CO2 will go to waste.`,calcTitle:`How to use the CO₂ grow room calculator?`,calcText:`To calculate the volume of CO2 for a grow tent, you need to know the following:`,calcList:[`The dimensions or volume of the room/tent`,`The current and desired CO2 levels in parts per million (ppm)`],calcText2:`Then you can use the calculator above to find how much CO2 you need to add to your grow room.`,faqTitle:`FAQs`,faqs:[{q:`What is the optimal CO2 level?`,a:`For most plants, 1200-1500 PPM is considered optimal during the flowering stage with high light intensity.`},{q:`When should I add CO2?`,a:`CO2 should only be added when the lights are ON. Plants do not use CO2 during the dark period.`},{q:`Do I need to seal my room?`,a:`Yes, a sealed room is best to prevent CO2 from escaping. If using an exhaust fan, it should be timed or controlled to minimize waste.`}]}},tr:{title:`CO₂ Yetiştirme Odası Hesaplayıcı`,subtitle:`Hassas CO₂ hesaplamalarıyla yetiştirme alanınızı optimize edin`,dims:`Oda Boyutları (cm)`,target:`Hedef CO₂ Seviyesi (PPM)`,fillTime:`İstenen Dolum Süresi (dakika)`,volume:`Oda Hacmi`,required:`Gerekli CO₂ Miktarı`,flow:`Gerekli Akış Hızı`,calculate:`Hesapla`,content:{introTitle:`Yetiştirme odasına ne kadar CO₂ eklenmeli?`,introText:`CO2 yetiştirme odası hesaplayıcımızla yetiştirme odasına ne kadar CO2 ekleneceğini öğrenin! Bitki büyümesi için optimum CO2 seviyesini ve bu seviyeye ulaşmak için bir tankın CO2 akış hızını nasıl hesaplayacağınızı öğrenmek için okumaya devam edin. Ama önce en kritik soruyu cevaplayalım: neden bir yetiştirme odasına CO2 ekleyesiniz?`,introText2:`Bildiğiniz veya bilmediğiniz gibi, bitkiler fotosentez yapar; karbondioksit, su ve güneş ışığını oksijene ve büyümek için kullandıkları bileşiklere dönüştürür. Atmosferde bol miktarda CO2 (yaklaşık 420 ppm) bulunsa da, verimi önemsiyorsanız daha fazla CO2 eklemek faydalı olabilir. Ancak, sadece CO2 eklemek pek bir işe yaramaz. Ayrıca yeterli besin, su ve ışık sağlamanız gerekir. Bol miktarda CO2 ekleseniz bile, ışık miktarı yeterince yoğun değilse sınırlayıcı bir faktör olabilir ve CO2 boşa gider.`,calcTitle:`CO₂ yetiştirme odası hesaplayıcısı nasıl kullanılır?`,calcText:`Bir yetiştirme çadırı için CO2 hacmini hesaplamak için aşağıdakileri bilmeniz gerekir:`,calcList:[`Odanın/çadırın boyutları veya hacmi`,`Milyonda parça (ppm) cinsinden mevcut ve istenen CO2 seviyeleri`],calcText2:`Ardından, yetiştirme odanıza ne kadar CO2 eklemeniz gerektiğini bulmak için yukarıdaki hesaplayıcıyı kullanabilirsiniz.`,faqTitle:`Sıkça Sorulan Sorular`,faqs:[{q:`Optimal CO2 seviyesi nedir?`,a:`Çoğu bitki için, yüksek ışık yoğunluğuyla çiçeklenme döneminde 1200-1500 PPM optimal kabul edilir.`},{q:`Ne zaman CO2 eklemeliyim?`,a:`CO2 sadece ışıklar AÇIKKEN eklenmelidir. Bitkiler karanlık dönemde CO2 kullanmazlar.`},{q:`Odamı yalıtmam gerekir mi?`,a:`Evet, CO2'nin kaçmasını önlemek için yalıtılmış bir oda en iyisidir. Egzoz fanı kullanıyorsanız, israfı en aza indirmek için zamanlanmalı veya kontrol edilmelidir.`}]}}}[e];return(0,A.jsxs)(`div`,{className:`page-container`,children:[(0,A.jsx)(Jn,{}),(0,A.jsxs)(`div`,{className:`tool-content`,children:[(0,A.jsxs)(`div`,{className:`tool-card`,children:[(0,A.jsxs)(`div`,{className:`tool-header`,children:[(0,A.jsx)(`div`,{className:`tool-icon`,children:`🌫️`}),(0,A.jsx)(`h1`,{children:v.title}),(0,A.jsx)(`p`,{children:v.subtitle})]}),(0,A.jsxs)(`div`,{className:`calculator-form`,children:[(0,A.jsx)(`div`,{className:`section-label`,children:v.dims}),(0,A.jsxs)(`div`,{className:`dims-grid`,children:[(0,A.jsxs)(`div`,{className:`input-group`,children:[(0,A.jsx)(`label`,{children:`W (cm)`}),(0,A.jsx)(`input`,{type:`number`,value:t,onChange:e=>n(parseFloat(e.target.value)||0)})]}),(0,A.jsxs)(`div`,{className:`input-group`,children:[(0,A.jsx)(`label`,{children:`L (cm)`}),(0,A.jsx)(`input`,{type:`number`,value:r,onChange:e=>i(parseFloat(e.target.value)||0)})]}),(0,A.jsxs)(`div`,{className:`input-group`,children:[(0,A.jsx)(`label`,{children:`H (cm)`}),(0,A.jsx)(`input`,{type:`number`,value:a,onChange:e=>o(parseFloat(e.target.value)||0)})]})]}),(0,A.jsxs)(`div`,{className:`input-group`,children:[(0,A.jsx)(`label`,{children:v.target}),(0,A.jsxs)(`div`,{className:`range-wrapper`,children:[(0,A.jsx)(`input`,{type:`range`,min:`400`,max:`2000`,step:`50`,value:s,onChange:e=>c(parseFloat(e.target.value)),className:`range-slider`}),(0,A.jsxs)(`span`,{className:`range-value`,children:[s,` PPM`]})]})]}),(0,A.jsxs)(`div`,{className:`input-group`,children:[(0,A.jsx)(`label`,{children:v.fillTime}),(0,A.jsxs)(`div`,{className:`range-wrapper`,children:[(0,A.jsx)(`input`,{type:`range`,min:`1`,max:`60`,step:`1`,value:l,onChange:e=>u(parseFloat(e.target.value)),className:`range-slider`}),(0,A.jsxs)(`span`,{className:`range-value`,children:[l,` min`]})]})]}),(0,A.jsxs)(`div`,{className:`results-grid`,children:[(0,A.jsxs)(`div`,{className:`result-item`,children:[(0,A.jsx)(`span`,{className:`label`,children:v.volume}),(0,A.jsxs)(`span`,{className:`value`,children:[d.toFixed(2),` m³`]}),(0,A.jsxs)(`span`,{className:`sub-value`,children:[`(`,f.toFixed(2),` ft³)`]})]}),(0,A.jsxs)(`div`,{className:`result-item highlight`,children:[(0,A.jsx)(`span`,{className:`label`,children:v.required}),(0,A.jsxs)(`span`,{className:`value`,children:[p.toFixed(4),` ft³`]}),(0,A.jsxs)(`span`,{className:`sub-value`,children:[`(`,m.toFixed(2),` L)`]})]}),(0,A.jsxs)(`div`,{className:`result-item highlight-green`,children:[(0,A.jsx)(`span`,{className:`label`,children:v.flow}),(0,A.jsxs)(`span`,{className:`value`,children:[g.toFixed(2),` L/min`]}),(0,A.jsxs)(`span`,{className:`sub-value`,children:[`(`,h.toFixed(4),` CFM)`]})]})]})]})]}),(0,A.jsxs)(`div`,{className:`info-section`,children:[(0,A.jsx)(`h2`,{children:v.content.introTitle}),(0,A.jsx)(`p`,{children:v.content.introText}),(0,A.jsx)(`p`,{children:v.content.introText2}),(0,A.jsx)(`h2`,{children:v.content.calcTitle}),(0,A.jsx)(`p`,{children:v.content.calcText}),(0,A.jsx)(`ul`,{children:v.content.calcList.map((e,t)=>(0,A.jsx)(`li`,{children:e},t))}),(0,A.jsx)(`p`,{children:v.content.calcText2}),(0,A.jsx)(`h2`,{children:v.content.faqTitle}),(0,A.jsx)(`div`,{className:`faq-list`,children:v.content.faqs.map((e,t)=>(0,A.jsxs)(`div`,{className:`faq-item`,children:[(0,A.jsx)(`h3`,{children:e.q}),(0,A.jsx)(`p`,{children:e.a})]},t))})]})]}),(0,A.jsx)(qn,{}),(0,A.jsx)(`style`,{children:`
                 .page-container {
                     min-height: 100vh;
                     background: #0a0a0a;
@@ -2956,4 +2954,4 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
                         grid-template-columns: 1fr;
                     }
                 }
-            `})]})};function Jr(){return(0,A.jsx)(Vn,{children:(0,A.jsx)(Wn,{children:(0,A.jsx)(Mn,{children:(0,A.jsx)(sn,{children:(0,A.jsxs)(Ct,{children:[(0,A.jsx)(xt,{path:`/`,element:(0,A.jsx)(Xn,{})}),(0,A.jsx)(xt,{path:`/onboarding`,element:(0,A.jsx)(Zn,{})}),(0,A.jsx)(xt,{path:`/builder`,element:(0,A.jsx)(zr,{})}),(0,A.jsx)(xt,{path:`/blog`,element:(0,A.jsx)(Br,{})}),(0,A.jsx)(xt,{path:`/blog/:slug`,element:(0,A.jsx)(Hr,{})}),(0,A.jsx)(xt,{path:`/tools`,element:(0,A.jsx)(Ur,{})}),(0,A.jsx)(xt,{path:`/tools/cost-calculator`,element:(0,A.jsx)(Wr,{})}),(0,A.jsx)(xt,{path:`/tools/unit-converter`,element:(0,A.jsx)(Kr,{})}),(0,A.jsx)(xt,{path:`/tools/co2-calculator`,element:(0,A.jsx)(qr,{})})]})})})})})}var Yr=Jr;function Xr(){try{return}catch(e){console.warn(`Analytics init failed:`,e)}}Xr(),(0,g.createRoot)(document.getElementById(`root`)).render((0,A.jsx)(_.StrictMode,{children:(0,A.jsx)(Yr,{})}));
+            `})]})};function qr(){return(0,A.jsx)(Vn,{children:(0,A.jsx)(Wn,{children:(0,A.jsx)(Mn,{children:(0,A.jsx)(sn,{children:(0,A.jsxs)(Ct,{children:[(0,A.jsx)(xt,{path:`/`,element:(0,A.jsx)(Xn,{})}),(0,A.jsx)(xt,{path:`/onboarding`,element:(0,A.jsx)(Zn,{})}),(0,A.jsx)(xt,{path:`/builder`,element:(0,A.jsx)(zr,{})}),(0,A.jsx)(xt,{path:`/blog`,element:(0,A.jsx)(Br,{})}),(0,A.jsx)(xt,{path:`/blog/:slug`,element:(0,A.jsx)(Hr,{})}),(0,A.jsx)(xt,{path:`/tools`,element:(0,A.jsx)(Ur,{})}),(0,A.jsx)(xt,{path:`/tools/cost-calculator`,element:(0,A.jsx)(Wr,{})}),(0,A.jsx)(xt,{path:`/tools/unit-converter`,element:(0,A.jsx)(Gr,{})}),(0,A.jsx)(xt,{path:`/tools/co2-calculator`,element:(0,A.jsx)(Kr,{})})]})})})})})}var Jr=qr;function Yr(){try{return}catch(e){console.warn(`Analytics init failed:`,e)}}Yr(),(0,g.createRoot)(document.getElementById(`root`)).render((0,A.jsx)(_.StrictMode,{children:(0,A.jsx)(Jr,{})}));
