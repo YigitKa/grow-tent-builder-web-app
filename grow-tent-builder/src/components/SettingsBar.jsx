@@ -20,9 +20,9 @@ export default function SettingsBar() {
                     alignItems: 'center',
                     gap: '0.5rem'
                 }}>
-                    <span style={{ fontSize: '1.5rem' }}>🌿</span> GrowBuilder
+                    <span style={{ fontSize: '1.5rem' }}>🌿</span> GroWizard
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 }

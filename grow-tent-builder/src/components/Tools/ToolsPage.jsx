@@ -21,11 +21,11 @@ const ToolsPage = () => {
                     color: 'from-yellow-400 to-orange-500'
                 },
                 {
-                    id: 'liter',
+                    id: 'unit',
                     icon: '💧',
-                    title: 'Liter Converter',
-                    desc: 'Convert between Liters and Gallons',
-                    path: '/tools/liter-converter',
+                    title: 'Unit Converter',
+                    desc: 'Convert between Liters, Gallons and more',
+                    path: '/tools/unit-converter',
                     color: 'from-blue-400 to-cyan-500'
                 },
                 {
@@ -51,11 +51,11 @@ const ToolsPage = () => {
                     color: 'from-yellow-400 to-orange-500'
                 },
                 {
-                    id: 'liter',
+                    id: 'unit',
                     icon: '💧',
-                    title: 'Litre Dönüştürücü',
-                    desc: 'Litre ve Galon arası dönüşüm',
-                    path: '/tools/liter-converter',
+                    title: 'Birim Çevirici',
+                    desc: 'Litre, Galon ve diğer birimler arası dönüşüm',
+                    path: '/tools/unit-converter',
                     color: 'from-blue-400 to-cyan-500'
                 },
                 {

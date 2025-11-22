@@ -219,6 +219,36 @@ export default function LandingPage() {
                 </div>
             </section>
 
+            {/* Tools Preview Section */}
+            <section className="tools-preview-section">
+                <div className="section-header">
+                    <h2>🛠️ {language === 'tr' ? 'Yetiştirme Araçları' : 'Grow Tools'}</h2>
+                    <p>{language === 'tr' ? 'Başarılı bir hasat için ihtiyacınız olan her şey' : 'Everything you need for a successful harvest'}</p>
+                </div>
+                <div className="tools-grid">
+                    <Link to="/tools/cost-calculator" className="tool-preview-card">
+                        <div className="tool-icon">⚡</div>
+                        <h3>{language === 'tr' ? 'Maliyet Hesaplayıcı' : 'Cost Calculator'}</h3>
+                        <p>{language === 'tr' ? 'Elektrik masraflarınızı hesaplayın' : 'Estimate electricity costs'}</p>
+                    </Link>
+                    <Link to="/tools/unit-converter" className="tool-preview-card">
+                        <div className="tool-icon">💧</div>
+                        <h3>{language === 'tr' ? 'Birim Çevirici' : 'Unit Converter'}</h3>
+                        <p>{language === 'tr' ? 'Litre ve Galon dönüşümü' : 'Convert Liters & Gallons'}</p>
+                    </Link>
+                    <Link to="/tools/co2-calculator" className="tool-preview-card">
+                        <div className="tool-icon">🌫️</div>
+                        <h3>{language === 'tr' ? 'CO2 Hesaplayıcı' : 'CO2 Calculator'}</h3>
+                        <p>{language === 'tr' ? 'Optimal CO2 seviyelerini bulun' : 'Find optimal CO2 levels'}</p>
+                    </Link>
+                </div>
+                <div className="center-btn">
+                    <Link to="/tools" className="secondary-btn">
+                        {language === 'tr' ? 'Tüm Araçları Gör' : 'View All Tools'}
+                    </Link>
+                </div>
+            </section>
+
             {/* Features Section */}
             <section className="features-section">
                 <div className="feature-card slide-in" style={{ transitionDelay: '0.1s' }}>
@@ -252,6 +282,27 @@ export default function LandingPage() {
                                 <p>{item.description}</p>
                             </div>
                         </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* Featured Guides Section (Additional Blog Section) */}
+            <section className="featured-guides-section">
+                <div className="section-header">
+                    <h2>🌟 {language === 'tr' ? 'Öne Çıkan Rehberler' : 'Featured Guides'}</h2>
+                    <p>{language === 'tr' ? 'Uzmanlardan derinlemesine bilgiler' : 'In-depth knowledge from experts'}</p>
+                </div>
+                <div className="featured-grid">
+                    {blogPosts.slice(0, 2).map((post) => (
+                        <Link to={`/blog/${post.slug[language]}`} key={`featured-${post.id}`} className="featured-guide-card">
+                            <div className="guide-content">
+                                <span className="guide-tag">{post.category}</span>
+                                <h3>{post.title[language]}</h3>
+                                <p>{post.excerpt[language]}</p>
+                                <span className="read-more">{language === 'tr' ? 'Devamını Oku →' : 'Read More →'}</span>
+                            </div>
+                            <div className="guide-image" style={{ backgroundImage: `url(${post.image})` }} />
+                        </Link>
                     ))}
                 </div>
             </section>
@@ -307,36 +358,6 @@ export default function LandingPage() {
                         {t.costTool.calculate}
                     </button>
                     <div id="cost-result" className="cost-result"></div>
-                </div>
-            </section>
-
-            {/* Tools Preview Section */}
-            <section className="tools-preview-section">
-                <div className="section-header">
-                    <h2>🛠️ {language === 'tr' ? 'Yetiştirme Araçları' : 'Grow Tools'}</h2>
-                    <p>{language === 'tr' ? 'Başarılı bir hasat için ihtiyacınız olan her şey' : 'Everything you need for a successful harvest'}</p>
-                </div>
-                <div className="tools-grid">
-                    <Link to="/tools/cost-calculator" className="tool-preview-card">
-                        <div className="tool-icon">⚡</div>
-                        <h3>{language === 'tr' ? 'Maliyet Hesaplayıcı' : 'Cost Calculator'}</h3>
-                        <p>{language === 'tr' ? 'Elektrik masraflarınızı hesaplayın' : 'Estimate electricity costs'}</p>
-                    </Link>
-                    <Link to="/tools/liter-converter" className="tool-preview-card">
-                        <div className="tool-icon">💧</div>
-                        <h3>{language === 'tr' ? 'Birim Çevirici' : 'Unit Converter'}</h3>
-                        <p>{language === 'tr' ? 'Litre ve Galon dönüşümü' : 'Convert Liters & Gallons'}</p>
-                    </Link>
-                    <Link to="/tools/co2-calculator" className="tool-preview-card">
-                        <div className="tool-icon">🌫️</div>
-                        <h3>{language === 'tr' ? 'CO2 Hesaplayıcı' : 'CO2 Calculator'}</h3>
-                        <p>{language === 'tr' ? 'Optimal CO2 seviyelerini bulun' : 'Find optimal CO2 levels'}</p>
-                    </Link>
-                </div>
-                <div className="center-btn">
-                    <Link to="/tools" className="secondary-btn">
-                        {language === 'tr' ? 'Tüm Araçları Gör' : 'View All Tools'}
-                    </Link>
                 </div>
             </section>
 
@@ -398,29 +419,6 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            {/* Featured Guides Section (Additional Blog Section) */}
-            <section className="featured-guides-section">
-                <div className="section-header">
-                    <h2>🌟 {language === 'tr' ? 'Öne Çıkan Rehberler' : 'Featured Guides'}</h2>
-                    <p>{language === 'tr' ? 'Uzmanlardan derinlemesine bilgiler' : 'In-depth knowledge from experts'}</p>
-                </div>
-                <div className="featured-grid">
-                    {blogPosts.slice(0, 2).map((post) => (
-                        <Link to={`/blog/${post.slug[language]}`} key={`featured-${post.id}`} className="featured-guide-card">
-                            <div className="guide-content">
-                                <span className="guide-tag">{post.category}</span>
-                                <h3>{post.title[language]}</h3>
-                                <p>{post.excerpt[language]}</p>
-                                <span className="read-more">{language === 'tr' ? 'Devamını Oku →' : 'Read More →'}</span>
-                            </div>
-                            <div className="guide-image" style={{ backgroundImage: `url(${post.image})` }} />
-                        </Link>
-                    ))}
-                </div>
-            </section>
-
-            {/* Footer / Künye */}
-            {/* Footer / Künye */}
             <Footer />
 
             <style>{`

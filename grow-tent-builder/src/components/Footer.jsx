@@ -1,31 +1,41 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useSettings } from '../context/SettingsContext';
 
 const Footer = () => {
-    const { language, setLanguage } = useSettings();
+  const { language, setLanguage } = useSettings();
 
-    return (
-        <footer className="landing-footer">
-            <div className="footer-content">
-                <div className="footer-info">
-                    <p>© 2025 GroWizard. All rights reserved.</p>
-                </div>
-                <div className="footer-lang-toggle">
-                    <button
-                        onClick={() => setLanguage('en')}
-                        className={language === 'en' ? 'active' : ''}
-                    >
-                        EN
-                    </button>
-                    <button
-                        onClick={() => setLanguage('tr')}
-                        className={language === 'tr' ? 'active' : ''}
-                    >
-                        TR
-                    </button>
-                </div>
-            </div>
-            <style>{`
+  return (
+    <footer className="landing-footer">
+      <div className="footer-content">
+        <div className="footer-brand">
+          <div className="footer-logo">🌱 GroWizard</div>
+          <p>© 2025 GroWizard. All rights reserved.</p>
+        </div>
+
+        <div className="footer-links">
+          <Link to="/">Home</Link>
+          <Link to="/builder">Builder</Link>
+          <Link to="/tools">Tools</Link>
+          <Link to="/blog">Blog</Link>
+        </div>
+
+        <div className="footer-lang-toggle">
+          <button
+            onClick={() => setLanguage('en')}
+            className={language === 'en' ? 'active' : ''}
+          >
+            EN
+          </button>
+          <button
+            onClick={() => setLanguage('tr')}
+            className={language === 'tr' ? 'active' : ''}
+          >
+            TR
+          </button>
+        </div>
+      </div>
+      <style>{`
         .landing-footer {
           background: rgba(15, 23, 42, 0.95);
           border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -42,13 +52,41 @@ const Footer = () => {
           max-width: 1200px;
           margin: 0 auto;
           flex-wrap: wrap;
-          gap: 1rem;
+          gap: 2rem;
         }
 
-        .footer-info p {
-          color: #94a3b8;
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .footer-logo {
+            font-weight: 800;
+            color: #10b981;
+            font-size: 1.1rem;
+        }
+
+        .footer-brand p {
+          color: #64748b;
           font-size: 0.875rem;
-          margin: 0; /* ensure compact layout */
+          margin: 0;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #10b981;
         }
 
         .footer-lang-toggle {
@@ -82,8 +120,8 @@ const Footer = () => {
           color: white;
         }
       `}</style>
-        </footer>
-    );
+    </footer>
+  );
 };
 
 export default Footer;

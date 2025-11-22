@@ -9,7 +9,7 @@ import BlogList from './components/Blog/BlogList';
 import BlogPost from './components/Blog/BlogPost';
 import ToolsPage from './components/Tools/ToolsPage';
 import CostCalculator from './components/Tools/CostCalculator';
-import LiterConverter from './components/Tools/LiterConverter';
+import UnitConverter from './components/Tools/UnitConverter';
 import CO2Calculator from './components/Tools/CO2Calculator';
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/tools" element={<ToolsPage />} />
               <Route path="/tools/cost-calculator" element={<CostCalculator />} />
-              <Route path="/tools/liter-converter" element={<LiterConverter />} />
+              <Route path="/tools/unit-converter" element={<UnitConverter />} />
               <Route path="/tools/co2-calculator" element={<CO2Calculator />} />
             </Routes>
           </BrowserRouter>
@@ -37,4 +37,3 @@ function App() {
 }
 
 export default App;
-

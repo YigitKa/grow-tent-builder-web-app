@@ -10,6 +10,7 @@ import MonitoringSelection from '../features/MonitoringSelection';
 import SummaryView from '../features/SummaryView';
 import { useBuilder } from '../context/BuilderContext';
 import SettingsBar from './SettingsBar';
+import Footer from './Footer';
 
 function StepRenderer() {
     const { state } = useBuilder();
@@ -40,6 +41,7 @@ export default function BuilderApp() {
             <Layout>
                 <StepRenderer />
             </Layout>
+            <Footer />
         </>
     );
 }

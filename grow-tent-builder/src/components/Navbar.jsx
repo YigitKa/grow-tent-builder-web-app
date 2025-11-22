@@ -22,7 +22,7 @@ const Navbar = () => {
         <nav className="navbar">
             <div className="navbar-container">
                 <Link to="/" className="navbar-logo">
-                    🌱 GrowBuilder
+                    🌱 GroWizard
                 </Link>
 
                 {/* Desktop Menu */}
