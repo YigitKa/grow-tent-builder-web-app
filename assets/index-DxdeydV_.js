@@ -2713,7 +2713,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
                         padding: 0;
                     }
                 }
-            `})]})},qr=()=>{let{language:e}=j(),[t,n]=(0,_.useState)(120),[r,i]=(0,_.useState)(120),[a,o]=(0,_.useState)(200),[s,c]=(0,_.useState)(1200),l=t*r*a/1e6,u=l*35.3147,d=u*Math.max(0,s-400)/1e6;d/15;let f={en:{title:`CO2 Calculator`,subtitle:`Estimate CO2 requirements for your grow space`,dims:`Tent Dimensions (cm)`,target:`Target PPM`,volume:`Room Volume`,required:`Required CO2 Amount`,flow:`Flow Rate (for 15 min fill)`,desc:`Calculate how much CO2 you need to reach optimal levels for accelerated growth.`},tr:{title:`CO2 Hesaplayıcı`,subtitle:`Yetiştirme alanınız için CO2 gereksinimlerini tahmin edin`,dims:`Çadır Boyutları (cm)`,target:`Hedef PPM`,volume:`Oda Hacmi`,required:`Gerekli CO2 Miktarı`,flow:`Akış Hızı (15 dk dolum için)`,desc:`Hızlandırılmış büyüme için optimal seviyelere ulaşmak adına ne kadar CO2'ye ihtiyacınız olduğunu hesaplayın.`}}[e];return(0,A.jsxs)(`div`,{className:`page-container`,children:[(0,A.jsx)(Jn,{}),(0,A.jsx)(`div`,{className:`tool-content`,children:(0,A.jsxs)(`div`,{className:`tool-card`,children:[(0,A.jsxs)(`div`,{className:`tool-header`,children:[(0,A.jsx)(`div`,{className:`tool-icon`,children:`🌫️`}),(0,A.jsx)(`h1`,{children:f.title}),(0,A.jsx)(`p`,{children:f.subtitle})]}),(0,A.jsxs)(`div`,{className:`calculator-form`,children:[(0,A.jsxs)(`div`,{className:`dims-grid`,children:[(0,A.jsxs)(`div`,{className:`input-group`,children:[(0,A.jsx)(`label`,{children:`W (cm)`}),(0,A.jsx)(`input`,{type:`number`,value:t,onChange:e=>n(parseFloat(e.target.value)||0)})]}),(0,A.jsxs)(`div`,{className:`input-group`,children:[(0,A.jsx)(`label`,{children:`L (cm)`}),(0,A.jsx)(`input`,{type:`number`,value:r,onChange:e=>i(parseFloat(e.target.value)||0)})]}),(0,A.jsxs)(`div`,{className:`input-group`,children:[(0,A.jsx)(`label`,{children:`H (cm)`}),(0,A.jsx)(`input`,{type:`number`,value:a,onChange:e=>o(parseFloat(e.target.value)||0)})]})]}),(0,A.jsxs)(`div`,{className:`input-group`,children:[(0,A.jsx)(`label`,{children:f.target}),(0,A.jsx)(`input`,{type:`number`,value:s,step:`100`,onChange:e=>c(parseFloat(e.target.value)||0)}),(0,A.jsx)(`input`,{type:`range`,min:`400`,max:`2000`,step:`50`,value:s,onChange:e=>c(parseFloat(e.target.value)),className:`range-slider`})]}),(0,A.jsxs)(`div`,{className:`results-grid`,children:[(0,A.jsxs)(`div`,{className:`result-item`,children:[(0,A.jsx)(`span`,{className:`label`,children:f.volume}),(0,A.jsxs)(`span`,{className:`value`,children:[l.toFixed(2),` m³`]}),(0,A.jsxs)(`span`,{className:`sub-value`,children:[`(`,u.toFixed(2),` ft³)`]})]}),(0,A.jsxs)(`div`,{className:`result-item highlight`,children:[(0,A.jsx)(`span`,{className:`label`,children:f.required}),(0,A.jsxs)(`span`,{className:`value`,children:[d.toFixed(4),` ft³`]})]})]})]})]})}),(0,A.jsx)(qn,{}),(0,A.jsx)(`style`,{children:`
+            `})]})},qr=()=>{let{language:e}=j(),[t,n]=(0,_.useState)(120),[r,i]=(0,_.useState)(120),[a,o]=(0,_.useState)(200),[s,c]=(0,_.useState)(1200),[l,u]=(0,_.useState)(15),d=t*r*a/1e6,f=d*35.3147,p=f*Math.max(0,s-400)/1e6,m=p*28.3168,h=p/l,g=m/l,v={en:{title:`CO₂ Grow Room Calculator`,subtitle:`Optimize your grow space with precise CO₂ calculations`,dims:`Room Dimensions (cm)`,target:`Target CO₂ Level (PPM)`,fillTime:`Desired Fill Time (minutes)`,volume:`Room Volume`,required:`Required CO₂ Amount`,flow:`Required Flow Rate`,calculate:`Calculate`,content:{introTitle:`How much CO₂ to add to a grow room?`,introText:`Find out how much CO2 to add to a grow room with our CO2 grow room calculator! Read on to learn the optimum CO2 level for plant growth and how to calculate the CO2 flow rate of a tank to reach that level. But first, let's answer the most critical question: why would you add CO2 to a grow room?`,introText2:`As you may or may not know, plants perform photosynthesis, transforming carbon dioxide, water, and sunlight into oxygen and compounds they use to grow. While we have plenty of CO2 in the atmosphere (around 420 ppm), adding more CO2 may be beneficial if you care about yield. However, adding CO2 alone won't do much. You also need to provide enough nutrients, water, and light. Even if you add plenty of CO2, the amount of light can be a limiting factor if it's not intense enough, and the CO2 will go to waste.`,calcTitle:`How to use the CO₂ grow room calculator?`,calcText:`To calculate the volume of CO2 for a grow tent, you need to know the following:`,calcList:[`The dimensions or volume of the room/tent`,`The current and desired CO2 levels in parts per million (ppm)`],calcText2:`Then you can use the calculator above to find how much CO2 you need to add to your grow room.`,faqTitle:`FAQs`,faqs:[{q:`What is the optimal CO2 level?`,a:`For most plants, 1200-1500 PPM is considered optimal during the flowering stage with high light intensity.`},{q:`When should I add CO2?`,a:`CO2 should only be added when the lights are ON. Plants do not use CO2 during the dark period.`},{q:`Do I need to seal my room?`,a:`Yes, a sealed room is best to prevent CO2 from escaping. If using an exhaust fan, it should be timed or controlled to minimize waste.`}]}},tr:{title:`CO₂ Yetiştirme Odası Hesaplayıcı`,subtitle:`Hassas CO₂ hesaplamalarıyla yetiştirme alanınızı optimize edin`,dims:`Oda Boyutları (cm)`,target:`Hedef CO₂ Seviyesi (PPM)`,fillTime:`İstenen Dolum Süresi (dakika)`,volume:`Oda Hacmi`,required:`Gerekli CO₂ Miktarı`,flow:`Gerekli Akış Hızı`,calculate:`Hesapla`,content:{introTitle:`Yetiştirme odasına ne kadar CO₂ eklenmeli?`,introText:`CO2 yetiştirme odası hesaplayıcımızla yetiştirme odasına ne kadar CO2 ekleneceğini öğrenin! Bitki büyümesi için optimum CO2 seviyesini ve bu seviyeye ulaşmak için bir tankın CO2 akış hızını nasıl hesaplayacağınızı öğrenmek için okumaya devam edin. Ama önce en kritik soruyu cevaplayalım: neden bir yetiştirme odasına CO2 ekleyesiniz?`,introText2:`Bildiğiniz veya bilmediğiniz gibi, bitkiler fotosentez yapar; karbondioksit, su ve güneş ışığını oksijene ve büyümek için kullandıkları bileşiklere dönüştürür. Atmosferde bol miktarda CO2 (yaklaşık 420 ppm) bulunsa da, verimi önemsiyorsanız daha fazla CO2 eklemek faydalı olabilir. Ancak, sadece CO2 eklemek pek bir işe yaramaz. Ayrıca yeterli besin, su ve ışık sağlamanız gerekir. Bol miktarda CO2 ekleseniz bile, ışık miktarı yeterince yoğun değilse sınırlayıcı bir faktör olabilir ve CO2 boşa gider.`,calcTitle:`CO₂ yetiştirme odası hesaplayıcısı nasıl kullanılır?`,calcText:`Bir yetiştirme çadırı için CO2 hacmini hesaplamak için aşağıdakileri bilmeniz gerekir:`,calcList:[`Odanın/çadırın boyutları veya hacmi`,`Milyonda parça (ppm) cinsinden mevcut ve istenen CO2 seviyeleri`],calcText2:`Ardından, yetiştirme odanıza ne kadar CO2 eklemeniz gerektiğini bulmak için yukarıdaki hesaplayıcıyı kullanabilirsiniz.`,faqTitle:`Sıkça Sorulan Sorular`,faqs:[{q:`Optimal CO2 seviyesi nedir?`,a:`Çoğu bitki için, yüksek ışık yoğunluğuyla çiçeklenme döneminde 1200-1500 PPM optimal kabul edilir.`},{q:`Ne zaman CO2 eklemeliyim?`,a:`CO2 sadece ışıklar AÇIKKEN eklenmelidir. Bitkiler karanlık dönemde CO2 kullanmazlar.`},{q:`Odamı yalıtmam gerekir mi?`,a:`Evet, CO2'nin kaçmasını önlemek için yalıtılmış bir oda en iyisidir. Egzoz fanı kullanıyorsanız, israfı en aza indirmek için zamanlanmalı veya kontrol edilmelidir.`}]}}}[e];return(0,A.jsxs)(`div`,{className:`page-container`,children:[(0,A.jsx)(Jn,{}),(0,A.jsxs)(`div`,{className:`tool-content`,children:[(0,A.jsxs)(`div`,{className:`tool-card`,children:[(0,A.jsxs)(`div`,{className:`tool-header`,children:[(0,A.jsx)(`div`,{className:`tool-icon`,children:`🌫️`}),(0,A.jsx)(`h1`,{children:v.title}),(0,A.jsx)(`p`,{children:v.subtitle})]}),(0,A.jsxs)(`div`,{className:`calculator-form`,children:[(0,A.jsx)(`div`,{className:`section-label`,children:v.dims}),(0,A.jsxs)(`div`,{className:`dims-grid`,children:[(0,A.jsxs)(`div`,{className:`input-group`,children:[(0,A.jsx)(`label`,{children:`W (cm)`}),(0,A.jsx)(`input`,{type:`number`,value:t,onChange:e=>n(parseFloat(e.target.value)||0)})]}),(0,A.jsxs)(`div`,{className:`input-group`,children:[(0,A.jsx)(`label`,{children:`L (cm)`}),(0,A.jsx)(`input`,{type:`number`,value:r,onChange:e=>i(parseFloat(e.target.value)||0)})]}),(0,A.jsxs)(`div`,{className:`input-group`,children:[(0,A.jsx)(`label`,{children:`H (cm)`}),(0,A.jsx)(`input`,{type:`number`,value:a,onChange:e=>o(parseFloat(e.target.value)||0)})]})]}),(0,A.jsxs)(`div`,{className:`input-group`,children:[(0,A.jsx)(`label`,{children:v.target}),(0,A.jsxs)(`div`,{className:`range-wrapper`,children:[(0,A.jsx)(`input`,{type:`range`,min:`400`,max:`2000`,step:`50`,value:s,onChange:e=>c(parseFloat(e.target.value)),className:`range-slider`}),(0,A.jsxs)(`span`,{className:`range-value`,children:[s,` PPM`]})]})]}),(0,A.jsxs)(`div`,{className:`input-group`,children:[(0,A.jsx)(`label`,{children:v.fillTime}),(0,A.jsxs)(`div`,{className:`range-wrapper`,children:[(0,A.jsx)(`input`,{type:`range`,min:`1`,max:`60`,step:`1`,value:l,onChange:e=>u(parseFloat(e.target.value)),className:`range-slider`}),(0,A.jsxs)(`span`,{className:`range-value`,children:[l,` min`]})]})]}),(0,A.jsxs)(`div`,{className:`results-grid`,children:[(0,A.jsxs)(`div`,{className:`result-item`,children:[(0,A.jsx)(`span`,{className:`label`,children:v.volume}),(0,A.jsxs)(`span`,{className:`value`,children:[d.toFixed(2),` m³`]}),(0,A.jsxs)(`span`,{className:`sub-value`,children:[`(`,f.toFixed(2),` ft³)`]})]}),(0,A.jsxs)(`div`,{className:`result-item highlight`,children:[(0,A.jsx)(`span`,{className:`label`,children:v.required}),(0,A.jsxs)(`span`,{className:`value`,children:[p.toFixed(4),` ft³`]}),(0,A.jsxs)(`span`,{className:`sub-value`,children:[`(`,m.toFixed(2),` L)`]})]}),(0,A.jsxs)(`div`,{className:`result-item highlight-green`,children:[(0,A.jsx)(`span`,{className:`label`,children:v.flow}),(0,A.jsxs)(`span`,{className:`value`,children:[g.toFixed(2),` L/min`]}),(0,A.jsxs)(`span`,{className:`sub-value`,children:[`(`,h.toFixed(4),` CFM)`]})]})]})]})]}),(0,A.jsxs)(`div`,{className:`info-section`,children:[(0,A.jsx)(`h2`,{children:v.content.introTitle}),(0,A.jsx)(`p`,{children:v.content.introText}),(0,A.jsx)(`p`,{children:v.content.introText2}),(0,A.jsx)(`h2`,{children:v.content.calcTitle}),(0,A.jsx)(`p`,{children:v.content.calcText}),(0,A.jsx)(`ul`,{children:v.content.calcList.map((e,t)=>(0,A.jsx)(`li`,{children:e},t))}),(0,A.jsx)(`p`,{children:v.content.calcText2}),(0,A.jsx)(`h2`,{children:v.content.faqTitle}),(0,A.jsx)(`div`,{className:`faq-list`,children:v.content.faqs.map((e,t)=>(0,A.jsxs)(`div`,{className:`faq-item`,children:[(0,A.jsx)(`h3`,{children:e.q}),(0,A.jsx)(`p`,{children:e.a})]},t))})]})]}),(0,A.jsx)(qn,{}),(0,A.jsx)(`style`,{children:`
                 .page-container {
                     min-height: 100vh;
                     background: #0a0a0a;
@@ -2725,9 +2725,13 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
                 .tool-content {
                     flex: 1;
                     display: flex;
+                    flex-direction: column;
                     align-items: center;
-                    justify-content: center;
-                    padding: 4rem 1rem;
+                    padding: 4rem 1.5rem;
+                    gap: 4rem;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    width: 100%;
                 }
 
                 .tool-card {
@@ -2735,7 +2739,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
                     border: 1px solid rgba(255, 255, 255, 0.1);
                     border-radius: 1.5rem;
                     padding: 3rem;
-                    max-width: 500px;
+                    max-width: 600px;
                     width: 100%;
                     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
                 }
@@ -2748,13 +2752,14 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
                 .tool-icon {
                     font-size: 3.5rem;
                     margin-bottom: 1rem;
-                    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
                 }
 
                 .tool-header h1 {
-                    font-size: 1.75rem;
+                    font-size: 2rem;
                     margin-bottom: 0.5rem;
-                    color: white;
+                    background: linear-gradient(135deg, #94a3b8 0%, #e2e8f0 100%);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
                 }
 
                 .tool-header p {
@@ -2765,6 +2770,13 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
                     display: flex;
                     flex-direction: column;
                     gap: 1.5rem;
+                }
+
+                .section-label {
+                    color: #94a3b8;
+                    font-size: 0.875rem;
+                    font-weight: 600;
+                    margin-bottom: -0.5rem;
                 }
 
                 .dims-grid {
@@ -2793,23 +2805,40 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
                     border-radius: 0.5rem;
                     font-size: 1.125rem;
                     width: 100%;
+                    text-align: center;
+                }
+
+                .range-wrapper {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                }
+
+                .range-value {
+                    min-width: 80px;
+                    text-align: right;
+                    font-variant-numeric: tabular-nums;
+                    color: #e2e8f0;
+                    font-weight: 600;
                 }
 
                 .range-slider {
-                    width: 100%;
-                    height: 4px;
+                    flex: 1;
+                    height: 6px;
                     background: rgba(255, 255, 255, 0.1);
-                    border-radius: 2px;
+                    border-radius: 3px;
                     appearance: none;
                 }
 
                 .range-slider::-webkit-slider-thumb {
                     appearance: none;
-                    width: 16px;
-                    height: 16px;
-                    background: #94a3b8;
+                    width: 20px;
+                    height: 20px;
+                    background: #e2e8f0;
                     border-radius: 50%;
                     cursor: pointer;
+                    border: 2px solid #0a0a0a;
+                    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
                 }
 
                 .results-grid {
@@ -2820,33 +2849,111 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
 
                 .result-item {
                     background: rgba(255, 255, 255, 0.03);
-                    padding: 1rem;
-                    border-radius: 0.75rem;
+                    padding: 1.25rem;
+                    border-radius: 1rem;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     text-align: center;
+                    border: 1px solid rgba(255, 255, 255, 0.05);
                 }
 
                 .result-item.highlight {
                     background: rgba(59, 130, 246, 0.1);
-                    border: 1px solid rgba(59, 130, 246, 0.2);
+                    border: 1px solid rgba(59, 130, 246, 0.3);
+                }
+
+                .result-item.highlight-green {
+                    background: rgba(16, 185, 129, 0.1);
+                    border: 1px solid rgba(16, 185, 129, 0.3);
                 }
 
                 .result-item .label {
                     font-size: 0.875rem;
                     color: #94a3b8;
-                    margin-bottom: 0.25rem;
+                    margin-bottom: 0.5rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
                 }
 
                 .result-item .value {
-                    font-size: 1.25rem;
-                    font-weight: 700;
+                    font-size: 1.5rem;
+                    font-weight: 800;
                     color: white;
+                    margin-bottom: 0.25rem;
                 }
 
                 .result-item .sub-value {
-                    font-size: 0.875rem;
+                    font-size: 0.9rem;
                     color: #64748b;
+                }
+
+                .info-section {
+                    max-width: 800px;
+                    width: 100%;
+                    color: #cbd5e1;
+                    line-height: 1.7;
+                }
+
+                .info-section h2 {
+                    color: white;
+                    font-size: 1.75rem;
+                    margin: 3rem 0 1.5rem;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                    padding-bottom: 0.5rem;
+                }
+
+                .info-section h2:first-child {
+                    margin-top: 0;
+                }
+
+                .info-section p {
+                    margin-bottom: 1.5rem;
+                }
+
+                .info-section ul {
+                    margin-bottom: 1.5rem;
+                    padding-left: 1.5rem;
+                }
+
+                .info-section li {
+                    margin-bottom: 0.5rem;
+                }
+
+                .faq-list {
+                    display: grid;
+                    gap: 1.5rem;
+                }
+
+                .faq-item {
+                    background: rgba(255, 255, 255, 0.03);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    border-radius: 1rem;
+                    padding: 1.5rem;
+                }
+
+                .faq-item h3 {
+                    color: #e2e8f0;
+                    font-size: 1.1rem;
+                    margin-bottom: 0.75rem;
+                }
+
+                .faq-item p {
+                    margin-bottom: 0;
+                    color: #94a3b8;
+                }
+
+                @media (max-width: 768px) {
+                    .tool-content {
+                        padding: 2rem 1rem;
+                    }
+                    
+                    .tool-card {
+                        padding: 1.5rem;
+                    }
+
+                    .dims-grid {
+                        grid-template-columns: 1fr;
+                    }
                 }
             `})]})};function Jr(){return(0,A.jsx)(Vn,{children:(0,A.jsx)(Wn,{children:(0,A.jsx)(Mn,{children:(0,A.jsx)(sn,{children:(0,A.jsxs)(Ct,{children:[(0,A.jsx)(xt,{path:`/`,element:(0,A.jsx)(Xn,{})}),(0,A.jsx)(xt,{path:`/onboarding`,element:(0,A.jsx)(Zn,{})}),(0,A.jsx)(xt,{path:`/builder`,element:(0,A.jsx)(zr,{})}),(0,A.jsx)(xt,{path:`/blog`,element:(0,A.jsx)(Br,{})}),(0,A.jsx)(xt,{path:`/blog/:slug`,element:(0,A.jsx)(Hr,{})}),(0,A.jsx)(xt,{path:`/tools`,element:(0,A.jsx)(Ur,{})}),(0,A.jsx)(xt,{path:`/tools/cost-calculator`,element:(0,A.jsx)(Wr,{})}),(0,A.jsx)(xt,{path:`/tools/unit-converter`,element:(0,A.jsx)(Kr,{})}),(0,A.jsx)(xt,{path:`/tools/co2-calculator`,element:(0,A.jsx)(qr,{})})]})})})})})}var Yr=Jr;function Xr(){try{return}catch(e){console.warn(`Analytics init failed:`,e)}}Xr(),(0,g.createRoot)(document.getElementById(`root`)).render((0,A.jsx)(_.StrictMode,{children:(0,A.jsx)(Yr,{})}));
