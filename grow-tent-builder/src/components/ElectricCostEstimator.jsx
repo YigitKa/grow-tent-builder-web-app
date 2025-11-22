@@ -88,15 +88,15 @@ export default function ElectricCostEstimator({ onClose } = {}) {
   const symbol = currency || '';
 
   return (
-    <div style={{ width: 520, maxWidth: 'calc(100vw - 32px)', padding: 12, background: 'var(--bg-surface)', boxShadow: '0 8px 24px rgba(2,6,23,0.6)', border: '1px solid var(--border-color)', borderRadius: 10, color: 'var(--text-primary)' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+    <div className="estimator-container">
+      <div className="estimator-header">
         <strong>Elektrik Maliyet Tahmincisi</strong>
         <div style={{ display: 'flex', gap: 8 }}>
           <button className="btn small" onClick={() => { saveState({ lights, fans, pricePerKwh, daysPerMonth }); if (onClose) onClose(); }}>Kapat</button>
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+      <div className="estimator-inputs-grid">
         <div>
           <label style={{ fontSize: 12 }}>Elektrik fiyatı (kWh)</label>
           <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
@@ -112,16 +112,16 @@ export default function ElectricCostEstimator({ onClose } = {}) {
 
       <hr style={{ margin: '12px 0', borderColor: 'var(--border-color)' }} />
 
-      <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-        <div style={{ flex: '1 1 300px', minWidth: 220 }}>
+      <div className="estimator-devices-flex">
+        <div className="device-section">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <strong>Işıklar</strong>
             <button className="btn small" onClick={() => addDevice(lights, setLights, { name: 'Yeni ışık', watt: 100, quantity: 1 })}>Ekle</button>
           </div>
           <div style={{ marginTop: 8 }}>
             {lights.map((d, i) => (
-              <div key={i} style={{ display: 'flex', gap: 8, marginBottom: 8, alignItems: 'center' }}>
-                <input value={d.name} onChange={(e) => updateDevice(lights, setLights, i, { name: e.target.value })} className="input" />
+              <div key={i} className="device-row">
+                <input value={d.name} onChange={(e) => updateDevice(lights, setLights, i, { name: e.target.value })} className="input device-name" />
                 <input type="number" value={d.watt} onChange={(e) => updateDevice(lights, setLights, i, { watt: Number(e.target.value) })} className="input tiny" />
                 <input type="number" value={d.quantity} min={1} onChange={(e) => updateDevice(lights, setLights, i, { quantity: Number(e.target.value) })} className="input tiny" />
                 <button className="btn danger" onClick={() => removeDevice(lights, setLights, i)}>Sil</button>
@@ -130,15 +130,15 @@ export default function ElectricCostEstimator({ onClose } = {}) {
           </div>
         </div>
 
-        <div style={{ flex: '1 1 200px', minWidth: 200 }}>
+        <div className="device-section">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <strong>Fanlar</strong>
             <button className="btn small" onClick={() => addDevice(fans, setFans, { name: 'Yeni fan', watt: 50, quantity: 1 })}>Ekle</button>
           </div>
           <div style={{ marginTop: 8 }}>
             {fans.map((d, i) => (
-              <div key={i} style={{ display: 'flex', gap: 8, marginBottom: 8, alignItems: 'center' }}>
-                <input value={d.name} onChange={(e) => updateDevice(fans, setFans, i, { name: e.target.value })} className="input" />
+              <div key={i} className="device-row">
+                <input value={d.name} onChange={(e) => updateDevice(fans, setFans, i, { name: e.target.value })} className="input device-name" />
                 <input type="number" value={d.watt} onChange={(e) => updateDevice(fans, setFans, i, { watt: Number(e.target.value) })} className="input tiny" />
                 <input type="number" value={d.quantity} min={1} onChange={(e) => updateDevice(fans, setFans, i, { quantity: Number(e.target.value) })} className="input tiny" />
                 <button className="btn danger" onClick={() => removeDevice(fans, setFans, i)}>Sil</button>
@@ -176,21 +176,80 @@ export default function ElectricCostEstimator({ onClose } = {}) {
       )}
 
       <style>{`
+        .estimator-container {
+          width: 100%;
+          padding: 12px;
+          background: var(--bg-surface);
+          box-shadow: 0 8px 24px rgba(2,6,23,0.6);
+          border: 1px solid var(--border-color);
+          border-radius: 10px;
+          color: var(--text-primary);
+        }
+        
+        .estimator-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 8px;
+        }
+
+        .estimator-inputs-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 8px;
+        }
+
+        .estimator-devices-flex {
+          display: flex;
+          gap: 12px;
+          flex-wrap: wrap;
+        }
+
+        .device-section {
+          flex: 1 1 300px;
+          min-width: 0; /* Allow shrinking below content size */
+        }
+
+        .device-row {
+          display: flex;
+          gap: 8px;
+          margin-bottom: 8px;
+          align-items: center;
+        }
+
         .input { width: 100%; padding: 8px 10px; border-radius: 8px; background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-primary); }
-        .input.tiny { width: 72px; }
+        .input.tiny { width: 60px; flex-shrink: 0; }
+        .input.device-name { min-width: 0; flex-grow: 1; }
+
         /* Match header/controls style for consistency */
         .btn { background: rgba(255,255,255,0.05); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 8px; border-radius: 8px; cursor: pointer; }
         .btn.small { padding: 4px 8px; font-size: 0.85rem; }
-        .btn.danger { background: rgba(239,68,68,0.06); border-color: rgba(239,68,68,0.18); color: var(--text-primary); }
+        .btn.danger { background: rgba(239,68,68,0.06); border-color: rgba(239,68,68,0.18); color: var(--text-primary); flex-shrink: 0; }
 
-        @media (max-width: 720px) {
-          .input.tiny { width: 56px; }
-          .btn { padding: 6px 6px; }
-        }
-
-        /* Keep bullet list inside the panel and prevent overflow */
         .est-list { padding-left: 1rem; margin: 0.5rem 0; list-style-position: inside; }
         .est-list li { word-break: break-word; margin-left: 0.25rem; }
+
+        @media (max-width: 600px) {
+          .estimator-inputs-grid {
+            grid-template-columns: 1fr;
+          }
+          
+          .device-section {
+            flex: 1 1 100%;
+          }
+
+          .device-row {
+            gap: 6px;
+          }
+          
+          .input.tiny {
+            width: 50px;
+            padding: 8px 4px;
+            text-align: center;
+          }
+          
+          .btn { padding: 6px 6px; }
+        }
       `}</style>
     </div>
   );

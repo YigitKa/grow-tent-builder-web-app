@@ -166,11 +166,6 @@ button,
     padding: 0 0.5rem;
   }
 
-  /* Make grids single column on mobile */
-  div[style*="grid-template-columns"] {
-    grid-template-columns: 1fr !important;
-  }
-
   /* Adjust padding for mobile */
   .glass-panel {
     padding: 1rem;

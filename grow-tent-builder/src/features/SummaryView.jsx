@@ -121,9 +121,9 @@ export default function SummaryView() {
                     })}
                 </div>
 
-                <div>
-                    <div style={{ position: 'sticky', top: '100px', background: 'var(--bg-surface)', border: '1px solid var(--border-color)', borderRadius: 'var(--radius-lg)', padding: '1.5rem' }}>
-                        <h3 style={{ marginBottom: '1.5rem', fontSize: '1.25rem' }}>{t('totalEst')}</h3>
+                <div className="summary-sidebar">
+                    <div className="summary-card" style={{ maxWidth: '600px', margin: '0 auto', width: '100%', background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '1.5rem', padding: '1.5rem' }}>
+                        <h3 style={{ marginBottom: '1.5rem', fontSize: '1.25rem', textAlign: 'center' }}>{t('totalEst')}</h3>
 
                         <div style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'space-between' }}>
                             <span style={{ color: 'var(--text-secondary)' }}>{t('equipCost')}</span>
@@ -139,7 +139,7 @@ export default function SummaryView() {
                             <span style={{ color: 'var(--text-secondary)' }}>{t('estMonthly')}</span>
                             <span style={{ fontWeight: 'bold' }}>{formatPrice((totals.power * 18 * 30) / 1000 * 0.12)}</span>
                         </div>
-                        <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
+                        <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '1.5rem', textAlign: 'center' }}>
                             {t('powerNote')}
                         </div>
 
@@ -198,6 +198,37 @@ export default function SummaryView() {
                     &larr; {t('back')}
                 </button>
             </div>
+
+            <style>{`
+                .summary-sidebar {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                }
+
+                .summary-card {
+                    position: sticky;
+                    top: 100px;
+                }
+
+                @media (max-width: 768px) {
+                    .summary-grid {
+                        display: flex !important;
+                        flex-direction: column-reverse;
+                        gap: 1.5rem;
+                    }
+
+                    .summary-card {
+                        position: static;
+                        padding: 1.5rem;
+                        max-width: 100%;
+                    }
+
+                    .summary-sidebar {
+                        order: -1;
+                    }
+                }
+            `}</style>
         </div>
     );
 }
