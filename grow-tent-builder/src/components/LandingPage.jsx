@@ -139,6 +139,7 @@ const translations = {
 
 export default function LandingPage() {
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+    const [currentSlide, setCurrentSlide] = useState(0);
     // scrollY is intentionally unused in this component but kept for future effects
     const [, setScrollY] = useState(0);
     const { hasSeenOnboarding } = useOnboarding();
@@ -286,23 +287,62 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            {/* Featured Guides Section (Additional Blog Section) */}
+            {/* Featured Guides Section (Slider) */}
             <section className="featured-guides-section">
                 <div className="section-header">
                     <h2>🌟 {language === 'tr' ? 'Öne Çıkan Rehberler' : 'Featured Guides'}</h2>
                     <p>{language === 'tr' ? 'Uzmanlardan derinlemesine bilgiler' : 'In-depth knowledge from experts'}</p>
                 </div>
-                <div className="featured-grid">
-                    {blogPosts.slice(0, 2).map((post) => (
-                        <Link to={`/blog/${post.slug[language]}`} key={`featured-${post.id}`} className="featured-guide-card">
-                            <div className="guide-content">
-                                <span className="guide-tag">{post.category}</span>
-                                <h3>{post.title[language]}</h3>
-                                <p>{post.excerpt[language]}</p>
-                                <span className="read-more">{language === 'tr' ? 'Devamını Oku →' : 'Read More →'}</span>
-                            </div>
-                            <div className="guide-image" style={{ backgroundImage: `url(${post.image})` }} />
-                        </Link>
+
+                <div className="slider-container">
+                    <button
+                        className="slider-btn prev"
+                        onClick={() => setCurrentSlide(prev => (prev === 0 ? Math.ceil(blogPosts.length / 2) - 1 : prev - 1))}
+                    >
+                        ←
+                    </button>
+
+                    <div className="slider-track-container">
+                        <div
+                            className="slider-track"
+                            style={{
+                                transform: `translateX(-${currentSlide * 100}%)`
+                            }}
+                        >
+                            {/* Group posts into pairs for the slider */}
+                            {Array.from({ length: Math.ceil(blogPosts.slice(0, 4).length / 2) }).map((_, groupIndex) => (
+                                <div key={groupIndex} className="slider-slide">
+                                    {blogPosts.slice(0, 4).slice(groupIndex * 2, groupIndex * 2 + 2).map((post) => (
+                                        <Link to={`/blog/${post.slug[language]}`} key={`featured-${post.id}`} className="featured-guide-card">
+                                            <div className="guide-content">
+                                                <span className="guide-tag">{post.category}</span>
+                                                <h3>{post.title[language]}</h3>
+                                                <p>{post.excerpt[language]}</p>
+                                                <span className="read-more">{language === 'tr' ? 'Devamını Oku →' : 'Read More →'}</span>
+                                            </div>
+                                            <div className="guide-image" style={{ backgroundImage: `url(${post.image})` }} />
+                                        </Link>
+                                    ))}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <button
+                        className="slider-btn next"
+                        onClick={() => setCurrentSlide(prev => (prev === Math.ceil(blogPosts.slice(0, 4).length / 2) - 1 ? 0 : prev + 1))}
+                    >
+                        →
+                    </button>
+                </div>
+
+                <div className="slider-dots">
+                    {Array.from({ length: Math.ceil(blogPosts.slice(0, 4).length / 2) }).map((_, index) => (
+                        <button
+                            key={index}
+                            className={`slider-dot ${currentSlide === index ? 'active' : ''}`}
+                            onClick={() => setCurrentSlide(index)}
+                        />
                     ))}
                 </div>
             </section>
@@ -795,10 +835,186 @@ export default function LandingPage() {
                     color: #94a3b8;
                 }
 
+                /* Slider Styles */
+                .slider-container {
+                    position: relative;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                }
+
+                .slider-track-container {
+                    overflow: hidden;
+                    width: 100%;
+                }
+
+                .slider-track {
+                    display: flex;
+                    transition: transform 0.5s ease-in-out;
+                    width: 100%;
+                }
+
+                .slider-slide {
+                    min-width: 100%;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 2rem;
+                    padding: 0 0.5rem; /* Prevent cut-off shadows */
+                }
+
+                .slider-btn {
+                    background: rgba(255, 255, 255, 0.1);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    color: white;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 1.2rem;
+                    transition: all 0.2s;
+                    z-index: 2;
+                }
+
+                .slider-btn:hover {
+                    background: #10b981;
+                    transform: scale(1.1);
+                }
+
+                .slider-dots {
+                    display: flex;
+                    justify-content: center;
+                    gap: 0.5rem;
+                    margin-top: 2rem;
+                }
+
+                .slider-dot {
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.2);
+                    border: none;
+                    cursor: pointer;
+                    transition: all 0.3s;
+                }
+
+                .slider-dot.active {
+                    background: #10b981;
+                    transform: scale(1.2);
+                }
+
+                /* Featured Guides Section */
+                .featured-guides-section {
+                    padding: 4rem 10%;
+                    position: relative;
+                    z-index: 1;
+                    background: rgba(0, 0, 0, 0.2);
+                }
+
+                .featured-guide-card {
+                    display: flex;
+                    background: rgba(30, 41, 59, 0.6);
+                    border: 1px solid rgba(255, 255, 255, 0.05);
+                    border-radius: 1rem;
+                    overflow: hidden;
+                    text-decoration: none;
+                    transition: all 0.3s ease;
+                    height: 100%;
+                }
+
+                .featured-guide-card:hover {
+                    transform: translateY(-5px);
+                    border-color: rgba(16, 185, 129, 0.3);
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                }
+
+                .guide-content {
+                    flex: 1;
+                    padding: 2rem;
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .guide-tag {
+                    display: inline-block;
+                    padding: 0.25rem 0.75rem;
+                    background: rgba(16, 185, 129, 0.1);
+                    color: #10b981;
+                    border-radius: 999px;
+                    font-size: 0.75rem;
+                    font-weight: 600;
+                    margin-bottom: 1rem;
+                    align-self: flex-start;
+                }
+
+                .guide-content h3 {
+                    font-size: 1.5rem;
+                    color: white;
+                    margin-bottom: 1rem;
+                    line-height: 1.3;
+                }
+
+                .guide-content p {
+                    color: #94a3b8;
+                    margin-bottom: 1.5rem;
+                    flex-grow: 1;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                }
+
+                .read-more {
+                    color: #10b981;
+                    font-weight: 600;
+                    font-size: 0.9rem;
+                    transition: transform 0.2s;
+                }
+
+                .featured-guide-card:hover .read-more {
+                    transform: translateX(5px);
+                }
+
+                .guide-image {
+                    width: 40%;
+                    background-size: cover;
+                    background-position: center;
+                    min-height: 250px;
+                }
+
+                /* Mobile Responsive for Slider */
+                @media (max-width: 768px) {
+                    .slider-slide {
+                        grid-template-columns: 1fr;
+                        gap: 1rem;
+                    }
+                    
+                    .featured-guide-card {
+                        flex-direction: column-reverse;
+                    }
+                    
+                    .guide-image {
+                        width: 100%;
+                        height: 200px;
+                        min-height: auto;
+                    }
+                    
+                    .slider-btn {
+                        display: none; /* Hide arrows on mobile, use swipe or dots */
+                    }
+                    
+                    .slider-container {
+                        gap: 0;
+                    }
+                }
+
                 .cost-tool-inputs {
                     display: grid;
                     gap: 1.5rem;
-                    margin-bottom: 2rem;
                 }
 
                 .input-group {
