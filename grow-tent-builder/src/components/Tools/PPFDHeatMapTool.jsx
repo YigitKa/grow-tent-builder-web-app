@@ -3,6 +3,7 @@ import { generatePPFDMap, calculateMetrics } from '../../utils/lightingUtils';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
 import { useSettings } from '../../context/SettingsContext';
+import PPFDInfoSection from './PPFDInfoSection';
 
 // Mock Data for Lights
 const AVAILABLE_LIGHTS = [
@@ -423,6 +424,7 @@ export default function PPFDHeatMapTool() {
                         </div>
                     </div>
                 </div>
+                <PPFDInfoSection language={language} />
             </div>
             <Footer />
 
