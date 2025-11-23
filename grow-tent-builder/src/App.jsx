@@ -11,6 +11,7 @@ import ToolsPage from './components/Tools/ToolsPage';
 import CostCalculator from './components/Tools/CostCalculator';
 import UnitConverter from './components/Tools/UnitConverter';
 import CO2Calculator from './components/Tools/CO2Calculator';
+import PPFDHeatMapTool from './components/Tools/PPFDHeatMapTool';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
               <Route path="/tools/electricity-cost-calculator" element={<CostCalculator />} />
               <Route path="/tools/unit-converter" element={<UnitConverter />} />
               <Route path="/tools/co2-calculator" element={<CO2Calculator />} />
+              <Route path="/tools/ppfd-heatmap" element={<PPFDHeatMapTool />} />
             </Routes>
           </BrowserRouter>
         </BuilderProvider>

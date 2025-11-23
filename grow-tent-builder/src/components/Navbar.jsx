@@ -16,7 +16,8 @@ const Navbar = () => {
             blog: "📝 Blog",
             costCalc: "Electricity Cost Calculator",
             co2Calc: "CO₂ Calculator",
-            unitConv: "Volume Converter"
+            unitConv: "Volume Converter",
+            ppfdTool: "PPFD Heat Map"
         },
         tr: {
             home: "🏠 Ana Sayfa",
@@ -25,7 +26,8 @@ const Navbar = () => {
             blog: "📝 Blog",
             costCalc: "Elektrik Maliyeti Hesaplayıcı",
             co2Calc: "CO₂ Hesaplayıcı",
-            unitConv: "Hacim Çevirici"
+            unitConv: "Hacim Çevirici",
+            ppfdTool: "PPFD Isı Haritası"
         }
     }[language];
 
@@ -239,6 +241,7 @@ const Navbar = () => {
                                     <Link to="/tools/electricity-cost-calculator" className="dropdown-item">{t.costCalc}</Link>
                                     <Link to="/tools/co2-calculator" className="dropdown-item">{t.co2Calc}</Link>
                                     <Link to="/tools/unit-converter" className="dropdown-item">{t.unitConv}</Link>
+                                    <Link to="/tools/ppfd-heatmap" className="dropdown-item">{t.ppfdTool}</Link>
                                 </div>
                             )}
                         </div>
@@ -309,6 +312,13 @@ const Navbar = () => {
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                     {t.unitConv}
+                                </Link>
+                                <Link
+                                    to="/tools/ppfd-heatmap"
+                                    className="mobile-link"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                    {t.ppfdTool}
                                 </Link>
                             </div>
                         </div>

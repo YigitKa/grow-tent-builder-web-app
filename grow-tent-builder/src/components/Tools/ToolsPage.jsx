@@ -35,6 +35,14 @@ const ToolsPage = () => {
                     desc: 'Calculate CO2 requirements',
                     path: '/tools/co2-calculator',
                     color: 'from-gray-400 to-gray-600'
+                },
+                {
+                    id: 'ppfd',
+                    icon: '🌡️',
+                    title: 'PPFD Heat Map',
+                    desc: 'Visualize light intensity distribution',
+                    path: '/tools/ppfd-heatmap',
+                    color: 'from-red-400 to-red-600'
                 }
             ]
         },
@@ -65,6 +73,14 @@ const ToolsPage = () => {
                     desc: 'CO2 gereksinimlerini hesaplayın',
                     path: '/tools/co2-calculator',
                     color: 'from-gray-400 to-gray-600'
+                },
+                {
+                    id: 'ppfd',
+                    icon: '🌡️',
+                    title: 'PPFD Isı Haritası',
+                    desc: 'Işık yoğunluğu dağılımını görselleştirin',
+                    path: '/tools/ppfd-heatmap',
+                    color: 'from-red-400 to-red-600'
                 }
             ]
         }
