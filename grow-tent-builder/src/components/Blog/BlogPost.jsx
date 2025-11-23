@@ -217,28 +217,48 @@ const BlogPost = () => {
     return { processedContent: contentWithIds, headings: headingsList };
   }, [post, language]);
 
-  // ScrollSpy Logic
+  // ScrollSpy Logic using Scroll Event (More robust for "active section" tracking)
   useEffect(() => {
     if (!headings.length) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 200; // Offset for navbar + breathing room
+
+      // Find the last heading that is above the current scroll position
+      let currentId = '';
+
+      for (const heading of headings) {
+        const element = document.getElementById(heading.id);
+        if (element) {
+          const { offsetTop } = element;
+          if (scrollPosition >= offsetTop) {
+            currentId = heading.id;
+          } else {
+            // Since headings are ordered, once we find one below us, we can stop
+            break;
           }
-        });
-      },
-      { rootMargin: '-100px 0px -60% 0px' } // Adjust these values to trigger earlier/later
-    );
+        }
+      }
 
-    headings.forEach(({ id }) => {
-      const element = document.getElementById(id);
-      if (element) observer.observe(element);
-    });
+      if (currentId && currentId !== activeId) {
+        setActiveId(currentId);
+      } else if (!currentId && headings.length > 0) {
+        // If we are at the top, active the first one or none?
+        // Usually first one if we are close to it, or none if very top.
+        // Let's default to the first one if we are past the hero but before the first header
+        const firstHeader = document.getElementById(headings[0].id);
+        if (firstHeader && window.scrollY > 400) { // Arbitrary hero height check
+          setActiveId(headings[0].id);
+        }
+      }
+    };
 
-    return () => observer.disconnect();
-  }, [headings]);
+    window.addEventListener('scroll', handleScroll);
+    // Trigger once on mount to set initial state
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [headings, activeId]);
 
   if (!post) {
     return (
