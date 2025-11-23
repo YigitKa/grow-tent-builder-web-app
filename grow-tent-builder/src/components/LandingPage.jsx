@@ -1025,13 +1025,7 @@ export default function LandingPage() {
                         height: 200px;
                     }
                 }
-                    text-align: center;
-                    margin-top: 1.5rem;
-                    font-size: 1.5rem;
-                    font-weight: 700;
-                    color: #10b981;
-                    min-height: 2rem;
-                }
+
 
                 /* FAQ Section */
                 .faq-section {
@@ -1314,6 +1308,31 @@ export default function LandingPage() {
                 .view-all-btn:hover {
                     background: #10b981;
                     color: white;
+                }
+
+                /* Additional Mobile Fixes */
+                @media (max-width: 768px) {
+                    .tools-preview-section,
+                    .features-section,
+                    .info-boxes-section,
+                    .featured-guides-section,
+                    .faq-section,
+                    .blog-preview-section {
+                        padding: 3rem 1.5rem;
+                    }
+
+                    .tools-grid,
+                    .blog-preview-grid,
+                    .featured-grid {
+                        grid-template-columns: 1fr;
+                        gap: 1.5rem;
+                    }
+
+                    .section-header h2,
+                    .blog-preview-header h2,
+                    .faq-header h2 {
+                        font-size: 1.75rem;
+                    }
                 }
             `}</style>
         </div >
