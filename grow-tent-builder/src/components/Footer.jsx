@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSettings } from '../context/SettingsContext';
 
 const Footer = () => {
-  const { language, setLanguage } = useSettings();
+  const { language, setLanguage, getBuilderUrl } = useSettings();
 
   return (
     <footer className="landing-footer">
@@ -15,7 +15,7 @@ const Footer = () => {
 
         <div className="footer-links">
           <Link to="/">Home</Link>
-          <Link to="/builder">Builder</Link>
+          <Link to={getBuilderUrl()}>Builder</Link>
           <Link to="/tools">Tools</Link>
           <Link to="/blog">Blog</Link>
         </div>

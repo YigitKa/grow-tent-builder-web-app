@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useOnboarding } from '../context/OnboardingContext';
+import { useSettings } from '../context/SettingsContext';
 
 export default function Onboarding() {
     const [currentStep, setCurrentStep] = useState(1);
     const [showTooltip, setShowTooltip] = useState(false);
     const { onboardingData, updateOnboarding, completeOnboarding } = useOnboarding();
+    const { getBuilderUrl } = useSettings();
     const navigate = useNavigate();
 
     const steps = [
@@ -98,7 +100,7 @@ export default function Onboarding() {
             setCurrentStep(currentStep + 1);
         } else {
             completeOnboarding();
-            navigate('/builder');
+            navigate(getBuilderUrl());
         }
     };
 
@@ -114,7 +116,7 @@ export default function Onboarding() {
 
     const handleSkip = () => {
         completeOnboarding();
-        navigate('/builder');
+        navigate(getBuilderUrl());
     };
 
     const handleBack = () => {

@@ -10,7 +10,8 @@ const BASE_URL = 'https://growizard.app';
 
 const staticRoutes = [
     '/',
-    '/builder/',
+    '/grow-tent-setup-builder/',
+    '/buyume-cadiri-kurulum-olusturucu/',
     '/tools/',
     '/tools/cost-calculator/',
     '/tools/unit-converter/',

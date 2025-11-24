@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useSettings } from '../context/SettingsContext';
 
 const Navbar = () => {
-    const { language, setLanguage } = useSettings();
+    const { language, setLanguage, getBuilderUrl } = useSettings();
     const location = useLocation();
     const [isToolsOpen, setIsToolsOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -262,7 +262,7 @@ const Navbar = () => {
                             {language === 'en' ? 'TR' : 'EN'}
                         </button>
                         <Link
-                            to="/builder"
+                            to={getBuilderUrl()}
                             className="cta-button"
                         >
                             {t.builder}
@@ -342,7 +342,7 @@ const Navbar = () => {
                                 {language === 'en' ? 'Switch to TR' : 'Switch to EN'}
                             </button>
                             <Link
-                                to="/builder"
+                                to={getBuilderUrl()}
                                 className="cta-button"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >

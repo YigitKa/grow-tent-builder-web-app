@@ -145,7 +145,7 @@ export default function LandingPage() {
     // scrollY is intentionally unused in this component but kept for future effects
     const [, setScrollY] = useState(0);
     const { hasSeenOnboarding } = useOnboarding();
-    const { language } = useSettings();
+    const { language, getBuilderUrl } = useSettings();
     const navigate = useNavigate();
 
     const t = translations[language];
@@ -170,7 +170,7 @@ export default function LandingPage() {
     }, []);
 
     const handleStartBuilding = () => {
-        navigate('/builder');
+        navigate(getBuilderUrl());
     };
 
     const scrollToTop = () => {

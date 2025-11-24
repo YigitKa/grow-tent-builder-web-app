@@ -31,6 +31,8 @@ function App() {
               <Route path="/" element={<LandingPage />} />
               <Route path="/onboarding" element={<Onboarding />} />
               <Route path="/builder" element={<BuilderApp />} />
+              <Route path="/grow-tent-setup-builder" element={<BuilderApp />} />
+              <Route path="/buyume-cadiri-kurulum-olusturucu" element={<BuilderApp />} />
               <Route path="/blog" element={<BlogList />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/tools" element={<ToolsPage />} />

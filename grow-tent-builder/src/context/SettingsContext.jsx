@@ -110,6 +110,10 @@ export function SettingsProvider({ children }) {
         }
     };
 
+    const getBuilderUrl = () => {
+        return language === 'tr' ? '/buyume-cadiri-kurulum-olusturucu' : '/grow-tent-setup-builder';
+    };
+
     return (
         <SettingsContext.Provider value={{
             language, setLanguage,
@@ -118,7 +122,8 @@ export function SettingsProvider({ children }) {
             t,
             formatPrice,
             formatUnit,
-            getUnitLabel
+            getUnitLabel,
+            getBuilderUrl
         }}>
             {children}
         </SettingsContext.Provider>
