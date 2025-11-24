@@ -10,13 +10,13 @@ const BASE_URL = 'https://growwizard.app';
 
 const staticRoutes = [
     '/',
-    '/builder',
-    '/tools',
-    '/tools/cost-calculator',
-    '/tools/unit-converter',
-    '/tools/co2-calculator',
-    '/blog',
-    '/faq'
+    '/builder/',
+    '/tools/',
+    '/tools/cost-calculator/',
+    '/tools/unit-converter/',
+    '/tools/co2-calculator/',
+    '/blog/',
+    '/faq/'
 ];
 
 const generateSitemap = () => {
@@ -24,8 +24,8 @@ const generateSitemap = () => {
 
     // Add blog posts for both languages
     blogPosts.forEach(post => {
-        routes.push(`/blog/${post.slug.en}`);
-        routes.push(`/blog/${post.slug.tr}`);
+        routes.push(`/blog/${post.slug.en}/`);
+        routes.push(`/blog/${post.slug.tr}/`);
     });
 
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
