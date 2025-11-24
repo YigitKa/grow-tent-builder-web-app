@@ -15,6 +15,8 @@ import PPFDHeatMapTool from './components/Tools/PPFDHeatMapTool';
 
 import { Helmet } from 'react-helmet-async';
 
+import NotFound from './components/NotFound';
+
 function App() {
   return (
     <SettingsProvider>
@@ -36,6 +38,7 @@ function App() {
               <Route path="/tools/unit-converter" element={<UnitConverter />} />
               <Route path="/tools/co2-calculator" element={<CO2Calculator />} />
               <Route path="/tools/ppfd-heatmap" element={<PPFDHeatMapTool />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
         </BuilderProvider>

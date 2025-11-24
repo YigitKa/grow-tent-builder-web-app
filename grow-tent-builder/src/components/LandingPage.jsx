@@ -187,8 +187,10 @@ export default function LandingPage() {
                 <div className="grid-overlay" />
             </div>
 
+            <Navbar />
+
             {/* Hero Section */}
-            < section className="hero-section" >
+            <section className="hero-section">
                 <div className="hero-content fade-in-up">
                     <div className="badge">🌱 Professional Grow Planner</div>
                     <h1 className="hero-title">
