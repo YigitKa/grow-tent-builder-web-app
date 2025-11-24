@@ -141,6 +141,7 @@ const translations = {
 export default function LandingPage() {
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [showScrollTop, setShowScrollTop] = useState(false);
     // scrollY is intentionally unused in this component but kept for future effects
     const [, setScrollY] = useState(0);
     const { hasSeenOnboarding } = useOnboarding();
@@ -156,6 +157,7 @@ export default function LandingPage() {
 
         const handleScroll = () => {
             setScrollY(window.scrollY);
+            setShowScrollTop(window.scrollY > 300);
         };
 
         window.addEventListener('mousemove', handleMouseMove);
@@ -169,6 +171,13 @@ export default function LandingPage() {
 
     const handleStartBuilding = () => {
         navigate('/builder');
+    };
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     };
 
     return (
@@ -215,10 +224,10 @@ export default function LandingPage() {
                         <div className="light-beam" />
                     </div>
                 </div>
-            </section >
+            </section>
 
             {/* Tools Preview Section */}
-            < section className="tools-preview-section" >
+            <section className="tools-preview-section">
                 <div className="section-header">
                     <h2>🛠️ {language === 'tr' ? 'Yetiştirme Araçları' : 'Grow Tools'}</h2>
                     <p>{language === 'tr' ? 'Başarılı bir hasat için ihtiyacınız olan her şey' : 'Everything you need for a successful harvest'}</p>
@@ -245,10 +254,10 @@ export default function LandingPage() {
                         {language === 'tr' ? 'Tüm Araçları Gör' : 'View All Tools'}
                     </Link>
                 </div>
-            </section >
+            </section>
 
             {/* Features Section */}
-            < section className="features-section" >
+            <section className="features-section">
                 <div className="feature-card slide-in" style={{ transitionDelay: '0.1s' }}>
                     <div className="feature-icon">💡</div>
                     <h3>{t.features.ppfd.title}</h3>
@@ -259,10 +268,10 @@ export default function LandingPage() {
                     <h3>{t.features.environment.title}</h3>
                     <p>{t.features.environment.description}</p>
                 </div>
-            </section >
+            </section>
 
             {/* Info Boxes Section */}
-            < section className="info-boxes-section" >
+            <section className="info-boxes-section">
                 <div className="info-boxes-header">
                     <h2>⚠️ {t.infoBoxes.title}</h2>
                     <p>{t.infoBoxes.subtitle}</p>
@@ -282,10 +291,10 @@ export default function LandingPage() {
                         </div>
                     ))}
                 </div>
-            </section >
+            </section>
 
             {/* Featured Guides Section (Slider) */}
-            < section className="featured-guides-section" >
+            <section className="featured-guides-section">
                 <div className="section-header">
                     <h2>🌟 {language === 'tr' ? 'Öne Çıkan Rehberler' : 'Featured Guides'}</h2>
                     <p>{language === 'tr' ? 'Uzmanlardan derinlemesine bilgiler' : 'In-depth knowledge from experts'}</p>
@@ -342,10 +351,10 @@ export default function LandingPage() {
                         />
                     ))}
                 </div>
-            </section >
+            </section>
 
             {/* Cost Calculator Tool */}
-            < section className="cost-tool-section" >
+            <section className="cost-tool-section">
                 <div className="cost-tool-container">
                     <div className="cost-tool-header">
                         <h2>⚡ {t.costTool.title}</h2>
@@ -394,42 +403,30 @@ export default function LandingPage() {
                     >
                         {t.costTool.calculate}
                     </button>
-                    <div id="cost-result" className="cost-result"></div>
+                    <div className="cost-result" id="cost-result">
+                        {t.costTool.result}: {language === 'tr' ? '₺' : '$'}0.00
+                    </div>
                 </div>
-            </section >
+            </section>
 
             {/* FAQ Section */}
-            < section className="faq-section" >
-                <div className="faq-header">
+            <section className="faq-section">
+                <div className="section-header">
                     <h2>❓ {t.faq.title}</h2>
                     <p>{t.faq.subtitle}</p>
                 </div>
-                <div className="faq-container">
+                <div className="faq-grid">
                     {t.faq.items.map((item, index) => (
-                        <div
-                            key={index}
-                            className="faq-item"
-                            onClick={(e) => {
-                                const answer = e.currentTarget.querySelector('.faq-answer');
-                                const icon = e.currentTarget.querySelector('.faq-icon');
-                                answer.classList.toggle('open');
-                                icon.textContent = answer.classList.contains('open') ? '−' : '+';
-                            }}
-                        >
-                            <div className="faq-question">
-                                <span>{item.q}</span>
-                                <span className="faq-icon">+</span>
-                            </div>
-                            <div className="faq-answer">
-                                {item.a}
-                            </div>
+                        <div key={index} className="faq-item">
+                            <h3>{item.q}</h3>
+                            <p>{item.a}</p>
                         </div>
                     ))}
                 </div>
-            </section >
+            </section>
 
             {/* Blog Preview Section */}
-            < section className="blog-preview-section" >
+            <section className="blog-preview-section">
                 <div className="blog-preview-header">
                     <h2>📚 {language === 'tr' ? 'En Son Makaleler' : 'Latest Articles'}</h2>
                     <p>{language === 'tr' ? 'Modern yetiştiricilik tekniklerini keşfedin' : 'Discover modern growing techniques'}</p>
@@ -454,9 +451,18 @@ export default function LandingPage() {
                         {language === 'tr' ? 'Tüm Yazıları Gör' : 'View All Articles'}
                     </Link>
                 </div>
-            </section >
+            </section>
 
             <Footer />
+
+            {/* Scroll to Top Button */}
+            <button
+                className={`scroll-to-top ${showScrollTop ? 'visible' : ''}`}
+                onClick={scrollToTop}
+                aria-label="Scroll to top"
+            >
+                ↑
+            </button>
 
             <style>{`
                 .landing-container {
@@ -614,87 +620,160 @@ export default function LandingPage() {
                 }
 
                 .cta-button {
-                    background: #10b981;
-                    color: white;
-                    border: none;
                     padding: 1rem 2rem;
                     font-size: 1.125rem;
                     font-weight: 600;
+                    color: #000;
+                    background: #10b981;
+                    border: none;
                     border-radius: 0.5rem;
                     cursor: pointer;
-                    display: flex;
+                    transition: all 0.2s ease;
+                    display: inline-flex;
                     align-items: center;
-                    gap: 0.75rem;
-                    transition: all 0.3s ease;
-                    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+                    gap: 0.5rem;
                 }
 
                 .cta-button:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
                     background: #059669;
-                }
-
-                .arrow {
-                    transition: transform 0.3s ease;
-                }
-
-                .cta-button:hover .arrow {
-                    transform: translateX(4px);
+                    transform: translateY(-2px);
                 }
 
                 .hero-visual {
-                    width: 400px;
-                    height: 400px;
-                    background: rgba(255, 255, 255, 0.03);
-                    border-radius: 2rem;
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    backdrop-filter: blur(10px);
+                    position: relative;
+                    width: 500px;
+                    height: 500px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    position: relative;
-                    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
                 }
 
                 .tent-frame {
-                    font-size: 8rem;
+                    width: 300px;
+                    height: 400px;
+                    border: 4px solid rgba(16, 185, 129, 0.3);
                     position: relative;
+                    transform-style: preserve-3d;
+                    animation: float 6s ease-in-out infinite;
+                }
+
+                .plant-icon {
+                    font-size: 5rem;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    filter: drop-shadow(0 0 20px rgba(16, 185, 129, 0.5));
                 }
 
                 .light-beam {
                     position: absolute;
-                    top: -20px;
+                    top: 0;
                     left: 50%;
                     transform: translateX(-50%);
-                    width: 100px;
-                    height: 200px;
-                    background: linear-gradient(to bottom, rgba(255, 255, 0, 0.2), transparent);
+                    width: 200px;
+                    height: 300px;
+                    background: linear-gradient(to bottom, rgba(16, 185, 129, 0.2), transparent);
                     clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
-                    filter: blur(5px);
+                }
+
+                .tools-preview-section, .features-section, .info-boxes-section, .featured-guides-section, .cost-tool-section, .faq-section, .blog-preview-section {
+                    padding: 5rem 10%;
+                    position: relative;
+                    z-index: 1;
+                }
+
+                .section-header {
+                    text-align: center;
+                    margin-bottom: 3rem;
+                }
+
+                .section-header h2 {
+                    font-size: 2.5rem;
+                    margin-bottom: 1rem;
+                    color: #f8fafc;
+                }
+
+                .section-header p {
+                    color: #94a3b8;
+                    font-size: 1.1rem;
+                }
+
+                .tools-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    gap: 2rem;
+                    margin-bottom: 3rem;
+                }
+
+                .tool-preview-card {
+                    background: rgba(255, 255, 255, 0.03);
+                    border: 1px solid rgba(255, 255, 255, 0.05);
+                    border-radius: 1rem;
+                    padding: 2rem;
+                    text-align: center;
+                    transition: all 0.3s ease;
+                    text-decoration: none;
+                    color: inherit;
+                }
+
+                .tool-preview-card:hover {
+                    transform: translateY(-5px);
+                    background: rgba(255, 255, 255, 0.05);
+                    border-color: rgba(16, 185, 129, 0.3);
+                }
+
+                .tool-icon {
+                    font-size: 3rem;
+                    margin-bottom: 1rem;
+                }
+
+                .tool-preview-card h3 {
+                    font-size: 1.25rem;
+                    margin-bottom: 0.5rem;
+                    color: #f8fafc;
+                }
+
+                .tool-preview-card p {
+                    color: #94a3b8;
+                    font-size: 0.9rem;
+                }
+
+                .center-btn {
+                    text-align: center;
+                }
+
+                .secondary-btn {
+                    display: inline-block;
+                    padding: 0.75rem 1.5rem;
+                    background: rgba(255, 255, 255, 0.1);
+                    color: white;
+                    text-decoration: none;
+                    border-radius: 0.5rem;
+                    font-weight: 600;
+                    transition: all 0.2s ease;
+                }
+
+                .secondary-btn:hover {
+                    background: rgba(255, 255, 255, 0.2);
                 }
 
                 .features-section {
                     display: grid;
                     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
                     gap: 2rem;
-                    padding: 4rem 10%;
-                    position: relative;
-                    z-index: 1;
-                    background: rgba(0, 0, 0, 0.3);
                 }
 
                 .feature-card {
                     background: rgba(255, 255, 255, 0.03);
                     border: 1px solid rgba(255, 255, 255, 0.05);
-                    padding: 2rem;
                     border-radius: 1rem;
+                    padding: 2rem;
                     transition: all 0.3s ease;
                 }
 
                 .feature-card:hover {
                     transform: translateY(-5px);
-                    background: rgba(255, 255, 255, 0.05);
                     border-color: rgba(16, 185, 129, 0.3);
                 }
 
@@ -705,21 +784,13 @@ export default function LandingPage() {
 
                 .feature-card h3 {
                     font-size: 1.5rem;
-                    margin-bottom: 0.5rem;
-                    color: white;
+                    margin-bottom: 1rem;
+                    color: #f8fafc;
                 }
 
                 .feature-card p {
                     color: #94a3b8;
-                    line-height: 1.5;
-                }
-
-                /* Info Boxes Section */
-                .info-boxes-section {
-                    padding: 4rem 10%;
-                    position: relative;
-                    z-index: 1;
-                    background: linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, rgba(245, 158, 11, 0.05) 100%);
+                    line-height: 1.6;
                 }
 
                 .info-boxes-header {
@@ -729,128 +800,80 @@ export default function LandingPage() {
 
                 .info-boxes-header h2 {
                     font-size: 2.5rem;
-                    margin-bottom: 0.5rem;
-                    color: white;
+                    margin-bottom: 1rem;
+                    color: #f8fafc;
                 }
 
                 .info-boxes-header p {
                     color: #94a3b8;
-                    font-size: 1.125rem;
+                    font-size: 1.1rem;
                 }
 
                 .info-boxes-container {
                     display: grid;
                     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
                     gap: 2rem;
-                    max-width: 1200px;
-                    margin: 0 auto;
                 }
 
                 .info-box {
-                    background: rgba(255, 255, 255, 0.03);
-                    border: 2px solid rgba(245, 158, 11, 0.2);
+                    background: rgba(16, 185, 129, 0.05);
+                    border: 1px solid rgba(16, 185, 129, 0.1);
                     border-radius: 1rem;
                     padding: 2rem;
                     display: flex;
-                    gap: 1.5rem;
                     align-items: flex-start;
+                    gap: 1.5rem;
                     transition: all 0.3s ease;
+                    animation: fadeIn 0.5s ease-out forwards;
                     opacity: 0;
-                    animation: slideInUp 0.6s ease-out forwards;
-                }
-
-                @keyframes slideInUp {
-                    from {
-                        opacity: 0;
-                        transform: translateY(30px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
                 }
 
                 .info-box:hover {
                     transform: translateY(-5px);
-                    background: rgba(255, 255, 255, 0.05);
-                    border-color: rgba(245, 158, 11, 0.5);
-                    box-shadow: 0 10px 30px rgba(245, 158, 11, 0.2);
+                    background: rgba(16, 185, 129, 0.1);
+                    border-color: rgba(16, 185, 129, 0.3);
+                    box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.2);
                 }
 
                 .info-box-icon {
-                    font-size: 3rem;
+                    font-size: 2.5rem;
+                    background: rgba(16, 185, 129, 0.1);
+                    width: 60px;
+                    height: 60px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 12px;
                     flex-shrink: 0;
-                    filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.3));
-                }
-
-                .info-box-content {
-                    flex: 1;
                 }
 
                 .info-box-content h3 {
                     font-size: 1.25rem;
-                    margin-bottom: 0.75rem;
-                    color: #fbbf24;
-                    font-weight: 700;
+                    margin-bottom: 0.5rem;
+                    color: #10b981;
                 }
 
                 .info-box-content p {
                     color: #cbd5e1;
-                    line-height: 1.6;
                     font-size: 0.95rem;
+                    line-height: 1.5;
                 }
 
-                /* Cost Calculator Tool */
-                .cost-tool-section {
-                    padding: 4rem 10%;
-                    position: relative;
-                    z-index: 1;
-                    background: rgba(16, 185, 129, 0.05);
-                }
-
-                .cost-tool-container {
-                    max-width: 600px;
-                    margin: 0 auto;
-                    background: rgba(255, 255, 255, 0.03);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    border-radius: 1.5rem;
-                    padding: 3rem;
-                }
-
-                .cost-tool-header {
-                    text-align: center;
-                    margin-bottom: 2rem;
-                }
-
-                .cost-tool-header h2 {
-                    font-size: 2rem;
-                    margin-bottom: 0.5rem;
-                    color: white;
-                }
-
-                .cost-tool-header p {
-                    color: #94a3b8;
-                }
-
-                /* Slider Styles */
                 .slider-container {
                     position: relative;
                     max-width: 1200px;
                     margin: 0 auto;
-                    display: flex;
-                    align-items: center;
-                    gap: 1rem;
+                    overflow: hidden;
                 }
 
                 .slider-track-container {
                     overflow: hidden;
-                    width: 100%;
+                    margin: 0 3rem;
                 }
 
                 .slider-track {
                     display: flex;
                     transition: transform 0.5s ease-in-out;
-                    width: 100%;
                 }
 
                 .slider-slide {
@@ -858,80 +881,36 @@ export default function LandingPage() {
                     display: grid;
                     grid-template-columns: 1fr 1fr;
                     gap: 2rem;
-                    padding: 0 0.5rem; /* Prevent cut-off shadows */
-                }
-
-                .slider-btn {
-                    background: rgba(255, 255, 255, 0.1);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    color: white;
-                    width: 40px;
-                    height: 40px;
-                    border-radius: 50%;
-                    cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 1.2rem;
-                    transition: all 0.2s;
-                    z-index: 2;
-                }
-
-                .slider-btn:hover {
-                    background: #10b981;
-                    transform: scale(1.1);
-                }
-
-                .slider-dots {
-                    display: flex;
-                    justify-content: center;
-                    gap: 0.5rem;
-                    margin-top: 2rem;
-                }
-
-                .slider-dot {
-                    width: 10px;
-                    height: 10px;
-                    border-radius: 50%;
-                    background: rgba(255, 255, 255, 0.2);
-                    border: none;
-                    cursor: pointer;
-                    transition: all 0.3s;
-                }
-
-                .slider-dot.active {
-                    background: #10b981;
-                    transform: scale(1.2);
-                }
-
-                /* Featured Guides Section */
-                .featured-guides-section {
-                    padding: 4rem 10%;
-                    position: relative;
-                    z-index: 1;
-                    background: rgba(0, 0, 0, 0.2);
+                    padding: 0 1rem;
                 }
 
                 .featured-guide-card {
-                    display: flex;
-                    background: rgba(30, 41, 59, 0.6);
+                    background: rgba(255, 255, 255, 0.03);
                     border: 1px solid rgba(255, 255, 255, 0.05);
                     border-radius: 1rem;
                     overflow: hidden;
                     text-decoration: none;
-                    transition: all 0.3s ease;
+                    color: inherit;
+                    display: flex;
+                    flex-direction: column;
                     height: 100%;
+                    transition: all 0.3s ease;
                 }
 
                 .featured-guide-card:hover {
                     transform: translateY(-5px);
                     border-color: rgba(16, 185, 129, 0.3);
-                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                }
+
+                .guide-image {
+                    height: 200px;
+                    background-size: cover;
+                    background-position: center;
                 }
 
                 .guide-content {
+                    padding: 1.5rem;
                     flex: 1;
-                    padding: 2rem;
                     display: flex;
                     flex-direction: column;
                 }
@@ -949,387 +928,169 @@ export default function LandingPage() {
                 }
 
                 .guide-content h3 {
-                    font-size: 1.5rem;
-                    color: white;
-                    margin-bottom: 1rem;
-                    line-height: 1.3;
+                    font-size: 1.25rem;
+                    margin-bottom: 0.5rem;
+                    color: #f8fafc;
                 }
 
                 .guide-content p {
                     color: #94a3b8;
+                    font-size: 0.9rem;
                     margin-bottom: 1.5rem;
-                    flex-grow: 1;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 3;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
+                    flex: 1;
                 }
 
                 .read-more {
                     color: #10b981;
                     font-weight: 600;
                     font-size: 0.9rem;
-                    transition: transform 0.2s;
                 }
 
-                .featured-guide-card:hover .read-more {
-                    transform: translateX(5px);
+                .slider-btn {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background: rgba(16, 185, 129, 0.1);
+                    border: 1px solid rgba(16, 185, 129, 0.2);
+                    color: #10b981;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 1.25rem;
+                    transition: all 0.2s ease;
+                    z-index: 2;
                 }
 
-                .guide-image {
-                    width: 40%;
-                    background-size: cover;
-                    background-position: center;
-                    min-height: 250px;
+                .slider-btn:hover {
+                    background: rgba(16, 185, 129, 0.2);
+                    transform: translateY(-50%) scale(1.1);
                 }
 
-                /* Mobile Responsive for Slider */
-                @media (max-width: 768px) {
-                    .slider-slide {
-                        grid-template-columns: 1fr;
-                        gap: 1rem;
-                    }
-                    
-                    .featured-guide-card {
-                        flex-direction: column-reverse;
-                    }
-                    
-                    .guide-image {
-                        width: 100%;
-                        height: 200px;
-                        min-height: auto;
-                    }
-                    
-                    .slider-btn {
-                        display: none; /* Hide arrows on mobile, use swipe or dots */
-                    }
-                    
-                    .slider-container {
-                        gap: 0;
-                    }
+                .slider-btn.prev { left: 0; }
+                .slider-btn.next { right: 0; }
+
+                .slider-dots {
+                    display: flex;
+                    justify-content: center;
+                    gap: 0.5rem;
+                    margin-top: 2rem;
+                }
+
+                .slider-dot {
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.1);
+                    border: none;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                }
+
+                .slider-dot.active {
+                    background: #10b981;
+                    transform: scale(1.2);
+                }
+
+                .cost-tool-container {
+                    background: rgba(16, 185, 129, 0.05);
+                    border: 1px solid rgba(16, 185, 129, 0.1);
+                    border-radius: 1.5rem;
+                    padding: 3rem;
+                    max-width: 800px;
+                    margin: 0 auto;
+                    text-align: center;
+                }
+
+                .cost-tool-header h2 {
+                    font-size: 2rem;
+                    margin-bottom: 0.5rem;
+                    color: #f8fafc;
+                }
+
+                .cost-tool-header p {
+                    color: #94a3b8;
+                    margin-bottom: 2rem;
                 }
 
                 .cost-tool-inputs {
                     display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
                     gap: 1.5rem;
+                    margin-bottom: 2rem;
                 }
 
                 .input-group {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 0.5rem;
+                    text-align: left;
                 }
 
                 .input-group label {
+                    display: block;
+                    margin-bottom: 0.5rem;
                     color: #94a3b8;
-                    font-size: 0.875rem;
-                    font-weight: 600;
+                    font-size: 0.9rem;
                 }
 
                 .input-group input {
-                    background: rgba(255, 255, 255, 0.05);
+                    width: 100%;
+                    background: rgba(0, 0, 0, 0.2);
                     border: 1px solid rgba(255, 255, 255, 0.1);
-                    color: white;
-                    padding: 0.75rem 1rem;
                     border-radius: 0.5rem;
+                    padding: 0.75rem;
+                    color: white;
                     font-size: 1rem;
-                    transition: all 0.2s ease;
-                }
-
-                .input-group input:focus {
-                    outline: none;
-                    border-color: #10b981;
-                    background: rgba(255, 255, 255, 0.08);
                 }
 
                 .calc-button {
-                    width: 100%;
                     background: #10b981;
-                    color: white;
+                    color: black;
                     border: none;
-                    padding: 1rem;
+                    padding: 1rem 3rem;
                     border-radius: 0.5rem;
-                    font-size: 1rem;
                     font-weight: 600;
+                    font-size: 1.1rem;
                     cursor: pointer;
-                    transition: all 0.3s ease;
+                    transition: all 0.2s ease;
+                    margin-bottom: 1.5rem;
                 }
 
                 .calc-button:hover {
                     background: #059669;
                     transform: translateY(-2px);
-                    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
                 }
 
                 .cost-result {
-                    margin-top: 1.5rem;
-                    font-size: 1.25rem;
+                    font-size: 1.5rem;
                     font-weight: 700;
-                    color: #fbbf24;
-                    text-align: center;
-                    min-height: 1.5em;
+                    color: #10b981;
                 }
 
-                /* Tools Preview Section */
-                .tools-preview-section {
-                    padding: 4rem 10%;
-                    background: rgba(0, 0, 0, 0.2);
-                    position: relative;
-                    z-index: 1;
-                }
-
-                .section-header {
-                    text-align: center;
-                    margin-bottom: 3rem;
-                }
-
-                .section-header h2 {
-                    font-size: 2.5rem;
-                    margin-bottom: 0.5rem;
-                    color: white;
-                }
-
-                .section-header p {
-                    color: #94a3b8;
-                    font-size: 1.125rem;
-                }
-
-                .tools-grid {
+                .faq-grid {
                     display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
                     gap: 2rem;
-                    margin-bottom: 2rem;
-                }
-
-                .tool-preview-card {
-                    background: rgba(255, 255, 255, 0.03);
-                    border: 1px solid rgba(255, 255, 255, 0.05);
-                    padding: 2rem;
-                    border-radius: 1rem;
-                    text-align: center;
-                    text-decoration: none;
-                    transition: all 0.3s ease;
-                }
-
-                .tool-preview-card:hover {
-                    transform: translateY(-5px);
-                    background: rgba(255, 255, 255, 0.05);
-                    border-color: rgba(16, 185, 129, 0.3);
-                }
-
-                .tool-preview-card .tool-icon {
-                    font-size: 2.5rem;
-                    margin-bottom: 1rem;
-                }
-
-                .tool-preview-card h3 {
-                    color: white;
-                    font-size: 1.25rem;
-                    margin-bottom: 0.5rem;
-                }
-
-                .tool-preview-card p {
-                    color: #94a3b8;
-                    font-size: 0.9rem;
-                }
-
-                .center-btn {
-                    text-align: center;
-                }
-
-                .secondary-btn {
-                    display: inline-block;
-                    padding: 0.75rem 2rem;
-                    border: 1px solid rgba(255, 255, 255, 0.2);
-                    border-radius: 0.5rem;
-                    color: white;
-                    text-decoration: none;
-                    transition: all 0.3s ease;
-                }
-
-                .secondary-btn:hover {
-                    background: rgba(255, 255, 255, 0.1);
-                    border-color: white;
-                }
-
-
-
-
-                /* FAQ Section */
-                .faq-section {
-                    padding: 4rem 10%;
-                    position: relative;
-                    z-index: 1;
-                }
-
-                .faq-header {
-                    text-align: center;
-                    margin-bottom: 3rem;
-                }
-
-                .faq-header h2 {
-                    font-size: 2.5rem;
-                    margin-bottom: 0.5rem;
-                    color: white;
-                }
-
-                .faq-header p {
-                    color: #94a3b8;
-                    font-size: 1.125rem;
-                }
-
-                .faq-container {
-                    max-width: 800px;
-                    margin: 0 auto;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 1rem;
                 }
 
                 .faq-item {
                     background: rgba(255, 255, 255, 0.03);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    border: 1px solid rgba(255, 255, 255, 0.05);
                     border-radius: 1rem;
                     padding: 1.5rem;
-                    cursor: pointer;
-                    transition: all 0.3s ease;
                 }
 
-                .faq-item:hover {
-                    background: rgba(255, 255, 255, 0.05);
-                    border-color: rgba(16, 185, 129, 0.3);
-                }
-
-                .faq-question {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    font-weight: 600;
-                    color: white;
-                    font-size: 1.125rem;
-                }
-
-                .faq-icon {
-                    font-size: 1.5rem;
+                .faq-item h3 {
                     color: #10b981;
-                    font-weight: 300;
-                    min-width: 24px;
-                    text-align: center;
+                    font-size: 1.1rem;
+                    margin-bottom: 0.5rem;
                 }
 
-                .faq-answer {
-                    max-height: 0;
-                    overflow: hidden;
+                .faq-item p {
                     color: #94a3b8;
-                    line-height: 1.6;
-                    transition: max-height 0.3s ease, margin-top 0.3s ease;
-                }
-
-                .faq-answer.open {
-                    max-height: 200px;
-                    margin-top: 1rem;
-                }
-
-                /* Animations */
-                @keyframes fadeInUp {
-                    from { opacity: 0; transform: translateY(30px); }
-                    to { opacity: 1; transform: translateY(0); }
-                }
-
-                .fade-in-up {
-                    animation: fadeInUp 1s ease-out forwards;
-                }
-
-                /* Mobile Responsive */
-                @media (max-width: 768px) {
-                    .hero-section {
-                        flex-direction: column;
-                        text-align: center;
-                        padding-top: 4rem;
-                        justify-content: center;
-                    }
-
-                    .hero-content {
-                        margin-bottom: 3rem;
-                    }
-
-                    .hero-title {
-                        font-size: 2.5rem;
-                    }
-
-                    .hero-visual {
-                        width: 280px;
-                        height: 280px;
-                        margin: 0 auto;
-                    }
-
-                    .cta-button {
-                        margin: 0 auto;
-                        width: 100%;
-                        justify-content: center;
-                    }
-
-                    .info-boxes-container {
-                        grid-template-columns: 1fr;
-                        gap: 1.5rem;
-                    }
-
-                    .info-box {
-                        flex-direction: column;
-                        text-align: center;
-                        align-items: center;
-                    }
-
-                    .info-box-icon {
-                        font-size: 2.5rem;
-                    }
-
-                    .info-boxes-header h2 {
-                        font-size: 1.75rem;
-                    }
-
-                    .footer-content {
-                        flex-direction: column;
-                        text-align: center;
-                    }
-
-                    .badge {
-                        font-size: 0.75rem;
-                        padding: 0.4rem 0.8rem;
-                    }
-
-                    /* Cost Calculator Mobile Fixes */
-                    .cost-tool-section {
-                        padding: 2rem 5%;
-                    }
-
-                    .cost-tool-container {
-                        padding: 1.5rem;
-                    }
-
-                    .cost-tool-header h2 {
-                        font-size: 1.5rem;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        line-height: 1.4;
-                    }
-
-                    .input-group input {
-                        width: 100%;
-                        box-sizing: border-box;
-                    }
-
-                    .cost-tool-inputs {
-                        width: 100%;
-                    }
-                }
-                /* Blog Preview Section */
-                .blog-preview-section {
-                    padding: 6rem 10%;
-                    background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(16, 185, 129, 0.05));
-                    position: relative;
-                    z-index: 1;
+                    font-size: 0.95rem;
+                    line-height: 1.5;
                 }
 
                 .blog-preview-header {
@@ -1339,75 +1100,63 @@ export default function LandingPage() {
 
                 .blog-preview-header h2 {
                     font-size: 2.5rem;
-                    margin-bottom: 0.5rem;
-                    color: white;
+                    margin-bottom: 1rem;
+                    color: #f8fafc;
                 }
 
                 .blog-preview-header p {
                     color: #94a3b8;
+                    font-size: 1.1rem;
                 }
 
                 .blog-preview-grid {
                     display: grid;
                     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
                     gap: 2rem;
-                    max-width: 1200px;
-                    margin: 0 auto 3rem;
+                    margin-bottom: 3rem;
                 }
 
                 .blog-preview-card {
-                    background: rgba(30, 41, 59, 0.5);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    background: rgba(255, 255, 255, 0.03);
+                    border: 1px solid rgba(255, 255, 255, 0.05);
                     border-radius: 1rem;
                     overflow: hidden;
                     text-decoration: none;
+                    color: inherit;
                     transition: all 0.3s ease;
-                    display: flex;
-                    flex-direction: column;
                 }
 
                 .blog-preview-card:hover {
                     transform: translateY(-5px);
-                    border-color: #10b981;
-                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                    border-color: rgba(16, 185, 129, 0.3);
                 }
 
                 .preview-image {
                     height: 200px;
                     background-size: cover;
                     background-position: center;
-                    position: relative;
-                }
-
-                .preview-image::after {
-                    content: '';
-                    position: absolute;
-                    inset: 0;
-                    background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
                 }
 
                 .preview-content {
                     padding: 1.5rem;
-                    flex: 1;
-                    display: flex;
-                    flex-direction: column;
                 }
 
                 .preview-tag {
+                    display: inline-block;
+                    padding: 0.25rem 0.75rem;
+                    background: rgba(16, 185, 129, 0.1);
                     color: #10b981;
+                    border-radius: 999px;
                     font-size: 0.75rem;
                     font-weight: 600;
-                    text-transform: uppercase;
-                    letter-spacing: 0.05em;
-                    margin-bottom: 0.5rem;
+                    margin-bottom: 1rem;
                 }
 
                 .preview-content h3 {
-                    color: white;
                     font-size: 1.25rem;
                     margin-bottom: 1rem;
+                    color: #f8fafc;
                     line-height: 1.4;
-                    flex: 1;
                 }
 
                 .preview-meta {
@@ -1415,7 +1164,7 @@ export default function LandingPage() {
                     justify-content: space-between;
                     align-items: center;
                     color: #94a3b8;
-                    font-size: 0.875rem;
+                    font-size: 0.9rem;
                 }
 
                 .blog-cta {
@@ -1424,45 +1173,114 @@ export default function LandingPage() {
 
                 .view-all-btn {
                     display: inline-block;
-                    padding: 0.75rem 2rem;
+                    padding: 1rem 2rem;
+                    background: transparent;
                     border: 1px solid #10b981;
                     color: #10b981;
-                    border-radius: 0.5rem;
                     text-decoration: none;
+                    border-radius: 0.5rem;
                     font-weight: 600;
-                    transition: all 0.3s ease;
+                    transition: all 0.2s ease;
                 }
 
                 .view-all-btn:hover {
-                    background: #10b981;
-                    color: white;
+                    background: rgba(16, 185, 129, 0.1);
+                    transform: translateY(-2px);
                 }
 
-                /* Additional Mobile Fixes */
+                .scroll-to-top {
+                    position: fixed;
+                    bottom: 30px;
+                    right: 30px;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    background: rgba(16, 185, 129, 0.2);
+                    backdrop-filter: blur(10px);
+                    border: 1px solid rgba(16, 185, 129, 0.3);
+                    color: #10b981;
+                    font-size: 24px;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    opacity: 0;
+                    visibility: hidden;
+                    transform: translateY(20px);
+                    transition: all 0.3s ease;
+                    z-index: 1000;
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+                }
+
+                .scroll-to-top.visible {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateY(0);
+                }
+
+                .scroll-to-top:hover {
+                    background: rgba(16, 185, 129, 0.4);
+                    transform: translateY(-5px);
+                    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+                }
+
                 @media (max-width: 768px) {
-                    .tools-preview-section,
-                    .features-section,
-                    .info-boxes-section,
-                    .featured-guides-section,
-                    .faq-section,
-                    .blog-preview-section {
-                        padding: 3rem 1.5rem;
+                    .hero-title {
+                        font-size: 3rem;
                     }
 
-                    .tools-grid,
-                    .blog-preview-grid,
-                    .featured-grid {
+                    .hero-section {
+                        flex-direction: column;
+                        text-align: center;
+                        padding-top: 100px;
+                    }
+
+                    .hero-content {
+                        margin-bottom: 3rem;
+                    }
+
+                    .hero-visual {
+                        width: 100%;
+                        height: 300px;
+                    }
+
+                    .tent-frame {
+                        width: 200px;
+                        height: 280px;
+                    }
+
+                    .slider-slide {
                         grid-template-columns: 1fr;
-                        gap: 1.5rem;
                     }
 
-                    .section-header h2,
-                    .blog-preview-header h2,
-                    .faq-header h2 {
-                        font-size: 1.75rem;
+                    .scroll-to-top {
+                        bottom: 20px;
+                        right: 20px;
+                        width: 40px;
+                        height: 40px;
+                        font-size: 20px;
                     }
+                }
+
+                @keyframes float {
+                    0%, 100% { transform: translateY(0) rotateY(0); }
+                    50% { transform: translateY(-20px) rotateY(5deg); }
+                }
+
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(20px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+
+                .fade-in-up {
+                    animation: fadeIn 1s ease-out forwards;
+                }
+
+                .slide-in {
+                    opacity: 0;
+                    animation: fadeIn 0.8s ease-out forwards;
                 }
             `}</style>
-        </div >
+        </div>
     );
 }
