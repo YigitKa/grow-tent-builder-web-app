@@ -416,7 +416,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
                         border-top: 1px solid rgba(255, 255, 255, 0.1);
                     }
                 }
-                `}),(0,P.jsxs)(`nav`,{className:`nav-wrapper`,children:[(0,P.jsxs)(`div`,{className:`nav-container`,children:[(0,P.jsxs)(N,{to:`/`,className:`nav-logo`,children:[`🌱 `,(0,P.jsx)(`span`,{className:`nav-logo-text`,children:`GroWizard`})]}),(0,P.jsxs)(`div`,{className:`nav-links`,children:[(0,P.jsx)(N,{to:`/`,className:`nav-link ${c(`/`)?`active`:``}`,children:s.home}),(0,P.jsxs)(`div`,{className:`dropdown-container`,onMouseEnter:()=>i(!0),onMouseLeave:()=>i(!1),children:[(0,P.jsxs)(`span`,{className:`nav-link ${n.pathname.includes(`/tools`)?`active`:``}`,children:[s.tools,` ▾`]}),r&&(0,P.jsxs)(`div`,{className:`dropdown-menu`,children:[(0,P.jsx)(N,{to:`/tools/electricity-cost-calculator`,className:`dropdown-item`,children:s.costCalc}),(0,P.jsx)(N,{to:`/tools/co2-calculator`,className:`dropdown-item`,children:s.co2Calc}),(0,P.jsx)(N,{to:`/tools/unit-converter`,className:`dropdown-item`,children:s.unitConv}),(0,P.jsx)(N,{to:`/tools/ppfd-heatmap`,className:`dropdown-item`,children:s.ppfdTool})]})]}),(0,P.jsx)(N,{to:`/blog`,className:`nav-link ${c(`/blog`)?`active`:``}`,children:s.blog})]}),(0,P.jsxs)(`div`,{className:`nav-right`,children:[(0,P.jsx)(`button`,{onClick:()=>t(e===`en`?`tr`:`en`),className:`lang-btn`,children:e===`en`?`TR`:`EN`}),(0,P.jsx)(N,{to:`/builder`,className:`cta-button`,children:s.builder})]}),(0,P.jsx)(`button`,{className:`hamburger`,onClick:()=>o(!a),children:a?`✕`:`☰`})]}),a&&(0,P.jsxs)(`div`,{className:`mobile-menu`,children:[(0,P.jsx)(N,{to:`/`,className:`mobile-link ${c(`/`)?`active`:``}`,onClick:()=>o(!1),children:s.home}),(0,P.jsxs)(`div`,{children:[(0,P.jsx)(`div`,{className:`mobile-link`,style:{opacity:.7},children:s.tools}),(0,P.jsxs)(`div`,{className:`mobile-tools`,children:[(0,P.jsx)(N,{to:`/tools/electricity-cost-calculator`,className:`mobile-link`,onClick:()=>o(!1),children:s.costCalc}),(0,P.jsx)(N,{to:`/tools/co2-calculator`,className:`mobile-link`,onClick:()=>o(!1),children:s.co2Calc}),(0,P.jsx)(N,{to:`/tools/unit-converter`,className:`mobile-link`,onClick:()=>o(!1),children:s.unitConv}),(0,P.jsx)(N,{to:`/tools/ppfd-heatmap`,className:`mobile-link`,onClick:()=>o(!1),children:s.ppfdTool})]})]}),(0,P.jsx)(N,{to:`/blog`,className:`mobile-link ${c(`/blog`)?`active`:``}`,onClick:()=>o(!1),children:s.blog}),(0,P.jsxs)(`div`,{className:`mobile-actions`,children:[(0,P.jsx)(`button`,{onClick:()=>{t(e===`en`?`tr`:`en`),o(!1)},className:`lang-btn`,children:e===`en`?`Switch to TR`:`Switch to EN`}),(0,P.jsx)(N,{to:`/builder`,className:`cta-button`,onClick:()=>o(!1),children:s.builder})]})]})]})]})},Vr={en:{title:`Design Your Perfect Harvest`,subtitle:`Advanced simulation for serious growers. Calculate PPFD, estimate costs, and optimize your environment before you buy.`,cta:`Start Building Now`,features:{ppfd:{title:`PPFD Simulation`,description:`Visualize light intensity and coverage with our advanced heatmap engine.`},cost:{title:`Cost Estimator`,description:`Calculate monthly electricity costs based on your local rates and equipment.`},environment:{title:`Environment Control`,description:`Match ventilation and filtration to your specific tent dimensions.`}},costTool:{title:`Quick Cost Calculator`,subtitle:`Estimate your monthly electricity costs`,power:`Total Power (Watts)`,hours:`Hours per Day`,rate:`Electricity Rate ($/kWh)`,calculate:`Calculate`,result:`Estimated Monthly Cost`},infoBoxes:{title:`Critical Success Factors`,subtitle:`Essential knowledge for optimal plant growth`,items:[{icon:`💡`,title:`Light Intensity Matters`,description:`Without proper PPFD levels for your plant type, growth will slow or stop completely.`},{icon:`🌬️`,title:`Air Circulation is Essential`,description:`Stagnant air increases mold and pest risk; fans are mandatory for healthy growth.`},{icon:`🌡️`,title:`Humidity & Temperature Balance`,description:`Excessive humidity or heat creates plant stress; controlled environment is crucial.`}]},faq:{title:`Frequently Asked Questions`,subtitle:`Everything you need to know about indoor growing`,items:[{q:`Why do plants need light?`,a:`To perform photosynthesis.`},{q:`Why is photosynthesis important?`,a:`Plants produce their food this way.`},{q:`Which plants are suitable for indoor growing?`,a:`Herbs, vegetables, flowers.`},{q:`What happens if I don't install a fan in my grow tent?`,a:`Temperature rises, mold forms.`},{q:`How many hours of light per day during vegetative stage?`,a:`16 hours is generally sufficient.`},{q:`How many hours of light per day during flowering stage?`,a:`12 hours is generally sufficient.`},{q:`Why LED lights?`,a:`Efficient, cool, and long-lasting.`},{q:`How long does germination typically take?`,a:`Usually 3 to 10 days.`},{q:`What should humidity be in the tent during vegetative stage?`,a:`50–70% is ideal.`}]}},tr:{title:`Mükemmel Hasadınızı Tasarlayın`,subtitle:`Ciddi yetiştiriciler için gelişmiş simülasyon. PPFD hesaplayın, maliyetleri tahmin edin ve satın almadan önce ortamınızı optimize edin.`,cta:`Hemen Başla`,features:{ppfd:{title:`PPFD Simülasyonu`,description:`Gelişmiş ısı haritası motorumuzla ışık yoğunluğunu ve kapsamını görselleştirin.`},cost:{title:`Maliyet Hesaplayıcı`,description:`Yerel tarifelerinize ve ekipmanınıza göre aylık elektrik maliyetlerini hesaplayın.`},environment:{title:`Ortam Kontrolü`,description:`Havalandırma ve filtrasyonu çadır boyutlarınıza göre eşleştirin.`}},costTool:{title:`Hızlı Maliyet Hesaplayıcı`,subtitle:`Aylık elektrik maliyetlerinizi tahmin edin`,power:`Toplam Güç (Watt)`,hours:`Günlük Saat`,rate:`Elektrik Tarifesi (₺/kWh)`,calculate:`Hesapla`,result:`Tahmini Aylık Maliyet`},infoBoxes:{title:`Kritik Başarı Faktörleri`,subtitle:`Optimal bitki gelişimi için temel bilgiler`,items:[{icon:`💡`,title:`Işık Yoğunluğu Önemlidir`,description:`Bitkinin türüne uygun PPFD seviyesi olmazsa gelişim yavaşlar veya durur.`},{icon:`🌬️`,title:`Hava Sirkülasyonu Şarttır`,description:`Durgun hava küf ve haşere riskini artırır; mutlaka fan kullanılmalı.`},{icon:`🌡️`,title:`Nem ve Sıcaklık Dengesi`,description:`Aşırı nem ya da ısı bitkide stres yaratır; kontrollü ortam şart.`}]},faq:{title:`Sıkça Sorulan Sorular`,subtitle:`İç mekan yetiştiriciliği hakkında bilmeniz gerekenler`,items:[{q:`Bitkiler neden yapay ışığa ihtiyaç duyar?`,a:`Bitkiler büyümek, gelişmek ve enerji üretmek için fotosentez yapar. İç mekan yetiştiriciliğinde doğal güneş ışığı yeterli olmadığından yapay aydınlatma (özellikle LED grow ışıkları) kullanılır.`},{q:`Fotosentez neden bitki sağlığı için kritiktir?`,a:`Fotosentez, bitkilerin su ve karbondioksiti güneş (veya yapay) ışığı ile şekere dönüştürmesini sağlar. Bu süreç, bitkinin enerji kaynağını oluşturur ve sağlıklı gelişimi mümkün kılar.`},{q:`İç mekanda hangi bitki türleri yetiştirilebilir?`,a:`Aromatik otlar (fesleğen, nane), yapraklı sebzeler (marul, ıspanak) ve bazı çiçekli türler (orkide, sardunya) iç mekan yetiştiriciliğine uygundur. Bu bitkiler sınırlı alanda, kontrollü iklim şartlarında iyi sonuç verir.`},{q:`Fan olmayan yetiştirme kabininde ne olur?`,a:`Fan kullanılmayan kabinlerde hava dolaşımı olmaz, bu da sıcaklık artışına ve nem birikmesine neden olur. Sonuç olarak mantar oluşumu, küf ve bitki hastalıkları riski yükselir.`},{q:`Büyüme döneminde bitkiye günde kaç saat ışık verilmeli?`,a:`Büyüme (vejetatif) aşamasında çoğu bitki 16–18 saatlik ışık süresine ihtiyaç duyar. Bu süre, yaprak gelişimini ve sağlıklı gövde oluşumunu destekler.`},{q:`Çiçeklenme döneminde ışık süresi ne olmalı?`,a:`Çiçeklenme döneminde fotoperiyodik bitkiler için 12 saat ışık, 12 saat karanlık döngüsü uygulanmalıdır. Bu denge, çiçek ve meyve oluşumunu teşvik eder.`},{q:`LED grow ışıklarının avantajı nedir?`,a:`LED bitki lambaları, düşük enerji tüketimi, uzun ömür ve minimal ısı yayımı ile ideal iç mekan aydınlatması sunar. Ayrıca, bitki evresine uygun tam spektrum ışık sağlayabilir.`},{q:`Tohumlar çimlenme döneminde kaç günde filizlenir?`,a:`Çimlenme süresi bitki türüne bağlı olmakla birlikte genellikle 3 ila 10 gün arasında tamamlanır. Bu dönemde nemli ortam ve sabit sıcaklık sağlanmalıdır.`},{q:`Büyüme döneminde çadır içi nem oranı ne olmalı?`,a:`Vejetatif büyüme aşamasında ideal nem oranı %50 ila %70 aralığındadır. Bu nem seviyesi, yaprakların su kaybını dengeleyerek hızlı gelişimi destekler.`}]}}};function Hr(){let[e,t]=(0,b.useState)({x:0,y:0}),[n,r]=(0,b.useState)(0),[,i]=(0,b.useState)(0),{hasSeenOnboarding:a}=Fr(),{language:o}=F(),s=Wt(),c=Vr[o];return(0,b.useEffect)(()=>{let e=e=>{t({x:e.clientX/window.innerWidth-.5,y:e.clientY/window.innerHeight-.5})},n=()=>{i(window.scrollY)};return window.addEventListener(`mousemove`,e),window.addEventListener(`scroll`,n),()=>{window.removeEventListener(`mousemove`,e),window.removeEventListener(`scroll`,n)}},[]),(0,P.jsxs)(`div`,{className:`landing-container`,children:[(0,P.jsxs)(Re,{children:[(0,P.jsxs)(`title`,{children:[c.title,` | GroWizard`]}),(0,P.jsx)(`meta`,{name:`description`,content:c.subtitle})]}),(0,P.jsxs)(`div`,{className:`landing-bg`,children:[(0,P.jsx)(`div`,{className:`glow-orb orb-1`,style:{transform:`translate(${e.x*30}px, ${e.y*30}px)`}}),(0,P.jsx)(`div`,{className:`glow-orb orb-2`,style:{transform:`translate(${e.x*-30}px, ${e.y*-30}px)`}}),(0,P.jsx)(`div`,{className:`grid-overlay`})]}),(0,P.jsx)(Br,{}),(0,P.jsxs)(`section`,{className:`hero-section`,children:[(0,P.jsxs)(`div`,{className:`hero-content fade-in-up`,children:[(0,P.jsx)(`div`,{className:`badge`,children:`🌱 Professional Grow Planner`}),(0,P.jsxs)(`h1`,{className:`hero-title`,children:[c.title.split(` `).slice(0,2).join(` `),` `,(0,P.jsx)(`br`,{}),(0,P.jsx)(`span`,{className:`gradient-text`,children:c.title.split(` `).slice(2).join(` `)})]}),(0,P.jsx)(`p`,{className:`hero-subtitle`,children:c.subtitle}),(0,P.jsxs)(`button`,{onClick:()=>{s(`/builder`)},className:`cta-button`,children:[c.cta,(0,P.jsx)(`span`,{className:`arrow`,children:`→`})]})]}),(0,P.jsx)(`div`,{className:`hero-visual`,style:{transform:`perspective(1000px) rotateY(${e.x*5}deg) rotateX(${e.y*-5}deg)`},children:(0,P.jsxs)(`div`,{className:`tent-frame`,children:[(0,P.jsx)(`div`,{className:`plant-icon`,children:`🌿`}),(0,P.jsx)(`div`,{className:`light-beam`})]})})]}),(0,P.jsxs)(`section`,{className:`tools-preview-section`,children:[(0,P.jsxs)(`div`,{className:`section-header`,children:[(0,P.jsxs)(`h2`,{children:[`🛠️ `,o===`tr`?`Yetiştirme Araçları`:`Grow Tools`]}),(0,P.jsx)(`p`,{children:o===`tr`?`Başarılı bir hasat için ihtiyacınız olan her şey`:`Everything you need for a successful harvest`})]}),(0,P.jsxs)(`div`,{className:`tools-grid`,children:[(0,P.jsxs)(N,{to:`/tools/cost-calculator`,className:`tool-preview-card`,children:[(0,P.jsx)(`div`,{className:`tool-icon`,children:`⚡`}),(0,P.jsx)(`h3`,{children:o===`tr`?`Maliyet Hesaplayıcı`:`Cost Calculator`}),(0,P.jsx)(`p`,{children:o===`tr`?`Elektrik masraflarınızı hesaplayın`:`Estimate electricity costs`})]}),(0,P.jsxs)(N,{to:`/tools/unit-converter`,className:`tool-preview-card`,children:[(0,P.jsx)(`div`,{className:`tool-icon`,children:`💧`}),(0,P.jsx)(`h3`,{children:o===`tr`?`Birim Çevirici`:`Unit Converter`}),(0,P.jsx)(`p`,{children:o===`tr`?`Litre ve Galon dönüşümü`:`Convert Liters & Gallons`})]}),(0,P.jsxs)(N,{to:`/tools/co2-calculator`,className:`tool-preview-card`,children:[(0,P.jsx)(`div`,{className:`tool-icon`,children:`🌫️`}),(0,P.jsx)(`h3`,{children:o===`tr`?`CO2 Hesaplayıcı`:`CO2 Calculator`}),(0,P.jsx)(`p`,{children:o===`tr`?`Optimal CO2 seviyelerini bulun`:`Find optimal CO2 levels`})]})]}),(0,P.jsx)(`div`,{className:`center-btn`,children:(0,P.jsx)(N,{to:`/tools`,className:`secondary-btn`,children:o===`tr`?`Tüm Araçları Gör`:`View All Tools`})})]}),(0,P.jsxs)(`section`,{className:`features-section`,children:[(0,P.jsxs)(`div`,{className:`feature-card slide-in`,style:{transitionDelay:`0.1s`},children:[(0,P.jsx)(`div`,{className:`feature-icon`,children:`💡`}),(0,P.jsx)(`h3`,{children:c.features.ppfd.title}),(0,P.jsx)(`p`,{children:c.features.ppfd.description})]}),(0,P.jsxs)(`div`,{className:`feature-card slide-in`,style:{transitionDelay:`0.3s`},children:[(0,P.jsx)(`div`,{className:`feature-icon`,children:`🌬️`}),(0,P.jsx)(`h3`,{children:c.features.environment.title}),(0,P.jsx)(`p`,{children:c.features.environment.description})]})]}),(0,P.jsxs)(`section`,{className:`info-boxes-section`,children:[(0,P.jsxs)(`div`,{className:`info-boxes-header`,children:[(0,P.jsxs)(`h2`,{children:[`⚠️ `,c.infoBoxes.title]}),(0,P.jsx)(`p`,{children:c.infoBoxes.subtitle})]}),(0,P.jsx)(`div`,{className:`info-boxes-container`,children:c.infoBoxes.items.map((e,t)=>(0,P.jsxs)(`div`,{className:`info-box`,style:{animationDelay:`${t*.1}s`},children:[(0,P.jsx)(`div`,{className:`info-box-icon`,children:e.icon}),(0,P.jsxs)(`div`,{className:`info-box-content`,children:[(0,P.jsx)(`h3`,{children:e.title}),(0,P.jsx)(`p`,{children:e.description})]})]},t))})]}),(0,P.jsxs)(`section`,{className:`featured-guides-section`,children:[(0,P.jsxs)(`div`,{className:`section-header`,children:[(0,P.jsxs)(`h2`,{children:[`🌟 `,o===`tr`?`Öne Çıkan Rehberler`:`Featured Guides`]}),(0,P.jsx)(`p`,{children:o===`tr`?`Uzmanlardan derinlemesine bilgiler`:`In-depth knowledge from experts`})]}),(0,P.jsxs)(`div`,{className:`slider-container`,children:[(0,P.jsx)(`button`,{className:`slider-btn prev`,onClick:()=>r(e=>e===0?Math.ceil(Lr.length/2)-1:e-1),children:`←`}),(0,P.jsx)(`div`,{className:`slider-track-container`,children:(0,P.jsx)(`div`,{className:`slider-track`,style:{transform:`translateX(-${n*100}%)`},children:Array.from({length:Math.ceil(Lr.slice(0,4).length/2)}).map((e,t)=>(0,P.jsx)(`div`,{className:`slider-slide`,children:Lr.slice(0,4).slice(t*2,t*2+2).map(e=>(0,P.jsxs)(N,{to:`/blog/${e.slug[o]}`,className:`featured-guide-card`,children:[(0,P.jsxs)(`div`,{className:`guide-content`,children:[(0,P.jsx)(`span`,{className:`guide-tag`,children:e.category}),(0,P.jsx)(`h3`,{children:e.title[o]}),(0,P.jsx)(`p`,{children:e.excerpt[o]}),(0,P.jsx)(`span`,{className:`read-more`,children:o===`tr`?`Devamını Oku →`:`Read More →`})]}),(0,P.jsx)(`div`,{className:`guide-image`,style:{backgroundImage:`url(${e.image})`}})]},`featured-${e.id}`))},t))})}),(0,P.jsx)(`button`,{className:`slider-btn next`,onClick:()=>r(e=>e===Math.ceil(Lr.slice(0,4).length/2)-1?0:e+1),children:`→`})]}),(0,P.jsx)(`div`,{className:`slider-dots`,children:Array.from({length:Math.ceil(Lr.slice(0,4).length/2)}).map((e,t)=>(0,P.jsx)(`button`,{className:`slider-dot ${n===t?`active`:``}`,onClick:()=>r(t)},t))})]}),(0,P.jsx)(`section`,{className:`cost-tool-section`,children:(0,P.jsxs)(`div`,{className:`cost-tool-container`,children:[(0,P.jsxs)(`div`,{className:`cost-tool-header`,children:[(0,P.jsxs)(`h2`,{children:[`⚡ `,c.costTool.title]}),(0,P.jsx)(`p`,{children:c.costTool.subtitle})]}),(0,P.jsxs)(`div`,{className:`cost-tool-inputs`,children:[(0,P.jsxs)(`div`,{className:`input-group`,children:[(0,P.jsx)(`label`,{children:c.costTool.power}),(0,P.jsx)(`input`,{type:`number`,id:`power-input`,placeholder:`300`,defaultValue:`300`})]}),(0,P.jsxs)(`div`,{className:`input-group`,children:[(0,P.jsx)(`label`,{children:c.costTool.hours}),(0,P.jsx)(`input`,{type:`number`,id:`hours-input`,placeholder:`18`,defaultValue:`18`})]}),(0,P.jsxs)(`div`,{className:`input-group`,children:[(0,P.jsx)(`label`,{children:c.costTool.rate}),(0,P.jsx)(`input`,{type:`number`,step:`0.01`,id:`rate-input`,placeholder:`0.12`,defaultValue:`0.12`})]})]}),(0,P.jsx)(`button`,{className:`calc-button`,onClick:()=>{let e=parseFloat(document.getElementById(`power-input`).value)||0,t=parseFloat(document.getElementById(`hours-input`).value)||0,n=parseFloat(document.getElementById(`rate-input`).value)||0,r=e/1e3*t*30*n;document.getElementById(`cost-result`).textContent=`${c.costTool.result}: ${o===`tr`?`₺`:`$`}${r.toFixed(2)}`},children:c.costTool.calculate}),(0,P.jsx)(`div`,{id:`cost-result`,className:`cost-result`})]})}),(0,P.jsxs)(`section`,{className:`faq-section`,children:[(0,P.jsxs)(`div`,{className:`faq-header`,children:[(0,P.jsxs)(`h2`,{children:[`❓ `,c.faq.title]}),(0,P.jsx)(`p`,{children:c.faq.subtitle})]}),(0,P.jsx)(`div`,{className:`faq-container`,children:c.faq.items.map((e,t)=>(0,P.jsxs)(`div`,{className:`faq-item`,onClick:e=>{let t=e.currentTarget.querySelector(`.faq-answer`),n=e.currentTarget.querySelector(`.faq-icon`);t.classList.toggle(`open`),n.textContent=t.classList.contains(`open`)?`−`:`+`},children:[(0,P.jsxs)(`div`,{className:`faq-question`,children:[(0,P.jsx)(`span`,{children:e.q}),(0,P.jsx)(`span`,{className:`faq-icon`,children:`+`})]}),(0,P.jsx)(`div`,{className:`faq-answer`,children:e.a})]},t))})]}),(0,P.jsxs)(`section`,{className:`blog-preview-section`,children:[(0,P.jsxs)(`div`,{className:`blog-preview-header`,children:[(0,P.jsxs)(`h2`,{children:[`📚 `,o===`tr`?`En Son Makaleler`:`Latest Articles`]}),(0,P.jsx)(`p`,{children:o===`tr`?`Modern yetiştiricilik tekniklerini keşfedin`:`Discover modern growing techniques`})]}),(0,P.jsx)(`div`,{className:`blog-preview-grid`,children:Lr.slice(0,3).map(e=>(0,P.jsxs)(N,{to:`/blog/${e.slug[o]}`,className:`blog-preview-card`,children:[(0,P.jsx)(`div`,{className:`preview-image`,style:{backgroundImage:`url(${e.image})`}}),(0,P.jsxs)(`div`,{className:`preview-content`,children:[(0,P.jsx)(`span`,{className:`preview-tag`,children:e.category}),(0,P.jsx)(`h3`,{children:e.title[o]}),(0,P.jsxs)(`div`,{className:`preview-meta`,children:[(0,P.jsx)(`span`,{children:e.readTime}),(0,P.jsx)(`span`,{className:`arrow`,children:`→`})]})]})]},e.id))}),(0,P.jsx)(`div`,{className:`blog-cta`,children:(0,P.jsx)(N,{to:`/blog`,className:`view-all-btn`,children:o===`tr`?`Tüm Yazıları Gör`:`View All Articles`})})]}),(0,P.jsx)(zr,{}),(0,P.jsx)(`style`,{children:`
+                `}),(0,P.jsxs)(`nav`,{className:`nav-wrapper`,children:[(0,P.jsxs)(`div`,{className:`nav-container`,children:[(0,P.jsxs)(N,{to:`/`,className:`nav-logo`,children:[`🌱 `,(0,P.jsx)(`span`,{className:`nav-logo-text`,children:`GroWizard`})]}),(0,P.jsxs)(`div`,{className:`nav-links`,children:[(0,P.jsx)(N,{to:`/`,className:`nav-link ${c(`/`)?`active`:``}`,children:s.home}),(0,P.jsxs)(`div`,{className:`dropdown-container`,onMouseEnter:()=>i(!0),onMouseLeave:()=>i(!1),children:[(0,P.jsxs)(`span`,{className:`nav-link ${n.pathname.includes(`/tools`)?`active`:``}`,children:[s.tools,` ▾`]}),r&&(0,P.jsxs)(`div`,{className:`dropdown-menu`,children:[(0,P.jsx)(N,{to:`/tools/electricity-cost-calculator`,className:`dropdown-item`,children:s.costCalc}),(0,P.jsx)(N,{to:`/tools/co2-calculator`,className:`dropdown-item`,children:s.co2Calc}),(0,P.jsx)(N,{to:`/tools/unit-converter`,className:`dropdown-item`,children:s.unitConv}),(0,P.jsx)(N,{to:`/tools/ppfd-heatmap`,className:`dropdown-item`,children:s.ppfdTool})]})]}),(0,P.jsx)(N,{to:`/blog`,className:`nav-link ${c(`/blog`)?`active`:``}`,children:s.blog})]}),(0,P.jsxs)(`div`,{className:`nav-right`,children:[(0,P.jsx)(`button`,{onClick:()=>t(e===`en`?`tr`:`en`),className:`lang-btn`,children:e===`en`?`TR`:`EN`}),(0,P.jsx)(N,{to:`/builder`,className:`cta-button`,children:s.builder})]}),(0,P.jsx)(`button`,{className:`hamburger`,onClick:()=>o(!a),children:a?`✕`:`☰`})]}),a&&(0,P.jsxs)(`div`,{className:`mobile-menu`,children:[(0,P.jsx)(N,{to:`/`,className:`mobile-link ${c(`/`)?`active`:``}`,onClick:()=>o(!1),children:s.home}),(0,P.jsxs)(`div`,{children:[(0,P.jsx)(`div`,{className:`mobile-link`,style:{opacity:.7},children:s.tools}),(0,P.jsxs)(`div`,{className:`mobile-tools`,children:[(0,P.jsx)(N,{to:`/tools/electricity-cost-calculator`,className:`mobile-link`,onClick:()=>o(!1),children:s.costCalc}),(0,P.jsx)(N,{to:`/tools/co2-calculator`,className:`mobile-link`,onClick:()=>o(!1),children:s.co2Calc}),(0,P.jsx)(N,{to:`/tools/unit-converter`,className:`mobile-link`,onClick:()=>o(!1),children:s.unitConv}),(0,P.jsx)(N,{to:`/tools/ppfd-heatmap`,className:`mobile-link`,onClick:()=>o(!1),children:s.ppfdTool})]})]}),(0,P.jsx)(N,{to:`/blog`,className:`mobile-link ${c(`/blog`)?`active`:``}`,onClick:()=>o(!1),children:s.blog}),(0,P.jsxs)(`div`,{className:`mobile-actions`,children:[(0,P.jsx)(`button`,{onClick:()=>{t(e===`en`?`tr`:`en`),o(!1)},className:`lang-btn`,children:e===`en`?`Switch to TR`:`Switch to EN`}),(0,P.jsx)(N,{to:`/builder`,className:`cta-button`,onClick:()=>o(!1),children:s.builder})]})]})]})]})},Vr={en:{title:`Design Your Perfect Harvest`,subtitle:`Advanced simulation for serious growers. Calculate PPFD, estimate costs, and optimize your environment before you buy.`,cta:`Start Building Now`,features:{ppfd:{title:`PPFD Simulation`,description:`Visualize light intensity and coverage with our advanced heatmap engine.`},cost:{title:`Cost Estimator`,description:`Calculate monthly electricity costs based on your local rates and equipment.`},environment:{title:`Environment Control`,description:`Match ventilation and filtration to your specific tent dimensions.`}},costTool:{title:`Quick Cost Calculator`,subtitle:`Estimate your monthly electricity costs`,power:`Total Power (Watts)`,hours:`Hours per Day`,rate:`Electricity Rate ($/kWh)`,calculate:`Calculate`,result:`Estimated Monthly Cost`},infoBoxes:{title:`Critical Success Factors`,subtitle:`Essential knowledge for optimal plant growth`,items:[{icon:`💡`,title:`Light Intensity Matters`,description:`Without proper PPFD levels for your plant type, growth will slow or stop completely.`},{icon:`🌬️`,title:`Air Circulation is Essential`,description:`Stagnant air increases mold and pest risk; fans are mandatory for healthy growth.`},{icon:`🌡️`,title:`Humidity & Temperature Balance`,description:`Excessive humidity or heat creates plant stress; controlled environment is crucial.`}]},faq:{title:`Frequently Asked Questions`,subtitle:`Everything you need to know about indoor growing`,items:[{q:`Why do plants need light?`,a:`To perform photosynthesis.`},{q:`Why is photosynthesis important?`,a:`Plants produce their food this way.`},{q:`Which plants are suitable for indoor growing?`,a:`Herbs, vegetables, flowers.`},{q:`What happens if I don't install a fan in my grow tent?`,a:`Temperature rises, mold forms.`},{q:`How many hours of light per day during vegetative stage?`,a:`16 hours is generally sufficient.`},{q:`How many hours of light per day during flowering stage?`,a:`12 hours is generally sufficient.`},{q:`Why LED lights?`,a:`Efficient, cool, and long-lasting.`},{q:`How long does germination typically take?`,a:`Usually 3 to 10 days.`},{q:`What should humidity be in the tent during vegetative stage?`,a:`50–70% is ideal.`}]}},tr:{title:`Mükemmel Hasadınızı Tasarlayın`,subtitle:`Ciddi yetiştiriciler için gelişmiş simülasyon. PPFD hesaplayın, maliyetleri tahmin edin ve satın almadan önce ortamınızı optimize edin.`,cta:`Hemen Başla`,features:{ppfd:{title:`PPFD Simülasyonu`,description:`Gelişmiş ısı haritası motorumuzla ışık yoğunluğunu ve kapsamını görselleştirin.`},cost:{title:`Maliyet Hesaplayıcı`,description:`Yerel tarifelerinize ve ekipmanınıza göre aylık elektrik maliyetlerini hesaplayın.`},environment:{title:`Ortam Kontrolü`,description:`Havalandırma ve filtrasyonu çadır boyutlarınıza göre eşleştirin.`}},costTool:{title:`Hızlı Maliyet Hesaplayıcı`,subtitle:`Aylık elektrik maliyetlerinizi tahmin edin`,power:`Toplam Güç (Watt)`,hours:`Günlük Saat`,rate:`Elektrik Tarifesi (₺/kWh)`,calculate:`Hesapla`,result:`Tahmini Aylık Maliyet`},infoBoxes:{title:`Kritik Başarı Faktörleri`,subtitle:`Optimal bitki gelişimi için temel bilgiler`,items:[{icon:`💡`,title:`Işık Yoğunluğu Önemlidir`,description:`Bitkinin türüne uygun PPFD seviyesi olmazsa gelişim yavaşlar veya durur.`},{icon:`🌬️`,title:`Hava Sirkülasyonu Şarttır`,description:`Durgun hava küf ve haşere riskini artırır; mutlaka fan kullanılmalı.`},{icon:`🌡️`,title:`Nem ve Sıcaklık Dengesi`,description:`Aşırı nem ya da ısı bitkide stres yaratır; kontrollü ortam şart.`}]},faq:{title:`Sıkça Sorulan Sorular`,subtitle:`İç mekan yetiştiriciliği hakkında bilmeniz gerekenler`,items:[{q:`Bitkiler neden yapay ışığa ihtiyaç duyar?`,a:`Bitkiler büyümek, gelişmek ve enerji üretmek için fotosentez yapar. İç mekan yetiştiriciliğinde doğal güneş ışığı yeterli olmadığından yapay aydınlatma (özellikle LED grow ışıkları) kullanılır.`},{q:`Fotosentez neden bitki sağlığı için kritiktir?`,a:`Fotosentez, bitkilerin su ve karbondioksiti güneş (veya yapay) ışığı ile şekere dönüştürmesini sağlar. Bu süreç, bitkinin enerji kaynağını oluşturur ve sağlıklı gelişimi mümkün kılar.`},{q:`İç mekanda hangi bitki türleri yetiştirilebilir?`,a:`Aromatik otlar (fesleğen, nane), yapraklı sebzeler (marul, ıspanak) ve bazı çiçekli türler (orkide, sardunya) iç mekan yetiştiriciliğine uygundur. Bu bitkiler sınırlı alanda, kontrollü iklim şartlarında iyi sonuç verir.`},{q:`Fan olmayan yetiştirme kabininde ne olur?`,a:`Fan kullanılmayan kabinlerde hava dolaşımı olmaz, bu da sıcaklık artışına ve nem birikmesine neden olur. Sonuç olarak mantar oluşumu, küf ve bitki hastalıkları riski yükselir.`},{q:`Büyüme döneminde bitkiye günde kaç saat ışık verilmeli?`,a:`Büyüme (vejetatif) aşamasında çoğu bitki 16–18 saatlik ışık süresine ihtiyaç duyar. Bu süre, yaprak gelişimini ve sağlıklı gövde oluşumunu destekler.`},{q:`Çiçeklenme döneminde ışık süresi ne olmalı?`,a:`Çiçeklenme döneminde fotoperiyodik bitkiler için 12 saat ışık, 12 saat karanlık döngüsü uygulanmalıdır. Bu denge, çiçek ve meyve oluşumunu teşvik eder.`},{q:`LED grow ışıklarının avantajı nedir?`,a:`LED bitki lambaları, düşük enerji tüketimi, uzun ömür ve minimal ısı yayımı ile ideal iç mekan aydınlatması sunar. Ayrıca, bitki evresine uygun tam spektrum ışık sağlayabilir.`},{q:`Tohumlar çimlenme döneminde kaç günde filizlenir?`,a:`Çimlenme süresi bitki türüne bağlı olmakla birlikte genellikle 3 ila 10 gün arasında tamamlanır. Bu dönemde nemli ortam ve sabit sıcaklık sağlanmalıdır.`},{q:`Büyüme döneminde çadır içi nem oranı ne olmalı?`,a:`Vejetatif büyüme aşamasında ideal nem oranı %50 ila %70 aralığındadır. Bu nem seviyesi, yaprakların su kaybını dengeleyerek hızlı gelişimi destekler.`}]}}};function Hr(){let[e,t]=(0,b.useState)({x:0,y:0}),[n,r]=(0,b.useState)(0),[i,a]=(0,b.useState)(!1),[,o]=(0,b.useState)(0),{hasSeenOnboarding:s}=Fr(),{language:c}=F(),l=Wt(),u=Vr[c];return(0,b.useEffect)(()=>{let e=e=>{t({x:e.clientX/window.innerWidth-.5,y:e.clientY/window.innerHeight-.5})},n=()=>{o(window.scrollY),a(window.scrollY>300)};return window.addEventListener(`mousemove`,e),window.addEventListener(`scroll`,n),()=>{window.removeEventListener(`mousemove`,e),window.removeEventListener(`scroll`,n)}},[]),(0,P.jsxs)(`div`,{className:`landing-container`,children:[(0,P.jsxs)(Re,{children:[(0,P.jsxs)(`title`,{children:[u.title,` | GroWizard`]}),(0,P.jsx)(`meta`,{name:`description`,content:u.subtitle})]}),(0,P.jsxs)(`div`,{className:`landing-bg`,children:[(0,P.jsx)(`div`,{className:`glow-orb orb-1`,style:{transform:`translate(${e.x*30}px, ${e.y*30}px)`}}),(0,P.jsx)(`div`,{className:`glow-orb orb-2`,style:{transform:`translate(${e.x*-30}px, ${e.y*-30}px)`}}),(0,P.jsx)(`div`,{className:`grid-overlay`})]}),(0,P.jsx)(Br,{}),(0,P.jsxs)(`section`,{className:`hero-section`,children:[(0,P.jsxs)(`div`,{className:`hero-content fade-in-up`,children:[(0,P.jsx)(`div`,{className:`badge`,children:`🌱 Professional Grow Planner`}),(0,P.jsxs)(`h1`,{className:`hero-title`,children:[u.title.split(` `).slice(0,2).join(` `),` `,(0,P.jsx)(`br`,{}),(0,P.jsx)(`span`,{className:`gradient-text`,children:u.title.split(` `).slice(2).join(` `)})]}),(0,P.jsx)(`p`,{className:`hero-subtitle`,children:u.subtitle}),(0,P.jsxs)(`button`,{onClick:()=>{l(`/builder`)},className:`cta-button`,children:[u.cta,(0,P.jsx)(`span`,{className:`arrow`,children:`→`})]})]}),(0,P.jsx)(`div`,{className:`hero-visual`,style:{transform:`perspective(1000px) rotateY(${e.x*5}deg) rotateX(${e.y*-5}deg)`},children:(0,P.jsxs)(`div`,{className:`tent-frame`,children:[(0,P.jsx)(`div`,{className:`plant-icon`,children:`🌿`}),(0,P.jsx)(`div`,{className:`light-beam`})]})})]}),(0,P.jsxs)(`section`,{className:`tools-preview-section`,children:[(0,P.jsxs)(`div`,{className:`section-header`,children:[(0,P.jsxs)(`h2`,{children:[`🛠️ `,c===`tr`?`Yetiştirme Araçları`:`Grow Tools`]}),(0,P.jsx)(`p`,{children:c===`tr`?`Başarılı bir hasat için ihtiyacınız olan her şey`:`Everything you need for a successful harvest`})]}),(0,P.jsxs)(`div`,{className:`tools-grid`,children:[(0,P.jsxs)(N,{to:`/tools/cost-calculator`,className:`tool-preview-card`,children:[(0,P.jsx)(`div`,{className:`tool-icon`,children:`⚡`}),(0,P.jsx)(`h3`,{children:c===`tr`?`Maliyet Hesaplayıcı`:`Cost Calculator`}),(0,P.jsx)(`p`,{children:c===`tr`?`Elektrik masraflarınızı hesaplayın`:`Estimate electricity costs`})]}),(0,P.jsxs)(N,{to:`/tools/unit-converter`,className:`tool-preview-card`,children:[(0,P.jsx)(`div`,{className:`tool-icon`,children:`💧`}),(0,P.jsx)(`h3`,{children:c===`tr`?`Birim Çevirici`:`Unit Converter`}),(0,P.jsx)(`p`,{children:c===`tr`?`Litre ve Galon dönüşümü`:`Convert Liters & Gallons`})]}),(0,P.jsxs)(N,{to:`/tools/co2-calculator`,className:`tool-preview-card`,children:[(0,P.jsx)(`div`,{className:`tool-icon`,children:`🌫️`}),(0,P.jsx)(`h3`,{children:c===`tr`?`CO2 Hesaplayıcı`:`CO2 Calculator`}),(0,P.jsx)(`p`,{children:c===`tr`?`Optimal CO2 seviyelerini bulun`:`Find optimal CO2 levels`})]})]}),(0,P.jsx)(`div`,{className:`center-btn`,children:(0,P.jsx)(N,{to:`/tools`,className:`secondary-btn`,children:c===`tr`?`Tüm Araçları Gör`:`View All Tools`})})]}),(0,P.jsxs)(`section`,{className:`features-section`,children:[(0,P.jsxs)(`div`,{className:`feature-card slide-in`,style:{transitionDelay:`0.1s`},children:[(0,P.jsx)(`div`,{className:`feature-icon`,children:`💡`}),(0,P.jsx)(`h3`,{children:u.features.ppfd.title}),(0,P.jsx)(`p`,{children:u.features.ppfd.description})]}),(0,P.jsxs)(`div`,{className:`feature-card slide-in`,style:{transitionDelay:`0.3s`},children:[(0,P.jsx)(`div`,{className:`feature-icon`,children:`🌬️`}),(0,P.jsx)(`h3`,{children:u.features.environment.title}),(0,P.jsx)(`p`,{children:u.features.environment.description})]})]}),(0,P.jsxs)(`section`,{className:`info-boxes-section`,children:[(0,P.jsxs)(`div`,{className:`info-boxes-header`,children:[(0,P.jsxs)(`h2`,{children:[`⚠️ `,u.infoBoxes.title]}),(0,P.jsx)(`p`,{children:u.infoBoxes.subtitle})]}),(0,P.jsx)(`div`,{className:`info-boxes-container`,children:u.infoBoxes.items.map((e,t)=>(0,P.jsxs)(`div`,{className:`info-box`,style:{animationDelay:`${t*.1}s`},children:[(0,P.jsx)(`div`,{className:`info-box-icon`,children:e.icon}),(0,P.jsxs)(`div`,{className:`info-box-content`,children:[(0,P.jsx)(`h3`,{children:e.title}),(0,P.jsx)(`p`,{children:e.description})]})]},t))})]}),(0,P.jsxs)(`section`,{className:`featured-guides-section`,children:[(0,P.jsxs)(`div`,{className:`section-header`,children:[(0,P.jsxs)(`h2`,{children:[`🌟 `,c===`tr`?`Öne Çıkan Rehberler`:`Featured Guides`]}),(0,P.jsx)(`p`,{children:c===`tr`?`Uzmanlardan derinlemesine bilgiler`:`In-depth knowledge from experts`})]}),(0,P.jsxs)(`div`,{className:`slider-container`,children:[(0,P.jsx)(`button`,{className:`slider-btn prev`,onClick:()=>r(e=>e===0?Math.ceil(Lr.length/2)-1:e-1),children:`←`}),(0,P.jsx)(`div`,{className:`slider-track-container`,children:(0,P.jsx)(`div`,{className:`slider-track`,style:{transform:`translateX(-${n*100}%)`},children:Array.from({length:Math.ceil(Lr.slice(0,4).length/2)}).map((e,t)=>(0,P.jsx)(`div`,{className:`slider-slide`,children:Lr.slice(0,4).slice(t*2,t*2+2).map(e=>(0,P.jsxs)(N,{to:`/blog/${e.slug[c]}`,className:`featured-guide-card`,children:[(0,P.jsxs)(`div`,{className:`guide-content`,children:[(0,P.jsx)(`span`,{className:`guide-tag`,children:e.category}),(0,P.jsx)(`h3`,{children:e.title[c]}),(0,P.jsx)(`p`,{children:e.excerpt[c]}),(0,P.jsx)(`span`,{className:`read-more`,children:c===`tr`?`Devamını Oku →`:`Read More →`})]}),(0,P.jsx)(`div`,{className:`guide-image`,style:{backgroundImage:`url(${e.image})`}})]},`featured-${e.id}`))},t))})}),(0,P.jsx)(`button`,{className:`slider-btn next`,onClick:()=>r(e=>e===Math.ceil(Lr.slice(0,4).length/2)-1?0:e+1),children:`→`})]}),(0,P.jsx)(`div`,{className:`slider-dots`,children:Array.from({length:Math.ceil(Lr.slice(0,4).length/2)}).map((e,t)=>(0,P.jsx)(`button`,{className:`slider-dot ${n===t?`active`:``}`,onClick:()=>r(t)},t))})]}),(0,P.jsx)(`section`,{className:`cost-tool-section`,children:(0,P.jsxs)(`div`,{className:`cost-tool-container`,children:[(0,P.jsxs)(`div`,{className:`cost-tool-header`,children:[(0,P.jsxs)(`h2`,{children:[`⚡ `,u.costTool.title]}),(0,P.jsx)(`p`,{children:u.costTool.subtitle})]}),(0,P.jsxs)(`div`,{className:`cost-tool-inputs`,children:[(0,P.jsxs)(`div`,{className:`input-group`,children:[(0,P.jsx)(`label`,{children:u.costTool.power}),(0,P.jsx)(`input`,{type:`number`,id:`power-input`,placeholder:`300`,defaultValue:`300`})]}),(0,P.jsxs)(`div`,{className:`input-group`,children:[(0,P.jsx)(`label`,{children:u.costTool.hours}),(0,P.jsx)(`input`,{type:`number`,id:`hours-input`,placeholder:`18`,defaultValue:`18`})]}),(0,P.jsxs)(`div`,{className:`input-group`,children:[(0,P.jsx)(`label`,{children:u.costTool.rate}),(0,P.jsx)(`input`,{type:`number`,step:`0.01`,id:`rate-input`,placeholder:`0.12`,defaultValue:`0.12`})]})]}),(0,P.jsx)(`button`,{className:`calc-button`,onClick:()=>{let e=parseFloat(document.getElementById(`power-input`).value)||0,t=parseFloat(document.getElementById(`hours-input`).value)||0,n=parseFloat(document.getElementById(`rate-input`).value)||0,r=e/1e3*t*30*n;document.getElementById(`cost-result`).textContent=`${u.costTool.result}: ${c===`tr`?`₺`:`$`}${r.toFixed(2)}`},children:u.costTool.calculate}),(0,P.jsxs)(`div`,{className:`cost-result`,id:`cost-result`,children:[u.costTool.result,`: `,c===`tr`?`₺`:`$`,`0.00`]})]})}),(0,P.jsxs)(`section`,{className:`faq-section`,children:[(0,P.jsxs)(`div`,{className:`section-header`,children:[(0,P.jsxs)(`h2`,{children:[`❓ `,u.faq.title]}),(0,P.jsx)(`p`,{children:u.faq.subtitle})]}),(0,P.jsx)(`div`,{className:`faq-grid`,children:u.faq.items.map((e,t)=>(0,P.jsxs)(`div`,{className:`faq-item`,children:[(0,P.jsx)(`h3`,{children:e.q}),(0,P.jsx)(`p`,{children:e.a})]},t))})]}),(0,P.jsxs)(`section`,{className:`blog-preview-section`,children:[(0,P.jsxs)(`div`,{className:`blog-preview-header`,children:[(0,P.jsxs)(`h2`,{children:[`📚 `,c===`tr`?`En Son Makaleler`:`Latest Articles`]}),(0,P.jsx)(`p`,{children:c===`tr`?`Modern yetiştiricilik tekniklerini keşfedin`:`Discover modern growing techniques`})]}),(0,P.jsx)(`div`,{className:`blog-preview-grid`,children:Lr.slice(0,3).map(e=>(0,P.jsxs)(N,{to:`/blog/${e.slug[c]}`,className:`blog-preview-card`,children:[(0,P.jsx)(`div`,{className:`preview-image`,style:{backgroundImage:`url(${e.image})`}}),(0,P.jsxs)(`div`,{className:`preview-content`,children:[(0,P.jsx)(`span`,{className:`preview-tag`,children:e.category}),(0,P.jsx)(`h3`,{children:e.title[c]}),(0,P.jsxs)(`div`,{className:`preview-meta`,children:[(0,P.jsx)(`span`,{children:e.readTime}),(0,P.jsx)(`span`,{className:`arrow`,children:`→`})]})]})]},e.id))}),(0,P.jsx)(`div`,{className:`blog-cta`,children:(0,P.jsx)(N,{to:`/blog`,className:`view-all-btn`,children:c===`tr`?`Tüm Yazıları Gör`:`View All Articles`})})]}),(0,P.jsx)(zr,{}),(0,P.jsx)(`button`,{className:`scroll-to-top ${i?`visible`:``}`,onClick:()=>{window.scrollTo({top:0,behavior:`smooth`})},"aria-label":`Scroll to top`,children:`↑`}),(0,P.jsx)(`style`,{children:`
                 .landing-container {
                     min-height: 100vh;
                     background: #0a0a0a;
@@ -572,87 +572,160 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
                 }
 
                 .cta-button {
-                    background: #10b981;
-                    color: white;
-                    border: none;
                     padding: 1rem 2rem;
                     font-size: 1.125rem;
                     font-weight: 600;
+                    color: #000;
+                    background: #10b981;
+                    border: none;
                     border-radius: 0.5rem;
                     cursor: pointer;
-                    display: flex;
+                    transition: all 0.2s ease;
+                    display: inline-flex;
                     align-items: center;
-                    gap: 0.75rem;
-                    transition: all 0.3s ease;
-                    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+                    gap: 0.5rem;
                 }
 
                 .cta-button:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
                     background: #059669;
-                }
-
-                .arrow {
-                    transition: transform 0.3s ease;
-                }
-
-                .cta-button:hover .arrow {
-                    transform: translateX(4px);
+                    transform: translateY(-2px);
                 }
 
                 .hero-visual {
-                    width: 400px;
-                    height: 400px;
-                    background: rgba(255, 255, 255, 0.03);
-                    border-radius: 2rem;
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    backdrop-filter: blur(10px);
+                    position: relative;
+                    width: 500px;
+                    height: 500px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    position: relative;
-                    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
                 }
 
                 .tent-frame {
-                    font-size: 8rem;
+                    width: 300px;
+                    height: 400px;
+                    border: 4px solid rgba(16, 185, 129, 0.3);
                     position: relative;
+                    transform-style: preserve-3d;
+                    animation: float 6s ease-in-out infinite;
+                }
+
+                .plant-icon {
+                    font-size: 5rem;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    filter: drop-shadow(0 0 20px rgba(16, 185, 129, 0.5));
                 }
 
                 .light-beam {
                     position: absolute;
-                    top: -20px;
+                    top: 0;
                     left: 50%;
                     transform: translateX(-50%);
-                    width: 100px;
-                    height: 200px;
-                    background: linear-gradient(to bottom, rgba(255, 255, 0, 0.2), transparent);
+                    width: 200px;
+                    height: 300px;
+                    background: linear-gradient(to bottom, rgba(16, 185, 129, 0.2), transparent);
                     clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
-                    filter: blur(5px);
+                }
+
+                .tools-preview-section, .features-section, .info-boxes-section, .featured-guides-section, .cost-tool-section, .faq-section, .blog-preview-section {
+                    padding: 5rem 10%;
+                    position: relative;
+                    z-index: 1;
+                }
+
+                .section-header {
+                    text-align: center;
+                    margin-bottom: 3rem;
+                }
+
+                .section-header h2 {
+                    font-size: 2.5rem;
+                    margin-bottom: 1rem;
+                    color: #f8fafc;
+                }
+
+                .section-header p {
+                    color: #94a3b8;
+                    font-size: 1.1rem;
+                }
+
+                .tools-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    gap: 2rem;
+                    margin-bottom: 3rem;
+                }
+
+                .tool-preview-card {
+                    background: rgba(255, 255, 255, 0.03);
+                    border: 1px solid rgba(255, 255, 255, 0.05);
+                    border-radius: 1rem;
+                    padding: 2rem;
+                    text-align: center;
+                    transition: all 0.3s ease;
+                    text-decoration: none;
+                    color: inherit;
+                }
+
+                .tool-preview-card:hover {
+                    transform: translateY(-5px);
+                    background: rgba(255, 255, 255, 0.05);
+                    border-color: rgba(16, 185, 129, 0.3);
+                }
+
+                .tool-icon {
+                    font-size: 3rem;
+                    margin-bottom: 1rem;
+                }
+
+                .tool-preview-card h3 {
+                    font-size: 1.25rem;
+                    margin-bottom: 0.5rem;
+                    color: #f8fafc;
+                }
+
+                .tool-preview-card p {
+                    color: #94a3b8;
+                    font-size: 0.9rem;
+                }
+
+                .center-btn {
+                    text-align: center;
+                }
+
+                .secondary-btn {
+                    display: inline-block;
+                    padding: 0.75rem 1.5rem;
+                    background: rgba(255, 255, 255, 0.1);
+                    color: white;
+                    text-decoration: none;
+                    border-radius: 0.5rem;
+                    font-weight: 600;
+                    transition: all 0.2s ease;
+                }
+
+                .secondary-btn:hover {
+                    background: rgba(255, 255, 255, 0.2);
                 }
 
                 .features-section {
                     display: grid;
                     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
                     gap: 2rem;
-                    padding: 4rem 10%;
-                    position: relative;
-                    z-index: 1;
-                    background: rgba(0, 0, 0, 0.3);
                 }
 
                 .feature-card {
                     background: rgba(255, 255, 255, 0.03);
                     border: 1px solid rgba(255, 255, 255, 0.05);
-                    padding: 2rem;
                     border-radius: 1rem;
+                    padding: 2rem;
                     transition: all 0.3s ease;
                 }
 
                 .feature-card:hover {
                     transform: translateY(-5px);
-                    background: rgba(255, 255, 255, 0.05);
                     border-color: rgba(16, 185, 129, 0.3);
                 }
 
@@ -663,21 +736,13 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
 
                 .feature-card h3 {
                     font-size: 1.5rem;
-                    margin-bottom: 0.5rem;
-                    color: white;
+                    margin-bottom: 1rem;
+                    color: #f8fafc;
                 }
 
                 .feature-card p {
                     color: #94a3b8;
-                    line-height: 1.5;
-                }
-
-                /* Info Boxes Section */
-                .info-boxes-section {
-                    padding: 4rem 10%;
-                    position: relative;
-                    z-index: 1;
-                    background: linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, rgba(245, 158, 11, 0.05) 100%);
+                    line-height: 1.6;
                 }
 
                 .info-boxes-header {
@@ -687,128 +752,80 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
 
                 .info-boxes-header h2 {
                     font-size: 2.5rem;
-                    margin-bottom: 0.5rem;
-                    color: white;
+                    margin-bottom: 1rem;
+                    color: #f8fafc;
                 }
 
                 .info-boxes-header p {
                     color: #94a3b8;
-                    font-size: 1.125rem;
+                    font-size: 1.1rem;
                 }
 
                 .info-boxes-container {
                     display: grid;
                     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
                     gap: 2rem;
-                    max-width: 1200px;
-                    margin: 0 auto;
                 }
 
                 .info-box {
-                    background: rgba(255, 255, 255, 0.03);
-                    border: 2px solid rgba(245, 158, 11, 0.2);
+                    background: rgba(16, 185, 129, 0.05);
+                    border: 1px solid rgba(16, 185, 129, 0.1);
                     border-radius: 1rem;
                     padding: 2rem;
                     display: flex;
-                    gap: 1.5rem;
                     align-items: flex-start;
+                    gap: 1.5rem;
                     transition: all 0.3s ease;
+                    animation: fadeIn 0.5s ease-out forwards;
                     opacity: 0;
-                    animation: slideInUp 0.6s ease-out forwards;
-                }
-
-                @keyframes slideInUp {
-                    from {
-                        opacity: 0;
-                        transform: translateY(30px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
                 }
 
                 .info-box:hover {
                     transform: translateY(-5px);
-                    background: rgba(255, 255, 255, 0.05);
-                    border-color: rgba(245, 158, 11, 0.5);
-                    box-shadow: 0 10px 30px rgba(245, 158, 11, 0.2);
+                    background: rgba(16, 185, 129, 0.1);
+                    border-color: rgba(16, 185, 129, 0.3);
+                    box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.2);
                 }
 
                 .info-box-icon {
-                    font-size: 3rem;
+                    font-size: 2.5rem;
+                    background: rgba(16, 185, 129, 0.1);
+                    width: 60px;
+                    height: 60px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 12px;
                     flex-shrink: 0;
-                    filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.3));
-                }
-
-                .info-box-content {
-                    flex: 1;
                 }
 
                 .info-box-content h3 {
                     font-size: 1.25rem;
-                    margin-bottom: 0.75rem;
-                    color: #fbbf24;
-                    font-weight: 700;
+                    margin-bottom: 0.5rem;
+                    color: #10b981;
                 }
 
                 .info-box-content p {
                     color: #cbd5e1;
-                    line-height: 1.6;
                     font-size: 0.95rem;
+                    line-height: 1.5;
                 }
 
-                /* Cost Calculator Tool */
-                .cost-tool-section {
-                    padding: 4rem 10%;
-                    position: relative;
-                    z-index: 1;
-                    background: rgba(16, 185, 129, 0.05);
-                }
-
-                .cost-tool-container {
-                    max-width: 600px;
-                    margin: 0 auto;
-                    background: rgba(255, 255, 255, 0.03);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    border-radius: 1.5rem;
-                    padding: 3rem;
-                }
-
-                .cost-tool-header {
-                    text-align: center;
-                    margin-bottom: 2rem;
-                }
-
-                .cost-tool-header h2 {
-                    font-size: 2rem;
-                    margin-bottom: 0.5rem;
-                    color: white;
-                }
-
-                .cost-tool-header p {
-                    color: #94a3b8;
-                }
-
-                /* Slider Styles */
                 .slider-container {
                     position: relative;
                     max-width: 1200px;
                     margin: 0 auto;
-                    display: flex;
-                    align-items: center;
-                    gap: 1rem;
+                    overflow: hidden;
                 }
 
                 .slider-track-container {
                     overflow: hidden;
-                    width: 100%;
+                    margin: 0 3rem;
                 }
 
                 .slider-track {
                     display: flex;
                     transition: transform 0.5s ease-in-out;
-                    width: 100%;
                 }
 
                 .slider-slide {
@@ -816,80 +833,36 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
                     display: grid;
                     grid-template-columns: 1fr 1fr;
                     gap: 2rem;
-                    padding: 0 0.5rem; /* Prevent cut-off shadows */
-                }
-
-                .slider-btn {
-                    background: rgba(255, 255, 255, 0.1);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    color: white;
-                    width: 40px;
-                    height: 40px;
-                    border-radius: 50%;
-                    cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 1.2rem;
-                    transition: all 0.2s;
-                    z-index: 2;
-                }
-
-                .slider-btn:hover {
-                    background: #10b981;
-                    transform: scale(1.1);
-                }
-
-                .slider-dots {
-                    display: flex;
-                    justify-content: center;
-                    gap: 0.5rem;
-                    margin-top: 2rem;
-                }
-
-                .slider-dot {
-                    width: 10px;
-                    height: 10px;
-                    border-radius: 50%;
-                    background: rgba(255, 255, 255, 0.2);
-                    border: none;
-                    cursor: pointer;
-                    transition: all 0.3s;
-                }
-
-                .slider-dot.active {
-                    background: #10b981;
-                    transform: scale(1.2);
-                }
-
-                /* Featured Guides Section */
-                .featured-guides-section {
-                    padding: 4rem 10%;
-                    position: relative;
-                    z-index: 1;
-                    background: rgba(0, 0, 0, 0.2);
+                    padding: 0 1rem;
                 }
 
                 .featured-guide-card {
-                    display: flex;
-                    background: rgba(30, 41, 59, 0.6);
+                    background: rgba(255, 255, 255, 0.03);
                     border: 1px solid rgba(255, 255, 255, 0.05);
                     border-radius: 1rem;
                     overflow: hidden;
                     text-decoration: none;
-                    transition: all 0.3s ease;
+                    color: inherit;
+                    display: flex;
+                    flex-direction: column;
                     height: 100%;
+                    transition: all 0.3s ease;
                 }
 
                 .featured-guide-card:hover {
                     transform: translateY(-5px);
                     border-color: rgba(16, 185, 129, 0.3);
-                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                }
+
+                .guide-image {
+                    height: 200px;
+                    background-size: cover;
+                    background-position: center;
                 }
 
                 .guide-content {
+                    padding: 1.5rem;
                     flex: 1;
-                    padding: 2rem;
                     display: flex;
                     flex-direction: column;
                 }
@@ -907,387 +880,169 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
                 }
 
                 .guide-content h3 {
-                    font-size: 1.5rem;
-                    color: white;
-                    margin-bottom: 1rem;
-                    line-height: 1.3;
+                    font-size: 1.25rem;
+                    margin-bottom: 0.5rem;
+                    color: #f8fafc;
                 }
 
                 .guide-content p {
                     color: #94a3b8;
+                    font-size: 0.9rem;
                     margin-bottom: 1.5rem;
-                    flex-grow: 1;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 3;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
+                    flex: 1;
                 }
 
                 .read-more {
                     color: #10b981;
                     font-weight: 600;
                     font-size: 0.9rem;
-                    transition: transform 0.2s;
                 }
 
-                .featured-guide-card:hover .read-more {
-                    transform: translateX(5px);
+                .slider-btn {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background: rgba(16, 185, 129, 0.1);
+                    border: 1px solid rgba(16, 185, 129, 0.2);
+                    color: #10b981;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 1.25rem;
+                    transition: all 0.2s ease;
+                    z-index: 2;
                 }
 
-                .guide-image {
-                    width: 40%;
-                    background-size: cover;
-                    background-position: center;
-                    min-height: 250px;
+                .slider-btn:hover {
+                    background: rgba(16, 185, 129, 0.2);
+                    transform: translateY(-50%) scale(1.1);
                 }
 
-                /* Mobile Responsive for Slider */
-                @media (max-width: 768px) {
-                    .slider-slide {
-                        grid-template-columns: 1fr;
-                        gap: 1rem;
-                    }
-                    
-                    .featured-guide-card {
-                        flex-direction: column-reverse;
-                    }
-                    
-                    .guide-image {
-                        width: 100%;
-                        height: 200px;
-                        min-height: auto;
-                    }
-                    
-                    .slider-btn {
-                        display: none; /* Hide arrows on mobile, use swipe or dots */
-                    }
-                    
-                    .slider-container {
-                        gap: 0;
-                    }
+                .slider-btn.prev { left: 0; }
+                .slider-btn.next { right: 0; }
+
+                .slider-dots {
+                    display: flex;
+                    justify-content: center;
+                    gap: 0.5rem;
+                    margin-top: 2rem;
+                }
+
+                .slider-dot {
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.1);
+                    border: none;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                }
+
+                .slider-dot.active {
+                    background: #10b981;
+                    transform: scale(1.2);
+                }
+
+                .cost-tool-container {
+                    background: rgba(16, 185, 129, 0.05);
+                    border: 1px solid rgba(16, 185, 129, 0.1);
+                    border-radius: 1.5rem;
+                    padding: 3rem;
+                    max-width: 800px;
+                    margin: 0 auto;
+                    text-align: center;
+                }
+
+                .cost-tool-header h2 {
+                    font-size: 2rem;
+                    margin-bottom: 0.5rem;
+                    color: #f8fafc;
+                }
+
+                .cost-tool-header p {
+                    color: #94a3b8;
+                    margin-bottom: 2rem;
                 }
 
                 .cost-tool-inputs {
                     display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
                     gap: 1.5rem;
+                    margin-bottom: 2rem;
                 }
 
                 .input-group {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 0.5rem;
+                    text-align: left;
                 }
 
                 .input-group label {
+                    display: block;
+                    margin-bottom: 0.5rem;
                     color: #94a3b8;
-                    font-size: 0.875rem;
-                    font-weight: 600;
+                    font-size: 0.9rem;
                 }
 
                 .input-group input {
-                    background: rgba(255, 255, 255, 0.05);
+                    width: 100%;
+                    background: rgba(0, 0, 0, 0.2);
                     border: 1px solid rgba(255, 255, 255, 0.1);
-                    color: white;
-                    padding: 0.75rem 1rem;
                     border-radius: 0.5rem;
+                    padding: 0.75rem;
+                    color: white;
                     font-size: 1rem;
-                    transition: all 0.2s ease;
-                }
-
-                .input-group input:focus {
-                    outline: none;
-                    border-color: #10b981;
-                    background: rgba(255, 255, 255, 0.08);
                 }
 
                 .calc-button {
-                    width: 100%;
                     background: #10b981;
-                    color: white;
+                    color: black;
                     border: none;
-                    padding: 1rem;
+                    padding: 1rem 3rem;
                     border-radius: 0.5rem;
-                    font-size: 1rem;
                     font-weight: 600;
+                    font-size: 1.1rem;
                     cursor: pointer;
-                    transition: all 0.3s ease;
+                    transition: all 0.2s ease;
+                    margin-bottom: 1.5rem;
                 }
 
                 .calc-button:hover {
                     background: #059669;
                     transform: translateY(-2px);
-                    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
                 }
 
                 .cost-result {
-                    margin-top: 1.5rem;
-                    font-size: 1.25rem;
+                    font-size: 1.5rem;
                     font-weight: 700;
-                    color: #fbbf24;
-                    text-align: center;
-                    min-height: 1.5em;
+                    color: #10b981;
                 }
 
-                /* Tools Preview Section */
-                .tools-preview-section {
-                    padding: 4rem 10%;
-                    background: rgba(0, 0, 0, 0.2);
-                    position: relative;
-                    z-index: 1;
-                }
-
-                .section-header {
-                    text-align: center;
-                    margin-bottom: 3rem;
-                }
-
-                .section-header h2 {
-                    font-size: 2.5rem;
-                    margin-bottom: 0.5rem;
-                    color: white;
-                }
-
-                .section-header p {
-                    color: #94a3b8;
-                    font-size: 1.125rem;
-                }
-
-                .tools-grid {
+                .faq-grid {
                     display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
                     gap: 2rem;
-                    margin-bottom: 2rem;
-                }
-
-                .tool-preview-card {
-                    background: rgba(255, 255, 255, 0.03);
-                    border: 1px solid rgba(255, 255, 255, 0.05);
-                    padding: 2rem;
-                    border-radius: 1rem;
-                    text-align: center;
-                    text-decoration: none;
-                    transition: all 0.3s ease;
-                }
-
-                .tool-preview-card:hover {
-                    transform: translateY(-5px);
-                    background: rgba(255, 255, 255, 0.05);
-                    border-color: rgba(16, 185, 129, 0.3);
-                }
-
-                .tool-preview-card .tool-icon {
-                    font-size: 2.5rem;
-                    margin-bottom: 1rem;
-                }
-
-                .tool-preview-card h3 {
-                    color: white;
-                    font-size: 1.25rem;
-                    margin-bottom: 0.5rem;
-                }
-
-                .tool-preview-card p {
-                    color: #94a3b8;
-                    font-size: 0.9rem;
-                }
-
-                .center-btn {
-                    text-align: center;
-                }
-
-                .secondary-btn {
-                    display: inline-block;
-                    padding: 0.75rem 2rem;
-                    border: 1px solid rgba(255, 255, 255, 0.2);
-                    border-radius: 0.5rem;
-                    color: white;
-                    text-decoration: none;
-                    transition: all 0.3s ease;
-                }
-
-                .secondary-btn:hover {
-                    background: rgba(255, 255, 255, 0.1);
-                    border-color: white;
-                }
-
-
-
-
-                /* FAQ Section */
-                .faq-section {
-                    padding: 4rem 10%;
-                    position: relative;
-                    z-index: 1;
-                }
-
-                .faq-header {
-                    text-align: center;
-                    margin-bottom: 3rem;
-                }
-
-                .faq-header h2 {
-                    font-size: 2.5rem;
-                    margin-bottom: 0.5rem;
-                    color: white;
-                }
-
-                .faq-header p {
-                    color: #94a3b8;
-                    font-size: 1.125rem;
-                }
-
-                .faq-container {
-                    max-width: 800px;
-                    margin: 0 auto;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 1rem;
                 }
 
                 .faq-item {
                     background: rgba(255, 255, 255, 0.03);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    border: 1px solid rgba(255, 255, 255, 0.05);
                     border-radius: 1rem;
                     padding: 1.5rem;
-                    cursor: pointer;
-                    transition: all 0.3s ease;
                 }
 
-                .faq-item:hover {
-                    background: rgba(255, 255, 255, 0.05);
-                    border-color: rgba(16, 185, 129, 0.3);
-                }
-
-                .faq-question {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    font-weight: 600;
-                    color: white;
-                    font-size: 1.125rem;
-                }
-
-                .faq-icon {
-                    font-size: 1.5rem;
+                .faq-item h3 {
                     color: #10b981;
-                    font-weight: 300;
-                    min-width: 24px;
-                    text-align: center;
+                    font-size: 1.1rem;
+                    margin-bottom: 0.5rem;
                 }
 
-                .faq-answer {
-                    max-height: 0;
-                    overflow: hidden;
+                .faq-item p {
                     color: #94a3b8;
-                    line-height: 1.6;
-                    transition: max-height 0.3s ease, margin-top 0.3s ease;
-                }
-
-                .faq-answer.open {
-                    max-height: 200px;
-                    margin-top: 1rem;
-                }
-
-                /* Animations */
-                @keyframes fadeInUp {
-                    from { opacity: 0; transform: translateY(30px); }
-                    to { opacity: 1; transform: translateY(0); }
-                }
-
-                .fade-in-up {
-                    animation: fadeInUp 1s ease-out forwards;
-                }
-
-                /* Mobile Responsive */
-                @media (max-width: 768px) {
-                    .hero-section {
-                        flex-direction: column;
-                        text-align: center;
-                        padding-top: 4rem;
-                        justify-content: center;
-                    }
-
-                    .hero-content {
-                        margin-bottom: 3rem;
-                    }
-
-                    .hero-title {
-                        font-size: 2.5rem;
-                    }
-
-                    .hero-visual {
-                        width: 280px;
-                        height: 280px;
-                        margin: 0 auto;
-                    }
-
-                    .cta-button {
-                        margin: 0 auto;
-                        width: 100%;
-                        justify-content: center;
-                    }
-
-                    .info-boxes-container {
-                        grid-template-columns: 1fr;
-                        gap: 1.5rem;
-                    }
-
-                    .info-box {
-                        flex-direction: column;
-                        text-align: center;
-                        align-items: center;
-                    }
-
-                    .info-box-icon {
-                        font-size: 2.5rem;
-                    }
-
-                    .info-boxes-header h2 {
-                        font-size: 1.75rem;
-                    }
-
-                    .footer-content {
-                        flex-direction: column;
-                        text-align: center;
-                    }
-
-                    .badge {
-                        font-size: 0.75rem;
-                        padding: 0.4rem 0.8rem;
-                    }
-
-                    /* Cost Calculator Mobile Fixes */
-                    .cost-tool-section {
-                        padding: 2rem 5%;
-                    }
-
-                    .cost-tool-container {
-                        padding: 1.5rem;
-                    }
-
-                    .cost-tool-header h2 {
-                        font-size: 1.5rem;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        line-height: 1.4;
-                    }
-
-                    .input-group input {
-                        width: 100%;
-                        box-sizing: border-box;
-                    }
-
-                    .cost-tool-inputs {
-                        width: 100%;
-                    }
-                }
-                /* Blog Preview Section */
-                .blog-preview-section {
-                    padding: 6rem 10%;
-                    background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(16, 185, 129, 0.05));
-                    position: relative;
-                    z-index: 1;
+                    font-size: 0.95rem;
+                    line-height: 1.5;
                 }
 
                 .blog-preview-header {
@@ -1297,75 +1052,63 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
 
                 .blog-preview-header h2 {
                     font-size: 2.5rem;
-                    margin-bottom: 0.5rem;
-                    color: white;
+                    margin-bottom: 1rem;
+                    color: #f8fafc;
                 }
 
                 .blog-preview-header p {
                     color: #94a3b8;
+                    font-size: 1.1rem;
                 }
 
                 .blog-preview-grid {
                     display: grid;
                     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
                     gap: 2rem;
-                    max-width: 1200px;
-                    margin: 0 auto 3rem;
+                    margin-bottom: 3rem;
                 }
 
                 .blog-preview-card {
-                    background: rgba(30, 41, 59, 0.5);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    background: rgba(255, 255, 255, 0.03);
+                    border: 1px solid rgba(255, 255, 255, 0.05);
                     border-radius: 1rem;
                     overflow: hidden;
                     text-decoration: none;
+                    color: inherit;
                     transition: all 0.3s ease;
-                    display: flex;
-                    flex-direction: column;
                 }
 
                 .blog-preview-card:hover {
                     transform: translateY(-5px);
-                    border-color: #10b981;
-                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                    border-color: rgba(16, 185, 129, 0.3);
                 }
 
                 .preview-image {
                     height: 200px;
                     background-size: cover;
                     background-position: center;
-                    position: relative;
-                }
-
-                .preview-image::after {
-                    content: '';
-                    position: absolute;
-                    inset: 0;
-                    background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
                 }
 
                 .preview-content {
                     padding: 1.5rem;
-                    flex: 1;
-                    display: flex;
-                    flex-direction: column;
                 }
 
                 .preview-tag {
+                    display: inline-block;
+                    padding: 0.25rem 0.75rem;
+                    background: rgba(16, 185, 129, 0.1);
                     color: #10b981;
+                    border-radius: 999px;
                     font-size: 0.75rem;
                     font-weight: 600;
-                    text-transform: uppercase;
-                    letter-spacing: 0.05em;
-                    margin-bottom: 0.5rem;
+                    margin-bottom: 1rem;
                 }
 
                 .preview-content h3 {
-                    color: white;
                     font-size: 1.25rem;
                     margin-bottom: 1rem;
+                    color: #f8fafc;
                     line-height: 1.4;
-                    flex: 1;
                 }
 
                 .preview-meta {
@@ -1373,7 +1116,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
                     justify-content: space-between;
                     align-items: center;
                     color: #94a3b8;
-                    font-size: 0.875rem;
+                    font-size: 0.9rem;
                 }
 
                 .blog-cta {
@@ -1382,43 +1125,112 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
 
                 .view-all-btn {
                     display: inline-block;
-                    padding: 0.75rem 2rem;
+                    padding: 1rem 2rem;
+                    background: transparent;
                     border: 1px solid #10b981;
                     color: #10b981;
-                    border-radius: 0.5rem;
                     text-decoration: none;
+                    border-radius: 0.5rem;
                     font-weight: 600;
-                    transition: all 0.3s ease;
+                    transition: all 0.2s ease;
                 }
 
                 .view-all-btn:hover {
-                    background: #10b981;
-                    color: white;
+                    background: rgba(16, 185, 129, 0.1);
+                    transform: translateY(-2px);
                 }
 
-                /* Additional Mobile Fixes */
+                .scroll-to-top {
+                    position: fixed;
+                    bottom: 30px;
+                    right: 30px;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    background: rgba(16, 185, 129, 0.2);
+                    backdrop-filter: blur(10px);
+                    border: 1px solid rgba(16, 185, 129, 0.3);
+                    color: #10b981;
+                    font-size: 24px;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    opacity: 0;
+                    visibility: hidden;
+                    transform: translateY(20px);
+                    transition: all 0.3s ease;
+                    z-index: 1000;
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+                }
+
+                .scroll-to-top.visible {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateY(0);
+                }
+
+                .scroll-to-top:hover {
+                    background: rgba(16, 185, 129, 0.4);
+                    transform: translateY(-5px);
+                    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+                }
+
                 @media (max-width: 768px) {
-                    .tools-preview-section,
-                    .features-section,
-                    .info-boxes-section,
-                    .featured-guides-section,
-                    .faq-section,
-                    .blog-preview-section {
-                        padding: 3rem 1.5rem;
+                    .hero-title {
+                        font-size: 3rem;
                     }
 
-                    .tools-grid,
-                    .blog-preview-grid,
-                    .featured-grid {
+                    .hero-section {
+                        flex-direction: column;
+                        text-align: center;
+                        padding-top: 100px;
+                    }
+
+                    .hero-content {
+                        margin-bottom: 3rem;
+                    }
+
+                    .hero-visual {
+                        width: 100%;
+                        height: 300px;
+                    }
+
+                    .tent-frame {
+                        width: 200px;
+                        height: 280px;
+                    }
+
+                    .slider-slide {
                         grid-template-columns: 1fr;
-                        gap: 1.5rem;
                     }
 
-                    .section-header h2,
-                    .blog-preview-header h2,
-                    .faq-header h2 {
-                        font-size: 1.75rem;
+                    .scroll-to-top {
+                        bottom: 20px;
+                        right: 20px;
+                        width: 40px;
+                        height: 40px;
+                        font-size: 20px;
                     }
+                }
+
+                @keyframes float {
+                    0%, 100% { transform: translateY(0) rotateY(0); }
+                    50% { transform: translateY(-20px) rotateY(5deg); }
+                }
+
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(20px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+
+                .fade-in-up {
+                    animation: fadeIn 1s ease-out forwards;
+                }
+
+                .slide-in {
+                    opacity: 0;
+                    animation: fadeIn 0.8s ease-out forwards;
                 }
             `})]})}function Ur(){let[e,t]=(0,b.useState)(1),[n,r]=(0,b.useState)(!1),{onboardingData:i,updateOnboarding:a,completeOnboarding:o}=Fr(),s=Wt(),c=[{question:`Hangi bitki türlerini yetiştirmeyi planlıyorsunuz?`,field:`plantType`,options:[{value:`herbs`,label:`Aromatik otlar`,detail:`(fesleğen, nane, kekik)`,icon:`🌿`},{value:`vegetables`,label:`Sebzeler`,detail:`(domates, biber, marul)`,icon:`🥬`},{value:`flowers`,label:`Çiçekli bitkiler`,detail:`(orkide, sardunya)`,icon:`🌺`}],tooltips:{herbs:`Aromatik otlar düşük PPFD seviyelerinde bile gelişebilir, bu nedenle daha az güçlü ışıklarla da verimli yetiştirilebilir.`,vegetables:`Sebzeler özellikle çiçeklenme ve meyve verme dönemlerinde yüksek ışık (600+ µmol/m²/s) ister.`,flowers:`Çiçekli bitkiler için ışık sürekliliği kadar spektrum dengesi de önemlidir; kırmızı ve mavi ışık oranı çiçeklenmeyi etkiler.`}},{question:`Yetiştiricilik deneyiminiz nedir?`,field:`experienceLevel`,options:[{value:`beginner`,label:`Yeni başlıyorum`,icon:`🌱`},{value:`intermediate`,label:`Orta seviye`,icon:`🌿`},{value:`expert`,label:`Deneyimliyim`,icon:`🏆`}],tooltips:{beginner:`Yeni başlayanlar için otomatik zamanlayıcılı ışıklar ve basit toprak karışımları idealdir.`,intermediate:`Orta seviye kullanıcılar için düşük maliyetli sensörler ve küçük havalandırma sistemleri verimi artırabilir.`,expert:`Deneyimli kullanıcılar PPFD haritası çıkararak lamba konumlandırmasını optimize edebilir.`}},{question:`Ne kadar alan ayırmayı planlıyorsunuz?`,field:`tentSize`,options:[{value:`60x60`,label:`Küçük kabin`,detail:`(60×60 cm)`,icon:`📦`},{value:`100x100`,label:`Orta boy çadır`,detail:`(100×100 cm)`,icon:`📦`},{value:`120x120`,label:`Büyük alan`,detail:`(120×120 cm ve üzeri)`,icon:`📦`}],tooltips:{"60x60":`Küçük alanlarda sıcaklık kontrolü zor olabilir, bu yüzden sessiz fanlar ve düşük ısı yayan LED'ler tercih edilmeli.`,"100x100":`Bu boyutlar için 240–320W LED arası ürünler iyi bir başlangıç noktasıdır.`,"120x120":`Geniş alanlar güçlü havalandırma ve 480W+ LED gibi daha fazla ekipman gerektirir.`}},{question:`Aydınlatma sistemi tercihiniz nedir?`,field:`lightPreference`,options:[{value:`led`,label:`LED`,detail:`(enerji verimli, düşük ısı)`,icon:`💡`},{value:`hps`,label:`HPS`,detail:`(yüksek basınçlı sodyum)`,icon:`🔥`},{value:`unsure`,label:`Emin değilim`,detail:`öneri almak istiyorum`,icon:`❓`}],tooltips:{led:`LED'ler uzun ömürlüdür ve farklı spektrumlara sahip modeller ile bitki gelişim evrelerine uygun ışık sunar.`,hps:`HPS lambalar çiçeklenme döneminde yoğun ışık sağlar, ancak daha fazla ısı yayar ve enerji tüketimi yüksektir.`,unsure:`LED teknolojisi çoğu kullanıcı için başlangıç ve uzun vadede daha avantajlıdır; düşük ısı ve modüler tasarımıyla öne çıkar.`}},{question:`Otomasyon seviyeniz ne olacak?`,field:`automationLevel`,options:[{value:`manual`,label:`Tamamen manuel`,detail:`(sulama, ışık kontrolü vb.)`,icon:`✋`},{value:`semi`,label:`Yarı otomatik`,detail:`(zamanlayıcı, fan kontrolü)`,icon:`⚙️`},{value:`full`,label:`Tam otomatik`,detail:`(iklim kontrolü, nem, sulama)`,icon:`🤖`}],tooltips:{manual:`Manuel sistemler düşük bütçelidir ama dikkat gerektirir; günlük kontroller ihmal edilmemelidir.`,semi:`Basit zamanlayıcılar ve sensör destekli fanlar verimliliği artırır ve hata payını azaltır.`,full:`Tam otomasyon, verim artışı sağlar ancak başlangıç maliyeti yüksektir; ileri düzey kullanıcılar için idealdir.`}}],l=c[e-1],u=e/c.length*100,[d,f]=(0,b.useState)(``),p=e=>{a(l.field,e),f(l.tooltips[e]),r(!0)},m=()=>{r(!1),e<c.length?t(e+1):(o(),s(`/builder`))};return b.useEffect(()=>{if(n){let e=setTimeout(()=>{m()},1e4);return()=>clearTimeout(e)}},[n]),(0,P.jsxs)(`div`,{className:`onboarding-container`,children:[(0,P.jsxs)(`div`,{className:`onboarding-bg`,children:[(0,P.jsx)(`div`,{className:`glow-orb orb-green`}),(0,P.jsx)(`div`,{className:`grid-overlay`})]}),(0,P.jsxs)(`div`,{className:`onboarding-content`,children:[(0,P.jsxs)(`div`,{className:`progress-container`,children:[(0,P.jsx)(`div`,{className:`progress-bar`,style:{width:`${u}%`}}),(0,P.jsxs)(`span`,{className:`progress-text`,children:[`Adım `,e,` / `,c.length]})]}),(0,P.jsxs)(`div`,{className:`question-container fade-in`,children:[(0,P.jsx)(`h2`,{className:`question-title`,children:l.question}),(0,P.jsx)(`div`,{className:`options-grid`,children:l.options.map(e=>(0,P.jsxs)(`button`,{onClick:()=>p(e.value),className:`option-card ${i[l.field]===e.value?`selected`:``}`,children:[(0,P.jsx)(`span`,{className:`option-icon`,children:e.icon}),(0,P.jsxs)(`div`,{className:`option-text`,children:[(0,P.jsx)(`span`,{className:`option-label`,children:e.label}),e.detail&&(0,P.jsx)(`span`,{className:`option-detail`,children:e.detail})]})]},e.value))}),n&&(0,P.jsxs)(`div`,{className:`tooltip-box fade-in`,children:[(0,P.jsx)(`p`,{children:d}),(0,P.jsx)(`button`,{onClick:m,className:`btn-continue`,children:`Devam Et →`})]})]}),(0,P.jsxs)(`div`,{className:`nav-buttons`,children:[e>1&&(0,P.jsx)(`button`,{onClick:()=>{e>1&&(t(e-1),r(!1))},className:`btn-secondary`,children:`← Geri`}),(0,P.jsx)(`button`,{onClick:()=>{o(),s(`/builder`)},className:`btn-skip`,children:`Atla`})]})]}),(0,P.jsx)(`style`,{children:`
                 .onboarding-container {
