@@ -43,17 +43,17 @@ export default function TentSelection() {
     };
 
     const applyCustom = () => {
-        let width = dims.width;
-        let depth = dims.depth;
-        let height = dims.height;
-
-        if (unitSystem === 'METRIC') {
-            width = width / 30.48;
-            depth = depth / 30.48;
-            height = height / 30.48;
-        }
-
-        dispatch({ type: 'SET_TENT_SIZE', payload: { width, depth, height, unit: 'ft' } });
+        // dims state is already stored in feet (converted in onChange handlers)
+        // So we can directly dispatch without additional conversion
+        dispatch({
+            type: 'SET_TENT_SIZE',
+            payload: {
+                width: dims.width,
+                depth: dims.depth,
+                height: dims.height,
+                unit: 'ft'
+            }
+        });
     };
 
     const handleNext = () => {
@@ -67,9 +67,25 @@ export default function TentSelection() {
     return (
         <div>
             <h2 style={{ marginBottom: '1rem', color: 'var(--color-primary)' }}>{t('selectTent')}</h2>
-            <p style={{ marginBottom: '2rem', color: 'var(--text-secondary)' }}>
+            <p style={{ marginBottom: '1rem', color: 'var(--text-secondary)' }}>
                 {t('tentDesc')}
             </p>
+
+            <div style={{
+                marginBottom: '2rem',
+                padding: '0.75rem 1rem',
+                background: 'rgba(16, 185, 129, 0.1)',
+                border: '1px solid rgba(16, 185, 129, 0.2)',
+                borderRadius: 'var(--radius-sm)',
+                fontSize: '0.85rem',
+                color: 'var(--text-secondary)'
+            }}>
+                <strong style={{ color: 'var(--color-primary)' }}>ℹ️ {unitSystem === 'METRIC' ? 'Kısaltmalar' : 'Abbreviations'}:</strong>{' '}
+                {unitSystem === 'METRIC'
+                    ? 'G = Genişlik • D = Derinlik • Y = Yükseklik'
+                    : 'W = Width • D = Depth • H = Height'
+                }
+            </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
                 {TENT_PRESETS.map((preset) => {
@@ -96,22 +112,29 @@ export default function TentSelection() {
                                 color: 'var(--text-primary)'
                             }}
                         >
-                            <div style={{ fontWeight: 'bold', fontSize: '1.1rem', marginBottom: '0.5rem', color: isSelected ? 'var(--color-primary)' : 'var(--text-primary)' }}>
-                                {preset.label}
-                            </div>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                                <div style={{
+                                    fontSize: '1.2rem',
+                                    fontWeight: 'bold',
+                                    textAlign: 'center',
+                                    color: 'var(--text-primary)',
+                                    marginBottom: '0.5rem'
+                                }}>
+                                    {unitSystem === 'METRIC'
+                                        ? `G:${formatUnit(preset.width)} ${unitLabel} x D:${formatUnit(preset.depth)} ${unitLabel} x Y:${formatUnit(preset.height)} ${unitLabel}`
+                                        : `W:${formatUnit(preset.width)} ${unitLabel} x D:${formatUnit(preset.depth)} ${unitLabel} x H:${formatUnit(preset.height)} ${unitLabel}`
+                                    }
+                                </div>
 
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
-                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <span>{t('dimensions')}:</span>
-                                    <span style={{ fontWeight: '500' }}>{formatUnit(preset.width)} x {formatUnit(preset.depth)} x {formatUnit(preset.height)} {unitLabel}</span>
-                                </div>
-                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <span>{t('area')}:</span>
-                                    <span style={{ fontWeight: '500' }}>{formatUnit(area, 'area')} {areaLabel}</span>
-                                </div>
-                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <span>{t('volume')}:</span>
-                                    <span style={{ fontWeight: '500' }}>{formatUnit(volume, 'volume')} {volLabel}</span>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                        <span>{t('area')}:</span>
+                                        <span style={{ fontWeight: '500' }}>{formatUnit(area, 'area')} {areaLabel}</span>
+                                    </div>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                        <span>{t('volume')}:</span>
+                                        <span style={{ fontWeight: '500' }}>{formatUnit(volume, 'volume')} {volLabel}</span>
+                                    </div>
                                 </div>
                             </div>
                         </button>
@@ -143,7 +166,11 @@ export default function TentSelection() {
                                 type="number"
                                 name="width"
                                 value={unitSystem === 'METRIC' ? (dims.width * 30.48).toFixed(0) : dims.width}
-                                onChange={(e) => setDims(prev => ({ ...prev, width: parseFloat(e.target.value) || 0 }))}
+                                onChange={(e) => {
+                                    const val = parseFloat(e.target.value) || 0;
+                                    const ftValue = unitSystem === 'METRIC' ? val / 30.48 : val;
+                                    setDims(prev => ({ ...prev, width: ftValue }));
+                                }}
                                 style={inputStyle}
                             />
                         </div>
@@ -153,7 +180,11 @@ export default function TentSelection() {
                                 type="number"
                                 name="depth"
                                 value={unitSystem === 'METRIC' ? (dims.depth * 30.48).toFixed(0) : dims.depth}
-                                onChange={(e) => setDims(prev => ({ ...prev, depth: parseFloat(e.target.value) || 0 }))}
+                                onChange={(e) => {
+                                    const val = parseFloat(e.target.value) || 0;
+                                    const ftValue = unitSystem === 'METRIC' ? val / 30.48 : val;
+                                    setDims(prev => ({ ...prev, depth: ftValue }));
+                                }}
                                 style={inputStyle}
                             />
                         </div>
@@ -163,7 +194,11 @@ export default function TentSelection() {
                                 type="number"
                                 name="height"
                                 value={unitSystem === 'METRIC' ? (dims.height * 30.48).toFixed(0) : dims.height}
-                                onChange={(e) => setDims(prev => ({ ...prev, height: parseFloat(e.target.value) || 0 }))}
+                                onChange={(e) => {
+                                    const val = parseFloat(e.target.value) || 0;
+                                    const ftValue = unitSystem === 'METRIC' ? val / 30.48 : val;
+                                    setDims(prev => ({ ...prev, height: ftValue }));
+                                }}
                                 style={inputStyle}
                             />
                         </div>
