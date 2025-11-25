@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link, useNavigate } from 'react-router-dom';
-import { useOnboarding } from '../context/OnboardingContext';
 import { blogPosts } from './Blog/blogData';
 import { useSettings } from '../context/SettingsContext';
 import Footer from './Footer';
@@ -11,11 +10,13 @@ export default function LandingPage() {
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
     const [currentSlide, setCurrentSlide] = useState(0);
     const [showScrollTop, setShowScrollTop] = useState(false);
-    // scrollY is intentionally unused in this component but kept for future effects
-    const [, setScrollY] = useState(0);
-    const { hasSeenOnboarding } = useOnboarding();
     const { language, getBuilderUrl, t } = useSettings();
     const navigate = useNavigate();
+    
+    // Track last update time for throttling
+    const lastMouseUpdate = useRef(0);
+    const lastScrollUpdate = useRef(0);
+    const THROTTLE_MS = 16; // ~60fps
 
     const infoBoxItems = [
         { icon: "💡", titleKey: 'landingInfoLight', descKey: 'landingInfoLightDesc' },
@@ -47,16 +48,23 @@ export default function LandingPage() {
 
     useEffect(() => {
         const handleMouseMove = (e) => {
-            setMousePos({ x: (e.clientX / window.innerWidth) - 0.5, y: (e.clientY / window.innerHeight) - 0.5 });
+            const now = Date.now();
+            if (now - lastMouseUpdate.current >= THROTTLE_MS) {
+                lastMouseUpdate.current = now;
+                setMousePos({ x: (e.clientX / window.innerWidth) - 0.5, y: (e.clientY / window.innerHeight) - 0.5 });
+            }
         };
 
         const handleScroll = () => {
-            setScrollY(window.scrollY);
-            setShowScrollTop(window.scrollY > 300);
+            const now = Date.now();
+            if (now - lastScrollUpdate.current >= THROTTLE_MS) {
+                lastScrollUpdate.current = now;
+                setShowScrollTop(window.scrollY > 300);
+            }
         };
 
-        window.addEventListener('mousemove', handleMouseMove);
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('mousemove', handleMouseMove, { passive: true });
+        window.addEventListener('scroll', handleScroll, { passive: true });
 
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
@@ -64,16 +72,16 @@ export default function LandingPage() {
         };
     }, []);
 
-    const handleStartBuilding = () => {
+    const handleStartBuilding = useCallback(() => {
         navigate(getBuilderUrl());
-    };
+    }, [navigate, getBuilderUrl]);
 
-    const scrollToTop = () => {
+    const scrollToTop = useCallback(() => {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
-    };
+    }, []);
 
     return (
         <div className="landing-container">

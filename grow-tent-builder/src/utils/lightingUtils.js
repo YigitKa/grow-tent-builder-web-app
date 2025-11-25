@@ -86,8 +86,17 @@ export function generatePPFDMap(tentWidth, tentDepth, lights, gridResolution = 4
     const rows = Math.ceil(tentDepth * gridResolution);
     const map = Array(rows).fill(0).map(() => Array(cols).fill(0));
 
-    // Helper to convert grid index to physical coordinates (center of cell)
-    const getCoord = (index) => (index + 0.5) / gridResolution;
+    // Precompute coordinate arrays to avoid repeated calculations in nested loops
+    const cellXCoords = new Array(cols);
+    const cellYCoords = new Array(rows);
+    const invResolution = 1 / gridResolution;
+    
+    for (let c = 0; c < cols; c++) {
+        cellXCoords[c] = (c + 0.5) * invResolution;
+    }
+    for (let r = 0; r < rows; r++) {
+        cellYCoords[r] = (r + 0.5) * invResolution;
+    }
 
     lights.forEach(light => {
         const quantity = light.quantity || 1;
@@ -107,11 +116,12 @@ export function generatePPFDMap(tentWidth, tentDepth, lights, gridResolution = 4
             }
 
             for (let r = 0; r < rows; r++) {
-                const cellY = getCoord(r);
+                const cellY = cellYCoords[r];
+                const row = map[r];
                 for (let c = 0; c < cols; c++) {
-                    const cellX = getCoord(c);
+                    const cellX = cellXCoords[c];
                     const ppfd = calculatePPFD(light, cellX, cellY, lightX, lightY, h);
-                    map[r][c] += ppfd;
+                    row[c] += ppfd;
                 }
             }
         }

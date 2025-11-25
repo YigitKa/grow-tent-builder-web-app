@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo, useCallback } from 'react';
 import { generatePPFDMap, calculateMetrics } from '../../utils/lightingUtils';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
@@ -12,6 +12,9 @@ const AVAILABLE_LIGHTS = [
     { id: 'l3', name: 'COB LED 200W', maxPPFD: 1200, recommendedHeight: 20, physicalWidth: 1.5, physicalDepth: 1.5, beamAngle: 90 },
 ];
 
+// Counter for generating unique IDs (avoids impure Date.now() in render)
+let lightInstanceCounter = 0;
+
 export default function PPFDHeatMapTool() {
     const { t } = useSettings();
     const [unit, setUnit] = useState('cm'); // 'ft' or 'cm'
@@ -21,62 +24,70 @@ export default function PPFDHeatMapTool() {
     const [dimensions, setDimensions] = useState({ width: 150, depth: 150, height: 45 });
 
     const [activeLights, setActiveLights] = useState([]);
-    const [metrics, setMetrics] = useState({ average: 0, min: 0, max: 0, uniformity: 0 });
 
     const containerRef = useRef(null);
     const heatmapCanvasRef = useRef(null);
     const [dragging, setDragging] = useState(null);
 
     // Handle Unit Switching
-    const handleUnitChange = (newUnit) => {
-        if (newUnit === unit) return;
-
-        setDimensions(prev => {
-            const factor = newUnit === 'cm' ? 30.48 : 1 / 30.48;
-            return {
-                width: parseFloat((prev.width * factor).toFixed(1)),
-                depth: parseFloat((prev.depth * factor).toFixed(1)),
-                height: parseFloat((prev.height * factor).toFixed(1))
-            };
+    const handleUnitChange = useCallback((newUnit) => {
+        setUnit(prevUnit => {
+            if (newUnit === prevUnit) return prevUnit;
+            
+            setDimensions(prev => {
+                const factor = newUnit === 'cm' ? 30.48 : 1 / 30.48;
+                return {
+                    width: parseFloat((prev.width * factor).toFixed(1)),
+                    depth: parseFloat((prev.depth * factor).toFixed(1)),
+                    height: parseFloat((prev.height * factor).toFixed(1))
+                };
+            });
+            return newUnit;
         });
-        setUnit(newUnit);
-    };
+    }, []);
 
-    // Add a light to the canvas
-    const addLight = (lightTemplate) => {
+    // Add a light to the canvas - use callback to avoid closure over activeLights
+    const addLight = useCallback((lightTemplate) => {
+        lightInstanceCounter += 1;
         const newLight = {
             ...lightTemplate,
-            instanceId: Date.now(),
+            instanceId: lightInstanceCounter,
             positions: [{ x: 0.5, y: 0.5, rotation: 0 }]
         };
-        setActiveLights([...activeLights, newLight]);
-    };
+        setActiveLights(prev => [...prev, newLight]);
+    }, []);
 
     // Remove a light
-    const removeLight = (instanceId) => {
-        setActiveLights(activeLights.filter(l => l.instanceId !== instanceId));
-    };
+    const removeLight = useCallback((instanceId) => {
+        setActiveLights(prev => prev.filter(l => l.instanceId !== instanceId));
+    }, []);
 
-    // Update Heatmap
-    useEffect(() => {
-        if (!heatmapCanvasRef.current) return;
-
+    // Memoize PPFD map and metrics calculation
+    const { ppfdMap, metrics } = useMemo(() => {
         // Convert current dimensions to feet for calculation
         const widthFt = unit === 'cm' ? dimensions.width / 30.48 : dimensions.width;
         const depthFt = unit === 'cm' ? dimensions.depth / 30.48 : dimensions.depth;
         const heightFt = unit === 'cm' ? dimensions.height / 30.48 : dimensions.height;
 
         // Validate
-        if (!widthFt || widthFt <= 0 || !depthFt || depthFt <= 0) return;
+        if (!widthFt || widthFt <= 0 || !depthFt || depthFt <= 0) {
+            return { ppfdMap: [], metrics: { average: 0, min: 0, max: 0, uniformity: 0 } };
+        }
+
+        const resolution = 4; // pixels per foot
+        const map = generatePPFDMap(widthFt, depthFt, activeLights, resolution, heightFt);
+        const calculatedMetrics = calculateMetrics(map);
+        return { ppfdMap: map, metrics: calculatedMetrics };
+    }, [dimensions, activeLights, unit]);
+
+    // Update Heatmap canvas - only when ppfdMap changes
+    useEffect(() => {
+        if (!heatmapCanvasRef.current || ppfdMap.length === 0) return;
 
         const canvas = heatmapCanvasRef.current;
         const ctx = canvas.getContext('2d');
-        const resolution = 4; // pixels per foot
 
-        const map = generatePPFDMap(widthFt, depthFt, activeLights, resolution, heightFt);
-        const newMetrics = calculateMetrics(map);
-        setMetrics(newMetrics);
-
+        const map = ppfdMap;
         const cols = map[0].length;
         const rows = map.length;
 
@@ -139,10 +150,10 @@ export default function PPFDHeatMapTool() {
 
         ctx.putImageData(imgData, 0, 0);
 
-    }, [dimensions, activeLights, unit]);
+    }, [ppfdMap]);
 
     // Dragging Logic
-    const handlePointerDown = (e, instanceId, currentX, currentY) => {
+    const handlePointerDown = useCallback((e, instanceId, currentX, currentY) => {
         e.preventDefault();
         e.stopPropagation();
         const rect = containerRef.current.getBoundingClientRect();
@@ -155,9 +166,9 @@ export default function PPFDHeatMapTool() {
             rect
         });
         e.target.setPointerCapture(e.pointerId);
-    };
+    }, []);
 
-    const handlePointerMove = (e) => {
+    const handlePointerMove = useCallback((e) => {
         if (!dragging) return;
 
         const deltaX = (e.clientX - dragging.startX) / dragging.rect.width;
@@ -172,16 +183,16 @@ export default function PPFDHeatMapTool() {
             }
             return l;
         }));
-    };
+    }, [dragging]);
 
-    const handlePointerUp = (e) => {
+    const handlePointerUp = useCallback((e) => {
         if (dragging) {
             e.target.releasePointerCapture(e.pointerId);
             setDragging(null);
         }
-    };
+    }, [dragging]);
 
-    const handleDoubleClick = (e, instanceId) => {
+    const handleDoubleClick = useCallback((e, instanceId) => {
         e.preventDefault();
         e.stopPropagation();
         setActiveLights(prev => prev.map(l => {
@@ -191,10 +202,10 @@ export default function PPFDHeatMapTool() {
             }
             return l;
         }));
-    };
+    }, []);
 
     // Safe input handler
-    const handleDimensionChange = (field, value) => {
+    const handleDimensionChange = useCallback((field, value) => {
         // Allow empty string for clearing input
         if (value === '') {
             setDimensions(prev => ({ ...prev, [field]: '' }));
@@ -204,7 +215,7 @@ export default function PPFDHeatMapTool() {
         if (!isNaN(num)) {
             setDimensions(prev => ({ ...prev, [field]: num }));
         }
-    };
+    }, []);
 
     return (
         <div className="ppfd-tool-container">

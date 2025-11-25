@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useMemo } from 'react';
+import { useState, useRef, useEffect, useMemo, useCallback } from 'react';
 import { useBuilder } from '../context/BuilderContext';
 import { useSettings } from '../context/SettingsContext';
 import { generatePPFDMap, calculateMetrics } from '../utils/lightingUtils';
@@ -13,7 +13,6 @@ export default function LightPlacementCanvas() {
     const containerRef = useRef(null);
     const heatmapCanvasRef = useRef(null);
     const [dragging, setDragging] = useState(null); // { id, index, startX, startY, initialLeft, initialTop }
-    const [metrics, setMetrics] = useState({ average: 0, min: 0, max: 0, uniformity: 0 });
     const [lightHeight, setLightHeight] = useState(1.5); // Default global height in feet
 
     // Initialize positions if not present
@@ -22,7 +21,7 @@ export default function LightPlacementCanvas() {
             const quantity = light.quantity || 1;
             // If positions array doesn't match quantity, re-initialize
             if (!light.positions || light.positions.length !== quantity) {
-                const newPositions = Array(quantity).fill(0).map((_, i) => ({
+                const newPositions = Array(quantity).fill(0).map(() => ({
                     x: 0.5 + (Math.random() * 0.2 - 0.1), // Center-ish random
                     y: 0.5 + (Math.random() * 0.2 - 0.1)
                 }));
@@ -34,22 +33,23 @@ export default function LightPlacementCanvas() {
         });
     }, [lights, dispatch]);
 
-    // Calculate Heatmap and Metrics
+    // Memoize PPFD map and metrics calculation to avoid recalculation on every render
+    const { ppfdMap, metrics } = useMemo(() => {
+        const { width, depth } = tentSize;
+        const resolution = 4;
+        const map = generatePPFDMap(width, depth, lights, resolution, lightHeight);
+        const calculatedMetrics = calculateMetrics(map);
+        return { ppfdMap: map, metrics: calculatedMetrics };
+    }, [tentSize, lights, lightHeight]);
+
+    // Render Heatmap to Canvas - only when ppfdMap changes
     useEffect(() => {
-        if (!heatmapCanvasRef.current) return;
+        if (!heatmapCanvasRef.current || ppfdMap.length === 0) return;
 
         const canvas = heatmapCanvasRef.current;
         const ctx = canvas.getContext('2d');
-        const { width, depth } = tentSize;
 
-        // Resolution: pixels per foot for the heatmap calculation
-        // Higher = smoother but slower. 4 is good (3 inch cells).
-        const resolution = 4;
-
-        // Generate PPFD Map
-        const map = generatePPFDMap(width, depth, lights, resolution, lightHeight);
-        const newMetrics = calculateMetrics(map);
-        setMetrics(newMetrics);
+        const map = ppfdMap;
 
         // Render Heatmap to Canvas
         const cols = map[0].length;
@@ -154,9 +154,9 @@ export default function LightPlacementCanvas() {
 
         ctx.putImageData(imgData, 0, 0);
 
-    }, [lights, tentSize, lightHeight]);
+    }, [ppfdMap]);
 
-    const handlePointerDown = (e, lightId, index, currentX, currentY) => {
+    const handlePointerDown = useCallback((e, lightId, index, currentX, currentY) => {
         e.preventDefault();
         e.stopPropagation();
         const rect = containerRef.current.getBoundingClientRect();
@@ -170,9 +170,9 @@ export default function LightPlacementCanvas() {
             rect
         });
         e.target.setPointerCapture(e.pointerId);
-    };
+    }, []);
 
-    const handlePointerMove = (e) => {
+    const handlePointerMove = useCallback((e) => {
         if (!dragging) return;
 
         const deltaX = (e.clientX - dragging.startX) / dragging.rect.width;
@@ -193,16 +193,16 @@ export default function LightPlacementCanvas() {
                 payload: { category: 'lighting', itemId: dragging.id, positions: newPositions }
             });
         }
-    };
+    }, [dragging, lights, dispatch]);
 
-    const handlePointerUp = (e) => {
+    const handlePointerUp = useCallback((e) => {
         if (dragging) {
             e.target.releasePointerCapture(e.pointerId);
             setDragging(null);
         }
-    };
+    }, [dragging]);
 
-    const handleDoubleClick = (e, lightId, index) => {
+    const handleDoubleClick = useCallback((e, lightId, index) => {
         e.preventDefault();
         e.stopPropagation();
 
@@ -220,7 +220,7 @@ export default function LightPlacementCanvas() {
                 payload: { category: 'lighting', itemId: lightId, positions: newPositions }
             });
         }
-    };
+    }, [lights, dispatch]);
 
     // Calculate aspect ratio for the container
     const aspectRatio = tentSize.width / tentSize.depth;

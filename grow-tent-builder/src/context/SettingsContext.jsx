@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useCallback, useMemo } from 'react';
 import { translations } from '../utils/translations';
 
 const SettingsContext = createContext();
@@ -48,57 +48,67 @@ export function SettingsProvider({ children }) {
     const [currency, setCurrencyState] = useState(getInitialCurrency);
     const [unitSystem, setUnitSystemState] = useState(getInitialUnitSystem);
 
-    const setLanguage = (lang) => {
+    const setLanguage = useCallback((lang) => {
         setLanguageState(lang);
         localStorage.setItem('language', lang);
 
         if (lang === 'tr') {
-            setCurrency('TRY');
-            setUnitSystem('METRIC');
+            setCurrencyState('TRY');
+            localStorage.setItem('currency', 'TRY');
+            setUnitSystemState('METRIC');
+            localStorage.setItem('unitSystem', 'METRIC');
         } else if (lang === 'en') {
-            setCurrency('USD');
-            setUnitSystem('IMPERIAL');
+            setCurrencyState('USD');
+            localStorage.setItem('currency', 'USD');
+            setUnitSystemState('IMPERIAL');
+            localStorage.setItem('unitSystem', 'IMPERIAL');
         }
-    };
+    }, []);
 
-    const setCurrency = (curr) => {
+    const setCurrency = useCallback((curr) => {
         setCurrencyState(curr);
         localStorage.setItem('currency', curr);
 
         if (curr === 'EUR' || curr === 'TRY') {
-            setUnitSystem('METRIC');
+            setUnitSystemState('METRIC');
+            localStorage.setItem('unitSystem', 'METRIC');
         } else if (curr === 'USD') {
-            setUnitSystem('IMPERIAL');
+            setUnitSystemState('IMPERIAL');
+            localStorage.setItem('unitSystem', 'IMPERIAL');
         }
-    };
+    }, []);
 
-    const setUnitSystem = (units) => {
+    const setUnitSystem = useCallback((units) => {
         setUnitSystemState(units);
         localStorage.setItem('unitSystem', units);
-    };
+    }, []);
 
-    const t = (key, params = {}) => {
-        let text = translations[language][key] || key;
-        Object.keys(params).forEach(param => {
-            text = text.replace(`{${param}}`, params[param]);
-        });
+    // Memoize translation function based on language
+    const t = useCallback((key, params = {}) => {
+        let text = translations[language]?.[key] || key;
+        const paramKeys = Object.keys(params);
+        if (paramKeys.length > 0) {
+            paramKeys.forEach(param => {
+                text = text.replace(`{${param}}`, params[param]);
+            });
+        }
         return text;
-    };
+    }, [language]);
 
-    const formatPrice = (priceUSD) => {
+    const formatPrice = useCallback((priceUSD) => {
         const { symbol, rate } = CURRENCIES[currency];
         return `${symbol}${(priceUSD * rate).toFixed(2)}`;
-    };
+    }, [currency]);
 
-    const formatUnit = (value, type = 'length') => {
+    const formatUnit = useCallback((value, type = 'length') => {
         if (unitSystem === 'IMPERIAL') return value;
         if (type === 'length') return (value * 30.48).toFixed(0);
         if (type === 'area') return (value * 0.0929).toFixed(2);
         if (type === 'volume') return (value * 0.0283).toFixed(2);
         return value;
-    };
+    }, [unitSystem]);
 
-    const getUnitLabel = (type = 'length') => {
+    const getUnitLabel = useCallback((type = 'length') => {
         if (unitSystem === 'IMPERIAL') {
             if (type === 'length') return 'ft';
             if (type === 'area') return 'sq ft';
@@ -108,23 +118,26 @@ export function SettingsProvider({ children }) {
             if (type === 'area') return 'm²';
             if (type === 'volume') return 'm³';
         }
-    };
+    }, [unitSystem]);
 
-    const getBuilderUrl = () => {
+    const getBuilderUrl = useCallback(() => {
         return language === 'tr' ? '/buyume-cadiri-kurulum-olusturucu' : '/grow-tent-setup-builder';
-    };
+    }, [language]);
+
+    // Memoize the context value to prevent unnecessary re-renders
+    const contextValue = useMemo(() => ({
+        language, setLanguage,
+        currency, setCurrency,
+        unitSystem, setUnitSystem,
+        t,
+        formatPrice,
+        formatUnit,
+        getUnitLabel,
+        getBuilderUrl
+    }), [language, setLanguage, currency, setCurrency, unitSystem, setUnitSystem, t, formatPrice, formatUnit, getUnitLabel, getBuilderUrl]);
 
     return (
-        <SettingsContext.Provider value={{
-            language, setLanguage,
-            currency, setCurrency,
-            unitSystem, setUnitSystem,
-            t,
-            formatPrice,
-            formatUnit,
-            getUnitLabel,
-            getBuilderUrl
-        }}>
+        <SettingsContext.Provider value={contextValue}>
             {children}
         </SettingsContext.Provider>
     );
