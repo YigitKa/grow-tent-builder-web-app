@@ -85,7 +85,8 @@ export function SettingsProvider({ children }) {
 
     // Memoize translation function based on language
     const t = useCallback((key, params = {}) => {
-        let text = translations[language]?.[key] || key;
+        // Try current language, fallback to English, then to key
+        let text = translations[language]?.[key] || translations['en']?.[key] || key;
         const paramKeys = Object.keys(params);
         if (paramKeys.length > 0) {
             paramKeys.forEach(param => {

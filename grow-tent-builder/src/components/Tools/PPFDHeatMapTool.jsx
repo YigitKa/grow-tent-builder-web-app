@@ -29,20 +29,20 @@ export default function PPFDHeatMapTool() {
     const heatmapCanvasRef = useRef(null);
     const [dragging, setDragging] = useState(null);
 
-    // Handle Unit Switching
+    // Handle Unit Switching - update both unit and dimensions in single render cycle
     const handleUnitChange = useCallback((newUnit) => {
         setUnit(prevUnit => {
             if (newUnit === prevUnit) return prevUnit;
-            
-            setDimensions(prev => {
-                const factor = newUnit === 'cm' ? 30.48 : 1 / 30.48;
-                return {
-                    width: parseFloat((prev.width * factor).toFixed(1)),
-                    depth: parseFloat((prev.depth * factor).toFixed(1)),
-                    height: parseFloat((prev.height * factor).toFixed(1))
-                };
-            });
             return newUnit;
+        });
+        
+        setDimensions(prev => {
+            const factor = newUnit === 'cm' ? 30.48 : 1 / 30.48;
+            return {
+                width: parseFloat((prev.width * factor).toFixed(1)),
+                depth: parseFloat((prev.depth * factor).toFixed(1)),
+                height: parseFloat((prev.height * factor).toFixed(1))
+            };
         });
     }, []);
 
