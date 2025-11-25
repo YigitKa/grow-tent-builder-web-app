@@ -7,137 +7,6 @@ import { useSettings } from '../context/SettingsContext';
 import Footer from './Footer';
 import Navbar from './Navbar';
 
-const translations = {
-    en: {
-        title: "Design Your Perfect Harvest",
-        subtitle: "Advanced simulation for serious growers. Calculate PPFD, estimate costs, and optimize your environment before you buy.",
-        cta: "Start Building Now",
-        features: {
-            ppfd: {
-                title: "PPFD Simulation",
-                description: "Visualize light intensity and coverage with our advanced heatmap engine."
-            },
-            cost: {
-                title: "Cost Estimator",
-                description: "Calculate monthly electricity costs based on your local rates and equipment."
-            },
-            environment: {
-                title: "Environment Control",
-                description: "Match ventilation and filtration to your specific tent dimensions."
-            }
-        },
-        costTool: {
-            title: "Quick Cost Calculator",
-            subtitle: "Estimate your monthly electricity costs",
-            power: "Total Power (Watts)",
-            hours: "Hours per Day",
-            rate: "Electricity Rate ($/kWh)",
-            calculate: "Calculate",
-            result: "Estimated Monthly Cost"
-        },
-        infoBoxes: {
-            title: "Critical Success Factors",
-            subtitle: "Essential knowledge for optimal plant growth",
-            items: [
-                {
-                    icon: "💡",
-                    title: "Light Intensity Matters",
-                    description: "Without proper PPFD levels for your plant type, growth will slow or stop completely."
-                },
-                {
-                    icon: "🌬️",
-                    title: "Air Circulation is Essential",
-                    description: "Stagnant air increases mold and pest risk; fans are mandatory for healthy growth."
-                },
-                {
-                    icon: "🌡️",
-                    title: "Humidity & Temperature Balance",
-                    description: "Excessive humidity or heat creates plant stress; controlled environment is crucial."
-                }
-            ]
-        },
-        faq: {
-            title: "Frequently Asked Questions",
-            subtitle: "Everything you need to know about indoor growing",
-            items: [
-                { q: "Why do plants need light?", a: "To perform photosynthesis." },
-                { q: "Why is photosynthesis important?", a: "Plants produce their food this way." },
-                { q: "Which plants are suitable for indoor growing?", a: "Herbs, vegetables, flowers." },
-                { q: "What happens if I don't install a fan in my grow tent?", a: "Temperature rises, mold forms." },
-                { q: "How many hours of light per day during vegetative stage?", a: "16 hours is generally sufficient." },
-                { q: "How many hours of light per day during flowering stage?", a: "12 hours is generally sufficient." },
-                { q: "Why LED lights?", a: "Efficient, cool, and long-lasting." },
-                { q: "How long does germination typically take?", a: "Usually 3 to 10 days." },
-                { q: "What should humidity be in the tent during vegetative stage?", a: "50–70% is ideal." }
-            ]
-        }
-    },
-    tr: {
-        title: "Mükemmel Hasadınızı Tasarlayın",
-        subtitle: "Ciddi yetiştiriciler için gelişmiş simülasyon. PPFD hesaplayın, maliyetleri tahmin edin ve satın almadan önce ortamınızı optimize edin.",
-        cta: "Hemen Başla",
-        features: {
-            ppfd: {
-                title: "PPFD Simülasyonu",
-                description: "Gelişmiş ısı haritası motorumuzla ışık yoğunluğunu ve kapsamını görselleştirin."
-            },
-            cost: {
-                title: "Maliyet Hesaplayıcı",
-                description: "Yerel tarifelerinize ve ekipmanınıza göre aylık elektrik maliyetlerini hesaplayın."
-            },
-            environment: {
-                title: "Ortam Kontrolü",
-                description: "Havalandırma ve filtrasyonu çadır boyutlarınıza göre eşleştirin."
-            }
-        },
-        costTool: {
-            title: "Hızlı Maliyet Hesaplayıcı",
-            subtitle: "Aylık elektrik maliyetlerinizi tahmin edin",
-            power: "Toplam Güç (Watt)",
-            hours: "Günlük Saat",
-            rate: "Elektrik Tarifesi (₺/kWh)",
-            calculate: "Hesapla",
-            result: "Tahmini Aylık Maliyet"
-        },
-        infoBoxes: {
-            title: "Kritik Başarı Faktörleri",
-            subtitle: "Optimal bitki gelişimi için temel bilgiler",
-            items: [
-                {
-                    icon: "💡",
-                    title: "Işık Yoğunluğu Önemlidir",
-                    description: "Bitkinin türüne uygun PPFD seviyesi olmazsa gelişim yavaşlar veya durur."
-                },
-                {
-                    icon: "🌬️",
-                    title: "Hava Sirkülasyonu Şarttır",
-                    description: "Durgun hava küf ve haşere riskini artırır; mutlaka fan kullanılmalı."
-                },
-                {
-                    icon: "🌡️",
-                    title: "Nem ve Sıcaklık Dengesi",
-                    description: "Aşırı nem ya da ısı bitkide stres yaratır; kontrollü ortam şart."
-                }
-            ]
-        },
-        faq: {
-            title: "Sıkça Sorulan Sorular",
-            subtitle: "İç mekan yetiştiriciliği hakkında bilmeniz gerekenler",
-            items: [
-                { q: "Bitkiler neden yapay ışığa ihtiyaç duyar?", a: "Bitkiler büyümek, gelişmek ve enerji üretmek için fotosentez yapar. İç mekan yetiştiriciliğinde doğal güneş ışığı yeterli olmadığından yapay aydınlatma (özellikle LED grow ışıkları) kullanılır." },
-                { q: "Fotosentez neden bitki sağlığı için kritiktir?", a: "Fotosentez, bitkilerin su ve karbondioksiti güneş (veya yapay) ışığı ile şekere dönüştürmesini sağlar. Bu süreç, bitkinin enerji kaynağını oluşturur ve sağlıklı gelişimi mümkün kılar." },
-                { q: "İç mekanda hangi bitki türleri yetiştirilebilir?", a: "Aromatik otlar (fesleğen, nane), yapraklı sebzeler (marul, ıspanak) ve bazı çiçekli türler (orkide, sardunya) iç mekan yetiştiriciliğine uygundur. Bu bitkiler sınırlı alanda, kontrollü iklim şartlarında iyi sonuç verir." },
-                { q: "Fan olmayan yetiştirme kabininde ne olur?", a: "Fan kullanılmayan kabinlerde hava dolaşımı olmaz, bu da sıcaklık artışına ve nem birikmesine neden olur. Sonuç olarak mantar oluşumu, küf ve bitki hastalıkları riski yükselir." },
-                { q: "Büyüme döneminde bitkiye günde kaç saat ışık verilmeli?", a: "Büyüme (vejetatif) aşamasında çoğu bitki 16–18 saatlik ışık süresine ihtiyaç duyar. Bu süre, yaprak gelişimini ve sağlıklı gövde oluşumunu destekler." },
-                { q: "Çiçeklenme döneminde ışık süresi ne olmalı?", a: "Çiçeklenme döneminde fotoperiyodik bitkiler için 12 saat ışık, 12 saat karanlık döngüsü uygulanmalıdır. Bu denge, çiçek ve meyve oluşumunu teşvik eder." },
-                { q: "LED grow ışıklarının avantajı nedir?", a: "LED bitki lambaları, düşük enerji tüketimi, uzun ömür ve minimal ısı yayımı ile ideal iç mekan aydınlatması sunar. Ayrıca, bitki evresine uygun tam spektrum ışık sağlayabilir." },
-                { q: "Tohumlar çimlenme döneminde kaç günde filizlenir?", a: "Çimlenme süresi bitki türüne bağlı olmakla birlikte genellikle 3 ila 10 gün arasında tamamlanır. Bu dönemde nemli ortam ve sabit sıcaklık sağlanmalıdır." },
-                { q: "Büyüme döneminde çadır içi nem oranı ne olmalı?", a: "Vejetatif büyüme aşamasında ideal nem oranı %50 ila %70 aralığındadır. Bu nem seviyesi, yaprakların su kaybını dengeleyerek hızlı gelişimi destekler." }
-            ]
-        }
-    }
-};
-
 export default function LandingPage() {
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -145,10 +14,36 @@ export default function LandingPage() {
     // scrollY is intentionally unused in this component but kept for future effects
     const [, setScrollY] = useState(0);
     const { hasSeenOnboarding } = useOnboarding();
-    const { language, getBuilderUrl } = useSettings();
+    const { language, getBuilderUrl, t } = useSettings();
     const navigate = useNavigate();
 
-    const t = translations[language];
+    const infoBoxItems = [
+        { icon: "💡", titleKey: 'landingInfoLight', descKey: 'landingInfoLightDesc' },
+        { icon: "🌬️", titleKey: 'landingInfoAir', descKey: 'landingInfoAirDesc' },
+        { icon: "🌡️", titleKey: 'landingInfoHumidity', descKey: 'landingInfoHumidityDesc' }
+    ];
+
+    const faqItems = language === 'en' ? [
+        { q: "Why do plants need light?", a: "To perform photosynthesis." },
+        { q: "Why is photosynthesis important?", a: "Plants produce their food this way." },
+        { q: "Which plants are suitable for indoor growing?", a: "Herbs, vegetables, flowers." },
+        { q: "What happens if I don't install a fan in my grow tent?", a: "Temperature rises, mold forms." },
+        { q: "How many hours of light per day during vegetative stage?", a: "16 hours is generally sufficient." },
+        { q: "How many hours of light per day during flowering stage?", a: "12 hours is generally sufficient." },
+        { q: "Why LED lights?", a: "Efficient, cool, and long-lasting." },
+        { q: "How long does germination typically take?", a: "Usually 3 to 10 days." },
+        { q: "What should humidity be in the tent during vegetative stage?", a: "50–70% is ideal." }
+    ] : [
+        { q: "Bitkiler neden yapay ışığa ihtiyaç duyar?", a: "Bitkiler büyümek, gelişmek ve enerji üretmek için fotosentez yapar. İç mekan yetiştiriciliğinde doğal güneş ışığı yeterli olmadığından yapay aydınlatma (özellikle LED grow ışıkları) kullanılır." },
+        { q: "Fotosentez neden bitki sağlığı için kritiktir?", a: "Fotosentez, bitkilerin su ve karbondioksiti güneş (veya yapay) ışığı ile şekere dönüştürmesini sağlar. Bu süreç, bitkinin enerji kaynağını oluşturur ve sağlıklı gelişimi mümkün kılar." },
+        { q: "İç mekanda hangi bitki türleri yetiştirilebilir?", a: "Aromatik otlar (fesleğen, nane), yapraklı sebzeler (marul, ıspanak) ve bazı çiçekli türler (orkide, sardunya) iç mekan yetiştiriciliğine uygundur. Bu bitkiler sınırlı alanda, kontrollü iklim şartlarında iyi sonuç verir." },
+        { q: "Fan olmayan yetiştirme kabininde ne olur?", a: "Fan kullanılmayan kabinlerde hava dolaşımı olmaz, bu da sıcaklık artışına ve nem birikmesine neden olur. Sonuç olarak mantar oluşumu, küf ve bitki hastalıkları riski yükselir." },
+        { q: "Büyüme döneminde bitkiye günde kaç saat ışık verilmeli?", a: "Büyüme (vejetatif) aşamasında çoğu bitki 16–18 saatlik ışık süresine ihtiyaç duyar. Bu süre, yaprak gelişimini ve sağlıklı gövde oluşumunu destekler." },
+        { q: "Çiçeklenme döneminde ışık süresi ne olmalı?", a: "Çiçeklenme döneminde fotoperiyodik bitkiler için 12 saat ışık, 12 saat karanlık döngüsü uygulanmalıdır. Bu denge, çiçek ve meyve oluşumunu teşvik eder." },
+        { q: "LED grow ışıklarının avantajı nedir?", a: "LED bitki lambaları, düşük enerji tüketimi, uzun ömür ve minimal ısı yayımı ile ideal iç mekan aydınlatması sunar. Ayrıca, bitki evresine uygun tam spektrum ışık sağlayabilir." },
+        { q: "Tohumlar çimlenme döneminde kaç günde filizlenir?", a: "Çimlenme süresi bitki türüne bağlı olmakla birlikte genellikle 3 ila 10 gün arasında tamamlanır. Bu dönemde nemli ortam ve sabit sıcaklık sağlanmalıdır." },
+        { q: "Büyüme döneminde çadır içi nem oranı ne olmalı?", a: "Vejetatif büyüme aşamasında ideal nem oranı %50 ila %70 aralığındadır. Bu nem seviyesi, yaprakların su kaybını dengeleyerek hızlı gelişimi destekler." }
+    ];
 
     useEffect(() => {
         const handleMouseMove = (e) => {
@@ -183,8 +78,8 @@ export default function LandingPage() {
     return (
         <div className="landing-container">
             <Helmet>
-                <title>{t.title} | GroWizard</title>
-                <meta name="description" content={t.subtitle} />
+                <title>{t('landingTitle')} | GroWizard</title>
+                <meta name="description" content={t('landingSubtitle')} />
             </Helmet>
             <div className="landing-bg">
                 <div className="glow-orb orb-1" style={{
@@ -201,16 +96,16 @@ export default function LandingPage() {
             {/* Hero Section */}
             <section className="hero-section">
                 <div className="hero-content fade-in-up">
-                    <div className="badge">🌱 Professional Grow Planner</div>
+                    <div className="badge">{t('landingBadge')}</div>
                     <h1 className="hero-title">
-                        {t.title.split(' ').slice(0, 2).join(' ')} <br />
-                        <span className="gradient-text">{t.title.split(' ').slice(2).join(' ')}</span>
+                        {t('landingTitle').split(' ').slice(0, 2).join(' ')} <br />
+                        <span className="gradient-text">{t('landingTitle').split(' ').slice(2).join(' ')}</span>
                     </h1>
                     <p className="hero-subtitle">
-                        {t.subtitle}
+                        {t('landingSubtitle')}
                     </p>
                     <button onClick={handleStartBuilding} className="cta-button">
-                        {t.cta}
+                        {t('landingCta')}
                         <span className="arrow">→</span>
                     </button>
                 </div>
@@ -229,29 +124,29 @@ export default function LandingPage() {
             {/* Tools Preview Section */}
             <section className="tools-preview-section">
                 <div className="section-header">
-                    <h2>🛠️ {language === 'tr' ? 'Yetiştirme Araçları' : 'Grow Tools'}</h2>
-                    <p>{language === 'tr' ? 'Başarılı bir hasat için ihtiyacınız olan her şey' : 'Everything you need for a successful harvest'}</p>
+                    <h2>🛠️ {t('landingGrowTools')}</h2>
+                    <p>{t('landingGrowToolsSubtitle')}</p>
                 </div>
                 <div className="tools-grid">
                     <Link to="/tools/cost-calculator" className="tool-preview-card">
                         <div className="tool-icon">⚡</div>
-                        <h3>{language === 'tr' ? 'Maliyet Hesaplayıcı' : 'Cost Calculator'}</h3>
-                        <p>{language === 'tr' ? 'Elektrik masraflarınızı hesaplayın' : 'Estimate electricity costs'}</p>
+                        <h3>{t('landingCostCalculator')}</h3>
+                        <p>{t('landingCostCalculatorDesc')}</p>
                     </Link>
                     <Link to="/tools/unit-converter" className="tool-preview-card">
                         <div className="tool-icon">💧</div>
-                        <h3>{language === 'tr' ? 'Birim Çevirici' : 'Unit Converter'}</h3>
-                        <p>{language === 'tr' ? 'Litre ve Galon dönüşümü' : 'Convert Liters & Gallons'}</p>
+                        <h3>{t('landingUnitConverter')}</h3>
+                        <p>{t('landingUnitConverterDesc')}</p>
                     </Link>
                     <Link to="/tools/co2-calculator" className="tool-preview-card">
                         <div className="tool-icon">🌫️</div>
-                        <h3>{language === 'tr' ? 'CO2 Hesaplayıcı' : 'CO2 Calculator'}</h3>
-                        <p>{language === 'tr' ? 'Optimal CO2 seviyelerini bulun' : 'Find optimal CO2 levels'}</p>
+                        <h3>{t('landingCo2Calculator')}</h3>
+                        <p>{t('landingCo2CalculatorDesc')}</p>
                     </Link>
                 </div>
                 <div className="center-btn">
                     <Link to="/tools" className="secondary-btn">
-                        {language === 'tr' ? 'Tüm Araçları Gör' : 'View All Tools'}
+                        {t('landingViewAllTools')}
                     </Link>
                 </div>
             </section>
@@ -260,24 +155,24 @@ export default function LandingPage() {
             <section className="features-section">
                 <div className="feature-card slide-in" style={{ transitionDelay: '0.1s' }}>
                     <div className="feature-icon">💡</div>
-                    <h3>{t.features.ppfd.title}</h3>
-                    <p>{t.features.ppfd.description}</p>
+                    <h3>{t('landingPpfdTitle')}</h3>
+                    <p>{t('landingPpfdDesc')}</p>
                 </div>
                 <div className="feature-card slide-in" style={{ transitionDelay: '0.3s' }}>
                     <div className="feature-icon">🌬️</div>
-                    <h3>{t.features.environment.title}</h3>
-                    <p>{t.features.environment.description}</p>
+                    <h3>{t('landingEnvTitle')}</h3>
+                    <p>{t('landingEnvDesc')}</p>
                 </div>
             </section>
 
             {/* Info Boxes Section */}
             <section className="info-boxes-section">
                 <div className="info-boxes-header">
-                    <h2>⚠️ {t.infoBoxes.title}</h2>
-                    <p>{t.infoBoxes.subtitle}</p>
+                    <h2>⚠️ {t('landingInfoTitle')}</h2>
+                    <p>{t('landingInfoSubtitle')}</p>
                 </div>
                 <div className="info-boxes-container">
-                    {t.infoBoxes.items.map((item, index) => (
+                    {infoBoxItems.map((item, index) => (
                         <div
                             key={index}
                             className="info-box"
@@ -285,8 +180,8 @@ export default function LandingPage() {
                         >
                             <div className="info-box-icon">{item.icon}</div>
                             <div className="info-box-content">
-                                <h3>{item.title}</h3>
-                                <p>{item.description}</p>
+                                <h3>{t(item.titleKey)}</h3>
+                                <p>{t(item.descKey)}</p>
                             </div>
                         </div>
                     ))}
@@ -296,8 +191,8 @@ export default function LandingPage() {
             {/* Featured Guides Section (Slider) */}
             <section className="featured-guides-section">
                 <div className="section-header">
-                    <h2>🌟 {language === 'tr' ? 'Öne Çıkan Rehberler' : 'Featured Guides'}</h2>
-                    <p>{language === 'tr' ? 'Uzmanlardan derinlemesine bilgiler' : 'In-depth knowledge from experts'}</p>
+                    <h2>🌟 {t('landingFeaturedGuides')}</h2>
+                    <p>{t('landingFeaturedGuidesSubtitle')}</p>
                 </div>
 
                 <div className="slider-container">
@@ -324,7 +219,7 @@ export default function LandingPage() {
                                                 <span className="guide-tag">{post.category}</span>
                                                 <h3>{post.title[language]}</h3>
                                                 <p>{post.excerpt[language]}</p>
-                                                <span className="read-more">{language === 'tr' ? 'Devamını Oku →' : 'Read More →'}</span>
+                                                <span className="read-more">{t('landingReadMore')}</span>
                                             </div>
                                             <div className="guide-image" style={{ backgroundImage: `url(${post.image})` }} />
                                         </Link>
@@ -357,12 +252,12 @@ export default function LandingPage() {
             <section className="cost-tool-section">
                 <div className="cost-tool-container">
                     <div className="cost-tool-header">
-                        <h2>⚡ {t.costTool.title}</h2>
-                        <p>{t.costTool.subtitle}</p>
+                        <h2>⚡ {t('landingCostToolTitle')}</h2>
+                        <p>{t('landingCostToolSubtitle')}</p>
                     </div>
                     <div className="cost-tool-inputs">
                         <div className="input-group">
-                            <label>{t.costTool.power}</label>
+                            <label>{t('landingCostToolPower')}</label>
                             <input
                                 type="number"
                                 id="power-input"
@@ -371,7 +266,7 @@ export default function LandingPage() {
                             />
                         </div>
                         <div className="input-group">
-                            <label>{t.costTool.hours}</label>
+                            <label>{t('landingCostToolHours')}</label>
                             <input
                                 type="number"
                                 id="hours-input"
@@ -380,7 +275,7 @@ export default function LandingPage() {
                             />
                         </div>
                         <div className="input-group">
-                            <label>{t.costTool.rate}</label>
+                            <label>{t('landingCostToolRate')}</label>
                             <input
                                 type="number"
                                 step="0.01"
@@ -398,13 +293,13 @@ export default function LandingPage() {
                             const rate = parseFloat(document.getElementById('rate-input').value) || 0;
                             const monthlyCost = (power / 1000) * hours * 30 * rate;
                             document.getElementById('cost-result').textContent =
-                                `${t.costTool.result}: ${language === 'tr' ? '₺' : '$'}${monthlyCost.toFixed(2)}`;
+                                `${t('landingCostToolResult')}: ${language === 'tr' ? '₺' : '$'}${monthlyCost.toFixed(2)}`;
                         }}
                     >
-                        {t.costTool.calculate}
+                        {t('landingCostToolCalculate')}
                     </button>
                     <div className="cost-result" id="cost-result">
-                        {t.costTool.result}: {language === 'tr' ? '₺' : '$'}0.00
+                        {t('landingCostToolResult')}: {language === 'tr' ? '₺' : '$'}0.00
                     </div>
                 </div>
             </section>
@@ -412,11 +307,11 @@ export default function LandingPage() {
             {/* FAQ Section */}
             <section className="faq-section">
                 <div className="section-header">
-                    <h2>❓ {t.faq.title}</h2>
-                    <p>{t.faq.subtitle}</p>
+                    <h2>❓ {t('landingFaqTitle')}</h2>
+                    <p>{t('landingFaqSubtitle')}</p>
                 </div>
                 <div className="faq-grid">
-                    {t.faq.items.map((item, index) => (
+                    {faqItems.map((item, index) => (
                         <div key={index} className="faq-item">
                             <h3>{item.q}</h3>
                             <p>{item.a}</p>
@@ -428,8 +323,8 @@ export default function LandingPage() {
             {/* Blog Preview Section */}
             <section className="blog-preview-section">
                 <div className="blog-preview-header">
-                    <h2>📚 {language === 'tr' ? 'En Son Makaleler' : 'Latest Articles'}</h2>
-                    <p>{language === 'tr' ? 'Modern yetiştiricilik tekniklerini keşfedin' : 'Discover modern growing techniques'}</p>
+                    <h2>📚 {t('landingLatestArticles')}</h2>
+                    <p>{t('landingLatestArticlesSubtitle')}</p>
                 </div>
                 <div className="blog-preview-grid">
                     {blogPosts.slice(0, 3).map((post) => (
@@ -448,7 +343,7 @@ export default function LandingPage() {
                 </div>
                 <div className="blog-cta">
                     <Link to="/blog" className="view-all-btn">
-                        {language === 'tr' ? 'Tüm Yazıları Gör' : 'View All Articles'}
+                        {t('landingViewAllArticles')}
                     </Link>
                 </div>
             </section>
