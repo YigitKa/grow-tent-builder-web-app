@@ -18,8 +18,8 @@ export default function PPFDHeatMapTool() {
     const [unit, setUnit] = useState('cm'); // 'ft' or 'cm'
 
     // Store dimensions in the CURRENT unit to avoid typing issues
-    // Initialize with default metric values (150x150 cm)
-    const [dimensions, setDimensions] = useState({ width: 150, depth: 150, height: 45 });
+    // Initialize with default metric values (200x200 cm)
+    const [dimensions, setDimensions] = useState({ width: 200, depth: 200, height: 45 });
 
     const [activeLights, setActiveLights] = useState([]);
     const [metrics, setMetrics] = useState({ average: 0, min: 0, max: 0, uniformity: 0 });
@@ -45,6 +45,10 @@ export default function PPFDHeatMapTool() {
     const toggleFilter = (key) => {
         setActiveFilters(prev => ({ ...prev, [key]: !prev[key] }));
     };
+
+    // 3D Display Options
+    const [showGuideLines, setShowGuideLines] = useState(true);
+    const [voxelOpacity, setVoxelOpacity] = useState(0.3);
 
     // Handle Unit Switching
     const handleUnitChange = (newUnit) => {
@@ -90,7 +94,9 @@ export default function PPFDHeatMapTool() {
             view2D: "2D Editor",
             view3D: "3D Visualizer",
             rotation: "Rotation",
-            filters: "PPFD Range Filters"
+            filters: "PPFD Range Filters",
+            showGuides: "Show Guide Lines",
+            voxelTransparency: "Voxel Transparency"
         },
         tr: {
             title: "Gelişmiş PPFD Isı Haritası",
@@ -120,7 +126,9 @@ export default function PPFDHeatMapTool() {
             view2D: "2D Düzenleyici",
             view3D: "3D Görselleştirici",
             rotation: "Döndürme",
-            filters: "PPFD Aralık Filtreleri"
+            filters: "PPFD Aralık Filtreleri",
+            showGuides: "Kılavuz Çizgilerini Göster",
+            voxelTransparency: "Küplerin Şeffaflığı"
         }
     }[language];
 
@@ -337,6 +345,38 @@ export default function PPFDHeatMapTool() {
                             </div>
                         )}
 
+                        {is3D && (
+                            <div className="control-group">
+                                <h3>{t.showGuides}</h3>
+                                <label className="filter-item">
+                                    <input
+                                        type="checkbox"
+                                        checked={showGuideLines}
+                                        onChange={(e) => setShowGuideLines(e.target.checked)}
+                                    />
+                                    <span className="filter-label">{t.showGuides}</span>
+                                </label>
+                            </div>
+                        )}
+
+                        {is3D && (
+                            <div className="control-group">
+                                <h3>{t.voxelTransparency}</h3>
+                                <div className="slider-wrap">
+                                    <input
+                                        type="range"
+                                        min="0.05"
+                                        max="0.8"
+                                        step="0.05"
+                                        value={voxelOpacity}
+                                        onChange={(e) => setVoxelOpacity(parseFloat(e.target.value))}
+                                    />
+                                    <span>{voxelOpacity.toFixed(2)}</span>
+                                </div>
+                            </div>
+                        )}
+
+
                         <div className="control-group">
                             <h3>{t.unitToggle}</h3>
                             <div className="unit-toggle">
@@ -437,6 +477,8 @@ export default function PPFDHeatMapTool() {
                                         activeLights={activeLights}
                                         unit={unit}
                                         activeFilters={activeFilters}
+                                        showGuideLines={showGuideLines}
+                                        voxelOpacity={voxelOpacity}
                                     />
                                 </div>
                             ) : (

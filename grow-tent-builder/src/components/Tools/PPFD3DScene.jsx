@@ -43,7 +43,7 @@ const getVoxelColor = (ppfd) => {
     return { color, opacity, category };
 };
 
-const VoxelGrid = ({ dimensions, activeLights, width, depth, height, unit, activeFilters }) => {
+const VoxelGrid = ({ dimensions, activeLights, width, depth, height, unit, activeFilters, voxelOpacity = 0.3 }) => {
     const meshRef = useRef();
     const [hovered, setHover] = useState(null);
 
@@ -163,11 +163,50 @@ const VoxelGrid = ({ dimensions, activeLights, width, depth, height, unit, activ
             <boxGeometry args={[boxSizeX, boxSizeY, boxSizeZ]} />
             <meshStandardMaterial
                 transparent
-                opacity={0.3}
+                opacity={voxelOpacity}
                 roughness={0.1}
                 metalness={0.1}
             />
         </instancedMesh>
+    );
+};
+
+const GuideLines = ({ width, depth, height, unit, dimensions }) => {
+    return (
+        <group>
+            {/* Width guide (X axis) */}
+            <group position={[-width / 2, -0.1, depth / 2 + 0.5]}>
+                <mesh>
+                    <boxGeometry args={[width, 0.05, 0.05]} />
+                    <meshBasicMaterial color="#ff6600" />
+                </mesh>
+                <Text position={[0, 0.3, 0]} fontSize={0.3} color="#ff6600" anchorX="center" anchorY="middle">
+                    {dimensions.width} {unit}
+                </Text>
+            </group>
+
+            {/* Depth guide (Z axis) */}
+            <group position={[-width / 2 - 0.5, -0.1, 0]}>
+                <mesh>
+                    <boxGeometry args={[0.05, 0.05, depth]} />
+                    <meshBasicMaterial color="#00ff66" />
+                </mesh>
+                <Text position={[0, 0.3, 0]} fontSize={0.3} color="#00ff66" anchorX="center" anchorY="middle" rotation={[0, Math.PI / 2, 0]}>
+                    {dimensions.depth} {unit}
+                </Text>
+            </group>
+
+            {/* Height guide (Y axis) */}
+            <group position={[-width / 2 - 0.5, height / 2, depth / 2 + 0.5]}>
+                <mesh>
+                    <boxGeometry args={[0.05, height, 0.05]} />
+                    <meshBasicMaterial color="#6600ff" />
+                </mesh>
+                <Text position={[0.3, 0, 0]} fontSize={0.3} color="#6600ff" anchorX="center" anchorY="middle" rotation={[0, 0, Math.PI / 2]}>
+                    {dimensions.height} {unit}
+                </Text>
+            </group>
+        </group>
     );
 };
 
@@ -219,7 +258,7 @@ const Lights = ({ activeLights, width, depth, height }) => {
     );
 };
 
-export default function PPFD3DScene({ ppfdMap, dimensions, activeLights, unit, activeFilters }) {
+export default function PPFD3DScene({ ppfdMap, dimensions, activeLights, unit, activeFilters, showGuideLines = true, voxelOpacity = 0.3 }) {
     const scaleFactor = unit === 'cm' ? 0.1 : 3.0;
     const width = (dimensions.width || 1) * scaleFactor;
     const depth = (dimensions.depth || 1) * scaleFactor;
@@ -234,7 +273,6 @@ export default function PPFD3DScene({ ppfdMap, dimensions, activeLights, unit, a
                 <ambientLight intensity={0.5} />
                 <pointLight position={[10, 10, 10]} intensity={1} />
 
-                {/* Voxel Grid */}
                 <VoxelGrid
                     dimensions={dimensions}
                     activeLights={activeLights}
@@ -243,7 +281,18 @@ export default function PPFD3DScene({ ppfdMap, dimensions, activeLights, unit, a
                     height={height}
                     unit={unit}
                     activeFilters={activeFilters}
+                    voxelOpacity={voxelOpacity}
                 />
+
+                {showGuideLines && (
+                    <GuideLines
+                        width={width}
+                        depth={depth}
+                        height={height}
+                        unit={unit}
+                        dimensions={dimensions}
+                    />
+                )}
 
                 <TentBox width={width} depth={depth} height={height} />
                 <Lights activeLights={activeLights} width={width} depth={depth} height={height} />
