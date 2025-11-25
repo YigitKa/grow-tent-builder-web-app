@@ -4,6 +4,7 @@ import Navbar from '../Navbar';
 import Footer from '../Footer';
 import { useSettings } from '../../context/SettingsContext';
 import PPFDInfoSection from './PPFDInfoSection';
+import PPFD3DScene from './PPFD3DScene';
 
 // Mock Data for Lights
 const AVAILABLE_LIGHTS = [
@@ -22,10 +23,28 @@ export default function PPFDHeatMapTool() {
 
     const [activeLights, setActiveLights] = useState([]);
     const [metrics, setMetrics] = useState({ average: 0, min: 0, max: 0, uniformity: 0 });
+    const [ppfdMap, setPpfdMap] = useState([]);
 
     const containerRef = useRef(null);
     const heatmapCanvasRef = useRef(null);
     const [dragging, setDragging] = useState(null);
+
+    // 3D State
+    const [is3D, setIs3D] = useState(false);
+
+    // Filter State
+    const [activeFilters, setActiveFilters] = useState({
+        low: true,
+        seedling: true,
+        veg: true,
+        flower: true,
+        high: true,
+        extreme: true
+    });
+
+    const toggleFilter = (key) => {
+        setActiveFilters(prev => ({ ...prev, [key]: !prev[key] }));
+    };
 
     // Handle Unit Switching
     const handleUnitChange = (newUnit) => {
@@ -66,7 +85,12 @@ export default function PPFDHeatMapTool() {
                 extreme: "Extreme (>1200)"
             },
             instructions: "Drag lights to position. Double click to rotate.",
-            unitToggle: "Unit System"
+            unitToggle: "Unit System",
+            viewMode: "View Mode",
+            view2D: "2D Editor",
+            view3D: "3D Visualizer",
+            rotation: "Rotation",
+            filters: "PPFD Range Filters"
         },
         tr: {
             title: "Gelişmiş PPFD Isı Haritası",
@@ -91,7 +115,12 @@ export default function PPFDHeatMapTool() {
                 extreme: "Aşırı (>1200)"
             },
             instructions: "Işıkları sürükleyerek konumlandırın. Döndürmek için çift tıklayın.",
-            unitToggle: "Birim Sistemi"
+            unitToggle: "Birim Sistemi",
+            viewMode: "Görünüm Modu",
+            view2D: "2D Düzenleyici",
+            view3D: "3D Görselleştirici",
+            rotation: "Döndürme",
+            filters: "PPFD Aralık Filtreleri"
         }
     }[language];
 
@@ -112,8 +141,6 @@ export default function PPFDHeatMapTool() {
 
     // Update Heatmap
     useEffect(() => {
-        if (!heatmapCanvasRef.current) return;
-
         // Convert current dimensions to feet for calculation
         const widthFt = unit === 'cm' ? dimensions.width / 30.48 : dimensions.width;
         const depthFt = unit === 'cm' ? dimensions.depth / 30.48 : dimensions.depth;
@@ -122,80 +149,86 @@ export default function PPFDHeatMapTool() {
         // Validate
         if (!widthFt || widthFt <= 0 || !depthFt || depthFt <= 0) return;
 
-        const canvas = heatmapCanvasRef.current;
-        const ctx = canvas.getContext('2d');
         const resolution = 4; // pixels per foot
-
         const map = generatePPFDMap(widthFt, depthFt, activeLights, resolution, heightFt);
+
+        setPpfdMap(map);
         const newMetrics = calculateMetrics(map);
         setMetrics(newMetrics);
 
-        const cols = map[0].length;
-        const rows = map.length;
+        // Only draw to canvas if ref exists (2D mode)
+        if (heatmapCanvasRef.current) {
+            const canvas = heatmapCanvasRef.current;
+            const ctx = canvas.getContext('2d');
 
-        canvas.width = cols;
-        canvas.height = rows;
+            const cols = map[0].length;
+            const rows = map.length;
 
-        const imgData = ctx.createImageData(cols, rows);
-        const data = imgData.data;
+            canvas.width = cols;
+            canvas.height = rows;
 
-        const thresholds = [400, 600, 900];
+            const imgData = ctx.createImageData(cols, rows);
+            const data = imgData.data;
 
-        for (let r = 0; r < rows; r++) {
-            for (let c = 0; c < cols; c++) {
-                const ppfd = map[r][c];
-                const index = (r * cols + c) * 4;
+            const thresholds = [400, 600, 900];
 
-                let red, green, blue, alpha;
+            for (let r = 0; r < rows; r++) {
+                for (let c = 0; c < cols; c++) {
+                    const ppfd = map[r][c];
+                    const index = (r * cols + c) * 4;
 
-                if (ppfd < 200) {
-                    const t = ppfd / 200;
-                    red = 30 + (50 * t); green = 30 + (50 * t); blue = 30 + (50 * t); alpha = 180;
-                } else if (ppfd < 400) {
-                    const t = (ppfd - 200) / 200;
-                    red = 50 * t; green = 50 * t; blue = 150 + (105 * t); alpha = 180;
-                } else if (ppfd < 600) {
-                    const t = (ppfd - 400) / 200;
-                    red = 50 * (1 - t); green = 150 + (105 * t); blue = 50 * (1 - t); alpha = 180;
-                } else if (ppfd < 900) {
-                    const t = (ppfd - 600) / 300;
-                    red = 200 + (55 * t); green = 200 + (55 * (1 - t * 0.5)); blue = 0; alpha = 190;
-                } else if (ppfd < 1200) {
-                    const t = (ppfd - 900) / 300;
-                    red = 255; green = 100 * (1 - t); blue = 0; alpha = 200;
-                } else {
-                    red = 255; green = 255; blue = 255; alpha = 220;
-                }
+                    let red, green, blue, alpha;
 
-                // Isolines
-                let isContour = false;
-                if (c < cols - 1) {
-                    const rightPPFD = map[r][c + 1];
-                    for (const th of thresholds) {
-                        if ((ppfd < th && rightPPFD >= th) || (ppfd >= th && rightPPFD < th)) isContour = true;
+                    if (ppfd < 200) {
+                        const t = ppfd / 200;
+                        red = 30 + (50 * t); green = 30 + (50 * t); blue = 30 + (50 * t); alpha = 180;
+                    } else if (ppfd < 400) {
+                        const t = (ppfd - 200) / 200;
+                        red = 50 * t; green = 50 * t; blue = 150 + (105 * t); alpha = 180;
+                    } else if (ppfd < 600) {
+                        const t = (ppfd - 400) / 200;
+                        red = 50 * (1 - t); green = 150 + (105 * t); blue = 50 * (1 - t); alpha = 180;
+                    } else if (ppfd < 900) {
+                        const t = (ppfd - 600) / 300;
+                        red = 200 + (55 * t); green = 200 + (55 * (1 - t * 0.5)); blue = 0; alpha = 190;
+                    } else if (ppfd < 1200) {
+                        const t = (ppfd - 900) / 300;
+                        red = 255; green = 100 * (1 - t); blue = 0; alpha = 200;
+                    } else {
+                        red = 255; green = 255; blue = 255; alpha = 220;
                     }
-                }
-                if (!isContour && r < rows - 1) {
-                    const bottomPPFD = map[r + 1][c];
-                    for (const th of thresholds) {
-                        if ((ppfd < th && bottomPPFD >= th) || (ppfd >= th && bottomPPFD < th)) isContour = true;
+
+                    // Isolines
+                    let isContour = false;
+                    if (c < cols - 1) {
+                        const rightPPFD = map[r][c + 1];
+                        for (const th of thresholds) {
+                            if ((ppfd < th && rightPPFD >= th) || (ppfd >= th && rightPPFD < th)) isContour = true;
+                        }
                     }
-                }
+                    if (!isContour && r < rows - 1) {
+                        const bottomPPFD = map[r + 1][c];
+                        for (const th of thresholds) {
+                            if ((ppfd < th && bottomPPFD >= th) || (ppfd >= th && bottomPPFD < th)) isContour = true;
+                        }
+                    }
 
-                if (isContour) {
-                    red = 255; green = 255; blue = 255; alpha = 255;
-                }
+                    if (isContour) {
+                        red = 255; green = 255; blue = 255; alpha = 255;
+                    }
 
-                data[index] = red; data[index + 1] = green; data[index + 2] = blue; data[index + 3] = alpha;
+                    data[index] = red; data[index + 1] = green; data[index + 2] = blue; data[index + 3] = alpha;
+                }
             }
+
+            ctx.putImageData(imgData, 0, 0);
         }
 
-        ctx.putImageData(imgData, 0, 0);
-
-    }, [dimensions, activeLights, unit]);
+    }, [dimensions, activeLights, unit, is3D]); // Re-run when switching to 2D to ensure canvas draws
 
     // Dragging Logic
     const handlePointerDown = (e, instanceId, currentX, currentY) => {
+        if (is3D) return;
         e.preventDefault();
         e.stopPropagation();
         const rect = containerRef.current.getBoundingClientRect();
@@ -235,6 +268,7 @@ export default function PPFDHeatMapTool() {
     };
 
     const handleDoubleClick = (e, instanceId) => {
+        if (is3D) return;
         e.preventDefault();
         e.stopPropagation();
         setActiveLights(prev => prev.map(l => {
@@ -248,7 +282,6 @@ export default function PPFDHeatMapTool() {
 
     // Safe input handler
     const handleDimensionChange = (field, value) => {
-        // Allow empty string for clearing input
         if (value === '') {
             setDimensions(prev => ({ ...prev, [field]: '' }));
             return;
@@ -271,6 +304,38 @@ export default function PPFDHeatMapTool() {
                 <div className="tool-workspace">
                     {/* Controls Sidebar */}
                     <div className="controls-panel glass-panel">
+
+                        <div className="control-group">
+                            <h3>{t.viewMode}</h3>
+                            <div className="unit-toggle">
+                                <button
+                                    className={!is3D ? 'active' : ''}
+                                    onClick={() => setIs3D(false)}
+                                >{t.view2D}</button>
+                                <button
+                                    className={is3D ? 'active' : ''}
+                                    onClick={() => setIs3D(true)}
+                                >{t.view3D}</button>
+                            </div>
+                        </div>
+
+                        {is3D && (
+                            <div className="control-group">
+                                <h3>{t.filters}</h3>
+                                <div className="filter-list">
+                                    {Object.entries(t.legend).map(([key, label]) => (
+                                        <label key={key} className="filter-item">
+                                            <input
+                                                type="checkbox"
+                                                checked={activeFilters[key]}
+                                                onChange={() => toggleFilter(key)}
+                                            />
+                                            <span className="filter-label">{label}</span>
+                                        </label>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
 
                         <div className="control-group">
                             <h3>{t.unitToggle}</h3>
@@ -316,7 +381,7 @@ export default function PPFDHeatMapTool() {
                                 <input
                                     type="range"
                                     min={unit === 'cm' ? 15 : 0.5}
-                                    max={unit === 'cm' ? 150 : 5}
+                                    max={unit === 'cm' ? 500 : 16.5}
                                     step={unit === 'cm' ? 5 : 0.1}
                                     value={dimensions.height || 0}
                                     onChange={(e) => handleDimensionChange('height', e.target.value)}
@@ -363,53 +428,66 @@ export default function PPFDHeatMapTool() {
                             </div>
                         </div>
 
-                        <div
-                            className="canvas-wrapper"
-                            ref={containerRef}
-                            style={{ aspectRatio: `${(dimensions.width || 1) / (dimensions.depth || 1)}` }}
-                            onPointerMove={handlePointerMove}
-                            onPointerUp={handlePointerUp}
-                            onPointerLeave={handlePointerUp}
-                        >
-                            <canvas ref={heatmapCanvasRef} className="heatmap-canvas" />
-                            <div className="grid-overlay" />
+                        <div className={`scene-container ${is3D ? 'mode-3d' : 'mode-2d'}`}>
+                            {is3D ? (
+                                <div className="scene-wrapper-3d">
+                                    <PPFD3DScene
+                                        ppfdMap={ppfdMap}
+                                        dimensions={dimensions}
+                                        activeLights={activeLights}
+                                        unit={unit}
+                                        activeFilters={activeFilters}
+                                    />
+                                </div>
+                            ) : (
+                                <div
+                                    className="canvas-wrapper"
+                                    ref={containerRef}
+                                    style={{
+                                        aspectRatio: `${(dimensions.width || 1) / (dimensions.depth || 1)}`
+                                    }}
+                                    onPointerMove={handlePointerMove}
+                                    onPointerUp={handlePointerUp}
+                                    onPointerLeave={handlePointerUp}
+                                >
+                                    <canvas ref={heatmapCanvasRef} className="heatmap-canvas" />
+                                    <div className="grid-overlay" />
 
-                            {activeLights.map((light) => {
-                                const pos = light.positions[0];
-                                // Calculate percentage based on current dimensions
-                                // light.physicalWidth is in feet. 
-                                // dimensions.width is in current unit.
-                                // We need to convert light width to current unit OR dimensions to feet.
-                                // Let's convert light width to current unit for percentage calc.
-                                const lightW = unit === 'cm' ? light.physicalWidth * 30.48 : light.physicalWidth;
-                                const lightD = unit === 'cm' ? light.physicalDepth * 30.48 : light.physicalDepth;
+                                    <div className="lights-layer">
+                                        {activeLights.map((light) => {
+                                            const pos = light.positions[0];
+                                            const lightW = unit === 'cm' ? light.physicalWidth * 30.48 : light.physicalWidth;
+                                            const lightD = unit === 'cm' ? light.physicalDepth * 30.48 : light.physicalDepth;
 
-                                const widthPercent = (lightW / (dimensions.width || 1)) * 100;
-                                const depthPercent = (lightD / (dimensions.depth || 1)) * 100;
+                                            const widthPercent = (lightW / (dimensions.width || 1)) * 100;
+                                            const depthPercent = (lightD / (dimensions.depth || 1)) * 100;
 
-                                return (
-                                    <div
-                                        key={light.instanceId}
-                                        className="light-element"
-                                        style={{
-                                            left: `${pos.x * 100}%`,
-                                            top: `${pos.y * 100}%`,
-                                            width: `${widthPercent}%`,
-                                            height: `${depthPercent}%`,
-                                            transform: `translate(-50%, -50%) rotate(${pos.rotation}deg)`
-                                        }}
-                                        onPointerDown={(e) => handlePointerDown(e, light.instanceId, pos.x, pos.y)}
-                                        onDoubleClick={(e) => handleDoubleClick(e, light.instanceId)}
-                                    >
-                                        <div className="light-body">
-                                            <span className="remove-btn" onClick={(e) => {
-                                                e.stopPropagation();
-                                                removeLight(light.instanceId);
-                                            }}>×</span>
-                                        </div>
+                                            return (
+                                                <div
+                                                    key={light.instanceId}
+                                                    className="light-element"
+                                                    style={{
+                                                        left: `${pos.x * 100}%`,
+                                                        top: `${pos.y * 100}%`,
+                                                        width: `${widthPercent}%`,
+                                                        height: `${depthPercent}%`,
+                                                        transform: `translate(-50%, -50%) rotate(${pos.rotation}deg)`
+                                                    }}
+                                                    onPointerDown={(e) => handlePointerDown(e, light.instanceId, pos.x, pos.y)}
+                                                    onDoubleClick={(e) => handleDoubleClick(e, light.instanceId)}
+                                                >
+                                                    <div className="light-body">
+                                                        <span className="remove-btn" onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            removeLight(light.instanceId);
+                                                        }}>×</span>
+                                                    </div>
+                                                </div>
+                                            );
+                                        })}
                                     </div>
-                                );
-                            })}
+                                </div>
+                            )}
                         </div>
 
                         <p className="instructions">{t.instructions}</p>
@@ -537,6 +615,24 @@ export default function PPFDHeatMapTool() {
                 .slider-wrap input { flex: 1; }
                 .slider-wrap span { font-family: monospace; color: #10b981; white-space: nowrap; }
 
+                .filter-list {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                }
+                .filter-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    cursor: pointer;
+                    font-size: 0.9rem;
+                    color: #cbd5e1;
+                }
+                .filter-item input {
+                    cursor: pointer;
+                    accent-color: #10b981;
+                }
+
                 .light-list {
                     display: flex;
                     flex-direction: column;
@@ -581,9 +677,23 @@ export default function PPFDHeatMapTool() {
                 .metric-label { display: block; font-size: 0.75rem; color: #94a3b8; margin-bottom: 0.25rem; }
                 .metric-value { font-size: 1.25rem; font-weight: 700; color: white; }
 
-                .canvas-wrapper {
+                .scene-container {
                     width: 100%;
                     max-width: 800px;
+                    display: flex;
+                    justify-content: center;
+                }
+                
+                .scene-wrapper-3d {
+                    width: 100%;
+                    height: 500px;
+                    border-radius: 1rem;
+                    overflow: hidden;
+                    border: 1px solid rgba(255,255,255,0.1);
+                }
+
+                .canvas-wrapper {
+                    width: 100%;
                     background: #111;
                     position: relative;
                     border-radius: 1rem;
@@ -610,13 +720,18 @@ export default function PPFDHeatMapTool() {
                     pointer-events: none;
                 }
 
+                .lights-layer {
+                    position: absolute;
+                    inset: 0;
+                }
+
                 .light-element {
                     position: absolute;
                     z-index: 10;
-                    cursor: move;
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    cursor: move;
                 }
 
                 .light-body {
