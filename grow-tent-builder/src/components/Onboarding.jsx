@@ -7,78 +7,78 @@ export default function Onboarding() {
     const [currentStep, setCurrentStep] = useState(1);
     const [showTooltip, setShowTooltip] = useState(false);
     const { onboardingData, updateOnboarding, completeOnboarding } = useOnboarding();
-    const { getBuilderUrl } = useSettings();
+    const { getBuilderUrl, t } = useSettings();
     const navigate = useNavigate();
 
     const steps = [
         {
-            question: "Hangi bitki türlerini yetiştirmeyi planlıyorsunuz?",
+            questionKey: "onboardingQ1",
             field: "plantType",
             options: [
-                { value: "herbs", label: "Aromatik otlar", detail: "(fesleğen, nane, kekik)", icon: "🌿" },
-                { value: "vegetables", label: "Sebzeler", detail: "(domates, biber, marul)", icon: "🥬" },
-                { value: "flowers", label: "Çiçekli bitkiler", detail: "(orkide, sardunya)", icon: "🌺" }
+                { value: "herbs", labelKey: "onboardingQ1Opt1Label", detailKey: "onboardingQ1Opt1Detail", icon: "🌿" },
+                { value: "vegetables", labelKey: "onboardingQ1Opt2Label", detailKey: "onboardingQ1Opt2Detail", icon: "🥬" },
+                { value: "flowers", labelKey: "onboardingQ1Opt3Label", detailKey: "onboardingQ1Opt3Detail", icon: "🌺" }
             ],
             tooltips: {
-                herbs: "Aromatik otlar düşük PPFD seviyelerinde bile gelişebilir, bu nedenle daha az güçlü ışıklarla da verimli yetiştirilebilir.",
-                vegetables: "Sebzeler özellikle çiçeklenme ve meyve verme dönemlerinde yüksek ışık (600+ µmol/m²/s) ister.",
-                flowers: "Çiçekli bitkiler için ışık sürekliliği kadar spektrum dengesi de önemlidir; kırmızı ve mavi ışık oranı çiçeklenmeyi etkiler."
+                herbs: "onboardingQ1Tip1",
+                vegetables: "onboardingQ1Tip2",
+                flowers: "onboardingQ1Tip3"
             }
         },
         {
-            question: "Yetiştiricilik deneyiminiz nedir?",
+            questionKey: "onboardingQ2",
             field: "experienceLevel",
             options: [
-                { value: "beginner", label: "Yeni başlıyorum", icon: "🌱" },
-                { value: "intermediate", label: "Orta seviye", icon: "🌿" },
-                { value: "expert", label: "Deneyimliyim", icon: "🏆" }
+                { value: "beginner", labelKey: "onboardingQ2Opt1Label", icon: "🌱" },
+                { value: "intermediate", labelKey: "onboardingQ2Opt2Label", icon: "🌿" },
+                { value: "expert", labelKey: "onboardingQ2Opt3Label", icon: "🏆" }
             ],
             tooltips: {
-                beginner: "Yeni başlayanlar için otomatik zamanlayıcılı ışıklar ve basit toprak karışımları idealdir.",
-                intermediate: "Orta seviye kullanıcılar için düşük maliyetli sensörler ve küçük havalandırma sistemleri verimi artırabilir.",
-                expert: "Deneyimli kullanıcılar PPFD haritası çıkararak lamba konumlandırmasını optimize edebilir."
+                beginner: "onboardingQ2Tip1",
+                intermediate: "onboardingQ2Tip2",
+                expert: "onboardingQ2Tip3"
             }
         },
         {
-            question: "Ne kadar alan ayırmayı planlıyorsunuz?",
+            questionKey: "onboardingQ3",
             field: "tentSize",
             options: [
-                { value: "60x60", label: "Küçük kabin", detail: "(60×60 cm)", icon: "📦" },
-                { value: "100x100", label: "Orta boy çadır", detail: "(100×100 cm)", icon: "📦" },
-                { value: "120x120", label: "Büyük alan", detail: "(120×120 cm ve üzeri)", icon: "📦" }
+                { value: "60x60", labelKey: "onboardingQ3Opt1Label", detailKey: "onboardingQ3Opt1Detail", icon: "📦" },
+                { value: "100x100", labelKey: "onboardingQ3Opt2Label", detailKey: "onboardingQ3Opt2Detail", icon: "📦" },
+                { value: "120x120", labelKey: "onboardingQ3Opt3Label", detailKey: "onboardingQ3Opt3Detail", icon: "📦" }
             ],
             tooltips: {
-                "60x60": "Küçük alanlarda sıcaklık kontrolü zor olabilir, bu yüzden sessiz fanlar ve düşük ısı yayan LED'ler tercih edilmeli.",
-                "100x100": "Bu boyutlar için 240–320W LED arası ürünler iyi bir başlangıç noktasıdır.",
-                "120x120": "Geniş alanlar güçlü havalandırma ve 480W+ LED gibi daha fazla ekipman gerektirir."
+                "60x60": "onboardingQ3Tip1",
+                "100x100": "onboardingQ3Tip2",
+                "120x120": "onboardingQ3Tip3"
             }
         },
         {
-            question: "Aydınlatma sistemi tercihiniz nedir?",
+            questionKey: "onboardingQ4",
             field: "lightPreference",
             options: [
-                { value: "led", label: "LED", detail: "(enerji verimli, düşük ısı)", icon: "💡" },
-                { value: "hps", label: "HPS", detail: "(yüksek basınçlı sodyum)", icon: "🔥" },
-                { value: "unsure", label: "Emin değilim", detail: "öneri almak istiyorum", icon: "❓" }
+                { value: "led", labelKey: "onboardingQ4Opt1Label", detailKey: "onboardingQ4Opt1Detail", icon: "💡" },
+                { value: "hps", labelKey: "onboardingQ4Opt2Label", detailKey: "onboardingQ4Opt2Detail", icon: "🔥" },
+                { value: "unsure", labelKey: "onboardingQ4Opt3Label", detailKey: "onboardingQ4Opt3Detail", icon: "❓" }
             ],
             tooltips: {
-                led: "LED'ler uzun ömürlüdür ve farklı spektrumlara sahip modeller ile bitki gelişim evrelerine uygun ışık sunar.",
-                hps: "HPS lambalar çiçeklenme döneminde yoğun ışık sağlar, ancak daha fazla ısı yayar ve enerji tüketimi yüksektir.",
-                unsure: "LED teknolojisi çoğu kullanıcı için başlangıç ve uzun vadede daha avantajlıdır; düşük ısı ve modüler tasarımıyla öne çıkar."
+                led: "onboardingQ4Tip1",
+                hps: "onboardingQ4Tip2",
+                unsure: "onboardingQ4Tip3"
             }
         },
         {
-            question: "Otomasyon seviyeniz ne olacak?",
+            questionKey: "onboardingQ5",
             field: "automationLevel",
             options: [
-                { value: "manual", label: "Tamamen manuel", detail: "(sulama, ışık kontrolü vb.)", icon: "✋" },
-                { value: "semi", label: "Yarı otomatik", detail: "(zamanlayıcı, fan kontrolü)", icon: "⚙️" },
-                { value: "full", label: "Tam otomatik", detail: "(iklim kontrolü, nem, sulama)", icon: "🤖" }
+                { value: "manual", labelKey: "onboardingQ5Opt1Label", detailKey: "onboardingQ5Opt1Detail", icon: "✋" },
+                { value: "semi", labelKey: "onboardingQ5Opt2Label", detailKey: "onboardingQ5Opt2Detail", icon: "⚙️" },
+                { value: "full", labelKey: "onboardingQ5Opt3Label", detailKey: "onboardingQ5Opt3Detail", icon: "🤖" }
             ],
             tooltips: {
-                manual: "Manuel sistemler düşük bütçelidir ama dikkat gerektirir; günlük kontroller ihmal edilmemelidir.",
-                semi: "Basit zamanlayıcılar ve sensör destekli fanlar verimliliği artırır ve hata payını azaltır.",
-                full: "Tam otomasyon, verim artışı sağlar ancak başlangıç maliyeti yüksektir; ileri düzey kullanıcılar için idealdir."
+                manual: "onboardingQ5Tip1",
+                semi: "onboardingQ5Tip2",
+                full: "onboardingQ5Tip3"
             }
         }
     ];
@@ -90,7 +90,7 @@ export default function Onboarding() {
 
     const handleSelect = (value) => {
         updateOnboarding(currentStepData.field, value);
-        setSelectedTooltip(currentStepData.tooltips[value]);
+        setSelectedTooltip(t(currentStepData.tooltips[value]));
         setShowTooltip(true);
     };
 
@@ -139,12 +139,12 @@ export default function Onboarding() {
                 {/* Progress Bar */}
                 <div className="progress-container">
                     <div className="progress-bar" style={{ width: `${progress}%` }} />
-                    <span className="progress-text">Adım {currentStep} / {steps.length}</span>
+                    <span className="progress-text">{t('onboardingStep')} {currentStep} / {steps.length}</span>
                 </div>
 
                 {/* Question */}
                 <div className="question-container fade-in">
-                    <h2 className="question-title">{currentStepData.question}</h2>
+                    <h2 className="question-title">{t(currentStepData.questionKey)}</h2>
 
                     {/* Options */}
                     <div className="options-grid">
@@ -157,8 +157,8 @@ export default function Onboarding() {
                             >
                                 <span className="option-icon">{option.icon}</span>
                                 <div className="option-text">
-                                    <span className="option-label">{option.label}</span>
-                                    {option.detail && <span className="option-detail">{option.detail}</span>}
+                                    <span className="option-label">{t(option.labelKey)}</span>
+                                    {option.detailKey && <span className="option-detail">{t(option.detailKey)}</span>}
                                 </div>
                             </button>
                         ))}
@@ -169,7 +169,7 @@ export default function Onboarding() {
                         <div className="tooltip-box fade-in">
                             <p>{selectedTooltip}</p>
                             <button onClick={handleContinue} className="btn-continue">
-                                Devam Et →
+                                {t('onboardingContinue')}
                             </button>
                         </div>
                     )}
@@ -179,11 +179,11 @@ export default function Onboarding() {
                 <div className="nav-buttons">
                     {currentStep > 1 && (
                         <button onClick={handleBack} className="btn-secondary">
-                            ← Geri
+                            {t('onboardingBack')}
                         </button>
                     )}
                     <button onClick={handleSkip} className="btn-skip">
-                        Atla
+                        {t('onboardingSkip')}
                     </button>
                 </div>
             </div>
