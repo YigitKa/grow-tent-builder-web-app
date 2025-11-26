@@ -5,6 +5,7 @@ import Footer from '../Footer';
 import { useSettings } from '../../context/SettingsContext';
 import PPFDInfoSection from './PPFDInfoSection';
 import PPFD3DScene from './PPFD3DScene';
+import styles from './PPFDHeatMapTool.module.css';
 
 // Mock Data for Lights
 const AVAILABLE_LIGHTS = [
@@ -301,21 +302,21 @@ export default function PPFDHeatMapTool() {
     };
 
     return (
-        <div className="ppfd-tool-container">
+        <div className={styles.ppfdToolContainer}>
             <Navbar />
-            <div className="tool-main">
-                <div className="tool-header">
+            <div className={styles.toolMain}>
+                <div className={styles.toolHeader}>
                     <h1>{t.title}</h1>
                     <p>{t.subtitle}</p>
                 </div>
 
-                <div className="tool-workspace">
+                <div className={styles.toolWorkspace}>
                     {/* Controls Sidebar */}
-                    <div className="controls-panel glass-panel">
+                    <div className={`${styles.controlsPanel} ${styles.glassPanel}`}>
 
-                        <div className="control-group">
+                        <div className={styles.controlGroup}>
                             <h3>{t.viewMode}</h3>
-                            <div className="unit-toggle">
+                            <div className={styles.unitToggle}>
                                 <button
                                     className={!is3D ? 'active' : ''}
                                     onClick={() => setIs3D(false)}
@@ -328,17 +329,17 @@ export default function PPFDHeatMapTool() {
                         </div>
 
                         {is3D && (
-                            <div className="control-group">
+                            <div className={styles.controlGroup}>
                                 <h3>{t.filters}</h3>
-                                <div className="filter-list">
+                                <div className={styles.filterList}>
                                     {Object.entries(t.legend).map(([key, label]) => (
-                                        <label key={key} className="filter-item">
+                                        <label key={key} className={styles.filterItem}>
                                             <input
                                                 type="checkbox"
                                                 checked={activeFilters[key]}
                                                 onChange={() => toggleFilter(key)}
                                             />
-                                            <span className="filter-label">{label}</span>
+                                            <span>{label}</span>
                                         </label>
                                     ))}
                                 </div>
@@ -346,23 +347,23 @@ export default function PPFDHeatMapTool() {
                         )}
 
                         {is3D && (
-                            <div className="control-group">
+                            <div className={styles.controlGroup}>
                                 <h3>{t.showGuides}</h3>
-                                <label className="filter-item">
+                                <label className={styles.filterItem}>
                                     <input
                                         type="checkbox"
                                         checked={showGuideLines}
                                         onChange={(e) => setShowGuideLines(e.target.checked)}
                                     />
-                                    <span className="filter-label">{t.showGuides}</span>
+                                    <span>{t.showGuides}</span>
                                 </label>
                             </div>
                         )}
 
                         {is3D && (
-                            <div className="control-group">
+                            <div className={styles.controlGroup}>
                                 <h3>{t.voxelTransparency}</h3>
-                                <div className="slider-wrap">
+                                <div className={styles.sliderWrap}>
                                     <input
                                         type="range"
                                         min="0.05"
@@ -377,9 +378,9 @@ export default function PPFDHeatMapTool() {
                         )}
 
 
-                        <div className="control-group">
+                        <div className={styles.controlGroup}>
                             <h3>{t.unitToggle}</h3>
-                            <div className="unit-toggle">
+                            <div className={styles.unitToggle}>
                                 <button
                                     className={unit === 'ft' ? 'active' : ''}
                                     onClick={() => handleUnitChange('ft')}
@@ -391,10 +392,10 @@ export default function PPFDHeatMapTool() {
                             </div>
                         </div>
 
-                        <div className="control-group">
+                        <div className={styles.controlGroup}>
                             <h3>{t.dimensions}</h3>
-                            <div className="input-row">
-                                <div className="input-wrap">
+                            <div className={styles.inputRow}>
+                                <div className={styles.inputWrap}>
                                     <label>{t.width}</label>
                                     <input
                                         type="number"
@@ -403,7 +404,7 @@ export default function PPFDHeatMapTool() {
                                         min="1"
                                     />
                                 </div>
-                                <div className="input-wrap">
+                                <div className={styles.inputWrap}>
                                     <label>{t.depth}</label>
                                     <input
                                         type="number"
@@ -415,9 +416,9 @@ export default function PPFDHeatMapTool() {
                             </div>
                         </div>
 
-                        <div className="control-group">
+                        <div className={styles.controlGroup}>
                             <h3>{t.height}</h3>
-                            <div className="slider-wrap">
+                            <div className={styles.sliderWrap}>
                                 <input
                                     type="range"
                                     min={unit === 'cm' ? 15 : 0.5}
@@ -430,17 +431,17 @@ export default function PPFDHeatMapTool() {
                             </div>
                         </div>
 
-                        <div className="control-group">
+                        <div className={styles.controlGroup}>
                             <h3>{t.addLight}</h3>
-                            <div className="light-list">
+                            <div className={styles.lightList}>
                                 {AVAILABLE_LIGHTS.map(light => (
-                                    <button key={light.id} className="light-btn" onClick={() => addLight(light)}>
-                                        <span className="light-icon">💡</span>
-                                        <div className="light-info">
-                                            <span className="light-name">{light.name}</span>
-                                            <span className="light-specs">{light.maxPPFD} PPFD</span>
+                                    <button key={light.id} className={styles.lightBtn} onClick={() => addLight(light)}>
+                                        <span>💡</span>
+                                        <div className={styles.lightInfo}>
+                                            <span className={styles.lightName}>{light.name}</span>
+                                            <span className={styles.lightSpecs}>{light.maxPPFD} PPFD</span>
                                         </div>
-                                        <span className="add-icon">+</span>
+                                        <span className={styles.addIcon}>+</span>
                                     </button>
                                 ))}
                             </div>
@@ -448,29 +449,29 @@ export default function PPFDHeatMapTool() {
                     </div>
 
                     {/* Canvas Area */}
-                    <div className="canvas-area">
-                        <div className="metrics-bar glass-panel">
-                            <div className="metric">
-                                <span className="metric-label">{t.metrics.avg}</span>
-                                <span className="metric-value">{metrics.average}</span>
+                    <div className={styles.canvasArea}>
+                        <div className={`${styles.metricsBar} ${styles.glassPanel}`}>
+                            <div className={styles.metric}>
+                                <span className={styles.metricLabel}>{t.metrics.avg}</span>
+                                <span className={styles.metricValue}>{metrics.average}</span>
                             </div>
-                            <div className="metric">
-                                <span className="metric-label">{t.metrics.min}</span>
-                                <span className="metric-value">{metrics.min}</span>
+                            <div className={styles.metric}>
+                                <span className={styles.metricLabel}>{t.metrics.min}</span>
+                                <span className={styles.metricValue}>{metrics.min}</span>
                             </div>
-                            <div className="metric">
-                                <span className="metric-label">{t.metrics.max}</span>
-                                <span className="metric-value">{metrics.max}</span>
+                            <div className={styles.metric}>
+                                <span className={styles.metricLabel}>{t.metrics.max}</span>
+                                <span className={styles.metricValue}>{metrics.max}</span>
                             </div>
-                            <div className="metric">
-                                <span className="metric-label">{t.metrics.uni}</span>
-                                <span className="metric-value">{metrics.uniformity}</span>
+                            <div className={styles.metric}>
+                                <span className={styles.metricLabel}>{t.metrics.uni}</span>
+                                <span className={styles.metricValue}>{metrics.uniformity}</span>
                             </div>
                         </div>
 
-                        <div className={`scene-container ${is3D ? 'mode-3d' : 'mode-2d'}`}>
+                        <div className={styles.sceneContainer}>
                             {is3D ? (
-                                <div className="scene-wrapper-3d">
+                                <div className={styles.sceneWrapper3d}>
                                     <PPFD3DScene
                                         ppfdMap={ppfdMap}
                                         dimensions={dimensions}
@@ -483,7 +484,7 @@ export default function PPFDHeatMapTool() {
                                 </div>
                             ) : (
                                 <div
-                                    className="canvas-wrapper"
+                                    className={styles.canvasWrapper}
                                     ref={containerRef}
                                     style={{
                                         aspectRatio: `${(dimensions.width || 1) / (dimensions.depth || 1)}`
@@ -492,10 +493,10 @@ export default function PPFDHeatMapTool() {
                                     onPointerUp={handlePointerUp}
                                     onPointerLeave={handlePointerUp}
                                 >
-                                    <canvas ref={heatmapCanvasRef} className="heatmap-canvas" />
-                                    <div className="grid-overlay" />
+                                    <canvas ref={heatmapCanvasRef} className={styles.heatmapCanvas} />
+                                    <div className={styles.gridOverlay} />
 
-                                    <div className="lights-layer">
+                                    <div className={styles.lightsLayer}>
                                         {activeLights.map((light) => {
                                             const pos = light.positions[0];
                                             const lightW = unit === 'cm' ? light.physicalWidth * 30.48 : light.physicalWidth;
@@ -507,7 +508,7 @@ export default function PPFDHeatMapTool() {
                                             return (
                                                 <div
                                                     key={light.instanceId}
-                                                    className="light-element"
+                                                    className={styles.lightElement}
                                                     style={{
                                                         left: `${pos.x * 100}%`,
                                                         top: `${pos.y * 100}%`,
@@ -518,8 +519,8 @@ export default function PPFDHeatMapTool() {
                                                     onPointerDown={(e) => handlePointerDown(e, light.instanceId, pos.x, pos.y)}
                                                     onDoubleClick={(e) => handleDoubleClick(e, light.instanceId)}
                                                 >
-                                                    <div className="light-body">
-                                                        <span className="remove-btn" onClick={(e) => {
+                                                    <div className={styles.lightBody}>
+                                                        <span className={styles.removeBtn} onClick={(e) => {
                                                             e.stopPropagation();
                                                             removeLight(light.instanceId);
                                                         }}>×</span>
@@ -532,315 +533,21 @@ export default function PPFDHeatMapTool() {
                             )}
                         </div>
 
-                        <p className="instructions">{t.instructions}</p>
+                        <p className={styles.instructions}>{t.instructions}</p>
 
-                        <div className="legend glass-panel">
-                            <div className="legend-item"><span className="dot" style={{ background: '#333' }}></span> {t.legend.low}</div>
-                            <div className="legend-item"><span className="dot" style={{ background: 'blue' }}></span> {t.legend.seedling}</div>
-                            <div className="legend-item"><span className="dot" style={{ background: 'green' }}></span> {t.legend.veg}</div>
-                            <div className="legend-item"><span className="dot" style={{ background: 'orange' }}></span> {t.legend.flower}</div>
-                            <div className="legend-item"><span className="dot" style={{ background: 'red' }}></span> {t.legend.high}</div>
-                            <div className="legend-item"><span className="dot" style={{ background: 'white', border: '1px solid #555' }}></span> {t.legend.extreme}</div>
+                        <div className={`${styles.legend} ${styles.glassPanel}`}>
+                            <div className={styles.legendItem}><span className={styles.dot} style={{ background: '#333' }}></span> {t.legend.low}</div>
+                            <div className={styles.legendItem}><span className={styles.dot} style={{ background: 'blue' }}></span> {t.legend.seedling}</div>
+                            <div className={styles.legendItem}><span className={styles.dot} style={{ background: 'green' }}></span> {t.legend.veg}</div>
+                            <div className={styles.legendItem}><span className={styles.dot} style={{ background: 'orange' }}></span> {t.legend.flower}</div>
+                            <div className={styles.legendItem}><span className={styles.dot} style={{ background: 'red' }}></span> {t.legend.high}</div>
+                            <div className={styles.legendItem}><span className={styles.dot} style={{ background: 'white', border: '1px solid #555' }}></span> {t.legend.extreme}</div>
                         </div>
                     </div>
                 </div>
                 <PPFDInfoSection language={language} />
             </div>
             <Footer />
-
-            <style>{`
-                .ppfd-tool-container {
-                    min-height: 100vh;
-                    background: #0a0a0a;
-                    color: white;
-                    display: flex;
-                    flex-direction: column;
-                }
-                .tool-main {
-                    flex: 1;
-                    max-width: 1400px;
-                    margin: 0 auto;
-                    width: 100%;
-                    padding: 2rem;
-                }
-                .tool-header {
-                    text-align: center;
-                    margin-bottom: 2rem;
-                }
-                .tool-header h1 {
-                    font-size: 2.5rem;
-                    background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    margin-bottom: 0.5rem;
-                }
-                .tool-header p { color: #94a3b8; }
-
-                .tool-workspace {
-                    display: grid;
-                    grid-template-columns: 300px 1fr;
-                    gap: 2rem;
-                    align-items: start;
-                }
-
-                .glass-panel {
-                    background: rgba(30, 41, 59, 0.5);
-                    backdrop-filter: blur(12px);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    border-radius: 1rem;
-                    padding: 1.5rem;
-                }
-
-                .controls-panel {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 2rem;
-                }
-
-                .control-group h3 {
-                    font-size: 1rem;
-                    color: #10b981;
-                    margin-bottom: 1rem;
-                    text-transform: uppercase;
-                    letter-spacing: 0.05em;
-                }
-
-                .unit-toggle {
-                    display: flex;
-                    background: rgba(0,0,0,0.3);
-                    border-radius: 0.5rem;
-                    padding: 0.25rem;
-                }
-                .unit-toggle button {
-                    flex: 1;
-                    background: transparent;
-                    border: none;
-                    color: #94a3b8;
-                    padding: 0.5rem;
-                    border-radius: 0.25rem;
-                    cursor: pointer;
-                    font-weight: 600;
-                    transition: all 0.2s;
-                }
-                .unit-toggle button.active {
-                    background: #10b981;
-                    color: white;
-                }
-
-                .input-row {
-                    display: flex;
-                    gap: 1rem;
-                }
-                .input-wrap {
-                    flex: 1;
-                }
-                .input-wrap label {
-                    display: block;
-                    font-size: 0.8rem;
-                    color: #94a3b8;
-                    margin-bottom: 0.25rem;
-                }
-                .input-wrap input {
-                    width: 100%;
-                    background: rgba(0,0,0,0.3);
-                    border: 1px solid rgba(255,255,255,0.1);
-                    color: white;
-                    padding: 0.5rem;
-                    border-radius: 0.5rem;
-                }
-
-                .slider-wrap {
-                    display: flex;
-                    align-items: center;
-                    gap: 1rem;
-                }
-                .slider-wrap input { flex: 1; }
-                .slider-wrap span { font-family: monospace; color: #10b981; white-space: nowrap; }
-
-                .filter-list {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 0.5rem;
-                }
-                .filter-item {
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                    cursor: pointer;
-                    font-size: 0.9rem;
-                    color: #cbd5e1;
-                }
-                .filter-item input {
-                    cursor: pointer;
-                    accent-color: #10b981;
-                }
-
-                .light-list {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 0.5rem;
-                }
-                .light-btn {
-                    display: flex;
-                    align-items: center;
-                    gap: 1rem;
-                    background: rgba(255,255,255,0.05);
-                    border: 1px solid rgba(255,255,255,0.05);
-                    padding: 0.75rem;
-                    border-radius: 0.5rem;
-                    color: white;
-                    cursor: pointer;
-                    transition: all 0.2s;
-                    text-align: left;
-                }
-                .light-btn:hover {
-                    background: rgba(255,255,255,0.1);
-                    border-color: #10b981;
-                }
-                .light-info { flex: 1; }
-                .light-name { display: block; font-weight: 600; font-size: 0.9rem; }
-                .light-specs { display: block; font-size: 0.75rem; color: #94a3b8; }
-                .add-icon { color: #10b981; font-weight: bold; }
-
-                .canvas-area {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 1rem;
-                    align-items: center;
-                }
-
-                .metrics-bar {
-                    display: flex;
-                    justify-content: space-around;
-                    width: 100%;
-                    padding: 1rem;
-                }
-                .metric { text-align: center; }
-                .metric-label { display: block; font-size: 0.75rem; color: #94a3b8; margin-bottom: 0.25rem; }
-                .metric-value { font-size: 1.25rem; font-weight: 700; color: white; }
-
-                .scene-container {
-                    width: 100%;
-                    max-width: 800px;
-                    display: flex;
-                    justify-content: center;
-                }
-                
-                .scene-wrapper-3d {
-                    width: 100%;
-                    height: 500px;
-                    border-radius: 1rem;
-                    overflow: hidden;
-                    border: 1px solid rgba(255,255,255,0.1);
-                }
-
-                .canvas-wrapper {
-                    width: 100%;
-                    background: #111;
-                    position: relative;
-                    border-radius: 1rem;
-                    overflow: hidden;
-                    border: 2px solid rgba(255,255,255,0.1);
-                    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-                    touch-action: none;
-                }
-
-                .heatmap-canvas {
-                    width: 100%;
-                    height: 100%;
-                    display: block;
-                    opacity: 0.8;
-                    image-rendering: pixelated;
-                }
-
-                .grid-overlay {
-                    position: absolute;
-                    inset: 0;
-                    background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                                    linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
-                    background-size: 20% 20%;
-                    pointer-events: none;
-                }
-
-                .lights-layer {
-                    position: absolute;
-                    inset: 0;
-                }
-
-                .light-element {
-                    position: absolute;
-                    z-index: 10;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    cursor: move;
-                }
-
-                .light-body {
-                    width: 100%;
-                    height: 100%;
-                    background: rgba(255, 255, 255, 0.15);
-                    border: 2px solid white;
-                    border-radius: 4px;
-                    box-shadow: 0 0 15px rgba(255,255,255,0.3);
-                    position: relative;
-                }
-
-                .remove-btn {
-                    position: absolute;
-                    top: -10px;
-                    right: -10px;
-                    width: 20px;
-                    height: 20px;
-                    background: red;
-                    color: white;
-                    border-radius: 50%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 12px;
-                    cursor: pointer;
-                    opacity: 0;
-                    transition: opacity 0.2s;
-                }
-
-                .light-element:hover .remove-btn { opacity: 1; }
-
-                .instructions {
-                    color: #94a3b8;
-                    font-size: 0.9rem;
-                    margin-top: 0.5rem;
-                }
-
-                .legend {
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 1.5rem;
-                    justify-content: center;
-                    margin-top: 1rem;
-                }
-                .legend-item {
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                    font-size: 0.85rem;
-                    color: #cbd5e1;
-                }
-                .dot {
-                    width: 12px;
-                    height: 12px;
-                    border-radius: 50%;
-                }
-
-                @media (max-width: 1024px) {
-                    .tool-workspace {
-                        grid-template-columns: 1fr;
-                    }
-                    .canvas-wrapper {
-                        order: -1;
-                    }
-                }
-            `}</style>
         </div>
     );
 }

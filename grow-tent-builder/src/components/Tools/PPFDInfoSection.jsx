@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from './PPFDInfoSection.module.css';
 
 const PPFDInfoSection = ({ language }) => {
     const [activeAccordion, setActiveAccordion] = useState(null);
@@ -194,33 +195,33 @@ const PPFDInfoSection = ({ language }) => {
     };
 
     return (
-        <div className="ppfd-info-section">
-            <h2 className="section-title">{t.title}</h2>
+        <div className={styles.ppfdInfoSection}>
+            <h2 className={styles.sectionTitle}>{t.title}</h2>
 
             {/* Intro Cards */}
-            <div className="info-grid">
-                <div className="info-card glass-panel highlight">
+            <div className={styles.infoGrid}>
+                <div className={`${styles.glassPanel}`}>
                     <h3>{t.intro.title}</h3>
-                    <p className="big-text">{t.intro.desc}</p>
-                    <div className="badge">{t.intro.unit}</div>
-                    <p className="sub-text">{t.intro.analogy}</p>
+                    <p className={styles.bigText}>{t.intro.desc}</p>
+                    <div className={styles.badge}>{t.intro.unit}</div>
+                    <p className={styles.subText}>{t.intro.analogy}</p>
                 </div>
-                <div className="info-card glass-panel">
+                <div className={styles.glassPanel}>
                     <h3>{t.importance.title}</h3>
                     <p>{t.importance.desc}</p>
-                    <ul className="check-list">
-                        <li className="negative">{t.importance.uncontrolled}</li>
-                        <li className="positive">{t.importance.controlled}</li>
+                    <ul className={styles.checkList}>
+                        <li>{t.importance.uncontrolled}</li>
+                        <li>{t.importance.controlled}</li>
                     </ul>
-                    <p className="quote">"{t.importance.summary}"</p>
+                    <p className={styles.quote}>"{t.importance.summary}"</p>
                 </div>
             </div>
 
             {/* Comparison Table */}
-            <div className="comparison-section glass-panel">
+            <div className={`${styles.comparisonSection} ${styles.glassPanel}`}>
                 <h3>{t.comparison.title}</h3>
-                <div className="table-responsive">
-                    <table className="comparison-table">
+                <div className={styles.tableResponsive}>
+                    <table className={styles.comparisonTable}>
                         <thead>
                             <tr>
                                 {t.comparison.headers.map((h, i) => <th key={i}>{h}</th>)}
@@ -230,7 +231,7 @@ const PPFDInfoSection = ({ language }) => {
                             {t.comparison.rows.map((row, i) => (
                                 <tr key={i}>
                                     <td>{row.feature}</td>
-                                    <td className="highlight-col">{row.ppfd}</td>
+                                    <td className={styles.highlightCol}>{row.ppfd}</td>
                                     <td>{row.lux}</td>
                                     <td>{row.lumen}</td>
                                 </tr>
@@ -238,22 +239,22 @@ const PPFDInfoSection = ({ language }) => {
                         </tbody>
                     </table>
                 </div>
-                <p className="table-summary">{t.comparison.summary}</p>
+                <p className={styles.tableSummary}>{t.comparison.summary}</p>
             </div>
 
             {/* FAQ & Quiz Grid */}
-            <div className="interactive-grid">
+            <div className={styles.interactiveGrid}>
                 {/* FAQ */}
-                <div className="faq-section glass-panel">
+                <div className={`${styles.faqSection} ${styles.glassPanel}`}>
                     <h3>{t.faq.title}</h3>
-                    <div className="accordion">
+                    <div className={styles.accordion}>
                         {t.faq.items.map((item, index) => (
-                            <div key={index} className={`accordion-item ${activeAccordion === index ? 'active' : ''}`}>
-                                <button className="accordion-header" onClick={() => toggleAccordion(index)}>
+                            <div key={index} className={`${styles.accordionItem} ${activeAccordion === index ? styles.accordionItemActive : ''}`}>
+                                <button className={styles.accordionHeader} onClick={() => toggleAccordion(index)}>
                                     <span className="icon">{activeAccordion === index ? '−' : '+'}</span>
                                     {item.q}
                                 </button>
-                                <div className="accordion-content">
+                                <div className={styles.accordionContent}>
                                     <p>{item.a}</p>
                                 </div>
                             </div>
@@ -262,26 +263,19 @@ const PPFDInfoSection = ({ language }) => {
                 </div>
 
                 {/* Quiz */}
-                <div className="quiz-section glass-panel">
+                <div className={`${styles.quizSection} ${styles.glassPanel}`}>
                     <h3>{t.quiz.title}</h3>
-                    <div className="quiz-content">
+                    <div className={styles.quizContent}>
                         {t.quiz.questions.map((q) => (
-                            <div key={q.id} className="quiz-question">
-                                <p className="question-text">{q.id}. {q.q}</p>
-                                <div className="options">
+                            <div key={q.id}>
+                                <p className={styles.questionText}>{q.id}. {q.q}</p>
+                                <div className={styles.options}>
                                     {q.options.map((opt) => {
-                                        let className = "option-btn";
-                                        if (quizSubmitted) {
-                                            if (opt.correct) className += " correct";
-                                            else if (quizAnswers[q.id] === opt.id) className += " wrong";
-                                        } else {
-                                            if (quizAnswers[q.id] === opt.id) className += " selected";
-                                        }
 
                                         return (
                                             <button
                                                 key={opt.id}
-                                                className={className}
+                                                className={`${styles.optionBtn} ${quizSubmitted && opt.correct ? styles.optionBtnCorrect : ''} ${quizSubmitted && quizAnswers[q.id] === opt.id && !opt.correct ? styles.optionBtnWrong : ''} ${!quizSubmitted && quizAnswers[q.id] === opt.id ? styles.optionBtnSelected : ''}`}
                                                 onClick={() => handleQuizSelect(q.id, opt.id)}
                                                 disabled={quizSubmitted}
                                             >
@@ -293,156 +287,24 @@ const PPFDInfoSection = ({ language }) => {
                             </div>
                         ))}
                     </div>
-                    <div className="quiz-footer">
+                    <div className={styles.quizFooter}>
                         {!quizSubmitted ? (
                             <button
-                                className="submit-btn"
+                                className={styles.submitBtn}
                                 onClick={submitQuiz}
                                 disabled={Object.keys(quizAnswers).length < t.quiz.questions.length}
                             >
                                 {t.quiz.btnSubmit}
                             </button>
                         ) : (
-                            <div className="result-area">
-                                <span className="score">{t.quiz.score} {calculateScore()} / {t.quiz.questions.length}</span>
-                                <button className="reset-btn" onClick={resetQuiz}>{t.quiz.btnReset}</button>
+                            <div className={styles.resultArea}>
+                                <span className={styles.score}>{t.quiz.score} {calculateScore()} / {t.quiz.questions.length}</span>
+                                <button className={styles.resetBtn} onClick={resetQuiz}>{t.quiz.btnReset}</button>
                             </div>
                         )}
                     </div>
                 </div>
             </div>
-
-            <style>{`
-                .ppfd-info-section {
-                    margin-top: 4rem;
-                    padding-top: 2rem;
-                    border-top: 1px solid rgba(255,255,255,0.1);
-                }
-                .section-title {
-                    text-align: center;
-                    font-size: 2rem;
-                    margin-bottom: 2rem;
-                    background: linear-gradient(to right, #fff, #94a3b8);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                }
-                .glass-panel {
-                    background: rgba(30, 41, 59, 0.4);
-                    backdrop-filter: blur(12px);
-                    border: 1px solid rgba(255, 255, 255, 0.05);
-                    border-radius: 1rem;
-                    padding: 1.5rem;
-                }
-                .info-grid {
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    gap: 1.5rem;
-                    margin-bottom: 2rem;
-                }
-                .info-card h3 { color: #10b981; margin-bottom: 1rem; font-size: 1.2rem; }
-                .big-text { font-size: 1.1rem; line-height: 1.6; margin-bottom: 1rem; }
-                .badge { 
-                    display: inline-block; 
-                    background: rgba(16, 185, 129, 0.2); 
-                    color: #10b981; 
-                    padding: 0.25rem 0.75rem; 
-                    border-radius: 1rem; 
-                    font-weight: bold;
-                    margin-bottom: 1rem;
-                }
-                .sub-text { color: #94a3b8; font-style: italic; }
-                .check-list { list-style: none; padding: 0; margin-bottom: 1rem; }
-                .check-list li { margin-bottom: 0.5rem; }
-                .quote { border-left: 3px solid #10b981; padding-left: 1rem; color: #cbd5e1; font-style: italic; }
-
-                .comparison-section { margin-bottom: 2rem; overflow: hidden; }
-                .comparison-section h3 { color: #f59e0b; margin-bottom: 1rem; text-align: center; }
-                .table-responsive { overflow-x: auto; }
-                .comparison-table { width: 100%; border-collapse: collapse; min-width: 600px; }
-                .comparison-table th, .comparison-table td { 
-                    padding: 1rem; 
-                    text-align: left; 
-                    border-bottom: 1px solid rgba(255,255,255,0.05); 
-                }
-                .comparison-table th { color: #94a3b8; font-weight: 600; }
-                .comparison-table td { color: #e2e8f0; }
-                .highlight-col { background: rgba(16, 185, 129, 0.05); font-weight: 600; color: #10b981 !important; }
-                .table-summary { text-align: center; margin-top: 1rem; font-weight: bold; color: #10b981; }
-
-                .interactive-grid {
-                    display: grid;
-                    grid-template-columns: 1.5fr 1fr;
-                    gap: 1.5rem;
-                }
-                .faq-section h3 { color: #3b82f6; margin-bottom: 1rem; }
-                .accordion { display: flex; flex-direction: column; gap: 0.5rem; }
-                .accordion-item { border: 1px solid rgba(255,255,255,0.05); border-radius: 0.5rem; overflow: hidden; transition: all 0.3s; }
-                .accordion-item.active { background: rgba(255,255,255,0.03); border-color: rgba(59, 130, 246, 0.3); }
-                .accordion-header {
-                    width: 100%;
-                    text-align: left;
-                    padding: 1rem;
-                    background: transparent;
-                    border: none;
-                    color: white;
-                    cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                    gap: 1rem;
-                    font-weight: 500;
-                }
-                .accordion-header .icon { color: #3b82f6; font-weight: bold; font-size: 1.2rem; width: 20px; }
-                .accordion-content { 
-                    max-height: 0; 
-                    overflow: hidden; 
-                    transition: max-height 0.3s ease-out; 
-                    padding: 0 1rem; 
-                    color: #94a3b8;
-                }
-                .accordion-item.active .accordion-content { max-height: 200px; padding-bottom: 1rem; }
-
-                .quiz-section h3 { color: #ec4899; margin-bottom: 1rem; }
-                .quiz-content { display: flex; flex-direction: column; gap: 1.5rem; }
-                .question-text { font-weight: 600; margin-bottom: 0.5rem; }
-                .options { display: flex; flex-direction: column; gap: 0.5rem; }
-                .option-btn {
-                    padding: 0.75rem;
-                    background: rgba(0,0,0,0.2);
-                    border: 1px solid rgba(255,255,255,0.1);
-                    border-radius: 0.5rem;
-                    color: #cbd5e1;
-                    cursor: pointer;
-                    text-align: left;
-                    transition: all 0.2s;
-                }
-                .option-btn:hover:not(:disabled) { background: rgba(255,255,255,0.05); }
-                .option-btn.selected { border-color: #3b82f6; background: rgba(59, 130, 246, 0.1); color: white; }
-                .option-btn.correct { border-color: #10b981; background: rgba(16, 185, 129, 0.2); color: white; }
-                .option-btn.wrong { border-color: #ef4444; background: rgba(239, 68, 68, 0.2); opacity: 0.7; }
-                
-                .quiz-footer { margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; }
-                .submit-btn {
-                    width: 100%;
-                    padding: 0.75rem;
-                    background: #ec4899;
-                    border: none;
-                    border-radius: 0.5rem;
-                    color: white;
-                    font-weight: bold;
-                    cursor: pointer;
-                    transition: opacity 0.2s;
-                }
-                .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-                .result-area { display: flex; justify-content: space-between; align-items: center; }
-                .score { font-size: 1.2rem; font-weight: bold; color: #10b981; }
-                .reset-btn { background: transparent; border: 1px solid #94a3b8; color: #94a3b8; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer; }
-                .reset-btn:hover { border-color: white; color: white; }
-
-                @media (max-width: 768px) {
-                    .info-grid, .interactive-grid { grid-template-columns: 1fr; }
-                    .comparison-table { font-size: 0.85rem; }
-                }
-            `}</style>
         </div>
     );
 };

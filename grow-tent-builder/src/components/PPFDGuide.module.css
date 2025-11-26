@@ -1,0 +1,8 @@
+@media (max-width: 768px) {
+  .desktopView {
+    display: none;
+  }
+  .mobileView {
+    display: flex !important;
+  }
+}

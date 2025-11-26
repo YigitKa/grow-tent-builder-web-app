@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from './PPFDGuide.module.css';
 
 export default function PPFDGuide() {
     const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +30,7 @@ export default function PPFDGuide() {
                     gap: '0.5rem',
                     margin: '0 auto',
                     transition: 'all 0.2s ease',
-                    minHeight: '44px', // Touch-friendly
+                    minHeight: '44px',
                     justifyContent: 'center'
                 }}
             >
@@ -47,7 +48,7 @@ export default function PPFDGuide() {
                     boxShadow: '0 4px 20px rgba(0,0,0,0.5)'
                 }}>
                     {/* Desktop Table View */}
-                    <div className="desktop-view">
+                    <div className={styles.desktopView}>
                         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
                             <thead>
                                 <tr style={{ borderBottom: '1px solid var(--border-color)', color: 'var(--text-secondary)' }}>
@@ -89,7 +90,7 @@ export default function PPFDGuide() {
                     </div>
 
                     {/* Mobile Card View */}
-                    <div className="mobile-view" style={{ display: 'none', flexDirection: 'column', gap: '0.75rem' }}>
+                    <div className={styles.mobileView} style={{ display: 'none', flexDirection: 'column', gap: '0.75rem' }}>
                         {data.map((row, index) => (
                             <div key={index} style={{
                                 background: row.bg,
@@ -121,17 +122,6 @@ export default function PPFDGuide() {
                             </div>
                         ))}
                     </div>
-
-                    <style>{`
-                        @media (max-width: 768px) {
-                            .desktop-view {
-                                display: none;
-                            }
-                            .mobile-view {
-                                display: flex !important;
-                            }
-                        }
-                    `}</style>
                 </div>
             )}
         </div>

@@ -1,0 +1,350 @@
+.ppfdToolContainer {
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.toolMain {
+  flex: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 2rem;
+}
+
+.toolHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.toolHeader h1 {
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.toolHeader p {
+  color: #94a3b8;
+}
+
+.toolWorkspace {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.glassPanel {
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.controlsPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.controlGroup h3 {
+  font-size: 1rem;
+  color: #10b981;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.unitToggle {
+  display: flex;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+}
+
+.unitToggle button {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.unitToggle button.active {
+  background: #10b981;
+  color: white;
+}
+
+.inputRow {
+  display: flex;
+  gap: 1rem;
+}
+
+.inputWrap {
+  flex: 1;
+}
+
+.inputWrap label {
+  display: block;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin-bottom: 0.25rem;
+}
+
+.inputWrap input {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.sliderWrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sliderWrap input {
+  flex: 1;
+}
+
+.sliderWrap span {
+  font-family: monospace;
+  color: #10b981;
+  white-space: nowrap;
+}
+
+.filterList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filterItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #cbd5e1;
+}
+
+.filterItem input {
+  cursor: pointer;
+  accent-color: #10b981;
+}
+
+.lightList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.lightBtn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.lightBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #10b981;
+}
+
+.lightInfo {
+  flex: 1;
+}
+
+.lightName {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.lightSpecs {
+  display: block;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.addIcon {
+  color: #10b981;
+  font-weight: bold;
+}
+
+.canvasArea {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.metricsBar {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 1rem;
+}
+
+.metric {
+  text-align: center;
+}
+
+.metricLabel {
+  display: block;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-bottom: 0.25rem;
+}
+
+.metricValue {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+}
+
+.sceneContainer {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  justify-content: center;
+}
+
+.sceneWrapper3d {
+  width: 100%;
+  height: 500px;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.canvasWrapper {
+  width: 100%;
+  background: #111;
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  touch-action: none;
+}
+
+.heatmapCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 0.8;
+  image-rendering: pixelated;
+}
+
+.gridOverlay {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 20% 20%;
+  pointer-events: none;
+}
+
+.lightsLayer {
+  position: absolute;
+  inset: 0;
+}
+
+.lightElement {
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: move;
+}
+
+.lightBody {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid white;
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+.removeBtn {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.lightElement:hover .removeBtn {
+  opacity: 1;
+}
+
+.instructions {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #cbd5e1;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+@media (max-width: 1024px) {
+  .toolWorkspace {
+    grid-template-columns: 1fr;
+  }
+
+  .canvasWrapper {
+    order: -1;
+  }
+}
