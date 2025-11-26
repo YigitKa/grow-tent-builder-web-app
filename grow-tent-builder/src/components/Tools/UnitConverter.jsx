@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSettings } from '../../context/SettingsContext';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
+import styles from './UnitConverter.module.css';
 
 const UnitConverter = () => {
     const { t } = useSettings();
@@ -85,19 +86,19 @@ const UnitConverter = () => {
     const unitKeys = ['ml', 'l', 'gal', 'qt', 'pt', 'cup', 'floz', 'tbsp', 'tsp', 'm3', 'ft3'];
 
     return (
-        <div className="page-container">
+        <div className={styles.pageContainer}>
             <Navbar />
-            <div className="tool-content">
-                <div className="tool-card">
-                    <div className="tool-header">
-                        <div className="tool-icon">💧</div>
+            <div className={styles.toolContent}>
+                <div className={styles.toolCard}>
+                    <div className={styles.toolHeader}>
+                        <div className={styles.toolIcon}>💧</div>
                         <h1>{t('unitConvTitle')}</h1>
                         <p>{t('unitConvSubtitle')}</p>
                     </div>
 
-                    <div className="converter-grid">
+                    <div className={styles.converterGrid}>
                         {unitKeys.map((key) => (
-                            <div key={key} className="input-group">
+                            <div key={key} className={styles.inputGroup}>
                                 <label>{units[key]}</label>
                                 <input
                                     type="number"
@@ -110,18 +111,18 @@ const UnitConverter = () => {
                     </div>
                 </div>
 
-                <div className="info-section">
+                <div className={styles.infoSection}>
                     <h2>{t('unitConvIntroTitle')}</h2>
                     <p>{t('unitConvIntroText')}</p>
                     <ul>
                         {introList.map((item, i) => <li key={i}>{item}</li>)}
                     </ul>
-                    <p className="note">{t('unitConvIntroNote')}</p>
+                    <p className={styles.note}>{t('unitConvIntroNote')}</p>
 
                     <h2>{t('unitConvChartTitle')}</h2>
                     <p>{t('unitConvChartText')}</p>
-                    <div className="chart-container">
-                        <table className="conversion-table">
+                    <div className={styles.chartContainer}>
+                        <table className={styles.conversionTable}>
                             <thead>
                                 <tr>
                                     {chartHeaders.map((h, i) => <th key={i}>{h}</th>)}
@@ -141,9 +142,9 @@ const UnitConverter = () => {
                     <p>{t('unitConvHowText')}</p>
 
                     <h2>{t('unitConvFaqTitle')}</h2>
-                    <div className="faq-list">
+                    <div className={styles.faqList}>
                         {faqs.map((faq, i) => (
-                            <div key={i} className="faq-item">
+                            <div key={i} className={styles.faqItem}>
                                 <h3>{faq.q}</h3>
                                 <p>{faq.a}</p>
                             </div>
@@ -152,198 +153,6 @@ const UnitConverter = () => {
                 </div>
             </div>
             <Footer />
-
-            <style>{`
-                .page-container {
-                    min-height: 100vh;
-                    background: #0a0a0a;
-                    color: white;
-                    display: flex;
-                    flex-direction: column;
-                }
-
-                .tool-content {
-                    flex: 1;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    padding: 4rem 1.5rem;
-                    gap: 4rem;
-                    max-width: 1200px;
-                    margin: 0 auto;
-                    width: 100%;
-                }
-
-                .tool-card {
-                    background: rgba(255, 255, 255, 0.03);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    border-radius: 1.5rem;
-                    padding: 3rem;
-                    max-width: 600px;
-                    width: 100%;
-                    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-                }
-
-                .tool-header {
-                    text-align: center;
-                    margin-bottom: 2.5rem;
-                }
-
-                .tool-icon {
-                    font-size: 3.5rem;
-                    margin-bottom: 1rem;
-                }
-
-                .tool-header h1 {
-                    font-size: 2rem;
-                    margin-bottom: 0.5rem;
-                    background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                }
-
-                .tool-header p {
-                    color: #94a3b8;
-                }
-
-                .converter-grid {
-                    display: grid;
-                    gap: 1.5rem;
-                }
-
-                .input-group {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 0.5rem;
-                }
-
-                .input-group label {
-                    color: #94a3b8;
-                    font-size: 0.875rem;
-                    font-weight: 600;
-                }
-
-                .input-group input[type="number"] {
-                    background: rgba(255, 255, 255, 0.05);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    color: white;
-                    padding: 1rem;
-                    border-radius: 0.75rem;
-                    font-size: 1.25rem;
-                    width: 100%;
-                    transition: all 0.2s;
-                }
-
-                .input-group input[type="number"]:focus {
-                    outline: none;
-                    border-color: #3b82f6;
-                    background: rgba(59, 130, 246, 0.1);
-                }
-
-                .info-section {
-                    max-width: 800px;
-                    width: 100%;
-                    color: #cbd5e1;
-                    line-height: 1.7;
-                }
-
-                .info-section h2 {
-                    color: white;
-                    font-size: 1.75rem;
-                    margin: 3rem 0 1.5rem;
-                    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                    padding-bottom: 0.5rem;
-                }
-
-                .info-section h2:first-child {
-                    margin-top: 0;
-                }
-
-                .info-section p {
-                    margin-bottom: 1.5rem;
-                }
-
-                .info-section ul {
-                    margin-bottom: 1.5rem;
-                    padding-left: 1.5rem;
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                    gap: 0.5rem;
-                }
-
-                .info-section li {
-                    margin-bottom: 0.5rem;
-                }
-
-                .note {
-                    font-style: italic;
-                    color: #94a3b8;
-                    font-size: 0.9rem;
-                }
-
-                .chart-container {
-                    overflow-x: auto;
-                    margin-bottom: 2rem;
-                    border-radius: 1rem;
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                }
-
-                .conversion-table {
-                    width: 100%;
-                    border-collapse: collapse;
-                    background: rgba(255, 255, 255, 0.02);
-                }
-
-                .conversion-table th,
-                .conversion-table td {
-                    padding: 1rem;
-                    text-align: left;
-                    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-                }
-
-                .conversion-table th {
-                    background: rgba(255, 255, 255, 0.05);
-                    font-weight: 600;
-                    color: white;
-                }
-
-                .conversion-table tr:last-child td {
-                    border-bottom: none;
-                }
-
-                .faq-list {
-                    display: grid;
-                    gap: 1.5rem;
-                }
-
-                .faq-item {
-                    background: rgba(255, 255, 255, 0.03);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    border-radius: 1rem;
-                    padding: 1.5rem;
-                }
-
-                .faq-item h3 {
-                    color: #e2e8f0;
-                    font-size: 1.1rem;
-                    margin-bottom: 0.75rem;
-                }
-
-                .faq-item p {
-                    margin-bottom: 0;
-                    color: #94a3b8;
-                }
-
-                @media (max-width: 768px) {
-                    .tool-content {
-                        padding: 2rem 1rem;
-                    }
-                    
-                    .tool-card {
-                        padding: 1.5rem;
-                    }
-                }
-            `}</style>
         </div>
     );
 };

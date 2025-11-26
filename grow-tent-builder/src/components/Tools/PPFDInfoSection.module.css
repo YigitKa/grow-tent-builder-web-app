@@ -1,0 +1,301 @@
+.ppfdInfoSection {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(to right, #fff, #94a3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glassPanel {
+  background: rgba(30, 41, 59, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.infoCard h3 {
+  color: #10b981;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.bigText {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.subText {
+  color: #94a3b8;
+  font-style: italic;
+}
+
+.checkList {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.checkList li {
+  margin-bottom: 0.5rem;
+}
+
+.quote {
+  border-left: 3px solid #10b981;
+  padding-left: 1rem;
+  color: #cbd5e1;
+  font-style: italic;
+}
+
+.comparisonSection {
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.comparisonSection h3 {
+  color: #f59e0b;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.tableResponsive {
+  overflow-x: auto;
+}
+
+.comparisonTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.comparisonTable th,
+.comparisonTable td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.comparisonTable th {
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.comparisonTable td {
+  color: #e2e8f0;
+}
+
+.highlightCol {
+  background: rgba(16, 185, 129, 0.05);
+  font-weight: 600;
+  color: #10b981 !important;
+}
+
+.tableSummary {
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #10b981;
+}
+
+.interactiveGrid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 1.5rem;
+}
+
+.faqSection h3 {
+  color: #3b82f6;
+  margin-bottom: 1rem;
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.accordionItem {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.accordionItemActive {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.accordionHeader {
+  width: 100%;
+  text-align: left;
+  padding: 1rem;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 500;
+}
+
+.accordionHeader .icon {
+  color: #3b82f6;
+  font-weight: bold;
+  font-size: 1.2rem;
+  width: 20px;
+}
+
+.accordionContent {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  padding: 0 1rem;
+  color: #94a3b8;
+}
+
+.accordionItemActive .accordionContent {
+  max-height: 200px;
+  padding-bottom: 1rem;
+}
+
+.quizSection h3 {
+  color: #ec4899;
+  margin-bottom: 1rem;
+}
+
+.quizContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.questionText {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.optionBtn {
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  color: #cbd5e1;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+}
+
+.optionBtn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.optionBtnSelected {
+  border-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
+  color: white;
+}
+
+.optionBtnCorrect {
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.2);
+  color: white;
+}
+
+.optionBtnWrong {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.2);
+  opacity: 0.7;
+}
+
+.quizFooter {
+  margin-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1rem;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 0.75rem;
+  background: #ec4899;
+  border: none;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.submitBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.resultArea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.score {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #10b981;
+}
+
+.resetBtn {
+  background: transparent;
+  border: 1px solid #94a3b8;
+  color: #94a3b8;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.resetBtn:hover {
+  border-color: white;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .infoGrid,
+  .interactiveGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .comparisonTable {
+    font-size: 0.85rem;
+  }
+}

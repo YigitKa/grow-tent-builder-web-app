@@ -1,0 +1,239 @@
+.pageContainer {
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.toolContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 1.5rem;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.toolCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  padding: 3rem;
+  max-width: 500px;
+  width: 100%;
+  color: white;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.toolHeader {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.toolIcon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  color: #f59e0b;
+}
+
+.toolHeader h1 {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+  color: white;
+  font-weight: 700;
+}
+
+.toolHeader p {
+  color: #94a3b8;
+}
+
+.calculatorForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.labelRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #94a3b8;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.dots {
+  color: #475569;
+  letter-spacing: 2px;
+  font-size: 1.2rem;
+  line-height: 0.5;
+}
+
+.inputWrapper {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+}
+
+.inputWrapper:focus-within {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.inputWrapperReadOnly {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.inputWrapper input {
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+  width: 100%;
+  outline: none;
+}
+
+.unit,
+.unitSuffix,
+.currencyPrefix {
+  color: #3b82f6;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.arrow {
+  color: #3b82f6;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.timeWrapper {
+  justify-content: space-between;
+}
+
+.timeInput {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.timeInput input {
+  width: 3rem;
+  text-align: right;
+}
+
+.divider {
+  color: #475569;
+}
+
+.highlightBlue {
+  color: #3b82f6;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.costWrapper {
+  padding: 1rem;
+}
+
+.pin {
+  color: #ef4444;
+  font-size: 0.9rem;
+  transform: rotate(45deg);
+}
+
+.infoSection {
+  max-width: 800px;
+  width: 100%;
+  color: #cbd5e1;
+  line-height: 1.7;
+}
+
+.infoSection h2 {
+  color: white;
+  font-size: 1.75rem;
+  margin: 3rem 0 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5rem;
+}
+
+.infoSection h2:first-child {
+  margin-top: 0;
+}
+
+.infoSection p {
+  margin-bottom: 1.5rem;
+}
+
+.infoSection ul,
+.infoSection ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.infoSection li {
+  margin-bottom: 0.5rem;
+}
+
+.example {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border-left: 4px solid #3b82f6;
+  margin-bottom: 1.5rem;
+}
+
+.tipsList {
+  list-style: none;
+  padding-left: 0 !important;
+}
+
+.faqList {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.faqItem {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.faqItem h3 {
+  color: #e2e8f0;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.faqItem p {
+  margin-bottom: 0;
+  color: #94a3b8;
+}
+
+@media (max-width: 768px) {
+  .toolContent {
+    padding: 2rem 1rem;
+  }
+
+  .toolCard {
+    padding: 1.5rem;
+  }
+}
