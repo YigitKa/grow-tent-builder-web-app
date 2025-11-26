@@ -1,0 +1,115 @@
+.estimatorContainer {
+  width: 100%;
+  padding: 12px;
+  background: var(--bg-surface);
+  box-shadow: 0 8px 24px rgba(2,6,23,0.6);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  color: var(--text-primary);
+}
+
+.estimatorHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.estimatorInputsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.estimatorDevicesFlex {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.deviceSection {
+  flex: 1 1 300px;
+  min-width: 0;
+}
+
+.deviceRow {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.inputTiny {
+  width: 60px;
+  flex-shrink: 0;
+}
+
+.inputDeviceName {
+  min-width: 0;
+  flex-grow: 1;
+}
+
+.btn {
+  background: rgba(255,255,255,0.05);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 6px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btnSmall {
+  padding: 4px 8px;
+  font-size: 0.85rem;
+}
+
+.btnDanger {
+  background: rgba(239,68,68,0.06);
+  border-color: rgba(239,68,68,0.18);
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+.estList {
+  padding-left: 1rem;
+  margin: 0.5rem 0;
+  list-style-position: inside;
+}
+
+.estList li {
+  word-break: break-word;
+  margin-left: 0.25rem;
+}
+
+@media (max-width: 600px) {
+  .estimatorInputsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .deviceSection {
+    flex: 1 1 100%;
+  }
+
+  .deviceRow {
+    gap: 6px;
+  }
+
+  .inputTiny {
+    width: 50px;
+    padding: 8px 4px;
+    text-align: center;
+  }
+
+  .btn {
+    padding: 6px 6px;
+  }
+}

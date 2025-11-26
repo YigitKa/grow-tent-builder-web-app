@@ -1,5 +1,6 @@
 import { useBuilder } from '../context/BuilderContext';
 import { useSettings } from '../context/SettingsContext';
+import styles from './ProgressTracker.module.css';
 
 export default function ProgressTracker() {
     const { state, dispatch } = useBuilder();
@@ -22,7 +23,7 @@ export default function ProgressTracker() {
     return (
         <>
             {/* Mobile Progress Bar */}
-            <div className="mobile-progress no-print" style={{
+            <div className={`${styles.mobileProgress} no-print`} style={{
                 display: 'none',
                 marginBottom: '1.5rem'
             }}>
@@ -57,7 +58,7 @@ export default function ProgressTracker() {
             </div>
 
             {/* Desktop Progress Tracker */}
-            <div className="desktop-progress no-print" style={{
+            <div className={`${styles.desktopProgress} no-print`} style={{
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
@@ -127,17 +128,6 @@ export default function ProgressTracker() {
                     );
                 })}
             </div>
-
-            <style>{`
-                @media (max-width: 768px) {
-                    .mobile-progress {
-                        display: block !important;
-                    }
-                    .desktop-progress {
-                        display: none !important;
-                    }
-                }
-            `}</style>
         </>
     );
 }
