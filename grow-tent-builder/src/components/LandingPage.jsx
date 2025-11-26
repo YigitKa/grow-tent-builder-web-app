@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link, useNavigate } from 'react-router-dom';
-import { useOnboarding } from '../context/OnboardingContext';
 import { blogPosts } from './Blog/blogData';
 import { useSettings } from '../context/SettingsContext';
 import Footer from './Footer';
@@ -14,7 +13,6 @@ export default function LandingPage() {
     const [showScrollTop, setShowScrollTop] = useState(false);
     // scrollY is intentionally unused in this component but kept for future effects
     const [, setScrollY] = useState(0);
-    const { hasSeenOnboarding } = useOnboarding();
     const { language, getBuilderUrl, t } = useSettings();
     const navigate = useNavigate();
 

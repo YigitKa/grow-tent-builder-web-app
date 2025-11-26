@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { generatePPFDMap, calculateMetrics } from '../../utils/lightingUtils';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
@@ -6,6 +6,9 @@ import { useSettings } from '../../context/SettingsContext';
 import PPFDInfoSection from './PPFDInfoSection';
 import PPFD3DScene from './PPFD3DScene';
 import styles from './PPFDHeatMapTool.module.css';
+
+// Counter for generating unique IDs
+let lightIdCounter = 0;
 
 // Mock Data for Lights
 const AVAILABLE_LIGHTS = [
@@ -23,8 +26,6 @@ export default function PPFDHeatMapTool() {
     const [dimensions, setDimensions] = useState({ width: 200, depth: 200, height: 45 });
 
     const [activeLights, setActiveLights] = useState([]);
-    const [metrics, setMetrics] = useState({ average: 0, min: 0, max: 0, uniformity: 0 });
-    const [ppfdMap, setPpfdMap] = useState([]);
 
     const containerRef = useRef(null);
     const heatmapCanvasRef = useRef(null);
@@ -134,106 +135,110 @@ export default function PPFDHeatMapTool() {
     }[language];
 
     // Add a light to the canvas
-    const addLight = (lightTemplate) => {
+    const addLight = useCallback((lightTemplate) => {
+        lightIdCounter += 1;
         const newLight = {
             ...lightTemplate,
-            instanceId: Date.now(),
+            instanceId: lightIdCounter,
             positions: [{ x: 0.5, y: 0.5, rotation: 0 }]
         };
-        setActiveLights([...activeLights, newLight]);
-    };
+        setActiveLights(prev => [...prev, newLight]);
+    }, []);
 
     // Remove a light
     const removeLight = (instanceId) => {
         setActiveLights(activeLights.filter(l => l.instanceId !== instanceId));
     };
 
-    // Update Heatmap
-    useEffect(() => {
+    // Compute PPFD map and metrics using useMemo to avoid cascading renders
+    const { ppfdMap, metrics } = useMemo(() => {
         // Convert current dimensions to feet for calculation
         const widthFt = unit === 'cm' ? dimensions.width / 30.48 : dimensions.width;
         const depthFt = unit === 'cm' ? dimensions.depth / 30.48 : dimensions.depth;
         const heightFt = unit === 'cm' ? dimensions.height / 30.48 : dimensions.height;
 
         // Validate
-        if (!widthFt || widthFt <= 0 || !depthFt || depthFt <= 0) return;
+        if (!widthFt || widthFt <= 0 || !depthFt || depthFt <= 0) {
+            return { ppfdMap: [], metrics: { average: 0, min: 0, max: 0, uniformity: 0 } };
+        }
 
         const resolution = 4; // pixels per foot
         const map = generatePPFDMap(widthFt, depthFt, activeLights, resolution, heightFt);
+        const computedMetrics = calculateMetrics(map);
+        return { ppfdMap: map, metrics: computedMetrics };
+    }, [dimensions, activeLights, unit]);
 
-        setPpfdMap(map);
-        const newMetrics = calculateMetrics(map);
-        setMetrics(newMetrics);
-
+    // Render Heatmap to Canvas (side effect only)
+    useEffect(() => {
         // Only draw to canvas if ref exists (2D mode)
-        if (heatmapCanvasRef.current) {
-            const canvas = heatmapCanvasRef.current;
-            const ctx = canvas.getContext('2d');
+        if (!heatmapCanvasRef.current || ppfdMap.length === 0 || !ppfdMap[0]) return;
 
-            const cols = map[0].length;
-            const rows = map.length;
+        const canvas = heatmapCanvasRef.current;
+        const ctx = canvas.getContext('2d');
 
-            canvas.width = cols;
-            canvas.height = rows;
+        const cols = ppfdMap[0].length;
+        const rows = ppfdMap.length;
 
-            const imgData = ctx.createImageData(cols, rows);
-            const data = imgData.data;
+        canvas.width = cols;
+        canvas.height = rows;
 
-            const thresholds = [400, 600, 900];
+        const imgData = ctx.createImageData(cols, rows);
+        const data = imgData.data;
 
-            for (let r = 0; r < rows; r++) {
-                for (let c = 0; c < cols; c++) {
-                    const ppfd = map[r][c];
-                    const index = (r * cols + c) * 4;
+        const thresholds = [400, 600, 900];
 
-                    let red, green, blue, alpha;
+        for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < cols; c++) {
+                const ppfd = ppfdMap[r][c];
+                const index = (r * cols + c) * 4;
 
-                    if (ppfd < 200) {
-                        const t = ppfd / 200;
-                        red = 30 + (50 * t); green = 30 + (50 * t); blue = 30 + (50 * t); alpha = 180;
-                    } else if (ppfd < 400) {
-                        const t = (ppfd - 200) / 200;
-                        red = 50 * t; green = 50 * t; blue = 150 + (105 * t); alpha = 180;
-                    } else if (ppfd < 600) {
-                        const t = (ppfd - 400) / 200;
-                        red = 50 * (1 - t); green = 150 + (105 * t); blue = 50 * (1 - t); alpha = 180;
-                    } else if (ppfd < 900) {
-                        const t = (ppfd - 600) / 300;
-                        red = 200 + (55 * t); green = 200 + (55 * (1 - t * 0.5)); blue = 0; alpha = 190;
-                    } else if (ppfd < 1200) {
-                        const t = (ppfd - 900) / 300;
-                        red = 255; green = 100 * (1 - t); blue = 0; alpha = 200;
-                    } else {
-                        red = 255; green = 255; blue = 255; alpha = 220;
-                    }
+                let red, green, blue, alpha;
 
-                    // Isolines
-                    let isContour = false;
-                    if (c < cols - 1) {
-                        const rightPPFD = map[r][c + 1];
-                        for (const th of thresholds) {
-                            if ((ppfd < th && rightPPFD >= th) || (ppfd >= th && rightPPFD < th)) isContour = true;
-                        }
-                    }
-                    if (!isContour && r < rows - 1) {
-                        const bottomPPFD = map[r + 1][c];
-                        for (const th of thresholds) {
-                            if ((ppfd < th && bottomPPFD >= th) || (ppfd >= th && bottomPPFD < th)) isContour = true;
-                        }
-                    }
-
-                    if (isContour) {
-                        red = 255; green = 255; blue = 255; alpha = 255;
-                    }
-
-                    data[index] = red; data[index + 1] = green; data[index + 2] = blue; data[index + 3] = alpha;
+                if (ppfd < 200) {
+                    const t = ppfd / 200;
+                    red = 30 + (50 * t); green = 30 + (50 * t); blue = 30 + (50 * t); alpha = 180;
+                } else if (ppfd < 400) {
+                    const t = (ppfd - 200) / 200;
+                    red = 50 * t; green = 50 * t; blue = 150 + (105 * t); alpha = 180;
+                } else if (ppfd < 600) {
+                    const t = (ppfd - 400) / 200;
+                    red = 50 * (1 - t); green = 150 + (105 * t); blue = 50 * (1 - t); alpha = 180;
+                } else if (ppfd < 900) {
+                    const t = (ppfd - 600) / 300;
+                    red = 200 + (55 * t); green = 200 + (55 * (1 - t * 0.5)); blue = 0; alpha = 190;
+                } else if (ppfd < 1200) {
+                    const t = (ppfd - 900) / 300;
+                    red = 255; green = 100 * (1 - t); blue = 0; alpha = 200;
+                } else {
+                    red = 255; green = 255; blue = 255; alpha = 220;
                 }
-            }
 
-            ctx.putImageData(imgData, 0, 0);
+                // Isolines
+                let isContour = false;
+                if (c < cols - 1) {
+                    const rightPPFD = ppfdMap[r][c + 1];
+                    for (const th of thresholds) {
+                        if ((ppfd < th && rightPPFD >= th) || (ppfd >= th && rightPPFD < th)) isContour = true;
+                    }
+                }
+                if (!isContour && r < rows - 1) {
+                    const bottomPPFD = ppfdMap[r + 1][c];
+                    for (const th of thresholds) {
+                        if ((ppfd < th && bottomPPFD >= th) || (ppfd >= th && bottomPPFD < th)) isContour = true;
+                    }
+                }
+
+                if (isContour) {
+                    red = 255; green = 255; blue = 255; alpha = 255;
+                }
+
+                data[index] = red; data[index + 1] = green; data[index + 2] = blue; data[index + 3] = alpha;
+            }
         }
 
-    }, [dimensions, activeLights, unit, is3D]); // Re-run when switching to 2D to ensure canvas draws
+        ctx.putImageData(imgData, 0, 0);
+
+    }, [ppfdMap, is3D]); // Re-run when switching to 2D to ensure canvas draws
 
     // Dragging Logic
     const handlePointerDown = (e, instanceId, currentX, currentY) => {
@@ -473,7 +478,6 @@ export default function PPFDHeatMapTool() {
                             {is3D ? (
                                 <div className={styles.sceneWrapper3d}>
                                     <PPFD3DScene
-                                        ppfdMap={ppfdMap}
                                         dimensions={dimensions}
                                         activeLights={activeLights}
                                         unit={unit}

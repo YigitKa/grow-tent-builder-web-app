@@ -6,7 +6,7 @@ import Footer from '../Footer';
 import styles from './CostCalculator.module.css';
 
 const CostCalculator = () => {
-    const { language, t } = useSettings();
+    const { t } = useSettings();
     const [power, setPower] = useState(200);
     const [hours, setHours] = useState(18);
     const [minutes, setMinutes] = useState(0);

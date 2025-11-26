@@ -88,17 +88,10 @@ function estimateMonthlyCost(options = {}) {
   // Fans: typically 24h (or override/device-specific hours)
   const fansMonthly = monthlyKwhForDevices(fans, hours.fan, daysPerMonth);
 
-  // Combine lights + fans for each phase
-  const vegTotalKwh = Number((vegLights.total + fansMonthly.total).toFixed(4));
-  const flowerTotalKwh = Number((flowerLights.total + fansMonthly.total).toFixed(4));
-
-  const vegCost = costFromKwh(vegTotalKwh, pricePerKwh);
-  const flowerCost = costFromKwh(flowerTotalKwh, pricePerKwh);
-
   // Build breakdown objects
-  const combineBreakdown = (lightsMonthly, fansMonthly) => {
-    const combinedItems = [...lightsMonthly.items, ...fansMonthly.items];
-    const totalKwh = Number((lightsMonthly.total + fansMonthly.total).toFixed(4));
+  const combineBreakdown = (lightsMonthly, fansData) => {
+    const combinedItems = [...lightsMonthly.items, ...fansData.items];
+    const totalKwh = Number((lightsMonthly.total + fansData.total).toFixed(4));
     const totalCost = costFromKwh(totalKwh, pricePerKwh);
     return { items: combinedItems, totalKwh, totalCost };
   };

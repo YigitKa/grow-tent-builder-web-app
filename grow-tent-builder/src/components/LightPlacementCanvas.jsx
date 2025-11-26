@@ -13,7 +13,6 @@ export default function LightPlacementCanvas() {
     const containerRef = useRef(null);
     const heatmapCanvasRef = useRef(null);
     const [dragging, setDragging] = useState(null); // { id, index, startX, startY, initialLeft, initialTop }
-    const [metrics, setMetrics] = useState({ average: 0, min: 0, max: 0, uniformity: 0 });
     const [lightHeight, setLightHeight] = useState(1.5); // Default global height in feet
 
     // Initialize positions if not present
@@ -22,7 +21,7 @@ export default function LightPlacementCanvas() {
             const quantity = light.quantity || 1;
             // If positions array doesn't match quantity, re-initialize
             if (!light.positions || light.positions.length !== quantity) {
-                const newPositions = Array(quantity).fill(0).map((_, i) => ({
+                const newPositions = Array(quantity).fill(0).map(() => ({
                     x: 0.5 + (Math.random() * 0.2 - 0.1), // Center-ish random
                     y: 0.5 + (Math.random() * 0.2 - 0.1)
                 }));
@@ -34,26 +33,24 @@ export default function LightPlacementCanvas() {
         });
     }, [lights, dispatch]);
 
-    // Calculate Heatmap and Metrics
+    // Compute PPFD map and metrics using useMemo to avoid cascading renders
+    const { ppfdMap, metrics } = useMemo(() => {
+        const { width, depth } = tentSize;
+        const resolution = 4;
+        const map = generatePPFDMap(width, depth, lights, resolution, lightHeight);
+        const computedMetrics = calculateMetrics(map);
+        return { ppfdMap: map, metrics: computedMetrics };
+    }, [tentSize, lights, lightHeight]);
+
+    // Render Heatmap to Canvas (side effect only)
     useEffect(() => {
-        if (!heatmapCanvasRef.current) return;
+        if (!heatmapCanvasRef.current || ppfdMap.length === 0 || !ppfdMap[0]) return;
 
         const canvas = heatmapCanvasRef.current;
         const ctx = canvas.getContext('2d');
-        const { width, depth } = tentSize;
 
-        // Resolution: pixels per foot for the heatmap calculation
-        // Higher = smoother but slower. 4 is good (3 inch cells).
-        const resolution = 4;
-
-        // Generate PPFD Map
-        const map = generatePPFDMap(width, depth, lights, resolution, lightHeight);
-        const newMetrics = calculateMetrics(map);
-        setMetrics(newMetrics);
-
-        // Render Heatmap to Canvas
-        const cols = map[0].length;
-        const rows = map.length;
+        const cols = ppfdMap[0].length;
+        const rows = ppfdMap.length;
 
         // Resize canvas to match grid resolution
         canvas.width = cols;
@@ -67,7 +64,7 @@ export default function LightPlacementCanvas() {
 
         for (let r = 0; r < rows; r++) {
             for (let c = 0; c < cols; c++) {
-                const ppfd = map[r][c];
+                const ppfd = ppfdMap[r][c];
                 const index = (r * cols + c) * 4;
 
                 // Semantic Color Mapping
@@ -120,7 +117,7 @@ export default function LightPlacementCanvas() {
                 // Check right and bottom neighbors to see if we cross a threshold
                 let isContour = false;
                 if (c < cols - 1) {
-                    const rightPPFD = map[r][c + 1];
+                    const rightPPFD = ppfdMap[r][c + 1];
                     for (const th of thresholds) {
                         if ((ppfd < th && rightPPFD >= th) || (ppfd >= th && rightPPFD < th)) {
                             isContour = true;
@@ -129,7 +126,7 @@ export default function LightPlacementCanvas() {
                     }
                 }
                 if (!isContour && r < rows - 1) {
-                    const bottomPPFD = map[r + 1][c];
+                    const bottomPPFD = ppfdMap[r + 1][c];
                     for (const th of thresholds) {
                         if ((ppfd < th && bottomPPFD >= th) || (ppfd >= th && bottomPPFD < th)) {
                             isContour = true;
@@ -154,7 +151,7 @@ export default function LightPlacementCanvas() {
 
         ctx.putImageData(imgData, 0, 0);
 
-    }, [lights, tentSize, lightHeight]);
+    }, [ppfdMap]);
 
     const handlePointerDown = (e, lightId, index, currentX, currentY) => {
         e.preventDefault();

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import estimateMonthlyCost from '../utils/electricCostEstimator';
 import { useSettings } from '../context/SettingsContext';
 import { useBuilder } from '../context/BuilderContext';
@@ -11,7 +11,7 @@ function loadState() {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return null;
     return JSON.parse(raw);
-  } catch (e) {
+  } catch {
     return null;
   }
 }
@@ -19,23 +19,23 @@ function loadState() {
 function saveState(state) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-  } catch (e) {
+  } catch {
     // ignore
   }
 }
+
+// Helper to convert builder items (which may use `watts`) to estimator device shape ({name, watt, quantity, hoursPerDay?})
+const fromBuilderItems = (items = []) => items.map(i => ({
+  name: i.name || i.title || 'unknown',
+  watt: Number(i.watts || i.watt || 0),
+  quantity: i.quantity || 1,
+  hoursPerDay: i.hoursPerDay
+}));
 
 export default function ElectricCostEstimator({ onClose } = {}) {
   const { currency } = useSettings();
   const saved = loadState();
   const { state: builderState } = useBuilder();
-
-  // Helper to convert builder items (which may use `watts`) to estimator device shape ({name, watt, quantity, hoursPerDay?})
-  const fromBuilderItems = (items = []) => items.map(i => ({
-    name: i.name || i.title || 'unknown',
-    watt: Number(i.watts || i.watt || 0),
-    quantity: i.quantity || 1,
-    hoursPerDay: i.hoursPerDay
-  }));
 
   // Initialize lists: prefer builder-selected items when present, otherwise saved, otherwise sensible defaults
   const initialLights = (builderState?.selectedItems?.lighting?.length > 0)
@@ -50,34 +50,25 @@ export default function ElectricCostEstimator({ onClose } = {}) {
   const [fans, setFans] = useState(initialFans);
   const [pricePerKwh, setPricePerKwh] = useState(saved?.pricePerKwh ?? 1.2);
   const [daysPerMonth, setDaysPerMonth] = useState(saved?.daysPerMonth ?? 30);
-  const [report, setReport] = useState(null);
-  const [userTouched, setUserTouched] = useState(false);
 
+  // Compute report using useMemo to avoid cascading renders
+  const report = useMemo(() => {
+    return estimateMonthlyCost({ lights, fans, pricePerKwh: Number(pricePerKwh), daysPerMonth: Number(daysPerMonth) });
+  }, [lights, fans, pricePerKwh, daysPerMonth]);
+
+  // Save state to localStorage as a side effect
   useEffect(() => {
-    const r = estimateMonthlyCost({ lights, fans, pricePerKwh: Number(pricePerKwh), daysPerMonth: Number(daysPerMonth) });
-    setReport(r);
     saveState({ lights, fans, pricePerKwh, daysPerMonth });
   }, [lights, fans, pricePerKwh, daysPerMonth]);
 
-  // If the builder's selected items change and the user hasn't manually edited the estimator,
-  // update the estimator lists to reflect the current selections.
-  useEffect(() => {
-    if (userTouched) return;
-    try {
-      const bLights = builderState?.selectedItems?.lighting || [];
-      const bFans = builderState?.selectedItems?.ventilation || [];
-      if (bLights.length > 0) setLights(fromBuilderItems(bLights));
-      if (bFans.length > 0) setFans(fromBuilderItems(bFans));
-    } catch (e) {
-      // ignore
-    }
-  }, [builderState?.selectedItems?.lighting, builderState?.selectedItems?.ventilation, userTouched]);
+  // Note: Builder sync is handled via initial state - the component initializes
+  // with builder items if they exist. Dynamic sync was removed to avoid
+  // cascading renders per React best practices.
 
   // Helpers for device lists
   const updateDevice = (list, setList, idx, patch) => {
     const copy = list.map((it, i) => i === idx ? { ...it, ...patch } : it);
     setList(copy);
-    setUserTouched(true);
   };
 
   const addDevice = (list, setList, template) => setList([...list, template]);

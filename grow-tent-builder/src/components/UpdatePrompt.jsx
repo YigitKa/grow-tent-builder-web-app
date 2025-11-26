@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSettings } from '../context/SettingsContext';
 import styles from './UpdatePrompt.module.css';
 
 const UpdatePrompt = ({ updateSW }) => {
-    const [show, setShow] = useState(false);
+    // Initialize to true since the component is only mounted when we want to show it
+    const [show, setShow] = useState(true);
     const { language } = useSettings();
 
     const translations = {
@@ -22,11 +23,6 @@ const UpdatePrompt = ({ updateSW }) => {
     };
 
     const t = translations[language];
-
-    useEffect(() => {
-        // Show prompt when component mounts (triggered by service worker)
-        setShow(true);
-    }, []);
 
     const handleUpdate = () => {
         setShow(false);
