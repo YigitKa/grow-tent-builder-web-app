@@ -1,0 +1,230 @@
+.onboardingContainer {
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.onboardingBg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.glowOrb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.3;
+}
+
+.orbGreen {
+  width: 600px;
+  height: 600px;
+  background: #10b981;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.gridOverlay {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.onboardingContent {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  width: 100%;
+}
+
+.progressContainer {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  height: 8px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressBar {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981, #3b82f6);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.progressText {
+  position: absolute;
+  right: 0;
+  top: 16px;
+  font-size: 0.875rem;
+  color: #94a3b8;
+}
+
+.questionContainer {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 1.5rem;
+  padding: 3rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.questionTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #f8fafc;
+}
+
+.optionsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.optionCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.optionCard:hover {
+  border-color: rgba(16, 185, 129, 0.5);
+  transform: translateY(-4px);
+}
+
+.optionCardSelected {
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.optionIcon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.optionText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.optionLabel {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #f8fafc;
+}
+
+.optionDetail {
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.tooltipBox {
+  margin-top: 2rem;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.tooltipBox p {
+  color: #94a3b8;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.btnContinue {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.btnContinue:hover {
+  background: #059669;
+}
+
+.navButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btnSecondary {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btnSecondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.btnSkip {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.btnSkip:hover {
+  color: #f8fafc;
+}
+
+.fadeIn {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .questionContainer {
+    padding: 1.5rem;
+  }
+
+  .questionTitle {
+    font-size: 1.25rem;
+  }
+
+  .optionsGrid {
+    grid-template-columns: 1fr;
+  }
+}
