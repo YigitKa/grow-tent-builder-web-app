@@ -19,12 +19,19 @@ export default function NotFound() {
 
     window.addEventListener('mousemove', handleMouseMove);
 
-    // Generate random positions for seedlings
-    const newSeedlings = Array.from({ length: 2 }).map((_, i) => ({
+    // Generate random positions for seedlings with different images
+    const seedlingImages = [
+      '/images/ecology-green-park-svgrepo-com.png',
+      '/images/green-leaf-plant-svgrepo-com.png',
+      '/images/round-tree-rounded-tree-svgrepo-com.png'
+    ];
+
+    const newSeedlings = Array.from({ length: 3 }).map((_, i) => ({
       id: i,
-      top: Math.random() * 80 + 10, // 10% to 90%
-      left: Math.random() * 80 + 10,
-      rotation: Math.random() * 30 - 15
+      top: Math.random() * 70 + 15, // 15% to 85%
+      left: Math.random() * 70 + 15,
+      rotation: Math.random() * 40 - 20,
+      image: seedlingImages[i % seedlingImages.length]
     }));
     setSeedlings(newSeedlings);
 
@@ -42,7 +49,7 @@ export default function NotFound() {
       {seedlings.map((s) => (
         <img
           key={s.id}
-          src="/images/tomato_seedling.png"
+          src={s.image}
           alt="Tomato Seedling"
           className={styles.seedling}
           style={{
@@ -50,9 +57,10 @@ export default function NotFound() {
             left: `${s.left}%`,
             transform: `translate(-50%, -50%) rotate(${s.rotation}deg)`,
             position: 'absolute',
-            width: '150px',
+            width: '180px',
             pointerEvents: 'none',
-            zIndex: 1 // Below flashlight, above background
+            zIndex: 1, // Below flashlight, above background
+            filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))'
           }}
         />
       ))}
