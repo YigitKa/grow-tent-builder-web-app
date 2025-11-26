@@ -1,6 +1,7 @@
 import { useBuilder } from '../context/BuilderContext';
 import { useSettings } from '../context/SettingsContext';
 import ElectricCostEstimator from '../components/ElectricCostEstimator';
+import styles from './SummaryView.module.css';
 
 export default function SummaryView() {
     const { state, dispatch } = useBuilder();
@@ -59,7 +60,7 @@ export default function SummaryView() {
                 {t('reviewDesc')}
             </p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '2rem' }} className="summary-grid">
+            <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '2rem' }} className={styles.summaryGrid}>
                 <div>
                     <div style={{ marginBottom: '2rem', background: 'var(--bg-card)', padding: '1.5rem', borderRadius: 'var(--radius-md)' }}>
                         <h3 style={{ marginBottom: '1rem', color: 'var(--text-primary)' }}>{t('tentDetails')}</h3>
@@ -121,8 +122,8 @@ export default function SummaryView() {
                     })}
                 </div>
 
-                <div className="summary-sidebar">
-                    <div className="summary-card" style={{ maxWidth: '600px', margin: '0 auto', width: '100%', background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '1.5rem', padding: '1.5rem' }}>
+                <div className={styles.summarySidebar}>
+                    <div className={styles.summaryCard} style={{ maxWidth: '600px', margin: '0 auto', width: '100%', background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '1.5rem', padding: '1.5rem' }}>
                         <h3 style={{ marginBottom: '1.5rem', fontSize: '1.25rem', textAlign: 'center' }}>{t('totalEst')}</h3>
 
                         <div style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'space-between' }}>
@@ -198,37 +199,6 @@ export default function SummaryView() {
                     &larr; {t('back')}
                 </button>
             </div>
-
-            <style>{`
-                .summary-sidebar {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 1rem;
-                }
-
-                .summary-card {
-                    position: sticky;
-                    top: 100px;
-                }
-
-                @media (max-width: 768px) {
-                    .summary-grid {
-                        display: flex !important;
-                        flex-direction: column-reverse;
-                        gap: 1.5rem;
-                    }
-
-                    .summary-card {
-                        position: static;
-                        padding: 1.5rem;
-                        max-width: 100%;
-                    }
-
-                    .summary-sidebar {
-                        order: -1;
-                    }
-                }
-            `}</style>
         </div>
     );
 }
