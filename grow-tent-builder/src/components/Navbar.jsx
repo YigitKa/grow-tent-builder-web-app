@@ -1,28 +1,40 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSettings } from '../context/SettingsContext';
 import styles from './Navbar.module.css';
 
 const Navbar = () => {
-    const { language, setLanguage, getBuilderUrl, t } = useSettings();
+    const { language, setLanguage, getBuilderUrl, t, getLocalizedPath } = useSettings();
     const location = useLocation();
+    const navigate = useNavigate();
     const [isToolsOpen, setIsToolsOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-    const isActive = (path) => location.pathname === path;
+    // Helper to check active state ignoring language prefix
+    const isActive = (path) => {
+        const currentPath = location.pathname.replace(/^\/(en|tr)/, '') || '/';
+        return currentPath === path;
+    };
+
+    const handleLanguageSwitch = () => {
+        const newLang = language === 'en' ? 'tr' : 'en';
+        const currentPath = location.pathname.replace(/^\/(en|tr)/, '');
+        navigate(`/${newLang}${currentPath}`);
+        setLanguage(newLang);
+    };
 
     return (
         <>
             <nav className={styles.navWrapper}>
                 <div className={styles.navContainer}>
-                    <Link to="/" className={styles.navLogo}>
+                    <Link to={getLocalizedPath('/')} className={styles.navLogo}>
                         🌱 <span className={styles.navLogoText}>GroWizard</span>
                     </Link>
 
                     {/* Desktop Menu */}
                     <div className={styles.navLinks}>
                         <Link
-                            to="/"
+                            to={getLocalizedPath('/')}
                             className={`${styles.navLink} ${isActive('/') ? styles.navLinkActive : ''}`}
                         >
                             {t('navHome')}
@@ -40,16 +52,16 @@ const Navbar = () => {
                             </span>
                             {isToolsOpen && (
                                 <div className={styles.dropdownMenu}>
-                                    <Link to="/tools/electricity-cost-calculator" className={styles.dropdownItem}>{t('navCostCalc')}</Link>
-                                    <Link to="/tools/co2-calculator" className={styles.dropdownItem}>{t('navCo2Calc')}</Link>
-                                    <Link to="/tools/unit-converter" className={styles.dropdownItem}>{t('navUnitConv')}</Link>
-                                    <Link to="/tools/ppfd-heatmap" className={styles.dropdownItem}>{t('navPpfdTool')}</Link>
+                                    <Link to={getLocalizedPath('/tools/electricity-cost-calculator')} className={styles.dropdownItem}>{t('navCostCalc')}</Link>
+                                    <Link to={getLocalizedPath('/tools/co2-calculator')} className={styles.dropdownItem}>{t('navCo2Calc')}</Link>
+                                    <Link to={getLocalizedPath('/tools/unit-converter')} className={styles.dropdownItem}>{t('navUnitConv')}</Link>
+                                    <Link to={getLocalizedPath('/tools/ppfd-heatmap')} className={styles.dropdownItem}>{t('navPpfdTool')}</Link>
                                 </div>
                             )}
                         </div>
 
                         <Link
-                            to="/blog"
+                            to={getLocalizedPath('/blog')}
                             className={`${styles.navLink} ${isActive('/blog') ? styles.navLinkActive : ''}`}
                         >
                             {t('navBlog')}
@@ -58,7 +70,7 @@ const Navbar = () => {
 
                     <div className={styles.navRight}>
                         <button
-                            onClick={() => setLanguage(language === 'en' ? 'tr' : 'en')}
+                            onClick={handleLanguageSwitch}
                             className={styles.langBtn}
                         >
                             {language === 'en' ? 'TR' : 'EN'}
@@ -84,7 +96,7 @@ const Navbar = () => {
                 {isMobileMenuOpen && (
                     <div className={styles.mobileMenu}>
                         <Link
-                            to="/"
+                            to={getLocalizedPath('/')}
                             className={`${styles.mobileLink} ${isActive('/') ? styles.mobileLinkActive : ''}`}
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
@@ -95,28 +107,28 @@ const Navbar = () => {
                             <div className={styles.mobileLink} style={{ opacity: 0.7 }}>{t('navTools')}</div>
                             <div className={styles.mobileTools}>
                                 <Link
-                                    to="/tools/electricity-cost-calculator"
+                                    to={getLocalizedPath('/tools/electricity-cost-calculator')}
                                     className={styles.mobileLink}
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                     {t('navCostCalc')}
                                 </Link>
                                 <Link
-                                    to="/tools/co2-calculator"
+                                    to={getLocalizedPath('/tools/co2-calculator')}
                                     className={styles.mobileLink}
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                     {t('navCo2Calc')}
                                 </Link>
                                 <Link
-                                    to="/tools/unit-converter"
+                                    to={getLocalizedPath('/tools/unit-converter')}
                                     className={styles.mobileLink}
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                     {t('navUnitConv')}
                                 </Link>
                                 <Link
-                                    to="/tools/ppfd-heatmap"
+                                    to={getLocalizedPath('/tools/ppfd-heatmap')}
                                     className={styles.mobileLink}
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
@@ -126,7 +138,7 @@ const Navbar = () => {
                         </div>
 
                         <Link
-                            to="/blog"
+                            to={getLocalizedPath('/blog')}
                             className={`${styles.mobileLink} ${isActive('/blog') ? styles.mobileLinkActive : ''}`}
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
@@ -136,7 +148,7 @@ const Navbar = () => {
                         <div className={styles.mobileActions}>
                             <button
                                 onClick={() => {
-                                    setLanguage(language === 'en' ? 'tr' : 'en');
+                                    handleLanguageSwitch();
                                     setIsMobileMenuOpen(false);
                                 }}
                                 className={styles.langBtn}

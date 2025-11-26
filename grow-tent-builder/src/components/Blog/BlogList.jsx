@@ -8,7 +8,7 @@ import Navbar from '../Navbar';
 import styles from './BlogList.module.css';
 
 const BlogList = () => {
-  const { language, t } = useSettings();
+  const { language, t, getLocalizedPath } = useSettings();
   const [activeCategory, setActiveCategory] = useState('All');
 
   // Scroll to top when component mounts
@@ -38,7 +38,7 @@ const BlogList = () => {
 
           {activeCategory === 'All' && (
             <div className={`${styles.featuredPost} fade-in-up`} style={{ animationDelay: '0.1s' }}>
-              <Link to={`/blog/${featuredPost.slug[language]}`} className={styles.featuredCard}>
+              <Link to={getLocalizedPath(`/blog/${featuredPost.slug[language]}`)} className={styles.featuredCard}>
                 <div className={styles.featuredImage} style={{ backgroundImage: `url(${featuredPost.image})` }} />
                 <div className={styles.featuredContent}>
                   <span className={styles.featuredBadge}>{t('featuredArticle')}</span>
@@ -75,7 +75,7 @@ const BlogList = () => {
       {/* Blog Grid */}
       <div className={`${styles.blogGrid} container`}>
         {gridPosts.map((post) => (
-          <Link to={`/blog/${post.slug[language]}`} key={post.id} className={`${styles.blogCard} card-interactive`}>
+          <Link to={getLocalizedPath(`/blog/${post.slug[language]}`)} key={post.id} className={`${styles.blogCard} card-interactive`}>
             <div className={styles.blogCardImage}>
               <img src={post.image} alt={post.title[language]} loading="lazy" />
               <div className={styles.blogTags}>

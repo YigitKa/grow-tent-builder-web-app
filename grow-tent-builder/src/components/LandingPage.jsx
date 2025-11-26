@@ -13,7 +13,7 @@ export default function LandingPage() {
     const [showScrollTop, setShowScrollTop] = useState(false);
     // scrollY is intentionally unused in this component but kept for future effects
     const [, setScrollY] = useState(0);
-    const { language, getBuilderUrl, t } = useSettings();
+    const { language, getBuilderUrl, t, getLocalizedPath } = useSettings();
     const navigate = useNavigate();
 
     const infoBoxItems = [
@@ -127,24 +127,24 @@ export default function LandingPage() {
                     <p>{t('landingGrowToolsSubtitle')}</p>
                 </div>
                 <div className="tools-grid">
-                    <Link to="/tools/cost-calculator" className="tool-preview-card">
+                    <Link to={getLocalizedPath('/tools/electricity-cost-calculator')} className="tool-preview-card">
                         <div className="tool-icon">⚡</div>
                         <h3>{t('landingCostCalculator')}</h3>
                         <p>{t('landingCostCalculatorDesc')}</p>
                     </Link>
-                    <Link to="/tools/unit-converter" className="tool-preview-card">
+                    <Link to={getLocalizedPath('/tools/unit-converter')} className="tool-preview-card">
                         <div className="tool-icon">💧</div>
                         <h3>{t('landingUnitConverter')}</h3>
                         <p>{t('landingUnitConverterDesc')}</p>
                     </Link>
-                    <Link to="/tools/co2-calculator" className="tool-preview-card">
+                    <Link to={getLocalizedPath('/tools/co2-calculator')} className="tool-preview-card">
                         <div className="tool-icon">🌫️</div>
                         <h3>{t('landingCo2Calculator')}</h3>
                         <p>{t('landingCo2CalculatorDesc')}</p>
                     </Link>
                 </div>
                 <div className="center-btn">
-                    <Link to="/tools" className="secondary-btn">
+                    <Link to={getLocalizedPath('/tools')} className="secondary-btn">
                         {t('landingViewAllTools')}
                     </Link>
                 </div>
@@ -213,7 +213,7 @@ export default function LandingPage() {
                             {Array.from({ length: Math.ceil(blogPosts.slice(0, 4).length / 2) }).map((_, groupIndex) => (
                                 <div key={groupIndex} className="slider-slide">
                                     {blogPosts.slice(0, 4).slice(groupIndex * 2, groupIndex * 2 + 2).map((post) => (
-                                        <Link to={`/blog/${post.slug[language]}`} key={`featured-${post.id}`} className="featured-guide-card">
+                                        <Link to={getLocalizedPath(`/blog/${post.slug[language]}`)} key={`featured-${post.id}`} className="featured-guide-card">
                                             <div className="guide-content">
                                                 <span className="guide-tag">{post.category}</span>
                                                 <h3>{post.title[language]}</h3>
@@ -327,7 +327,7 @@ export default function LandingPage() {
                 </div>
                 <div className="blog-preview-grid">
                     {blogPosts.slice(0, 3).map((post) => (
-                        <Link to={`/blog/${post.slug[language]}`} key={post.id} className="blog-preview-card">
+                        <Link to={getLocalizedPath(`/blog/${post.slug[language]}`)} key={post.id} className="blog-preview-card">
                             <div className="preview-image" style={{ backgroundImage: `url(${post.image})` }} />
                             <div className="preview-content">
                                 <span className="preview-tag">{post.category}</span>
@@ -341,7 +341,7 @@ export default function LandingPage() {
                     ))}
                 </div>
                 <div className="blog-cta">
-                    <Link to="/blog" className="view-all-btn">
+                    <Link to={getLocalizedPath('/blog')} className="view-all-btn">
                         {t('landingViewAllArticles')}
                     </Link>
                 </div>

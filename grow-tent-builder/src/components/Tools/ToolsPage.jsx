@@ -6,7 +6,7 @@ import Footer from '../Footer';
 import styles from './ToolsPage.module.css';
 
 const ToolsPage = () => {
-    const { t } = useSettings();
+    const { t, getLocalizedPath } = useSettings();
 
     const tools = [
         {
@@ -54,7 +54,7 @@ const ToolsPage = () => {
 
                 <div className={styles.toolsGrid}>
                     {tools.map((tool) => (
-                        <Link to={tool.path} key={tool.id} className={styles.toolCard}>
+                        <Link to={getLocalizedPath(tool.path)} key={tool.id} className={styles.toolCard}>
                             <div className={styles.cardIcon}>{tool.icon}</div>
                             <h3>{t(tool.titleKey)}</h3>
                             <p>{t(tool.descKey)}</p>

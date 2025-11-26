@@ -149,7 +149,7 @@ import TableOfContents from './TableOfContents';
 import { Helmet } from 'react-helmet-async';
 
 const BlogPost = () => {
-  const { language, setLanguage } = useSettings();
+  const { language, setLanguage, getLocalizedPath } = useSettings();
   const { slug } = useParams();
   const navigate = useNavigate();
   const [activeId, setActiveId] = useState('');
@@ -268,7 +268,7 @@ const BlogPost = () => {
         <Navbar />
         <h2>{language === 'tr' ? 'Yazı Bulunamadı' : 'Post Not Found'}</h2>
         <p>{language === 'tr' ? 'Aradığınız makale mevcut değil veya taşınmış.' : "The article you're looking for doesn't exist or has been moved."}</p>
-        <Link to="/blog">{language === 'tr' ? 'Bloga Dön' : 'Back to Blog'}</Link>
+        <Link to={getLocalizedPath('/blog')}>{language === 'tr' ? 'Bloga Dön' : 'Back to Blog'}</Link>
       </div>
     );
   }
@@ -284,7 +284,7 @@ const BlogPost = () => {
         <div className={styles.heroOverlay}></div>
         <div className={`${styles.heroContent} container`}>
           <div className={styles.postNav}>
-            <Link to="/blog" className={styles.backLink}>← {language === 'tr' ? 'Bloga Dön' : 'Back to Blog'}</Link>
+            <Link to={getLocalizedPath('/blog')} className={styles.backLink}>← {language === 'tr' ? 'Bloga Dön' : 'Back to Blog'}</Link>
           </div>
           <div>
             <span className={styles.postCategory}>{post.category}</span>
