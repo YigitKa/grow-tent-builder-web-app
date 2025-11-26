@@ -7,46 +7,57 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const BASE_URL = 'https://growizard.app';
+const LANGUAGES = ['en', 'tr'];
 
-const staticRoutes = [
-    '/',
-    '/grow-tent-setup-builder/',
-    '/buyume-cadiri-kurulum-olusturucu/',
-    '/tools/',
-    '/tools/cost-calculator/',
-    '/tools/unit-converter/',
-    '/tools/co2-calculator/',
-    '/blog/',
-    '/faq/'
+const STATIC_ROUTES = [
+    '', // Home
+    '/builder',
+    '/tools',
+    '/tools/electricity-cost-calculator',
+    '/tools/unit-converter',
+    '/tools/co2-calculator',
+    '/tools/ppfd-heatmap',
+    '/blog',
+    '/faq'
 ];
 
 const generateSitemap = () => {
-    const routes = [...staticRoutes];
+    let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
 
-    // Add blog posts for both languages
-    blogPosts.forEach(post => {
-        routes.push(`/blog/${post.slug.en}/`);
-        routes.push(`/blog/${post.slug.tr}/`);
+    // Add static routes
+    LANGUAGES.forEach(lang => {
+        STATIC_ROUTES.forEach(route => {
+            const url = `${BASE_URL}/${lang}${route}`;
+            xml += '  <url>\n';
+            xml += `    <loc>${url}</loc>\n`;
+            xml += `    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>\n`;
+            xml += '    <changefreq>weekly</changefreq>\n';
+            xml += '    <priority>0.8</priority>\n';
+            xml += '  </url>\n';
+        });
     });
 
-    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  ${routes
-            .map(route => {
-                return `
-  <url>
-    <loc>${BASE_URL}${route}</loc>
-    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>${route === '/' ? '1.0' : '0.8'}</priority>
-  </url>`;
-            })
-            .join('')}
-</urlset>`;
+    // Add blog posts
+    blogPosts.forEach(post => {
+        LANGUAGES.forEach(lang => {
+            if (post.slug[lang]) {
+                const url = `${BASE_URL}/${lang}/blog/${post.slug[lang]}`;
+                xml += '  <url>\n';
+                xml += `    <loc>${url}</loc>\n`;
+                xml += `    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>\n`;
+                xml += '    <changefreq>weekly</changefreq>\n';
+                xml += '    <priority>0.8</priority>\n';
+                xml += '  </url>\n';
+            }
+        });
+    });
 
-    const publicDir = path.join(__dirname, '../public');
-    fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), sitemap);
-    console.log('Sitemap generated successfully!');
+    xml += '</urlset>';
+
+    const outputPath = path.join(__dirname, '../public/sitemap.xml');
+    fs.writeFileSync(outputPath, xml);
+    console.log(`Sitemap generated at ${outputPath}`);
 };
 
 generateSitemap();
