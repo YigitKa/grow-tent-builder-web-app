@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useBuilder } from '../context/BuilderContext';
 import { useSettings } from '../context/SettingsContext';
 
@@ -17,29 +17,16 @@ export default function TentSelection() {
     const { tentSize } = state;
 
     const [custom, setCustom] = useState(false);
-    const [dims, setDims] = useState({
+    // Use tentSize directly as the source of truth, with local state only for uncommitted custom dimensions
+    const [customDims, setCustomDims] = useState({
         width: tentSize.width,
         depth: tentSize.depth,
         height: tentSize.height
     });
 
-    // Update local state when global state changes
-    useEffect(() => {
-        setDims({
-            width: tentSize.width,
-            depth: tentSize.depth,
-            height: tentSize.height
-        });
-    }, [tentSize]);
-
     const handlePresetClick = (preset) => {
         setCustom(false);
         dispatch({ type: 'SET_TENT_SIZE', payload: { width: preset.width, depth: preset.depth, height: preset.height, unit: 'ft' } });
-    };
-
-    const handleCustomChange = (e) => {
-        const { name, value } = e.target;
-        setDims(prev => ({ ...prev, [name]: parseFloat(value) || 0 }));
     };
 
     const applyCustom = () => {
@@ -48,9 +35,9 @@ export default function TentSelection() {
         dispatch({
             type: 'SET_TENT_SIZE',
             payload: {
-                width: dims.width,
-                depth: dims.depth,
-                height: dims.height,
+                width: customDims.width,
+                depth: customDims.depth,
+                height: customDims.height,
                 unit: 'ft'
             }
         });
@@ -165,11 +152,11 @@ export default function TentSelection() {
                             <input
                                 type="number"
                                 name="width"
-                                value={unitSystem === 'METRIC' ? (dims.width * 30.48).toFixed(0) : dims.width}
+                                value={unitSystem === 'METRIC' ? (customDims.width * 30.48).toFixed(0) : customDims.width}
                                 onChange={(e) => {
                                     const val = parseFloat(e.target.value) || 0;
                                     const ftValue = unitSystem === 'METRIC' ? val / 30.48 : val;
-                                    setDims(prev => ({ ...prev, width: ftValue }));
+                                    setCustomDims(prev => ({ ...prev, width: ftValue }));
                                 }}
                                 style={inputStyle}
                             />
@@ -179,11 +166,11 @@ export default function TentSelection() {
                             <input
                                 type="number"
                                 name="depth"
-                                value={unitSystem === 'METRIC' ? (dims.depth * 30.48).toFixed(0) : dims.depth}
+                                value={unitSystem === 'METRIC' ? (customDims.depth * 30.48).toFixed(0) : customDims.depth}
                                 onChange={(e) => {
                                     const val = parseFloat(e.target.value) || 0;
                                     const ftValue = unitSystem === 'METRIC' ? val / 30.48 : val;
-                                    setDims(prev => ({ ...prev, depth: ftValue }));
+                                    setCustomDims(prev => ({ ...prev, depth: ftValue }));
                                 }}
                                 style={inputStyle}
                             />
@@ -193,11 +180,11 @@ export default function TentSelection() {
                             <input
                                 type="number"
                                 name="height"
-                                value={unitSystem === 'METRIC' ? (dims.height * 30.48).toFixed(0) : dims.height}
+                                value={unitSystem === 'METRIC' ? (customDims.height * 30.48).toFixed(0) : customDims.height}
                                 onChange={(e) => {
                                     const val = parseFloat(e.target.value) || 0;
                                     const ftValue = unitSystem === 'METRIC' ? val / 30.48 : val;
-                                    setDims(prev => ({ ...prev, height: ftValue }));
+                                    setCustomDims(prev => ({ ...prev, height: ftValue }));
                                 }}
                                 style={inputStyle}
                             />

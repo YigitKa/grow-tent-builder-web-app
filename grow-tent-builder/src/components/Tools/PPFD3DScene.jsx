@@ -1,8 +1,7 @@
-import React, { useMemo, useRef, useEffect, useState } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import React, { useMemo, useRef, useEffect } from 'react';
+import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Text, Grid, PerspectiveCamera } from '@react-three/drei';
 import * as THREE from 'three';
-import { generatePPFDMap } from '../../utils/lightingUtils';
 
 // Color scale helper
 const getVoxelColor = (ppfd) => {
@@ -45,7 +44,6 @@ const getVoxelColor = (ppfd) => {
 
 const VoxelGrid = ({ dimensions, activeLights, width, depth, height, unit, activeFilters, voxelOpacity = 0.3 }) => {
     const meshRef = useRef();
-    const [hovered, setHover] = useState(null);
 
     // Grid Resolution (Number of cubes per axis)
     const resX = 12;
@@ -60,14 +58,11 @@ const VoxelGrid = ({ dimensions, activeLights, width, depth, height, unit, activ
         const totalHeightFt = unit === 'cm' ? dimensions.height / 30.48 : dimensions.height;
 
         const voxels = [];
-        const tempColor = new THREE.Color();
 
         // Loop Y (Height layers)
         for (let y = 0; y < resY; y++) {
             const layerY = y / (resY - 1); // 0 to 1
             const distanceFromLight = totalHeightFt * (1 - layerY);
-
-            const resolutionX = resX / widthFt;
 
             for (let x = 0; x < resX; x++) {
                 for (let z = 0; z < resZ; z++) {
@@ -136,7 +131,6 @@ const VoxelGrid = ({ dimensions, activeLights, width, depth, height, unit, activ
         if (!meshRef.current) return;
 
         const tempObject = new THREE.Object3D();
-        const tempColor = new THREE.Color();
 
         for (let i = 0; i < count; i++) {
             const { position, color } = data[i];
@@ -258,7 +252,7 @@ const Lights = ({ activeLights, width, depth, height }) => {
     );
 };
 
-export default function PPFD3DScene({ ppfdMap, dimensions, activeLights, unit, activeFilters, showGuideLines = true, voxelOpacity = 0.3 }) {
+export default function PPFD3DScene({ dimensions, activeLights, unit, activeFilters, showGuideLines = true, voxelOpacity = 0.3 }) {
     const scaleFactor = unit === 'cm' ? 0.1 : 3.0;
     const width = (dimensions.width || 1) * scaleFactor;
     const depth = (dimensions.depth || 1) * scaleFactor;

@@ -1,4 +1,4 @@
-import { StrictMode, useState } from 'react'
+import { StrictMode, useState, useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
 import { HelmetProvider } from 'react-helmet-async'
 import './styles/globals.css'
@@ -10,14 +10,14 @@ import { registerSW } from 'virtual:pwa-register'
 // Initialize analytics (gtag) when VITE_GTAG_ID is set in env
 initAnalytics();
 
-// PWA Service Worker Registration
-let updateSWCallback = null;
+// Mutable ref to hold the update callback - set once and used by service worker
+const updateCallbackRef = { current: null };
 
 const updateSW = registerSW({
     onNeedRefresh() {
         // Trigger the update prompt
-        if (updateSWCallback) {
-            updateSWCallback();
+        if (updateCallbackRef.current) {
+            updateCallbackRef.current();
         }
     },
     onOfflineReady() {
@@ -41,8 +41,13 @@ const updateSW = registerSW({
 function Root() {
     const [showUpdatePrompt, setShowUpdatePrompt] = useState(false);
 
-    // Set callback for triggering update prompt
-    updateSWCallback = () => setShowUpdatePrompt(true);
+    // Set callback using useEffect to avoid side effects during render
+    useEffect(() => {
+        updateCallbackRef.current = () => setShowUpdatePrompt(true);
+        return () => {
+            updateCallbackRef.current = null;
+        };
+    }, []);
 
     return (
         <StrictMode>
