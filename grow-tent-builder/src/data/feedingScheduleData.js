@@ -20,19 +20,14 @@ export const FEEDING_SCHEDULE_DATA = [
   {
     id: 'root-juice',
     product_name: 'Root·Juice™',
-    category: 'STİMÜLATÖR (KÖK)',
     category_key: 'stimulator_root',
-    dose_unit: 'ml/L su',
-    application_type: 'Sulama (Su/Toprak/Hidroponik)',
-    usage_phase: 'KÖKLENME (ROOTING)',
+    dose_unit: 'ml/L',
+    application_type_key: 'appTypeWater',
+    usage_phase_key: 'phaseRooting',
     color: '#8B5CF6', // Purple
-    function: 'KÖK STİMÜLASYONU',
-    short_desc: 'Güçlü kök gelişimi için',
-    benefits: [
-      'Birinci sınıf hümik asit ve deniz yosunundan elde edilmiştir',
-      'Güçlü kök gelişimini teşvik eder',
-      'Bitkiyi besinleri daha hızlı emmeye hazırlar'
-    ],
+    function_key: 'funcRootStim',
+    short_desc_key: 'descRootJuice',
+    benefits_key: 'benefitsRootJuice',
     // Tüm substratlar için aynı dozaj
     schedule: {
       'WK 1': 4,
@@ -52,19 +47,14 @@ export const FEEDING_SCHEDULE_DATA = [
   {
     id: 'bio-grow',
     product_name: 'Bio·Grow®',
-    category: 'TEMEL GÜBRE (NK)',
     category_key: 'base_nutrient',
-    dose_unit: 'ml/L su',
-    application_type: 'Sulama',
-    usage_phase: 'BÜYÜME VE ÇİÇEKLENME (NUTRITION)',
+    dose_unit: 'ml/L',
+    application_type_key: 'appTypeWater',
+    usage_phase_key: 'phaseNutrition',
     color: '#22C55E', // Green
-    function: 'TEMEL BESLENME (Büyüme)',
-    short_desc: 'Büyümeyi teşvik eden temel gübre',
-    benefits: [
-      '%100 organik şeker pancarı özünden (vinasse) elde edilmiştir',
-      'Toprak mikropları için zengin bir gıda kaynağıdır',
-      'B1, B2, C ve E vitaminlerini içerir'
-    ],
+    function_key: 'funcBaseNutrientVeg',
+    short_desc_key: 'descBioGrow',
+    benefits_key: 'benefitsBioGrow',
     // ALL·MIX için düşük dozaj (ağır gübrelenmiş toprak)
     schedule_allmix: {
       'WK 1': 1,
@@ -110,24 +100,19 @@ export const FEEDING_SCHEDULE_DATA = [
       'WK 11': 'FLUSH',
       'WK 12': 'HARVEST'
     },
-    note: 'Vegetatif aşamada Fish·Mix™ ile değiştirilebilir, çiçeklenmeyi tetiklemek için Bio·Grow®\'a geçilmelidir.'
+    note_key: 'noteBioGrow'
   },
   {
     id: 'fish-mix',
     product_name: 'Fish·Mix™',
-    category: 'TEMEL GÜBRE (N)',
     category_key: 'base_nutrient',
-    dose_unit: 'ml/L su',
-    application_type: 'Sulama (veya Yaprak Spreyi)',
-    usage_phase: 'BÜYÜME (NUTRITION)',
+    dose_unit: 'ml/L',
+    application_type_key: 'appTypeWaterFoliar',
+    usage_phase_key: 'phaseNutrition',
     color: '#06B6D4', // Cyan
-    function: 'BESLENME / TOPRAK İYİLEŞTİRME',
-    short_desc: 'Toprak kalitesini artıran gübre',
-    benefits: [
-      'Substrattaki tüm canlı organizmaların büyümesini hızlandırır',
-      'Mikroorganizma ve faydalı bakteri üretimini teşvik eder',
-      'Kötü kaliteli toprağı zengin, yağlı toprağa dönüştürür'
-    ],
+    function_key: 'funcNutrientSoil',
+    short_desc_key: 'descFishMix',
+    benefits_key: 'benefitsFishMix',
     // ALL·MIX için Indoor/Outdoor schedule (düşük dozaj)
     schedule_allmix_indoor: {
       'WK 1': 1,
@@ -215,25 +200,19 @@ export const FEEDING_SCHEDULE_DATA = [
       'WK 11': 'FLUSH',
       'WK 12': 'HARVEST'
     },
-    foliar_dose: 'Haftada 1-3 kez, çiçeklenmenin ikinci haftasına kadar 1-2 ml/L (diğer iki ürünle kullanılırsa maks. 1 ml/L).'
+    foliar_dose_key: 'foliarDoseFishMix'
   },
   {
     id: 'bio-bloom',
     product_name: 'Bio·Bloom™',
-    category: 'TEMEL GÜBRE (BLOOM)',
     category_key: 'base_nutrient',
-    dose_unit: 'ml/L su',
-    application_type: 'Sulama (Su/Toprak/Hidroponik)',
-    usage_phase: 'ÇİÇEKLENME (BLOOMING)',
+    dose_unit: 'ml/L',
+    application_type_key: 'appTypeWater',
+    usage_phase_key: 'phaseBlooming',
     color: '#EC4899', // Pink
-    function: 'TEMEL BESLENME (Çiçeklenme)',
-    short_desc: 'Çiçeklenme için temel gübre',
-    benefits: [
-      'Lezzetli meyvelere yol açan coşkulu çiçekler için',
-      'Nitrojen, fosfor ve potasyumun optimum karışımını sunar',
-      'Bağımsız çalışan bir gübredir',
-      'Eser elementler içerir'
-    ],
+    function_key: 'funcBaseNutrientBloom',
+    short_desc_key: 'descBioBloom',
+    benefits_key: 'benefitsBioBloom',
     schedule: {
       'WK 1': 1,
       'WK 2': 2,
@@ -252,19 +231,14 @@ export const FEEDING_SCHEDULE_DATA = [
   {
     id: 'top-max',
     product_name: 'Top·Max™',
-    category: 'STİMÜLATÖR (ÇİÇEKLENME)',
     category_key: 'stimulator_bloom',
-    dose_unit: 'ml/L su',
-    application_type: 'Sulama (Su/Toprak/Hidroponik)',
-    usage_phase: 'ÇİÇEKLENME (BLOOMING STIMULATING)',
+    dose_unit: 'ml/L',
+    application_type_key: 'appTypeWater',
+    usage_phase_key: 'phaseBloomStim',
     color: '#F59E0B', // Amber
-    function: 'ÇİÇEKLENME STİMÜLASYONU',
-    short_desc: 'Çiçek boyutu ve ağırlığını artırır',
-    benefits: [
-      'Çiçeklenme güçlendiricisidir (boyut ve ağırlık)',
-      'Besin alımını iyileştirir',
-      'Daha tatlı, pürüzsüz tadım sağlayan ürünler yetiştirilmesini sağlar'
-    ],
+    function_key: 'funcBloomStim',
+    short_desc_key: 'descTopMax',
+    benefits_key: 'benefitsTopMax',
     schedule: {
       'WK 1': 1,
       'WK 2': 1,
@@ -283,20 +257,14 @@ export const FEEDING_SCHEDULE_DATA = [
   {
     id: 'bio-heaven',
     product_name: 'Bio·Heaven™',
-    category: 'BOOSTER (ENERJİ)',
     category_key: 'booster',
-    dose_unit: 'ml/L su',
-    application_type: 'Sulama (Su/Toprak/Hidroponik)',
-    usage_phase: 'BÜYÜME VE ÇİÇEKLENME (BOOSTING)',
+    dose_unit: 'ml/L',
+    application_type_key: 'appTypeWater',
+    usage_phase_key: 'phaseBoosting',
     color: '#EAB308', // Yellow
-    function: 'ENERJİ GÜÇLENDİRME',
-    short_desc: 'Enerji ve metabolizma desteği',
-    benefits: [
-      'Enerji takviyesi sağlar',
-      'Nem tutma özelliğini iyileştirir',
-      'Enzimatik aktiviteyi ve hızlı besin emilimini uyarır',
-      'Toksinlerden kurtulmayı sağlar'
-    ],
+    function_key: 'funcEnergyBoost',
+    short_desc_key: 'descBioHeaven',
+    benefits_key: 'benefitsBioHeaven',
     schedule: {
       'WK 1': 2,
       'WK 2': 2,
@@ -315,19 +283,14 @@ export const FEEDING_SCHEDULE_DATA = [
   {
     id: 'acti-vera',
     product_name: 'Acti·Vera™',
-    category: 'AKTİVATÖR',
     category_key: 'activator',
-    dose_unit: 'ml/L su',
-    application_type: 'Sulama (veya Yaprak Spreyi)',
-    usage_phase: 'BÜYÜME VE ÇİÇEKLENME (BOOSTING/PREVENTING)',
+    dose_unit: 'ml/L',
+    application_type_key: 'appTypeWaterFoliar',
+    usage_phase_key: 'phaseBoostingPreventing',
     color: '#84CC16', // Lime
-    function: 'GÜÇLENDİRME / ÖNLEME',
-    short_desc: 'Bağışıklık ve metabolizma aktivatörü',
-    benefits: [
-      'Hem içeriden hem dışarıdan daha güçlü ve daha sağlıklı bitkiler sağlar',
-      'Bağışıklık sistemini korur ve aktive eder',
-      'Çimlenmeyi ve bitki metabolizmasını artırır'
-    ],
+    function_key: 'funcStrengthPrevent',
+    short_desc_key: 'descActiVera',
+    benefits_key: 'benefitsActiVera',
     schedule: {
       'WK 1': 2,
       'WK 2': 2,
@@ -342,24 +305,19 @@ export const FEEDING_SCHEDULE_DATA = [
       'WK 11': 5,
       'WK 12': 5
     },
-    foliar_dose: 'Haftada 1-3 kez, çiçeklenmenin ikinci haftasına kadar 1-2 ml/L (diğer iki ürünle kullanılırsa maks. 1 ml/L).'
+    foliar_dose_key: 'foliarDoseGeneral'
   },
   {
     id: 'alg-a-mic',
     product_name: 'Alg·A·Mic™',
-    category: 'STİMÜLATÖR (CANLILIK)',
     category_key: 'stimulator_vitality',
-    dose_unit: 'ml/L su',
-    application_type: 'Sulama (veya Yaprak Spreyi)',
-    usage_phase: 'BÜYÜME VE ÇİÇEKLENME (STIMULATING/PREVENTING)',
+    dose_unit: 'ml/L',
+    application_type_key: 'appTypeWaterFoliar',
+    usage_phase_key: 'phaseStimPrevent',
     color: '#14B8A6', // Teal
-    function: 'CANLILIK/ÖNLEME',
-    short_desc: 'Stres kurtarıcısı ve canlandırıcı',
-    benefits: [
-      'Aşırı besleme, eksiklikler, hastalıklar veya sıcaklık dalgalanmaları durumunda kurtarıcıdır',
-      'Yeşil yaprakları garanti eder',
-      'Düşük NPK seviyesine sahip canlandırıcı bir üründür'
-    ],
+    function_key: 'funcVitalityPrevent',
+    short_desc_key: 'descAlgAMic',
+    benefits_key: 'benefitsAlgAMic',
     schedule: {
       'WK 1': 1,
       'WK 2': 2,
@@ -374,22 +332,19 @@ export const FEEDING_SCHEDULE_DATA = [
       'WK 11': 'FLUSH',
       'WK 12': 'HARVEST'
     },
-    foliar_dose: 'Haftada 1-3 kez, çiçeklenmenin ikinci haftasına kadar 1-2 ml/L (diğer iki ürünle kullanılırsa maks. 1 ml/L).'
+    foliar_dose_key: 'foliarDoseGeneral'
   },
   {
     id: 'microbes',
     product_name: 'Biobizz Microbes',
-    category: 'AKTİF MİKROORGANİZMALAR',
     category_key: 'microorganisms',
-    dose_unit: 'g/L su',
-    application_type: 'Sulama (Toz Karışımı)',
-    usage_phase: 'TÜM AŞAMALAR (NPK ALIMINI ARTIRMA)',
+    dose_unit: 'g/L',
+    application_type_key: 'appTypeWaterPowder',
+    usage_phase_key: 'phaseAllStages',
     color: '#A855F7', // Purple
-    function: 'NPK AKIŞINI ARTIRMA',
-    short_desc: 'Faydalı mikroorganizma konsantresi',
-    benefits: [
-      'Büyümeyi ve üretimi artıracak bakteri, mantar ve enzimlerin süper konsantre karışımıdır'
-    ],
+    function_key: 'funcNpkBoost',
+    short_desc_key: 'descMicrobes',
+    benefits_key: 'benefitsMicrobes',
     schedule: {
       'WK 1': 0.4,
       'WK 2': 0.2,
@@ -404,23 +359,19 @@ export const FEEDING_SCHEDULE_DATA = [
       'WK 11': 'FLUSH',
       'WK 12': 'HARVEST'
     },
-    note: 'Genellikle haftada bir kez uygulanır. Besin ihtiyacının yüksek olduğu dönemlerde (WK 2-3 ve WK 5-6) haftada iki kez uygulanabilir.'
+    note_key: 'noteMicrobes'
   },
   {
     id: 'calmag',
     product_name: 'CALMAG',
-    category: 'EK TAKVİYE (Ca/Mg)',
     category_key: 'supplement',
-    dose_unit: 'ml/L su',
-    application_type: 'Sulama (Su/Toprak/Hidroponik)',
-    usage_phase: 'TÜM AŞAMALAR (SUPPLEMENT)',
+    dose_unit: 'ml/L',
+    application_type_key: 'appTypeWater',
+    usage_phase_key: 'phaseAllStagesSupp',
     color: '#6366F1', // Indigo
-    function: 'CA VE MG TAKVİYESİ',
-    short_desc: 'Kalsiyum ve Magnezyum desteği',
-    benefits: [
-      'Olası Ca (Kalsiyum) ve Mg (Magnezyum) eksikliklerinden bitkiyi korumak için tasarlanmıştır',
-      'Az gübrelenmiş substratlarda ve hidroponik sistemlerde kullanılabilir'
-    ],
+    function_key: 'funcCaMgSupp',
+    short_desc_key: 'descCalmag',
+    benefits_key: 'benefitsCalmag',
     schedule_prevention_substrate: {
       'WK 1-6': '0.3-0.8',
       'WK 6-8': '0.5-0.8',
@@ -445,24 +396,19 @@ export const FEEDING_SCHEDULE_DATA = [
       'WK 11': 'FLUSH',
       'WK 12': 'HARVEST'
     },
-    note: 'RO (ters ozmoz) veya çok yumuşak su kullanılırken her sulamada kullanılması, veya Ca/Mg eksikliği belirtileri fark edildiğinde haftada bir kez kullanılması önerilir.'
+    note_key: 'noteCalmag'
   },
   {
     id: 'leaf-coat',
     product_name: 'Leaf·Coat™',
-    category: 'KORUYUCU / GÜÇLENDİRİCİ',
     category_key: 'protector',
-    dose_unit: 'Kullanıma Hazır',
-    application_type: 'Yaprak Spreyi',
-    usage_phase: 'BÜYÜME VE ÇİÇEKLENME',
+    dose_unit: 'readyToUse',
+    application_type_key: 'appTypeFoliar',
+    usage_phase_key: 'phaseVegBloom',
     color: '#10B981', // Emerald
-    function: 'KORUYUCU',
-    short_desc: 'Zararlılara karşı doğal koruma',
-    benefits: [
-      'İstenmeyen böceklere ve zararlı yaprak mantarlarına karşı koruma sağlar',
-      'Kullanıma hazır bir üründür',
-      'Pestisitlere karşı çevresel olarak dost bir alternatiftir'
-    ],
+    function_key: 'funcProtector',
+    short_desc_key: 'descLeafCoat',
+    benefits_key: 'benefitsLeafCoat',
     schedule: {
       'WK 1': '✓',
       'WK 2': '✓',
@@ -477,41 +423,35 @@ export const FEEDING_SCHEDULE_DATA = [
       'WK 11': 'N/A',
       'WK 12': 'HARVEST'
     },
-    note: 'Su ile karıştırmaya gerek yoktur. Bir atomizörden doğrudan uygulanır. Haftada yaklaşık iki kez. Çiçeklenmenin bitimine iki hafta kala durdurulmalıdır.'
+    note_key: 'noteLeafCoat'
   },
   {
     id: 'bio-down',
     product_name: 'Bio·Down',
-    category: 'ORGANİK pH DÜZENLEYİCİ (pH-)',
     category_key: 'ph_regulator',
-    dose_unit: 'İhtiyaca Göre',
-    application_type: 'Sulama/Hidroponik',
-    usage_phase: 'BÜYÜME VE ÇİÇEKLENME',
+    dose_unit: 'asNeeded',
+    application_type_key: 'appTypeWaterHydro',
+    usage_phase_key: 'phaseVegBloom',
     color: '#EF4444', // Red
-    function: 'PH DÜZENLEME',
-    short_desc: 'pH düşürücü',
-    benefits: [
-      'Besin karışımı pH düzenleyicisidir'
-    ],
+    function_key: 'funcPhReg',
+    short_desc_key: 'descBioDown',
+    benefits_key: 'benefitsBioDown',
     schedule: null,
-    note: 'Besin karışımının pH\'ını düşürmek gerektiğinde kullanılır (sitrik asit bazlı). Önce diğer Biobizz ürünleri karıştırılır, pH ölçülür ve istenen değere ulaşana kadar Bio·Down eklenip karıştırılır.'
+    note_key: 'noteBioDown'
   },
   {
     id: 'bio-up',
     product_name: 'Bio·Up',
-    category: 'ORGANİK pH DÜZENLEYİCİ (pH+)',
     category_key: 'ph_regulator',
-    dose_unit: 'İhtiyaca Göre',
-    application_type: 'Sulama/Hidroponik',
-    usage_phase: 'BÜYÜME VE ÇİÇEKLENME',
+    dose_unit: 'asNeeded',
+    application_type_key: 'appTypeWaterHydro',
+    usage_phase_key: 'phaseVegBloom',
     color: '#3B82F6', // Blue
-    function: 'PH DÜZENLEME',
-    short_desc: 'pH yükseltici',
-    benefits: [
-      'Besin karışımı pH düzenleyicisidir'
-    ],
+    function_key: 'funcPhReg',
+    short_desc_key: 'descBioUp',
+    benefits_key: 'benefitsBioUp',
     schedule: null,
-    note: 'Besin karışımının pH\'ını yükseltmek gerektiğinde kullanılır (hümik asit bazlı). Önce diğer Biobizz ürünleri karıştırılır, pH ölçülür ve istenen değere ulaşana kadar Bio·Up eklenip karıştırılır.'
+    note_key: 'noteBioUp'
   }
 ];
 
@@ -519,27 +459,27 @@ export const FEEDING_SCHEDULE_DATA = [
 export const SUBSTRATE_INFO = {
   'all-mix': {
     name: 'All·Mix®',
-    description: 'Ağır gübrelenmiş, iki hafta boyunca ek gübreye ihtiyaç duymaz. İlk kullanımda suyla nemlendirilir ve 36 saat bekletilir.',
+    description_key: 'subDescAllMix',
     type: 'substrate'
   },
   'light-mix': {
     name: 'Light·Mix®',
-    description: 'Tohum ve çelikler için ideal temel, köklenmeyi teşvik eder. Daha fazla kontrol isteyenler için uygundur.',
+    description_key: 'subDescLightMix',
     type: 'substrate'
   },
   'coco-mix': {
     name: 'Coco·Mix™',
-    description: 'Hidroponik dahil her türlü besinle uyumlu baz materyal.',
+    description_key: 'subDescCocoMix',
     type: 'substrate'
   },
   'worm-humus': {
     name: 'Worm·Humus™',
-    description: 'Toprak iyileştiricidir. All·Mix®\'i tazelemek veya karıştırmak için kullanılır (ideal oran: %10-15 Worm·Humus™ ile %85-90 All·Mix®).',
+    description_key: 'subDescWormHumus',
     type: 'amendment'
   },
   'pre-mix': {
     name: 'Pre·Mix™',
-    description: 'Başlangıç gübresi veya nakil (transplant) gübresi olarak herhangi bir toprak veya topraksız substrata karıştırılabilir.',
+    description_key: 'subDescPreMix',
     type: 'amendment'
   }
 };
@@ -552,11 +492,11 @@ export const WEEK_LABELS = [
 
 // Faz bilgileri
 export const PHASE_INFO = {
-  rooting: { weeks: [1, 2], label: 'Köklenme', color: '#8B5CF6' },
-  vegetative: { weeks: [3, 4, 5, 6], label: 'Vejetatif', color: '#22C55E' },
-  flowering: { weeks: [7, 8, 9, 10], label: 'Çiçeklenme', color: '#EC4899' },
-  flush: { weeks: [11], label: 'Yıkama', color: '#6B7280' },
-  harvest: { weeks: [12], label: 'Hasat', color: '#F59E0B' }
+  rooting: { weeks: [1, 2], label_key: 'phaseLabelRooting', color: '#8B5CF6' },
+  vegetative: { weeks: [3, 4, 5, 6], label_key: 'phaseLabelVeg', color: '#22C55E' },
+  flowering: { weeks: [7, 8, 9, 10], label_key: 'phaseLabelFlower', color: '#EC4899' },
+  flush: { weeks: [11], label_key: 'phaseLabelFlush', color: '#6B7280' },
+  harvest: { weeks: [12], label_key: 'phaseLabelHarvest', color: '#F59E0B' }
 };
 
 // Varsayılan seçili ürünler (temel set)
@@ -569,14 +509,14 @@ export const DEFAULT_SELECTED_PRODUCTS = [
 
 // Kategori grupları
 export const PRODUCT_CATEGORIES = {
-  base_nutrient: { name: 'Temel Gübreler', icon: '🌱' },
-  stimulator_root: { name: 'Kök Stimülatörü', icon: '🌳' },
-  stimulator_bloom: { name: 'Çiçek Stimülatörü', icon: '🌸' },
-  stimulator_vitality: { name: 'Canlılık Stimülatörü', icon: '✨' },
-  booster: { name: 'Booster', icon: '⚡' },
-  activator: { name: 'Aktivatör', icon: '🔋' },
-  microorganisms: { name: 'Mikroorganizmalar', icon: '🦠' },
-  supplement: { name: 'Takviye', icon: '💊' },
-  protector: { name: 'Koruyucu', icon: '🛡️' },
-  ph_regulator: { name: 'pH Düzenleyici', icon: '⚖️' }
+  base_nutrient: { name_key: 'catBaseNutrient', icon: '🌱' },
+  stimulator_root: { name_key: 'catStimRoot', icon: '🌳' },
+  stimulator_bloom: { name_key: 'catStimBloom', icon: '🌸' },
+  stimulator_vitality: { name_key: 'catStimVitality', icon: '✨' },
+  booster: { name_key: 'catBooster', icon: '⚡' },
+  activator: { name_key: 'catActivator', icon: '🔋' },
+  microorganisms: { name_key: 'catMicrobes', icon: '🦠' },
+  supplement: { name_key: 'catSupplement', icon: '💊' },
+  protector: { name_key: 'catProtector', icon: '🛡️' },
+  ph_regulator: { name_key: 'catPhReg', icon: '⚖️' }
 };

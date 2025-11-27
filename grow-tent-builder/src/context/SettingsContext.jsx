@@ -86,9 +86,13 @@ export function SettingsProvider({ children }) {
 
     const t = (key, params = {}) => {
         let text = translations[language][key] || key;
-        Object.keys(params).forEach(param => {
-            text = text.replace(`{${param}}`, params[param]);
-        });
+
+        if (typeof text === 'string') {
+            Object.keys(params).forEach(param => {
+                text = text.replace(`{${param}}`, params[param]);
+            });
+        }
+
         return text;
     };
 

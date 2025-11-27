@@ -451,7 +451,145 @@ export const translations = {
     onboardingQ5Opt3Detail: '(climate control, humidity, watering)',
     onboardingQ5Tip1: 'Manual systems are low budget but require attention; daily checks should not be neglected.',
     onboardingQ5Tip2: 'Simple timers and sensor-supported fans increase efficiency and reduce error margin.',
-    onboardingQ5Tip3: 'Full automation increases yield but has high initial cost; ideal for advanced users.'
+    onboardingQ5Tip3: 'Full automation increases yield but has high initial cost; ideal for advanced users.',
+    // BioBizz Feeding Schedule Data
+    catBaseNutrient: 'Base Nutrients',
+    catStimRoot: 'Root Stimulator',
+    catStimBloom: 'Bloom Stimulator',
+    catStimVitality: 'Vitality Stimulator',
+    catBooster: 'Booster',
+    catActivator: 'Activator',
+    catMicrobes: 'Microorganisms',
+    catSupplement: 'Supplement',
+    catProtector: 'Protector',
+    catPhReg: 'pH Regulator',
+
+    appTypeWater: 'Watering (Water/Soil/Hydro)',
+    appTypeWaterFoliar: 'Watering (or Foliar Spray)',
+    appTypeFoliar: 'Foliar Spray',
+    appTypeWaterPowder: 'Watering (Powder Mix)',
+    appTypeWaterHydro: 'Watering/Hydroponic',
+
+    phaseRooting: 'ROOTING',
+    phaseNutrition: 'NUTRITION (GROWTH)',
+    phaseBlooming: 'BLOOMING',
+    phaseBloomStim: 'BLOOMING STIMULATING',
+    phaseBoosting: 'BOOSTING (GROWTH & BLOOM)',
+    phaseBoostingPreventing: 'BOOSTING / PREVENTING',
+    phaseStimPrevent: 'STIMULATING / PREVENTING',
+    phaseAllStages: 'ALL STAGES (NPK BOOST)',
+    phaseAllStagesSupp: 'ALL STAGES (SUPPLEMENT)',
+    phaseVegBloom: 'GROWTH & BLOOMING',
+
+    funcRootStim: 'ROOT STIMULATION',
+    funcBaseNutrientVeg: 'BASE NUTRITION (Growth)',
+    funcNutrientSoil: 'NUTRITION / SOIL CONDITIONING',
+    funcBaseNutrientBloom: 'BASE NUTRITION (Bloom)',
+    funcBloomStim: 'BLOOM STIMULATION',
+    funcEnergyBoost: 'ENERGY BOOSTING',
+    funcStrengthPrevent: 'STRENGTHENING / PREVENTING',
+    funcVitalityPrevent: 'VITALITY / PREVENTING',
+    funcNpkBoost: 'NPK UPTAKE BOOST',
+    funcCaMgSupp: 'Ca & Mg SUPPLEMENT',
+    funcProtector: 'PROTECTOR',
+    funcPhReg: 'pH REGULATION',
+
+    descRootJuice: 'For strong root development',
+    descBioGrow: 'Base fertilizer promoting growth',
+    descFishMix: 'Fertilizer improving soil quality',
+    descBioBloom: 'Base fertilizer for flowering',
+    descTopMax: 'Increases flower size and weight',
+    descBioHeaven: 'Energy and metabolism support',
+    descActiVera: 'Immunity and metabolism activator',
+    descAlgAMic: 'Stress reliever and revitalizer',
+    descMicrobes: 'Beneficial microorganism concentrate',
+    descCalmag: 'Calcium and Magnesium support',
+    descLeafCoat: 'Natural protection against pests',
+    descBioDown: 'pH reducer',
+    descBioUp: 'pH increaser',
+
+    benefitsRootJuice: [
+      'Derived from premium humic acid and seaweed',
+      'Encourages vigorous root development',
+      'Prepares the plant to absorb nutrients more quickly'
+    ],
+    benefitsBioGrow: [
+      'Derived from 100% organic sugar beet extract (vinasse)',
+      'Rich food source for soil microbes',
+      'Contains vitamins B1, B2, C, and E'
+    ],
+    benefitsFishMix: [
+      'Accelerates the growth of all living organisms in the substrate',
+      'Stimulates the production of microorganisms and useful bacteria',
+      'Transforms poor quality earth into rich, fat soil'
+    ],
+    benefitsBioBloom: [
+      'For exuberant flowers that lead to tasty fruits',
+      'Offers the optimum blend of nitrogen, phosphorus and potassium',
+      'Independently working fertilizer',
+      'Contains trace elements'
+    ],
+    benefitsTopMax: [
+      'Flowering strengthener (size and weight)',
+      'Improves nutrient uptake',
+      'Results in sweeter, smooth tasting crops'
+    ],
+    benefitsBioHeaven: [
+      'Provides energy boost',
+      'Improves moisture retention',
+      'Stimulates enzymatic activity and fast nutrient absorption',
+      'Gets rid of toxins'
+    ],
+    benefitsActiVera: [
+      'Stronger and healthier plants, both inside and out',
+      'Protects and activates the immune system',
+      'Increases germination and plant metabolism'
+    ],
+    benefitsAlgAMic: [
+      'Rescue in case of overfeeding, deficiencies, diseases or temperature fluctuations',
+      'Ensures green leaves',
+      'Revitalizing product with a low level of NPK'
+    ],
+    benefitsMicrobes: [
+      'Super concentrated blend of bacteria, fungi and enzymes to improve growth and production'
+    ],
+    benefitsCalmag: [
+      'Designed to safeguard the plant against potential Ca (Calcium) and Mg (Magnesium) deficiencies',
+      'Can be used on low fertilized substrates and hydroponic systems'
+    ],
+    benefitsLeafCoat: [
+      'Protection against unwanted insects and damaging leaf fungi',
+      'Ready-to-use product',
+      'Environmentally friendly alternative to pesticides'
+    ],
+    benefitsBioDown: [
+      'Nutrient mix pH regulator'
+    ],
+    benefitsBioUp: [
+      'Nutrient mix pH regulator'
+    ],
+
+    noteBioGrow: 'Can be replaced with Fish·Mix™ during the vegetative phase, but switch back to Bio·Grow® when triggering flowering.',
+    noteMicrobes: 'Generally applied once a week. Can be applied twice a week during high demand periods (WK 2-3 and WK 5-6).',
+    noteCalmag: 'Recommended to use with every watering when using RO (reverse osmosis) or very soft water, or once a week when Ca/Mg deficiency signs are noticed.',
+    noteLeafCoat: 'No need to mix with water. Apply directly from an atomizer. About twice a week. Stop two weeks before the end of flowering.',
+    noteBioDown: 'Used when necessary to lower the pH of the nutrient mix (citric acid based). Mix other Biobizz products first, measure pH, and add Bio·Down until desired value is reached.',
+    noteBioUp: 'Used when necessary to raise the pH of the nutrient mix (humic acid based). Mix other Biobizz products first, measure pH, and add Bio·Up until desired value is reached.',
+
+    foliarDoseFishMix: '1-3 times per week until the second week of flowering, 1-2 ml/L (max 1 ml/L if used with other two products).',
+    foliarDoseGeneral: '1-3 times per week until the second week of flowering, 1-2 ml/L (max 1 ml/L if used with other two products).',
+
+    subDescAllMix: 'Heavily pre-fertilized, no need for extra fertilizer for two weeks. Moisten with water and let stand for 36 hours before first use.',
+    subDescLightMix: 'Ideal base for seeds and cuttings, promotes rooting. Suitable for those who want more control.',
+    subDescCocoMix: 'Base material compatible with all kinds of nutrients, including hydroponics.',
+    subDescWormHumus: 'Soil improver. Used to refresh All·Mix® or in mixtures (ideal ratio: 10-15% Worm·Humus™ with 85-90% All·Mix®).',
+    subDescPreMix: 'Can be mixed into any soil or soilless substrate as a starter fertilizer or transplant fertilizer.',
+
+    phaseLabelRooting: 'Rooting',
+    phaseLabelVeg: 'Vegetative',
+    phaseLabelFlower: 'Flowering',
+    phaseLabelFlush: 'Flush',
+    phaseLabelHarvest: 'Harvest',
   },
   tr: {
     step1: 'Çadır',
@@ -905,6 +1043,144 @@ export const translations = {
     onboardingQ5Opt3Detail: '(iklim kontrolü, nem, sulama)',
     onboardingQ5Tip1: 'Manuel sistemler düşük bütçelidir ama dikkat gerektirir; günlük kontroller ihmal edilmemelidir.',
     onboardingQ5Tip2: 'Basit zamanlayıcılar ve sensör destekli fanlar verimliliği artırır ve hata payını azaltır.',
-    onboardingQ5Tip3: 'Tam otomasyon, verim artışı sağlar ancak başlangıç maliyeti yüksektir; ileri düzey kullanıcılar için idealdir.'
+    onboardingQ5Tip3: 'Tam otomasyon, verim artışı sağlar ancak başlangıç maliyeti yüksektir; ileri düzey kullanıcılar için idealdir.',
+    // BioBizz Beslenme Programı Verileri
+    catBaseNutrient: 'Temel Gübreler',
+    catStimRoot: 'Kök Stimülatörü',
+    catStimBloom: 'Çiçek Stimülatörü',
+    catStimVitality: 'Canlılık Stimülatörü',
+    catBooster: 'Booster',
+    catActivator: 'Aktivatör',
+    catMicrobes: 'Mikroorganizmalar',
+    catSupplement: 'Takviye',
+    catProtector: 'Koruyucu',
+    catPhReg: 'pH Düzenleyici',
+
+    appTypeWater: 'Sulama (Su/Toprak/Hidroponik)',
+    appTypeWaterFoliar: 'Sulama (veya Yaprak Spreyi)',
+    appTypeFoliar: 'Yaprak Spreyi',
+    appTypeWaterPowder: 'Sulama (Toz Karışımı)',
+    appTypeWaterHydro: 'Sulama/Hidroponik',
+
+    phaseRooting: 'KÖKLENME (ROOTING)',
+    phaseNutrition: 'BÜYÜME VE ÇİÇEKLENME (NUTRITION)',
+    phaseBlooming: 'ÇİÇEKLENME (BLOOMING)',
+    phaseBloomStim: 'ÇİÇEKLENME STİMÜLASYONU',
+    phaseBoosting: 'BÜYÜME VE ÇİÇEKLENME (BOOSTING)',
+    phaseBoostingPreventing: 'BÜYÜME VE ÇİÇEKLENME (BOOSTING/PREVENTING)',
+    phaseStimPrevent: 'BÜYÜME VE ÇİÇEKLENME (STIMULATING/PREVENTING)',
+    phaseAllStages: 'TÜM AŞAMALAR (NPK ALIMINI ARTIRMA)',
+    phaseAllStagesSupp: 'TÜM AŞAMALAR (SUPPLEMENT)',
+    phaseVegBloom: 'BÜYÜME VE ÇİÇEKLENME',
+
+    funcRootStim: 'KÖK STİMÜLASYONU',
+    funcBaseNutrientVeg: 'TEMEL BESLENME (Büyüme)',
+    funcNutrientSoil: 'BESLENME / TOPRAK İYİLEŞTİRME',
+    funcBaseNutrientBloom: 'TEMEL BESLENME (Çiçeklenme)',
+    funcBloomStim: 'ÇİÇEKLENME STİMÜLASYONU',
+    funcEnergyBoost: 'ENERJİ GÜÇLENDİRME',
+    funcStrengthPrevent: 'GÜÇLENDİRME / ÖNLEME',
+    funcVitalityPrevent: 'CANLILIK/ÖNLEME',
+    funcNpkBoost: 'NPK AKIŞINI ARTIRMA',
+    funcCaMgSupp: 'CA VE MG TAKVİYESİ',
+    funcProtector: 'KORUYUCU',
+    funcPhReg: 'PH DÜZENLEME',
+
+    descRootJuice: 'Güçlü kök gelişimi için',
+    descBioGrow: 'Büyümeyi teşvik eden temel gübre',
+    descFishMix: 'Toprak kalitesini artıran gübre',
+    descBioBloom: 'Çiçeklenme için temel gübre',
+    descTopMax: 'Çiçek boyutu ve ağırlığını artırır',
+    descBioHeaven: 'Enerji ve metabolizma desteği',
+    descActiVera: 'Bağışıklık ve metabolizma aktivatörü',
+    descAlgAMic: 'Stres kurtarıcısı ve canlandırıcı',
+    descMicrobes: 'Faydalı mikroorganizma konsantresi',
+    descCalmag: 'Kalsiyum ve Magnezyum desteği',
+    descLeafCoat: 'Zararlılara karşı doğal koruma',
+    descBioDown: 'pH düşürücü',
+    descBioUp: 'pH yükseltici',
+
+    benefitsRootJuice: [
+      'Birinci sınıf hümik asit ve deniz yosunundan elde edilmiştir',
+      'Güçlü kök gelişimini teşvik eder',
+      'Bitkiyi besinleri daha hızlı emmeye hazırlar'
+    ],
+    benefitsBioGrow: [
+      '%100 organik şeker pancarı özünden (vinasse) elde edilmiştir',
+      'Toprak mikropları için zengin bir gıda kaynağıdır',
+      'B1, B2, C ve E vitaminlerini içerir'
+    ],
+    benefitsFishMix: [
+      'Substrattaki tüm canlı organizmaların büyümesini hızlandırır',
+      'Mikroorganizma ve faydalı bakteri üretimini teşvik eder',
+      'Kötü kaliteli toprağı zengin, yağlı toprağa dönüştürür'
+    ],
+    benefitsBioBloom: [
+      'Lezzetli meyvelere yol açan coşkulu çiçekler için',
+      'Nitrojen, fosfor ve potasyumun optimum karışımını sunar',
+      'Bağımsız çalışan bir gübredir',
+      'Eser elementler içerir'
+    ],
+    benefitsTopMax: [
+      'Çiçeklenme güçlendiricisidir (boyut ve ağırlık)',
+      'Besin alımını iyileştirir',
+      'Daha tatlı, pürüzsüz tadım sağlayan ürünler yetiştirilmesini sağlar'
+    ],
+    benefitsBioHeaven: [
+      'Enerji takviyesi sağlar',
+      'Nem tutma özelliğini iyileştirir',
+      'Enzimatik aktiviteyi ve hızlı besin emilimini uyarır',
+      'Toksinlerden kurtulmayı sağlar'
+    ],
+    benefitsActiVera: [
+      'Hem içeriden hem dışarıdan daha güçlü ve daha sağlıklı bitkiler sağlar',
+      'Bağışıklık sistemini korur ve aktive eder',
+      'Çimlenmeyi ve bitki metabolizmasını artırır'
+    ],
+    benefitsAlgAMic: [
+      'Aşırı besleme, eksiklikler, hastalıklar veya sıcaklık dalgalanmaları durumunda kurtarıcıdır',
+      'Yeşil yaprakları garanti eder',
+      'Düşük NPK seviyesine sahip canlandırıcı bir üründür'
+    ],
+    benefitsMicrobes: [
+      'Büyümeyi ve üretimi artıracak bakteri, mantar ve enzimlerin süper konsantre karışımıdır'
+    ],
+    benefitsCalmag: [
+      'Olası Ca (Kalsiyum) ve Mg (Magnezyum) eksikliklerinden bitkiyi korumak için tasarlanmıştır',
+      'Az gübrelenmiş substratlarda ve hidroponik sistemlerde kullanılabilir'
+    ],
+    benefitsLeafCoat: [
+      'İstenmeyen böceklere ve zararlı yaprak mantarlarına karşı koruma sağlar',
+      'Kullanıma hazır bir üründür',
+      'Pestisitlere karşı çevresel olarak dost bir alternatiftir'
+    ],
+    benefitsBioDown: [
+      'Besin karışımı pH düzenleyicisidir'
+    ],
+    benefitsBioUp: [
+      'Besin karışımı pH düzenleyicisidir'
+    ],
+
+    noteBioGrow: 'Vegetatif aşamada Fish·Mix™ ile değiştirilebilir, çiçeklenmeyi tetiklemek için Bio·Grow®\'a geçilmelidir.',
+    noteMicrobes: 'Genellikle haftada bir kez uygulanır. Besin ihtiyacının yüksek olduğu dönemlerde (WK 2-3 ve WK 5-6) haftada iki kez uygulanabilir.',
+    noteCalmag: 'RO (ters ozmoz) veya çok yumuşak su kullanılırken her sulamada kullanılması, veya Ca/Mg eksikliği belirtileri fark edildiğinde haftada bir kez kullanılması önerilir.',
+    noteLeafCoat: 'Su ile karıştırmaya gerek yoktur. Bir atomizörden doğrudan uygulanır. Haftada yaklaşık iki kez. Çiçeklenmenin bitimine iki hafta kala durdurulmalıdır.',
+    noteBioDown: 'Besin karışımının pH\'ını düşürmek gerektiğinde kullanılır (sitrik asit bazlı). Önce diğer Biobizz ürünleri karıştırılır, pH ölçülür ve istenen değere ulaşana kadar Bio·Down eklenip karıştırılır.',
+    noteBioUp: 'Besin karışımının pH\'ını yükseltmek gerektiğinde kullanılır (hümik asit bazlı). Önce diğer Biobizz ürünleri karıştırılır, pH ölçülür ve istenen değere ulaşana kadar Bio·Up eklenip karıştırılır.',
+
+    foliarDoseFishMix: 'Haftada 1-3 kez, çiçeklenmenin ikinci haftasına kadar 1-2 ml/L (diğer iki ürünle kullanılırsa maks. 1 ml/L).',
+    foliarDoseGeneral: 'Haftada 1-3 kez, çiçeklenmenin ikinci haftasına kadar 1-2 ml/L (diğer iki ürünle kullanılırsa maks. 1 ml/L).',
+
+    subDescAllMix: 'Ağır gübrelenmiş, iki hafta boyunca ek gübreye ihtiyaç duymaz. İlk kullanımda suyla nemlendirilir ve 36 saat bekletilir.',
+    subDescLightMix: 'Tohum ve çelikler için ideal temel, köklenmeyi teşvik eder. Daha fazla kontrol isteyenler için uygundur.',
+    subDescCocoMix: 'Hidroponik dahil her türlü besinle uyumlu baz materyal.',
+    subDescWormHumus: 'Toprak iyileştiricidir. All·Mix®\'i tazelemek veya karıştırmak için kullanılır (ideal oran: %10-15 Worm·Humus™ ile %85-90 All·Mix®).',
+    subDescPreMix: 'Başlangıç gübresi veya nakil (transplant) gübresi olarak herhangi bir toprak veya topraksız substrata karıştırılabilir.',
+
+    phaseLabelRooting: 'Köklenme',
+    phaseLabelVeg: 'Vejetatif',
+    phaseLabelFlower: 'Çiçeklenme',
+    phaseLabelFlush: 'Yıkama',
+    phaseLabelHarvest: 'Hasat',
   }
 };
