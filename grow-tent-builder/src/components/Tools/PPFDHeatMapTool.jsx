@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { generatePPFDMap, calculateMetrics } from '../../utils/lightingUtils';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
@@ -334,6 +335,9 @@ export default function PPFDHeatMapTool() {
 
     return (
         <div className={styles.ppfdToolContainer}>
+            <Helmet>
+                <title>{t.title} | GroWizard</title>
+            </Helmet>
             <Navbar />
             <div className={styles.toolMain}>
                 <div className={styles.toolHeader}>

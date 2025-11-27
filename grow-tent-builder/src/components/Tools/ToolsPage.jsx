@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { useSettings } from '../../context/SettingsContext';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
@@ -44,7 +45,10 @@ const ToolsPage = () => {
     ];
 
     return (
-        <div className={styles.pageContainer}>
+        <div className={styles.toolsContainer}>
+            <Helmet>
+                <title>{t('navTools')} | GroWizard</title>
+            </Helmet>
             <Navbar />
             <div className={styles.toolsContent}>
                 <div className={styles.toolsHeader}>

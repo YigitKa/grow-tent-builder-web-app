@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useSettings } from '../../context/SettingsContext';
 import {
   FEEDING_SCHEDULE_DATA,
@@ -742,6 +743,9 @@ export default function FeedingSchedule() {
 
   return (
     <div className={styles.pageContainer}>
+      <Helmet>
+        <title>{t('feedingScheduleTitle')} | GroWizard</title>
+      </Helmet>
       <Navbar />
       {content}
       <Footer />

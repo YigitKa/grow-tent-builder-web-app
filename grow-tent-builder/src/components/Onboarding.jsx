@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { useOnboarding } from '../context/OnboardingContext';
 import { useSettings } from '../context/SettingsContext';
 import styles from './Onboarding.module.css';
@@ -129,6 +130,9 @@ export default function Onboarding() {
 
     return (
         <div className={styles.onboardingContainer}>
+            <Helmet>
+                <title>{t('onboardingTitle')} | GroWizard</title>
+            </Helmet>
             {/* Background */}
             <div className={styles.onboardingBg}>
                 <div className={`${styles.glowOrb} ${styles.orbGreen}`} />

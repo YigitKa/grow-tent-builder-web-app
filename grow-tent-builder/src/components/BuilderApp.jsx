@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import Layout from './Layout';
 import TentSelection from '../features/TentSelection';
 import LightingSelection from '../features/LightingSelection';
@@ -9,6 +10,7 @@ import NutrientSelection from '../features/NutrientSelection';
 import MonitoringSelection from '../features/MonitoringSelection';
 import SummaryView from '../features/SummaryView';
 import { useBuilder } from '../context/BuilderContext';
+import { useSettings } from '../context/SettingsContext';
 import SettingsBar from './SettingsBar';
 import Footer from './Footer';
 
@@ -35,8 +37,13 @@ function StepRenderer() {
 }
 
 export default function BuilderApp() {
+    const { t } = useSettings();
+    
     return (
         <>
+            <Helmet>
+                <title>{t('navBuilder')} | GroWizard</title>
+            </Helmet>
             <SettingsBar />
             <Layout>
                 <StepRenderer />

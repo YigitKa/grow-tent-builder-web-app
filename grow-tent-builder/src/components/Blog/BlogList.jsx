@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { useSettings } from '../../context/SettingsContext';
 import { blogPosts, categories } from './blogData';
 import Footer from '../Footer';
@@ -25,6 +26,9 @@ const BlogList = () => {
 
   return (
     <div className={styles.blogContainer}>
+      <Helmet>
+        <title>{t('navBlog')} | GroWizard</title>
+      </Helmet>
       <Navbar />
       {/* Blog Hero & Featured Post */}
       <section className={styles.blogHero}>

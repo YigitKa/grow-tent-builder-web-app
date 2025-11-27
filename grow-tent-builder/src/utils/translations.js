@@ -414,6 +414,7 @@ export const translations = {
     notFoundButton: 'Return to Garden 🌿',
 
     // Onboarding
+    onboardingTitle: 'Get Started',
     onboardingStep: 'Step',
     onboardingContinue: 'Continue →',
     onboardingBack: '← Back',
@@ -1009,6 +1010,7 @@ export const translations = {
     notFoundButton: 'Bahçeye Dön 🌿',
 
     // Onboarding
+    onboardingTitle: 'Başlangıç',
     onboardingStep: 'Adım',
     onboardingContinue: 'Devam Et →',
     onboardingBack: '← Geri',

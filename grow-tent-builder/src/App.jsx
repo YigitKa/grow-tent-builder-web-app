@@ -65,10 +65,10 @@ function AppContent() {
         <LanguageWrapper>
           <Routes>
             <Route path="" element={<LandingPage />} />
+            {/* EN Routes */}
             <Route path="onboarding" element={<Onboarding />} />
             <Route path="builder" element={<BuilderApp />} />
             <Route path="grow-tent-setup-builder" element={<Navigate to="../builder" replace />} />
-            <Route path="buyume-cadiri-kurulum-olusturucu" element={<Navigate to="../builder" replace />} />
             <Route path="blog" element={<BlogList />} />
             <Route path="blog/:slug" element={<BlogPost />} />
             <Route path="tools" element={<ToolsPage />} />
@@ -78,6 +78,18 @@ function AppContent() {
             <Route path="tools/ppfd-heatmap" element={<PPFDHeatMapTool />} />
             <Route path="tools/feeding-schedule" element={<Navigate to="../feeding/biobizz" replace />} />
             <Route path="feeding/biobizz" element={<FeedingSchedule />} />
+            {/* TR Routes - Türkçe URL'ler */}
+            <Route path="baslangic" element={<Onboarding />} />
+            <Route path="olusturucu" element={<BuilderApp />} />
+            <Route path="buyume-cadiri-kurulum-olusturucu" element={<Navigate to="../olusturucu" replace />} />
+            <Route path="yazilar" element={<BlogList />} />
+            <Route path="yazilar/:slug" element={<BlogPost />} />
+            <Route path="araclar" element={<ToolsPage />} />
+            <Route path="araclar/elektrik-maliyet-hesaplayici" element={<CostCalculator />} />
+            <Route path="araclar/birim-donusturucu" element={<UnitConverter />} />
+            <Route path="araclar/co2-hesaplayici" element={<CO2Calculator />} />
+            <Route path="araclar/ppfd-isi-haritasi" element={<PPFDHeatMapTool />} />
+            <Route path="beslenme/biobizz" element={<FeedingSchedule />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </LanguageWrapper>

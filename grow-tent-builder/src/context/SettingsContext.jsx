@@ -123,12 +123,31 @@ export function SettingsProvider({ children }) {
 
     const getBuilderUrl = () => {
         // Return localized URL
-        return `/${language}/builder`;
+        return language === 'tr' ? `/${language}/olusturucu` : `/${language}/builder`;
+    };
+
+    // URL path mappings for TR
+    const pathMappings = {
+        '/onboarding': '/baslangic',
+        '/builder': '/olusturucu',
+        '/blog': '/yazilar',
+        '/tools': '/araclar',
+        '/tools/electricity-cost-calculator': '/araclar/elektrik-maliyet-hesaplayici',
+        '/tools/unit-converter': '/araclar/birim-donusturucu',
+        '/tools/co2-calculator': '/araclar/co2-hesaplayici',
+        '/tools/ppfd-heatmap': '/araclar/ppfd-isi-haritasi',
+        '/feeding/biobizz': '/beslenme/biobizz'
     };
 
     const getLocalizedPath = (path) => {
         // Ensure path starts with /
         const cleanPath = path.startsWith('/') ? path : `/${path}`;
+        
+        // If Turkish, use localized paths
+        if (language === 'tr' && pathMappings[cleanPath]) {
+            return `/${language}${pathMappings[cleanPath]}`;
+        }
+        
         return `/${language}${cleanPath}`;
     };
 

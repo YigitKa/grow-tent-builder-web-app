@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useSettings } from '../../context/SettingsContext';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
@@ -36,6 +37,9 @@ const CO2Calculator = () => {
 
     return (
         <div className={styles.pageContainer}>
+            <Helmet>
+                <title>{t('navCo2Calc')} | GroWizard</title>
+            </Helmet>
             <Navbar />
             <div className={styles.toolContent}>
                 <div className={styles.toolCard}>

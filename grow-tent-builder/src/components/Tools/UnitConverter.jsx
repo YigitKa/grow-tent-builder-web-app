@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useSettings } from '../../context/SettingsContext';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
@@ -87,6 +88,9 @@ const UnitConverter = () => {
 
     return (
         <div className={styles.pageContainer}>
+            <Helmet>
+                <title>{t('navUnitConv')} | GroWizard</title>
+            </Helmet>
             <Navbar />
             <div className={styles.toolContent}>
                 <div className={styles.toolCard}>
