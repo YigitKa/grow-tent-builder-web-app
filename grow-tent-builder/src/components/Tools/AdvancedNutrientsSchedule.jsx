@@ -5,7 +5,8 @@ import {
     ADVANCED_NUTRIENTS_DATA,
     WEEK_LABELS,
     PHASE_INFO,
-    BASE_NUTRIENT_OPTIONS
+    BASE_NUTRIENT_OPTIONS,
+    PRODUCT_CATEGORIES
 } from '../../data/advancedNutrientsData';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
@@ -102,14 +103,34 @@ export default function AdvancedNutrientsSchedule() {
     const [selectedBaseNutrientId, setSelectedBaseNutrientId] = useState(BASE_NUTRIENT_OPTIONS[0].id);
     const [selectedProducts, setSelectedProducts] = useState([]);
     const [waterAmount, setWaterAmount] = useState(10); // Litre
-    const [showProductSelector, setShowProductSelector] = useState(false);
+    const [showProductSelector, setShowProductSelector] = useState(true); // Varsayılan olarak açık
     const [highlightedWeek, setHighlightedWeek] = useState(null);
     const [openAccordion, setOpenAccordion] = useState(null);
+    const [expandedCategories, setExpandedCategories] = useState(
+        Object.keys(PRODUCT_CATEGORIES).reduce((acc, key) => ({ ...acc, [key]: true }), {})
+    );
 
     // Get current base nutrient option
     const currentBaseNutrient = useMemo(() => {
         return BASE_NUTRIENT_OPTIONS.find(opt => opt.id === selectedBaseNutrientId) || BASE_NUTRIENT_OPTIONS[0];
     }, [selectedBaseNutrientId]);
+
+    // Group products by category
+    const productsByCategory = useMemo(() => {
+        const grouped = {};
+        Object.keys(PRODUCT_CATEGORIES).forEach(catKey => {
+            grouped[catKey] = ADVANCED_NUTRIENTS_DATA.filter(p => p.category_key === catKey);
+        });
+        return grouped;
+    }, []);
+
+    // Toggle category expansion
+    const toggleCategory = (categoryKey) => {
+        setExpandedCategories(prev => ({
+            ...prev,
+            [categoryKey]: !prev[categoryKey]
+        }));
+    };
 
     // Initialize selected products when base nutrient changes
     useEffect(() => {
@@ -345,39 +366,122 @@ export default function AdvancedNutrientsSchedule() {
                             </div>
                         </div>
 
-                        <div className={styles.productGrid}>
-                            {ADVANCED_NUTRIENTS_DATA.map(product => {
-                                const isBase = product.category_key === 'base_nutrient';
-                                const isCurrentBase = currentBaseNutrient.products.includes(product.id);
+                        {/* Categorized Product Grid */}
+                        <div className={styles.categoryContainer}>
+                            {Object.entries(PRODUCT_CATEGORIES).map(([catKey, category]) => {
+                                const productsInCategory = productsByCategory[catKey] || [];
+                                
+                                // Filtreleme: Base nutrient kategorisinde sadece seçili olanları göster
+                                const visibleProducts = catKey === 'base_nutrient' 
+                                    ? productsInCategory.filter(p => currentBaseNutrient.products.includes(p.id))
+                                    : productsInCategory;
+                                
+                                if (visibleProducts.length === 0) return null;
 
-                                // Hide base nutrients that are not the current selection
-                                if (isBase && !isCurrentBase) return null;
+                                const isExpanded = expandedCategories[catKey];
+                                const selectedCount = visibleProducts.filter(p => selectedProducts.includes(p.id)).length;
 
                                 return (
                                     <motion.div
-                                        key={product.id}
-                                        className={`${styles.productCard} ${selectedProducts.includes(product.id) ? styles.selected : ''} ${isCurrentBase ? styles.locked : ''}`}
-                                        onClick={() => toggleProduct(product.id)}
-                                        style={{
-                                            borderColor: selectedProducts.includes(product.id) ? product.color : 'transparent',
-                                            opacity: isBase && !isCurrentBase ? 0.5 : 1
-                                        }}
-                                        whileHover={{ scale: 1.02 }}
-                                        whileTap={{ scale: 0.98 }}
+                                        key={catKey}
+                                        className={styles.categorySection}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.3 }}
                                     >
-                                        <div className={styles.productCardHeader}>
-                                            <span
-                                                className={styles.productColorDot}
-                                                style={{ backgroundColor: product.color }}
-                                            />
-                                            <span className={styles.productName}>{product.product_name}</span>
-                                            {selectedProducts.includes(product.id) && (
-                                                <span className={styles.checkmark}>✓</span>
+                                        {/* Category Header */}
+                                        <motion.div 
+                                            className={styles.categoryHeader}
+                                            onClick={() => toggleCategory(catKey)}
+                                            style={{ '--category-color': category.color }}
+                                            whileHover={{ scale: 1.01 }}
+                                            whileTap={{ scale: 0.99 }}
+                                        >
+                                            <div className={styles.categoryHeaderLeft}>
+                                                <span className={styles.categoryIcon}>{category.icon}</span>
+                                                <div className={styles.categoryInfo}>
+                                                    <h4 className={styles.categoryName}>{category.name}</h4>
+                                                    <span className={styles.categoryNameEn}>{category.nameEn}</span>
+                                                </div>
+                                            </div>
+                                            <div className={styles.categoryHeaderRight}>
+                                                <span className={styles.categoryCount}>
+                                                    {selectedCount}/{visibleProducts.length}
+                                                </span>
+                                                <motion.span 
+                                                    className={styles.categoryArrow}
+                                                    animate={{ rotate: isExpanded ? 180 : 0 }}
+                                                    transition={{ duration: 0.2 }}
+                                                >
+                                                    ▼
+                                                </motion.span>
+                                            </div>
+                                        </motion.div>
+
+                                        {/* Category Description */}
+                                        <AnimatePresence>
+                                            {isExpanded && (
+                                                <motion.div
+                                                    initial={{ opacity: 0, height: 0 }}
+                                                    animate={{ opacity: 1, height: 'auto' }}
+                                                    exit={{ opacity: 0, height: 0 }}
+                                                    transition={{ duration: 0.3 }}
+                                                >
+                                                    <p className={styles.categoryDescription}>
+                                                        {category.description}
+                                                    </p>
+
+                                                    {/* Products Grid */}
+                                                    <div className={styles.categoryProductGrid}>
+                                                        {visibleProducts.map((product, index) => {
+                                                            const isCurrentBase = currentBaseNutrient.products.includes(product.id);
+                                                            const isSelected = selectedProducts.includes(product.id);
+
+                                                            return (
+                                                                <motion.div
+                                                                    key={product.id}
+                                                                    className={`${styles.productCard} ${isSelected ? styles.selected : ''} ${isCurrentBase ? styles.locked : ''}`}
+                                                                    onClick={() => toggleProduct(product.id)}
+                                                                    style={{
+                                                                        borderColor: isSelected ? product.color : 'transparent',
+                                                                        '--product-color': product.color
+                                                                    }}
+                                                                    initial={{ opacity: 0, scale: 0.9 }}
+                                                                    animate={{ opacity: 1, scale: 1 }}
+                                                                    transition={{ duration: 0.2, delay: index * 0.03 }}
+                                                                    whileHover={{ scale: isCurrentBase ? 1 : 1.03, y: isCurrentBase ? 0 : -2 }}
+                                                                    whileTap={{ scale: isCurrentBase ? 1 : 0.98 }}
+                                                                >
+                                                                    <div className={styles.productCardHeader}>
+                                                                        <span
+                                                                            className={styles.productColorDot}
+                                                                            style={{ backgroundColor: product.color }}
+                                                                        />
+                                                                        <span className={styles.productName}>{product.product_name}</span>
+                                                                        {isSelected && (
+                                                                            <motion.span 
+                                                                                className={styles.checkmark}
+                                                                                initial={{ scale: 0 }}
+                                                                                animate={{ scale: 1 }}
+                                                                                transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                                                                            >
+                                                                                ✓
+                                                                            </motion.span>
+                                                                        )}
+                                                                    </div>
+                                                                    {product.function_key && (
+                                                                        <div className={styles.productFunction}>{t(product.function_key)}</div>
+                                                                    )}
+                                                                    {isCurrentBase && (
+                                                                        <div className={styles.lockedBadge}>🔒 Temel</div>
+                                                                    )}
+                                                                </motion.div>
+                                                            );
+                                                        })}
+                                                    </div>
+                                                </motion.div>
                                             )}
-                                        </div>
-                                        {product.function_key && (
-                                            <div className={styles.productFunction}>{t(product.function_key)}</div>
-                                        )}
+                                        </AnimatePresence>
                                     </motion.div>
                                 );
                             })}

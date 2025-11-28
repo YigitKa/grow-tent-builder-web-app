@@ -31,14 +31,54 @@ export const BASE_NUTRIENT_OPTIONS = [
 ];
 
 export const PRODUCT_CATEGORIES = {
-    base_nutrient: { name_key: 'catBaseNutrient', icon: '🌱' },
-    root_mass: { name_key: 'catRootMass', icon: '🌳' },
-    bud_potency: { name_key: 'catBudPotency', icon: '💪' },
-    bigger_buds: { name_key: 'catBiggerBuds', icon: '🌺' },
-    taste_terpene: { name_key: 'catTasteTerpene', icon: '🍬' },
-    plant_health: { name_key: 'catPlantHealth', icon: '🛡️' }, // Rhino Skin etc.
-    crop_substrate: { name_key: 'catCropSubstrate', icon: '🍂' }, // Sensizym
-    flush: { name_key: 'catFlush', icon: '🚿' }
+    base_nutrient: { 
+        name_key: 'catBaseNutrient', 
+        icon: '🌱',
+        name: 'Temel Besinler',
+        nameEn: 'BASE NUTRIENTS',
+        description: 'Bitkinin ana büyüme ve çiçeklenme aşamaları için gerekli olan temel besin çözeltileri.',
+        color: '#22C55E'
+    },
+    root_expanders: { 
+        name_key: 'catRootExpanders', 
+        icon: '🌳',
+        name: 'Kök Genişleticiler',
+        nameEn: 'ROOT EXPANDERS',
+        description: 'Kök sistemi gelişimini destekleyen ürünler.',
+        color: '#8B5CF6'
+    },
+    bigger_buds: { 
+        name_key: 'catBiggerBuds', 
+        icon: '🌺',
+        name: 'Büyük Tomurcuklar',
+        nameEn: 'BIGGER BUDS',
+        description: 'Tomurcuk boyutunu ve ağırlığını artırmayı hedefleyen destekleyiciler.',
+        color: '#EF4444'
+    },
+    bud_potency: { 
+        name_key: 'catBudPotency', 
+        icon: '💪',
+        name: 'Tomurcuk Potansiyeli & Gövde Güçlendirici',
+        nameEn: 'BUD POTENCY & STALK STRENGTHENER',
+        description: 'Bitki gücünü, gövde yapısını ve tomurcuk potansiyelini destekleyen ürünler.',
+        color: '#F59E0B'
+    },
+    grow_medium: { 
+        name_key: 'catGrowMedium', 
+        icon: '🍂',
+        name: 'Büyüme Ortamı Düzenleyici',
+        nameEn: 'GROW MEDIUM CONDITIONER',
+        description: 'Yetiştirme ortamının koşullarını iyileştirmeyi amaçlayan ürünler.',
+        color: '#34D399'
+    },
+    taste_terpene: { 
+        name_key: 'catTasteTerpene', 
+        icon: '🍬',
+        name: 'Tomurcuk Tadı & Terpen Geliştirici',
+        nameEn: 'BUD TASTE & TERPENE ENHANCEMENT',
+        description: 'Mahsulün tadını ve aroma profilini (terpen) geliştirmeyi hedefleyen ürünler.',
+        color: '#EC4899'
+    }
 };
 
 export const WEEK_LABELS = [
@@ -298,11 +338,11 @@ export const ADVANCED_NUTRIENTS_DATA = [
         schedule_default: { 'Grow W1': 1, 'Grow W2': 2, 'Grow W3': 4, 'Grow W4': 4, 'Bloom W1': 4, 'Bloom W2': 4, 'Bloom W3': 4, 'Bloom W4': 4, 'Bloom W5': 4, 'Bloom W6': 4, 'Bloom W7': 4 }
     },
 
-    // --- Root Mass ---
+    // --- Root Expanders ---
     {
         id: 'voodoo-juice',
         product_name: 'Voodoo Juice®',
-        category_key: 'root_mass',
+        category_key: 'root_expanders',
         dose_unit: 'ml/L',
         color: '#8B5CF6',
         function_key: 'funcRootStim',
@@ -313,7 +353,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
     {
         id: 'piranha',
         product_name: 'Piranha®',
-        category_key: 'root_mass',
+        category_key: 'root_expanders',
         dose_unit: 'ml/L',
         color: '#A78BFA',
         function_key: 'funcRootFungi',
@@ -323,7 +363,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
     {
         id: 'tarantula',
         product_name: 'Tarantula®',
-        category_key: 'root_mass',
+        category_key: 'root_expanders',
         dose_unit: 'ml/L',
         color: '#7C3AED',
         function_key: 'funcRootBacteria',
@@ -331,7 +371,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         schedule_hydro_master: { 'Grow W1': 2, 'Grow W2': 2, 'Bloom W1': 2, 'Bloom W2': 2 }
     },
 
-    // --- Bud Potency ---
+    // --- Bud Potency & Stalk Strengthener ---
     {
         id: 'b-52',
         product_name: 'B-52®',
@@ -346,7 +386,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
     {
         id: 'rhino-skin',
         product_name: 'Rhino Skin®',
-        category_key: 'plant_health',
+        category_key: 'bud_potency',
         dose_unit: 'ml/L',
         color: '#64748B',
         function_key: 'funcSilica',
@@ -430,11 +470,11 @@ export const ADVANCED_NUTRIENTS_DATA = [
         schedule_hydro_master: { 'Bloom W3': 2, 'Bloom W4': 2, 'Bloom W5': 2, 'Bloom W6': 2, 'Bloom W7': 2 }
     },
 
-    // --- Crop Substrate / Enzymes ---
+    // --- Grow Medium Conditioner ---
     {
         id: 'sensizym',
         product_name: 'Sensizym®',
-        category_key: 'crop_substrate',
+        category_key: 'grow_medium',
         dose_unit: 'ml/L',
         color: '#34D399',
         function_key: 'funcEnzymes',
@@ -442,11 +482,11 @@ export const ADVANCED_NUTRIENTS_DATA = [
         schedule_hydro_master: { 'Grow W1': 2, 'Grow W2': 2, 'Grow W3': 2, 'Grow W4': 2, 'Bloom W1': 2, 'Bloom W2': 2, 'Bloom W3': 2, 'Bloom W4': 2, 'Bloom W5': 2, 'Bloom W6': 2, 'Bloom W7': 2 }
     },
 
-    // --- Flush ---
+    // --- Bud Taste & Terpene Enhancement ---
     {
         id: 'flawless-finish',
         product_name: 'Flawless Finish®',
-        category_key: 'flush',
+        category_key: 'taste_terpene',
         dose_unit: 'ml/L',
         color: '#9CA3AF',
         function_key: 'funcFlush',
