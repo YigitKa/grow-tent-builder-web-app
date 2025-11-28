@@ -150,10 +150,10 @@
   padding: 1.5rem;
   border-radius: 16px;
   margin-bottom: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: flex-end;
+  gap: 1.5rem;
   border: 1px solid #334155;
   position: relative;
   z-index: 20;
@@ -163,6 +163,11 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+.controlGroup.fullWidth {
+  grid-column: span 2;
+  flex-basis: 100%;
 }
 
 .controlLabel {
@@ -846,35 +851,109 @@
   transform: translateY(-1px);
 }
 
+/* Select Input Styling */
+.selectInput {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.selectInput option {
+  background: #1a1a1a;
+}
+
+/* Unit Badge */
+.unitBadge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background: rgba(100, 116, 139, 0.2);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+/* Locked product card */
+.productCard.locked {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.productCard.locked::after {
+  content: '🔒';
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 0.8rem;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .controls {
     flex-wrap: wrap;
+    display: flex !important;
+    grid-template-columns: unset !important;
   }
 
   .controlGroup {
     flex: 1;
     min-width: 200px;
   }
+
+  .controlGroup[style*="grid-column: span 2"] {
+    flex-basis: 100%;
+  }
 }
 
 @media (max-width: 768px) {
   .title {
-    font-size: 2rem;
+    font-size: 1.75rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .headerFeatures {
+    gap: 0.5rem;
+  }
+
+  .featureTag {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.75rem;
   }
 
   .controls {
     flex-direction: column;
     align-items: stretch;
-    gap: 1.5rem;
+    gap: 1rem;
+    padding: 1rem;
+    display: flex !important;
+    grid-template-columns: unset !important;
   }
 
   .controlGroup {
     width: 100%;
+    min-width: unset;
+  }
+
+  .controlGroup[style*="grid-column"] {
+    grid-column: unset !important;
+  }
+
+  .selectInput {
+    font-size: 1rem;
+    padding: 0.875rem;
   }
 
   .productSelectorBtn {
     width: 100%;
+    min-width: unset;
   }
 
   .waterInput {
@@ -899,68 +978,383 @@
     width: 100%;
   }
 
+  .productSelector {
+    padding: 1rem;
+  }
+
+  .productSelectorHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .productSelectorActions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .actionBtn {
+    flex: 1;
+    min-width: 80px;
+    text-align: center;
+  }
+
   .productGrid {
     grid-template-columns: 1fr;
+  }
+
+  .phaseLegend {
+    gap: 0.75rem;
+    padding: 0.75rem;
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+
+  .phaseItem {
+    flex-shrink: 0;
+    font-size: 0.85rem;
   }
 
   .infoGrid {
     grid-template-columns: 1fr;
   }
 
+  /* Table adjustments for mobile */
+  .tableWrapper {
+    border-radius: 12px;
+    margin-bottom: 2rem;
+  }
+
+  .scheduleTable {
+    min-width: 900px;
+  }
+
+  .scheduleTable th,
+  .scheduleTable td {
+    padding: 0.75rem 0.5rem;
+  }
+
   /* Adjust sticky columns for mobile */
   .productHeader,
   .productCell {
-    min-width: 140px;
-    max-width: 140px;
+    min-width: 120px;
+    max-width: 120px;
   }
 
   .unitHeader,
   .unitCell {
-    left: 140px;
-    min-width: 60px;
+    left: 120px;
+    min-width: 55px;
+  }
+
+  .productTitle {
+    font-size: 0.85rem;
   }
 
   .productSubtitle {
     display: none;
-    /* Hide subtitle on mobile to save space */
+  }
+
+  .doseValue {
+    font-size: 0.95rem;
+  }
+
+  .doseUnit {
+    font-size: 0.65rem;
+  }
+
+  .totalDose {
+    font-size: 0.7rem;
+  }
+
+  .totalsLabel {
+    font-size: 0.85rem;
+  }
+
+  .totalValue {
+    font-size: 0.8rem;
+  }
+
+  .notesSection {
+    padding: 1.5rem;
+  }
+
+  .notesList {
+    grid-template-columns: 1fr;
+  }
+
+  .tipsList {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 480px) {
   .title {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
   }
 
   .header {
-    padding: 2rem 1rem;
+    padding: 1.5rem 0.75rem;
+  }
+
+  .headerFeatures {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .featureTag {
+    width: 100%;
+    text-align: center;
   }
 
   .container {
-    padding: 1rem;
+    padding: 0.75rem;
   }
 
-  /* On very small screens, maybe unstick the unit column or adjust further */
+  .controls {
+    padding: 0.875rem;
+    gap: 0.875rem;
+    border-radius: 12px;
+  }
+
+  .controlLabel {
+    font-size: 0.8rem;
+  }
+
+  .selectInput {
+    font-size: 0.9rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+  }
+
+  .numberInput {
+    font-size: 1rem;
+  }
+
+  .productSelectorBtn {
+    padding: 0.625rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .productSelectorActions {
+    gap: 0.5rem;
+  }
+
+  .actionBtn {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .productCard {
+    padding: 0.875rem;
+  }
+
+  .productName {
+    font-size: 0.9rem;
+  }
+
+  .productFunction {
+    font-size: 0.7rem;
+  }
+
+  .phaseLegend {
+    padding: 0.625rem;
+    gap: 0.625rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+  }
+
+  .phaseColor {
+    width: 12px;
+    height: 12px;
+  }
+
+  .phaseLabel {
+    font-size: 0.75rem;
+  }
+
+  /* Table compact mode for very small screens */
+  .tableWrapper {
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+  }
+
+  .scheduleTable {
+    min-width: 700px;
+  }
+
+  .scheduleTable th,
+  .scheduleTable td {
+    padding: 0.5rem 0.35rem;
+  }
+
+  /* Hide unit column on very small screens */
   .unitHeader,
   .unitCell {
     display: none;
-    /* Hide unit column on very small screens if needed, or keep it */
   }
 
   .productHeader,
   .productCell {
-    width: auto;
-    max-width: none;
+    min-width: 100px;
+    max-width: 100px;
     position: sticky;
     left: 0;
     border-right: 1px solid #334155;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.15);
+  }
+
+  .productInfo {
+    gap: 0.5rem;
+  }
+
+  .productDot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .productTitle {
+    font-size: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .weekLabel {
+    font-size: 0.75rem;
   }
 
   .doseCell {
-    padding: 0.75rem 0.5rem;
+    padding: 0.4rem 0.25rem;
   }
 
   .doseValue {
+    font-size: 0.85rem;
+  }
+
+  .doseUnit {
+    display: none;
+  }
+
+  .totalDose {
+    font-size: 0.65rem;
+  }
+
+  .emptyCell {
+    font-size: 0.8rem;
+  }
+
+  .totalsLabel {
+    font-size: 0.75rem;
+    padding: 0.5rem;
+  }
+
+  .totalsCell {
+    padding: 0.5rem 0.25rem;
+  }
+
+  .totalValue {
+    font-size: 0.7rem;
+  }
+
+  .brandBadge {
+    padding: 0.375rem 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .brandBadge h2 {
     font-size: 1rem;
+  }
+
+  .notesSection {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .notesTitle {
+    font-size: 1.25rem;
+  }
+
+  .noteItem {
+    padding: 1rem;
+  }
+
+  .tipsTitle {
+    font-size: 1.25rem;
+  }
+
+  .tipItem {
+    padding: 1rem;
+  }
+
+  .tipIcon {
+    font-size: 1.5rem;
+  }
+
+  .infoSectionTitle {
+    font-size: 1.5rem;
+  }
+
+  .infoCategoryTitle {
+    font-size: 1.25rem;
+  }
+
+  .infoCard {
+    padding: 1rem;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .infoCardIcon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+    margin: 0 auto;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 360px) {
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+  }
+
+  .controls {
+    padding: 0.75rem;
+  }
+
+  .selectInput {
+    font-size: 0.85rem;
+    padding: 0.625rem;
+  }
+
+  .scheduleTable {
+    min-width: 600px;
+  }
+
+  .productHeader,
+  .productCell {
+    min-width: 85px;
+    max-width: 85px;
+  }
+
+  .productTitle {
+    font-size: 0.7rem;
+  }
+
+  .doseValue {
+    font-size: 0.75rem;
+  }
+
+  .weekLabel {
+    font-size: 0.65rem;
   }
 }

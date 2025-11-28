@@ -178,28 +178,18 @@ export default function AdvancedNutrientsSchedule() {
             </div>
 
             {/* Controls Container */}
-            <div className={styles.controls} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1rem' }}>
+            <div className={styles.controls}>
 
                 {/* Base Nutrient Selection */}
-                <div className={styles.controlGroup} style={{ gridColumn: 'span 2' }}>
+                <div className={`${styles.controlGroup} ${styles.fullWidth}`}>
                     <label className={styles.controlLabel}>{t('selectRecipe')} (Base Nutrient)</label>
                     <select
                         className={styles.selectInput}
                         value={selectedBaseNutrientId}
                         onChange={(e) => setSelectedBaseNutrientId(e.target.value)}
-                        style={{
-                            width: '100%',
-                            padding: '1rem',
-                            borderRadius: '12px',
-                            background: 'rgba(255, 255, 255, 0.05)',
-                            border: '1px solid rgba(255, 255, 255, 0.1)',
-                            color: 'white',
-                            fontSize: '1.1rem',
-                            cursor: 'pointer'
-                        }}
                     >
                         {BASE_NUTRIENT_OPTIONS.map(opt => (
-                            <option key={opt.id} value={opt.id} style={{ background: '#1a1a1a' }}>
+                            <option key={opt.id} value={opt.id}>
                                 {opt.label}
                             </option>
                         ))}
