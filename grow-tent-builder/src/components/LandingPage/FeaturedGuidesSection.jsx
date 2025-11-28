@@ -54,6 +54,7 @@ export default function FeaturedGuidesSection() {
                 <button
                     className="slider-btn next"
                     onClick={() => setCurrentSlide(prev => (prev === totalSlides - 1 ? 0 : prev + 1))}
+                    aria-label="Next slide"
                 >
                     →
                 </button>
