@@ -104,6 +104,7 @@ export default function AdvancedNutrientsSchedule() {
     const [selectedProducts, setSelectedProducts] = useState([]);
     const [waterAmount, setWaterAmount] = useState(10); // Litre
     const [showProductSelector, setShowProductSelector] = useState(true); // Varsayılan olarak açık
+    const [showBaseNutrientSelector, setShowBaseNutrientSelector] = useState(false);
     const [highlightedWeek, setHighlightedWeek] = useState(null);
     const [openAccordion, setOpenAccordion] = useState(null);
     const [expandedCategories, setExpandedCategories] = useState(
@@ -287,20 +288,34 @@ export default function AdvancedNutrientsSchedule() {
             {/* Controls Container */}
             <div className={styles.controls}>
 
-                {/* Base Nutrient Selection */}
+                {/* Base Nutrient Selection - Modern Card Style */}
                 <div className={`${styles.controlGroup} ${styles.fullWidth}`}>
                     <label className={styles.controlLabel}>{t('selectRecipe')} (Base Nutrient)</label>
-                    <select
-                        className={styles.selectInput}
-                        value={selectedBaseNutrientId}
-                        onChange={(e) => setSelectedBaseNutrientId(e.target.value)}
+                    <motion.div
+                        className={styles.baseNutrientSelector}
+                        onClick={() => setShowBaseNutrientSelector(!showBaseNutrientSelector)}
+                        whileHover={{ scale: 1.01 }}
+                        whileTap={{ scale: 0.99 }}
+                        style={{ '--selected-color': currentBaseNutrient.color }}
                     >
-                        {BASE_NUTRIENT_OPTIONS.map(opt => (
-                            <option key={opt.id} value={opt.id}>
-                                {opt.label}
-                            </option>
-                        ))}
-                    </select>
+                        <div className={styles.baseNutrientSelected}>
+                            <span className={styles.baseNutrientIcon}>{currentBaseNutrient.icon}</span>
+                            <div className={styles.baseNutrientInfo}>
+                                <span className={styles.baseNutrientName}>{currentBaseNutrient.label}</span>
+                                <span className={styles.baseNutrientDesc}>{currentBaseNutrient.description}</span>
+                            </div>
+                            <span className={styles.baseNutrientBadge} style={{ backgroundColor: `${currentBaseNutrient.color}20`, color: currentBaseNutrient.color }}>
+                                {currentBaseNutrient.badge}
+                            </span>
+                        </div>
+                        <motion.span 
+                            className={styles.baseNutrientArrow}
+                            animate={{ rotate: showBaseNutrientSelector ? 180 : 0 }}
+                            transition={{ duration: 0.2 }}
+                        >
+                            ▼
+                        </motion.span>
+                    </motion.div>
                 </div>
 
                 {/* Water Amount */}
@@ -340,6 +355,67 @@ export default function AdvancedNutrientsSchedule() {
                     </button>
                 </div>
             </div>
+
+            {/* Base Nutrient Dropdown */}
+            <AnimatePresence>
+                {showBaseNutrientSelector && (
+                    <motion.div
+                        className={styles.baseNutrientDropdown}
+                        initial={{ opacity: 0, y: -10, height: 0 }}
+                        animate={{ opacity: 1, y: 0, height: 'auto' }}
+                        exit={{ opacity: 0, y: -10, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        <div className={styles.baseNutrientDropdownHeader}>
+                            <h3>🌱 Temel Besin Seçimi</h3>
+                            <p>Yetiştirme ortamınıza ve aşamanıza uygun temel besini seçin</p>
+                        </div>
+                        <div className={styles.baseNutrientGrid}>
+                            {BASE_NUTRIENT_OPTIONS.map((option, index) => (
+                                <motion.div
+                                    key={option.id}
+                                    className={`${styles.baseNutrientCard} ${selectedBaseNutrientId === option.id ? styles.selected : ''}`}
+                                    onClick={() => {
+                                        setSelectedBaseNutrientId(option.id);
+                                        setShowBaseNutrientSelector(false);
+                                    }}
+                                    style={{ '--card-color': option.color }}
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ duration: 0.2, delay: index * 0.02 }}
+                                    whileHover={{ scale: 1.02, y: -2 }}
+                                    whileTap={{ scale: 0.98 }}
+                                >
+                                    <div className={styles.baseNutrientCardHeader}>
+                                        <span className={styles.baseNutrientCardIcon}>{option.icon}</span>
+                                        <span 
+                                            className={styles.baseNutrientCardBadge}
+                                            style={{ backgroundColor: `${option.color}20`, color: option.color }}
+                                        >
+                                            {option.badge}
+                                        </span>
+                                        {selectedBaseNutrientId === option.id && (
+                                            <motion.span 
+                                                className={styles.baseNutrientCardCheck}
+                                                initial={{ scale: 0 }}
+                                                animate={{ scale: 1 }}
+                                                transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                                            >
+                                                ✓
+                                            </motion.span>
+                                        )}
+                                    </div>
+                                    <h4 className={styles.baseNutrientCardName}>{option.shortLabel || option.label}</h4>
+                                    <p className={styles.baseNutrientCardDesc}>{option.description}</p>
+                                    <div className={styles.baseNutrientCardPhase}>
+                                        {option.phase === 'vegetative' ? '🌿 Vejetatif' : '🌸 Çiçeklenme'}
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             {/* Product Selector Dropdown */}
             <AnimatePresence>

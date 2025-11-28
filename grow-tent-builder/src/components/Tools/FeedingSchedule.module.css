@@ -2286,3 +2286,344 @@
     gap: 0.75rem;
   }
 }
+
+/* ========================================
+   BASE NUTRIENT SELECTOR STYLES
+   ======================================== */
+
+.baseNutrientSelector {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.baseNutrientSelector::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--selected-color, #22c55e);
+  border-radius: 4px 0 0 4px;
+}
+
+.baseNutrientSelector:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(30, 41, 59, 0.8);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.baseNutrientSelected {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.baseNutrientIcon {
+  font-size: 1.75rem;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.baseNutrientInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.baseNutrientName {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.baseNutrientDesc {
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.baseNutrientBadge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.baseNutrientArrow {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-left: 1rem;
+}
+
+/* Base Nutrient Dropdown */
+.baseNutrientDropdown {
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.baseNutrientDropdownHeader {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.baseNutrientDropdownHeader h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 0.5rem;
+}
+
+.baseNutrientDropdownHeader p {
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+.baseNutrientGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.baseNutrientCard {
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.baseNutrientCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--card-color, #22c55e);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.baseNutrientCard:hover::before {
+  transform: scaleX(1);
+}
+
+.baseNutrientCard:hover {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.baseNutrientCard.selected {
+  background: rgba(34, 197, 94, 0.08);
+  border-color: var(--card-color, #22c55e);
+  border-width: 2px;
+}
+
+.baseNutrientCard.selected::before {
+  transform: scaleX(1);
+}
+
+.baseNutrientCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.baseNutrientCardIcon {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.baseNutrientCardBadge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.baseNutrientCardCheck {
+  margin-left: auto;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.baseNutrientCardName {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 0.5rem;
+}
+
+.baseNutrientCardDesc {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+}
+
+.baseNutrientCardPhase {
+  font-size: 0.75rem;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Responsive for Base Nutrient Selector */
+@media (max-width: 768px) {
+  .baseNutrientSelector {
+    padding: 0.875rem 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .baseNutrientSelected {
+    width: 100%;
+  }
+
+  .baseNutrientIcon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+
+  .baseNutrientName {
+    font-size: 1rem;
+  }
+
+  .baseNutrientDesc {
+    font-size: 0.8rem;
+    display: none;
+  }
+
+  .baseNutrientArrow {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .baseNutrientDropdown {
+    padding: 1rem;
+    border-radius: 16px;
+  }
+
+  .baseNutrientDropdownHeader h3 {
+    font-size: 1.25rem;
+  }
+
+  .baseNutrientGrid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .baseNutrientCard {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .baseNutrientSelector {
+    padding: 0.75rem;
+  }
+
+  .baseNutrientIcon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.25rem;
+  }
+
+  .baseNutrientName {
+    font-size: 0.9rem;
+  }
+
+  .baseNutrientBadge {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .baseNutrientDropdownHeader {
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .baseNutrientDropdownHeader h3 {
+    font-size: 1.1rem;
+  }
+
+  .baseNutrientDropdownHeader p {
+    font-size: 0.8rem;
+  }
+
+  .baseNutrientCard {
+    padding: 0.875rem;
+  }
+
+  .baseNutrientCardIcon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.25rem;
+  }
+
+  .baseNutrientCardName {
+    font-size: 0.9rem;
+  }
+
+  .baseNutrientCardDesc {
+    font-size: 0.75rem;
+  }
+}
