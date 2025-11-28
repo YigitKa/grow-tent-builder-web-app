@@ -110,46 +110,6 @@ export default function AdvancedNutrientsSchedule() {
     const [expandedCategories, setExpandedCategories] = useState(
         Object.keys(PRODUCT_CATEGORIES).reduce((acc, key) => ({ ...acc, [key]: true }), {})
     );
-    const [vegWeeks, setVegWeeks] = useState(4); // Varsayılan 4 vej haftası
-
-    // Dinamik hafta etiketleri oluştur
-    const dynamicWeekLabels = useMemo(() => {
-        const labels = [];
-        // Vejetatif haftalar
-        for (let i = 1; i <= vegWeeks; i++) {
-            labels.push(`Grow W${i}`);
-        }
-        // Çiçeklenme haftaları (sabit 8 hafta)
-        for (let i = 1; i <= 8; i++) {
-            labels.push(`Bloom W${i}`);
-        }
-        return labels;
-    }, [vegWeeks]);
-
-    // Toplam hafta sayısı
-    const totalWeeks = vegWeeks + 8;
-
-    // Hafta ekle/çıkar fonksiyonları
-    const addVegWeek = () => {
-        if (vegWeeks < 4) { // Max 4 vej = toplam 12 hafta
-            setVegWeeks(prev => prev + 1);
-        }
-    };
-
-    const removeVegWeek = () => {
-        if (vegWeeks > 0) { // Min 0 vej = toplam 8 hafta
-            setVegWeeks(prev => prev - 1);
-        }
-    };
-
-    // Dinamik faz bilgisi
-    const getDynamicPhaseInfo = useMemo(() => {
-        return {
-            vegetative: { weeks: Array.from({ length: vegWeeks }, (_, i) => i + 1), label_key: 'phaseLabelVeg', color: '#22C55E' },
-            flowering: { weeks: Array.from({ length: 7 }, (_, i) => vegWeeks + i + 1), label_key: 'phaseLabelFlower', color: '#EC4899' },
-            flush: { weeks: [totalWeeks], label_key: 'phaseLabelFlush', color: '#6B7280' }
-        };
-    }, [vegWeeks, totalWeeks]);
 
     // Get current base nutrient option
     const currentBaseNutrient = useMemo(() => {
@@ -241,23 +201,12 @@ export default function AdvancedNutrientsSchedule() {
         return product[scheduleKey] || product.schedule_default || null;
     };
 
-    // Calculate dose for a specific week - dinamik hafta desteği
+    // Calculate dose for a specific week
     const calculateDoseForWeek = (product, weekLabel) => {
         const schedule = getSchedule(product);
         if (!schedule) return null;
 
-        // Dinamik hafta etiketini orijinal schedule'daki etikete eşle
-        let mappedLabel = weekLabel;
-        
-        // Eğer eklenen vej haftasıysa (Grow W5, W6, vb.), Grow W4'ün değerini kullan
-        if (weekLabel.startsWith('Grow W')) {
-            const weekNum = parseInt(weekLabel.replace('Grow W', ''));
-            if (weekNum > 4) {
-                mappedLabel = 'Grow W4';
-            }
-        }
-
-        const dose = schedule[mappedLabel];
+        const dose = schedule[weekLabel];
         if (dose === undefined) return null;
         return dose;
     };
@@ -276,10 +225,10 @@ export default function AdvancedNutrientsSchedule() {
         return totals;
     };
 
-    // Get phase info for a week index - dinamik faz bilgisi kullan
+    // Get phase info for a week index
     const getPhaseForWeek = (weekIndex) => {
         const weekNum = weekIndex + 1;
-        for (const [, phase] of Object.entries(getDynamicPhaseInfo)) {
+        for (const [, phase] of Object.entries(PHASE_INFO)) {
             if (phase.weeks.includes(weekNum)) {
                 return phase;
             }
@@ -379,7 +328,7 @@ export default function AdvancedNutrientsSchedule() {
                         <div className={styles.heroStatItem}>
                             <span className={styles.heroStatIcon}>🔬</span>
                             <div className={styles.heroStatContent}>
-                                <span className={styles.heroStatValue}>{totalWeeks}</span>
+                                <span className={styles.heroStatValue}>12</span>
                                 <span className={styles.heroStatLabel}>Haftalık Program</span>
                             </div>
                         </div>
@@ -437,7 +386,15 @@ export default function AdvancedNutrientsSchedule() {
                         style={{ '--selected-color': currentBaseNutrient.color }}
                     >
                         <div className={styles.baseNutrientSelected}>
-                            <span className={styles.baseNutrientIcon}>{currentBaseNutrient.icon}</span>
+                            {currentBaseNutrient.image ? (
+                                <img 
+                                    src={currentBaseNutrient.image} 
+                                    alt={currentBaseNutrient.label}
+                                    className={styles.baseNutrientImage}
+                                />
+                            ) : (
+                                <span className={styles.baseNutrientIcon}>{currentBaseNutrient.icon}</span>
+                            )}
                             <div className={styles.baseNutrientInfo}>
                                 <span className={styles.baseNutrientName}>{currentBaseNutrient.label}</span>
                                 <span className={styles.baseNutrientDesc}>{currentBaseNutrient.description}</span>
@@ -461,18 +418,30 @@ export default function AdvancedNutrientsSchedule() {
                     <label className={styles.controlLabel}>
                         {t('products')}
                     </label>
-                    <button
+                    <motion.div
                         className={styles.productSelectorBtn}
                         onClick={() => setShowProductSelector(!showProductSelector)}
+                        whileHover={{ scale: 1.01 }}
+                        whileTap={{ scale: 0.99 }}
                     >
-                        {selectedProducts.length} {t('productSelected')}
-                        <motion.span
-                            className={styles.dropdownArrow}
+                        <div className={styles.productSelectorSelected}>
+                            <span className={styles.productSelectorIcon}>📦</span>
+                            <div className={styles.productSelectorInfo}>
+                                <span className={styles.productSelectorName}>{selectedProducts.length} {t('productSelected')}</span>
+                                <span className={styles.productSelectorDesc}>
+                                    {Object.keys(selectedProductsSummary).length} kategoriden seçim yapıldı
+                                </span>
+                            </div>
+                            <span className={styles.productSelectorCount}>{selectedProducts.length}</span>
+                        </div>
+                        <motion.span 
+                            className={styles.productSelectorArrow}
                             animate={{ rotate: showProductSelector ? 180 : 0 }}
+                            transition={{ duration: 0.2 }}
                         >
                             ▼
                         </motion.span>
-                    </button>
+                    </motion.div>
                 </div>
             </div>
 
@@ -488,7 +457,7 @@ export default function AdvancedNutrientsSchedule() {
                     >
                         <div className={styles.baseNutrientDropdownHeader}>
                             <h3>🌱 Temel Besin Seçimi</h3>
-                            <p>Yetiştirme ortamınıza ve aşamanıza uygun temel besini seçin</p>
+                            <p>Yetiştirme ortamınıza uygun temel besini seçin</p>
                         </div>
                         <div className={styles.baseNutrientGrid}>
                             {BASE_NUTRIENT_OPTIONS.map((option, index) => (
@@ -507,7 +476,15 @@ export default function AdvancedNutrientsSchedule() {
                                     whileTap={{ scale: 0.98 }}
                                 >
                                     <div className={styles.baseNutrientCardHeader}>
-                                        <span className={styles.baseNutrientCardIcon}>{option.icon}</span>
+                                        {option.image ? (
+                                            <img 
+                                                src={option.image} 
+                                                alt={option.label}
+                                                className={styles.baseNutrientCardImage}
+                                            />
+                                        ) : (
+                                            <span className={styles.baseNutrientCardIcon}>{option.icon}</span>
+                                        )}
                                         <span 
                                             className={styles.baseNutrientCardBadge}
                                             style={{ backgroundColor: `${option.color}20`, color: option.color }}
@@ -525,11 +502,8 @@ export default function AdvancedNutrientsSchedule() {
                                             </motion.span>
                                         )}
                                     </div>
-                                    <h4 className={styles.baseNutrientCardName}>{option.shortLabel || option.label}</h4>
+                                    <h4 className={styles.baseNutrientCardName}>{option.label}</h4>
                                     <p className={styles.baseNutrientCardDesc}>{option.description}</p>
-                                    <div className={styles.baseNutrientCardPhase}>
-                                        {option.phase === 'vegetative' ? '🌿 Vejetatif' : '🌸 Çiçeklenme'}
-                                    </div>
                                 </motion.div>
                             ))}
                         </div>
@@ -764,7 +738,7 @@ export default function AdvancedNutrientsSchedule() {
 
             {/* Phase Legend */}
             <div className={styles.phaseLegend}>
-                {Object.entries(getDynamicPhaseInfo).map(([key, phase]) => (
+                {Object.entries(PHASE_INFO).map(([key, phase]) => (
                     <div key={key} className={styles.phaseItem}>
                         <span
                             className={styles.phaseColor}
@@ -775,7 +749,7 @@ export default function AdvancedNutrientsSchedule() {
                 ))}
             </div>
 
-            {/* Table Controls - Su Miktarı ve Hafta Kontrolleri */}
+            {/* Table Controls - Su Miktarı */}
             <div className={styles.tableControls}>
                 <div className={styles.tableControlsInner}>
                     {/* Su Miktarı Kontrolü */}
@@ -797,48 +771,19 @@ export default function AdvancedNutrientsSchedule() {
                         </div>
                     </div>
 
-                    {/* Hafta Kontrolleri */}
-                    <div className={styles.weekControl}>
-                        <div className={styles.weekControlIcon}>📅</div>
-                        <div className={styles.weekControlContent}>
-                            <label className={styles.weekControlLabel}>Vejetatif Haftalar</label>
-                            <div className={styles.weekControlButtons}>
-                                <motion.button
-                                    className={`${styles.weekBtn} ${styles.weekBtnMinus}`}
-                                    onClick={removeVegWeek}
-                                    disabled={vegWeeks <= 0}
-                                    whileHover={{ scale: vegWeeks > 0 ? 1.1 : 1 }}
-                                    whileTap={{ scale: vegWeeks > 0 ? 0.9 : 1 }}
-                                >
-                                    −
-                                </motion.button>
-                                <div className={styles.weekDisplay}>
-                                    <span className={styles.weekCount}>{vegWeeks}</span>
-                                    <span className={styles.weekSeparator}>/</span>
-                                    <span className={styles.weekTotal}>{totalWeeks} hafta</span>
-                                </div>
-                                <motion.button
-                                    className={`${styles.weekBtn} ${styles.weekBtnPlus}`}
-                                    onClick={addVegWeek}
-                                    disabled={vegWeeks >= 4}
-                                    whileHover={{ scale: vegWeeks < 4 ? 1.1 : 1 }}
-                                    whileTap={{ scale: vegWeeks < 4 ? 0.9 : 1 }}
-                                >
-                                    +
-                                </motion.button>
-                            </div>
-                        </div>
-                    </div>
-
                     {/* Toplam Hafta Bilgisi */}
                     <div className={styles.weekInfo}>
                         <div className={styles.weekInfoItem}>
                             <span className={styles.weekInfoIcon}>🌱</span>
-                            <span className={styles.weekInfoText}>Vej: {vegWeeks} hafta</span>
+                            <span className={styles.weekInfoText}>Vejetatif: 4 hafta</span>
                         </div>
                         <div className={styles.weekInfoItem}>
                             <span className={styles.weekInfoIcon}>🌸</span>
-                            <span className={styles.weekInfoText}>Çiçek: 8 hafta</span>
+                            <span className={styles.weekInfoText}>Çiçeklenme: 8 hafta</span>
+                        </div>
+                        <div className={styles.weekInfoItem}>
+                            <span className={styles.weekInfoIcon}>📅</span>
+                            <span className={styles.weekInfoText}>Toplam: 12 hafta</span>
                         </div>
                     </div>
                 </div>
@@ -855,7 +800,7 @@ export default function AdvancedNutrientsSchedule() {
                             <th className={styles.unitHeader}>
                                 {t('unit')}
                             </th>
-                            {dynamicWeekLabels.map((week, index) => {
+                            {WEEK_LABELS.map((week, index) => {
                                 const phase = getPhaseForWeek(index);
                                 return (
                                     <th
@@ -904,7 +849,7 @@ export default function AdvancedNutrientsSchedule() {
                                         <td className={styles.unitCell}>
                                             <span className={styles.unitBadge}>{product.dose_unit}</span>
                                         </td>
-                                        {dynamicWeekLabels.map((week, index) => {
+                                        {WEEK_LABELS.map((week, index) => {
                                             const phase = getPhaseForWeek(index);
                                             return (
                                                 <td
@@ -927,7 +872,7 @@ export default function AdvancedNutrientsSchedule() {
                                 <td className={styles.totalsLabel} colSpan={2}>
                                     <strong>📊 {t('totalForWater')} ({waterAmount}L {t('water')})</strong>
                                 </td>
-                                {dynamicWeekLabels.map((week, index) => {
+                                {WEEK_LABELS.map((week, index) => {
                                     const totals = calculateTotalForWeek(week);
                                     const phase = getPhaseForWeek(index);
                                     return (
@@ -973,11 +918,11 @@ export default function AdvancedNutrientsSchedule() {
                     </p>
                     <div className={styles.infoHeroStats}>
                         <div className={styles.infoHeroStat}>
-                            <span className={styles.infoHeroStatValue}>{totalWeeks}</span>
+                            <span className={styles.infoHeroStatValue}>12</span>
                             <span className={styles.infoHeroStatLabel}>Haftalık Program</span>
                         </div>
                         <div className={styles.infoHeroStat}>
-                            <span className={styles.infoHeroStatValue}>4+</span>
+                            <span className={styles.infoHeroStatValue}>{BASE_NUTRIENT_OPTIONS.length}</span>
                             <span className={styles.infoHeroStatLabel}>Besin Serisi</span>
                         </div>
                         <div className={styles.infoHeroStat}>
