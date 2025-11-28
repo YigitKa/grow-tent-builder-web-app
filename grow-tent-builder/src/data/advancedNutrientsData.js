@@ -171,6 +171,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#DC2626',
         function_key: 'funcBaseNutrientVeg',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Connoisseur-Coco-Grow-Bloom-1L.png',
         schedule_default: { 'Grow W1': 1, 'Grow W2': 2, 'Grow W3': 3, 'Grow W4': 4 }
     },
     {
@@ -180,6 +181,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#DC2626',
         function_key: 'funcBaseNutrientVeg',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Connoisseur-Coco-Grow-Bloom-1L.png',
         schedule_default: { 'Grow W1': 1, 'Grow W2': 2, 'Grow W3': 3, 'Grow W4': 4 }
     },
     {
@@ -189,6 +191,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#DB2777',
         function_key: 'funcBaseNutrientBloom',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Connoisseur-Coco-Grow-Bloom-1L.png',
         schedule_default: { 'Bloom W1': 4, 'Bloom W2': 4, 'Bloom W3': 4, 'Bloom W4': 4, 'Bloom W5': 4, 'Bloom W6': 4, 'Bloom W7': 4 }
     },
     {
@@ -198,6 +201,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#DB2777',
         function_key: 'funcBaseNutrientBloom',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Connoisseur-Coco-Grow-Bloom-1L.png',
         schedule_default: { 'Bloom W1': 4, 'Bloom W2': 4, 'Bloom W3': 4, 'Bloom W4': 4, 'Bloom W5': 4, 'Bloom W6': 4, 'Bloom W7': 4 }
     },
     // Sensi Coco
@@ -208,6 +212,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#16A34A',
         function_key: 'funcBaseNutrientVeg',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Sensi-Coco-Grow-Bloom-1L.png',
         schedule_default: { 'Grow W1': 1, 'Grow W2': 2, 'Grow W3': 3, 'Grow W4': 4 }
     },
     {
@@ -217,6 +222,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#16A34A',
         function_key: 'funcBaseNutrientVeg',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Sensi-Coco-Grow-Bloom-1L.png',
         schedule_default: { 'Grow W1': 1, 'Grow W2': 2, 'Grow W3': 3, 'Grow W4': 4 }
     },
     {
@@ -226,6 +232,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#BE185D',
         function_key: 'funcBaseNutrientBloom',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Sensi-Coco-Grow-Bloom-1L.png',
         schedule_default: { 'Bloom W1': 4, 'Bloom W2': 4, 'Bloom W3': 4, 'Bloom W4': 4, 'Bloom W5': 4, 'Bloom W6': 4, 'Bloom W7': 4 }
     },
     {
@@ -235,6 +242,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#BE185D',
         function_key: 'funcBaseNutrientBloom',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Sensi-Coco-Grow-Bloom-1L.png',
         schedule_default: { 'Bloom W1': 4, 'Bloom W2': 4, 'Bloom W3': 4, 'Bloom W4': 4, 'Bloom W5': 4, 'Bloom W6': 4, 'Bloom W7': 4 }
     },
     // Sensi (Hydro/Soil)
@@ -245,6 +253,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#059669',
         function_key: 'funcBaseNutrientVeg',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Sensi-Grow-Bloom-1L.png',
         schedule_default: { 'Grow W1': 1, 'Grow W2': 2, 'Grow W3': 3, 'Grow W4': 4 }
     },
     {
@@ -254,6 +263,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#059669',
         function_key: 'funcBaseNutrientVeg',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Sensi-Grow-Bloom-1L.png',
         schedule_default: { 'Grow W1': 1, 'Grow W2': 2, 'Grow W3': 3, 'Grow W4': 4 }
     },
     {
@@ -263,6 +273,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#9D174D',
         function_key: 'funcBaseNutrientBloom',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Sensi-Grow-Bloom-1L.png',
         schedule_default: { 'Bloom W1': 4, 'Bloom W2': 4, 'Bloom W3': 4, 'Bloom W4': 4, 'Bloom W5': 4, 'Bloom W6': 4, 'Bloom W7': 4 }
     },
     {
@@ -272,6 +283,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#9D174D',
         function_key: 'funcBaseNutrientBloom',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Sensi-Grow-Bloom-1L.png',
         schedule_default: { 'Bloom W1': 4, 'Bloom W2': 4, 'Bloom W3': 4, 'Bloom W4': 4, 'Bloom W5': 4, 'Bloom W6': 4, 'Bloom W7': 4 }
     },
     // Connoisseur (Hydro/Soil) - NEW
@@ -282,6 +294,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#DC2626',
         function_key: 'funcBaseNutrientVeg',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Connoisseur-Grow-Bloom-1L-v2.png',
         schedule_default: { 'Grow W1': 1, 'Grow W2': 2, 'Grow W3': 3, 'Grow W4': 4 }
     },
     {
@@ -291,6 +304,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#DC2626',
         function_key: 'funcBaseNutrientVeg',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Connoisseur-Grow-Bloom-1L-v2.png',
         schedule_default: { 'Grow W1': 1, 'Grow W2': 2, 'Grow W3': 3, 'Grow W4': 4 }
     },
     {
@@ -300,6 +314,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#DB2777',
         function_key: 'funcBaseNutrientBloom',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Connoisseur-Grow-Bloom-1L-v2.png',
         schedule_default: { 'Bloom W1': 4, 'Bloom W2': 4, 'Bloom W3': 4, 'Bloom W4': 4, 'Bloom W5': 4, 'Bloom W6': 4, 'Bloom W7': 4 }
     },
     {
@@ -309,6 +324,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#DB2777',
         function_key: 'funcBaseNutrientBloom',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Connoisseur-Grow-Bloom-1L-v2.png',
         schedule_default: { 'Bloom W1': 4, 'Bloom W2': 4, 'Bloom W3': 4, 'Bloom W4': 4, 'Bloom W5': 4, 'Bloom W6': 4, 'Bloom W7': 4 }
     },
     // Grow Micro Bloom (3-Part) - NEW
@@ -319,6 +335,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#16A34A',
         function_key: 'funcBaseNutrientVeg',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Grow-Micro-Bloom-1L.jpg',
         schedule_default: { 'Grow W1': 1, 'Grow W2': 2, 'Grow W3': 4, 'Grow W4': 4, 'Bloom W1': 4, 'Bloom W2': 4, 'Bloom W3': 4, 'Bloom W4': 4, 'Bloom W5': 4, 'Bloom W6': 4, 'Bloom W7': 4 }
     },
     {
@@ -328,6 +345,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#7C3AED',
         function_key: 'funcBaseNutrientVeg',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Grow-Micro-Bloom-1L.jpg',
         schedule_default: { 'Grow W1': 1, 'Grow W2': 2, 'Grow W3': 4, 'Grow W4': 4, 'Bloom W1': 4, 'Bloom W2': 4, 'Bloom W3': 4, 'Bloom W4': 4, 'Bloom W5': 4, 'Bloom W6': 4, 'Bloom W7': 4 }
     },
     {
@@ -337,6 +355,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#DC2626',
         function_key: 'funcBaseNutrientBloom',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Grow-Micro-Bloom-1L.jpg',
         schedule_default: { 'Grow W1': 1, 'Grow W2': 2, 'Grow W3': 4, 'Grow W4': 4, 'Bloom W1': 4, 'Bloom W2': 4, 'Bloom W3': 4, 'Bloom W4': 4, 'Bloom W5': 4, 'Bloom W6': 4, 'Bloom W7': 4 }
     },
     // Sensi Terra - NEW
@@ -366,6 +385,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#65A30D',
         function_key: 'funcBaseNutrientVeg',
+        image: '/images/advanced-nutrients/OG-Organics-Iguana-Juice-Grow-Bloom-Advanced-Nutrients-1L-EU.jpg',
         schedule_default: { 'Grow W1': 1, 'Grow W2': 2, 'Grow W3': 4, 'Grow W4': 4 }
     },
     {
@@ -375,6 +395,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#BE185D',
         function_key: 'funcBaseNutrientBloom',
+        image: '/images/advanced-nutrients/OG-Organics-Iguana-Juice-Grow-Bloom-Advanced-Nutrients-1L-EU.jpg',
         schedule_default: { 'Bloom W1': 4, 'Bloom W2': 4, 'Bloom W3': 4, 'Bloom W4': 4, 'Bloom W5': 4, 'Bloom W6': 4, 'Bloom W7': 4 }
     },
     // Jungle Juice - NEW
@@ -385,6 +406,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#16A34A',
         function_key: 'funcBaseNutrientVeg',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-Jungle-Juice-GMB-1L-300x243-v2.jpg',
         schedule_default: { 'Grow W1': 1, 'Grow W2': 2, 'Grow W3': 4, 'Grow W4': 4, 'Bloom W1': 4, 'Bloom W2': 4, 'Bloom W3': 4, 'Bloom W4': 4, 'Bloom W5': 4, 'Bloom W6': 4, 'Bloom W7': 4 }
     },
     {
@@ -394,6 +416,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#7C3AED',
         function_key: 'funcBaseNutrientVeg',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-Jungle-Juice-GMB-1L-300x243-v2.jpg',
         schedule_default: { 'Grow W1': 1, 'Grow W2': 2, 'Grow W3': 4, 'Grow W4': 4, 'Bloom W1': 4, 'Bloom W2': 4, 'Bloom W3': 4, 'Bloom W4': 4, 'Bloom W5': 4, 'Bloom W6': 4, 'Bloom W7': 4 }
     },
     {
@@ -403,6 +426,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#DC2626',
         function_key: 'funcBaseNutrientBloom',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-Jungle-Juice-GMB-1L-300x243-v2.jpg',
         schedule_default: { 'Grow W1': 1, 'Grow W2': 2, 'Grow W3': 4, 'Grow W4': 4, 'Bloom W1': 4, 'Bloom W2': 4, 'Bloom W3': 4, 'Bloom W4': 4, 'Bloom W5': 4, 'Bloom W6': 4, 'Bloom W7': 4 }
     },
 
@@ -414,6 +438,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#8B5CF6',
         function_key: 'funcRootStim',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-Voodoo-Juice-1L.png',
         schedule_coco_topshelf: { 'Grow W1': 2, 'Grow W2': 2, 'Bloom W1': 2, 'Bloom W2': 2 },
         schedule_coco_master: { 'Grow W1': 2, 'Grow W2': 2, 'Bloom W1': 2, 'Bloom W2': 2 },
         schedule_hydro_master: { 'Grow W1': 2, 'Grow W2': 2, 'Bloom W1': 2, 'Bloom W2': 2 }
@@ -425,6 +450,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#A78BFA',
         function_key: 'funcRootFungi',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-Piranha-Liquid-1L.png',
         schedule_coco_master: { 'Grow W1': 2, 'Grow W2': 2, 'Bloom W1': 2, 'Bloom W2': 2 },
         schedule_hydro_master: { 'Grow W1': 2, 'Grow W2': 2, 'Bloom W1': 2, 'Bloom W2': 2 }
     },
@@ -435,6 +461,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#7C3AED',
         function_key: 'funcRootBacteria',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-Tarantula-Liquid-1L.png',
         schedule_coco_master: { 'Grow W1': 2, 'Grow W2': 2, 'Bloom W1': 2, 'Bloom W2': 2 },
         schedule_hydro_master: { 'Grow W1': 2, 'Grow W2': 2, 'Bloom W1': 2, 'Bloom W2': 2 }
     },
@@ -447,6 +474,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#F59E0B',
         function_key: 'funcVitaminBoost',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-B-52-1L.png',
         schedule_coco_topshelf: { 'Grow W3': 2, 'Grow W4': 2, 'Bloom W3': 2, 'Bloom W4': 2, 'Bloom W5': 2, 'Bloom W6': 2, 'Bloom W7': 2 },
         schedule_coco_master: { 'Grow W1': 2, 'Grow W2': 2, 'Grow W3': 2, 'Grow W4': 2, 'Bloom W3': 2, 'Bloom W4': 2, 'Bloom W5': 2, 'Bloom W6': 2, 'Bloom W7': 2 },
         schedule_hydro_master: { 'Grow W1': 2, 'Grow W2': 2, 'Grow W3': 2, 'Grow W4': 2, 'Bloom W3': 2, 'Bloom W4': 2, 'Bloom W5': 2, 'Bloom W6': 2, 'Bloom W7': 2 }
@@ -458,6 +486,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#64748B',
         function_key: 'funcSilica',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-Rhino-Skin-1L.png',
         schedule_coco_master: { 'Grow W3': 2, 'Grow W4': 2, 'Bloom W1': 2, 'Bloom W2': 2, 'Bloom W3': 2, 'Bloom W4': 2, 'Bloom W5': 2, 'Bloom W6': 2 },
         schedule_hydro_master: { 'Grow W3': 2, 'Grow W4': 2, 'Bloom W1': 2, 'Bloom W2': 2, 'Bloom W3': 2, 'Bloom W4': 2, 'Bloom W5': 2, 'Bloom W6': 2 }
     },
@@ -468,6 +497,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#EC4899',
         function_key: 'funcResin',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-Bud-Factor-X-1L.png',
         schedule_coco_master: { 'Bloom W1': 2, 'Bloom W2': 2, 'Bloom W3': 2, 'Bloom W4': 2, 'Bloom W5': 2, 'Bloom W6': 2, 'Bloom W7': 2 },
         schedule_hydro_master: { 'Bloom W1': 2, 'Bloom W2': 2, 'Bloom W3': 2, 'Bloom W4': 2, 'Bloom W5': 2, 'Bloom W6': 2, 'Bloom W7': 2 }
     },
@@ -480,6 +510,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#EF4444',
         function_key: 'funcEarlyFlower',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-Bud-Ignitor-1L.png',
         schedule_coco_topshelf: { 'Bloom W1': 2, 'Bloom W2': 2 },
         schedule_coco_master: { 'Bloom W1': 2, 'Bloom W2': 2 },
         schedule_hydro_master: { 'Bloom W1': 2, 'Bloom W2': 2 }
@@ -491,6 +522,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#FCD34D',
         function_key: 'funcBloomBooster',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-Big-Bud-Coco-1L-1.png',
         schedule_coco_topshelf: { 'Bloom W2': 2, 'Bloom W3': 2, 'Bloom W4': 2 },
         schedule_coco_master: { 'Bloom W2': 2, 'Bloom W3': 2, 'Bloom W4': 2, 'Bloom W5': 2 }
     },
@@ -501,6 +533,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#FCD34D',
         function_key: 'funcBloomBooster',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-Big-Bud-Liquid.png',
         schedule_hydro_master: { 'Bloom W2': 2, 'Bloom W3': 2, 'Bloom W4': 2, 'Bloom W5': 2 }
     },
     {
@@ -510,6 +543,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#D946EF',
         function_key: 'funcLateBloom',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-Overdrive-1L.png',
         schedule_coco_topshelf: { 'Bloom W6': 2, 'Bloom W7': 2 },
         schedule_coco_master: { 'Bloom W6': 2, 'Bloom W7': 2 },
         schedule_hydro_master: { 'Bloom W6': 2, 'Bloom W7': 2 }
@@ -523,17 +557,19 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#F472B6',
         function_key: 'funcCarbs',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-Bud-Candy-1L.png',
         schedule_coco_topshelf: { 'Grow W1': 2, 'Grow W2': 2, 'Grow W3': 2, 'Grow W4': 2, 'Bloom W1': 2, 'Bloom W2': 2, 'Bloom W3': 2, 'Bloom W4': 2, 'Bloom W5': 2, 'Bloom W6': 2, 'Bloom W7': 2 },
         schedule_coco_master: { 'Grow W1': 2, 'Grow W2': 2, 'Grow W3': 2, 'Grow W4': 2, 'Bloom W1': 2, 'Bloom W2': 2, 'Bloom W3': 2, 'Bloom W4': 2, 'Bloom W5': 2, 'Bloom W6': 2, 'Bloom W7': 2 },
         schedule_hydro_master: { 'Grow W1': 2, 'Grow W2': 2, 'Grow W3': 2, 'Grow W4': 2, 'Bloom W1': 2, 'Bloom W2': 2, 'Bloom W3': 2, 'Bloom W4': 2, 'Bloom W5': 2, 'Bloom W6': 2, 'Bloom W7': 2 }
     },
     {
         id: 'nirvana',
-        product_name: 'Nirvana®',
+        product_name: 'Tasty Terpenes® (Nirvana®)',
         category_key: 'taste_terpene',
         dose_unit: 'ml/L',
         color: '#A3E635',
         function_key: 'funcOrganics',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-Tasty-Terpenes-1L.png',
         schedule_coco_master: { 'Bloom W3': 2, 'Bloom W4': 2, 'Bloom W5': 2, 'Bloom W6': 2, 'Bloom W7': 2 },
         schedule_hydro_master: { 'Bloom W3': 2, 'Bloom W4': 2, 'Bloom W5': 2, 'Bloom W6': 2, 'Bloom W7': 2 }
     },
@@ -546,6 +582,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#34D399',
         function_key: 'funcEnzymes',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-Sensizym-1L.png',
         schedule_coco_master: { 'Grow W1': 2, 'Grow W2': 2, 'Grow W3': 2, 'Grow W4': 2, 'Bloom W1': 2, 'Bloom W2': 2, 'Bloom W3': 2, 'Bloom W4': 2, 'Bloom W5': 2, 'Bloom W6': 2, 'Bloom W7': 2 },
         schedule_hydro_master: { 'Grow W1': 2, 'Grow W2': 2, 'Grow W3': 2, 'Grow W4': 2, 'Bloom W1': 2, 'Bloom W2': 2, 'Bloom W3': 2, 'Bloom W4': 2, 'Bloom W5': 2, 'Bloom W6': 2, 'Bloom W7': 2 }
     },
@@ -558,6 +595,7 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#9CA3AF',
         function_key: 'funcFlush',
+        image: '/images/advanced-nutrients/Advanced-Nutrients-Flawless-Finish-1L.png',
         schedule_coco_topshelf: { 'Bloom W8': 2 },
         schedule_coco_master: { 'Bloom W8': 2 },
         schedule_hydro_master: { 'Bloom W8': 2 }

@@ -608,6 +608,16 @@
   flex-shrink: 0;
 }
 
+.productCellImage {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  border-radius: 6px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px;
+}
+
 .productTitle {
   font-weight: 700;
   color: #f8fafc;
@@ -1320,6 +1330,11 @@
   .productDot {
     width: 8px;
     height: 8px;
+  }
+
+  .productCellImage {
+    width: 28px;
+    height: 28px;
   }
 
   .productTitle {
@@ -2297,6 +2312,30 @@
 .categorySection .productCard.locked {
   opacity: 0.9;
   cursor: default;
+}
+
+/* Product Image Styles */
+.productImageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  min-height: 80px;
+}
+
+.productImage {
+  max-width: 100%;
+  max-height: 80px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.productCard:hover .productImage {
+  transform: scale(1.05);
 }
 
 .lockedBadge {

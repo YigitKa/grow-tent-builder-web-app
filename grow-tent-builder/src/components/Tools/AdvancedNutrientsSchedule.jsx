@@ -629,6 +629,16 @@ export default function AdvancedNutrientsSchedule() {
                                                                     whileHover={{ scale: isCurrentBase ? 1 : 1.03, y: isCurrentBase ? 0 : -2 }}
                                                                     whileTap={{ scale: isCurrentBase ? 1 : 0.98 }}
                                                                 >
+                                                                    {product.image && (
+                                                                        <div className={styles.productImageContainer}>
+                                                                            <img 
+                                                                                src={product.image} 
+                                                                                alt={product.product_name}
+                                                                                className={styles.productImage}
+                                                                                loading="lazy"
+                                                                            />
+                                                                        </div>
+                                                                    )}
                                                                     <div className={styles.productCardHeader}>
                                                                         <span
                                                                             className={styles.productColorDot}
@@ -836,10 +846,18 @@ export default function AdvancedNutrientsSchedule() {
                                     >
                                         <td className={styles.productCell}>
                                             <div className={styles.productInfo}>
-                                                <span
-                                                    className={styles.productDot}
-                                                    style={{ backgroundColor: product.color }}
-                                                />
+                                                {product.image ? (
+                                                    <img 
+                                                        src={product.image} 
+                                                        alt={product.product_name}
+                                                        className={styles.productCellImage}
+                                                    />
+                                                ) : (
+                                                    <span
+                                                        className={styles.productDot}
+                                                        style={{ backgroundColor: product.color }}
+                                                    />
+                                                )}
                                                 <div>
                                                     <div className={styles.productTitle}>{product.product_name}</div>
                                                     <div className={styles.productSubtitle}>{product.category}</div>
