@@ -740,7 +740,7 @@ export const translations = {
     switchToEn: 'Switch to EN',
 
     // Landing Page
-    landingTitle: 'Mükemmel Hasadınızı Tasarlayın',
+    landingTitle: 'Mükemmel Yetiştirme Ortamınızı Tasarlayın',
     landingFeedingTitle: 'Beslenme Programı',
     landingFeedingDesc: 'Bitkileriniz için ihtiyaç duyulan besinlerin miktarını hesaplayın.',
     biobizzTitle: 'BioBizz',

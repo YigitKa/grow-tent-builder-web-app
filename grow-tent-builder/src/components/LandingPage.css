@@ -364,48 +364,6 @@
     padding: 1px;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-}
-
-.tool-preview-card:hover,
-.feature-card:hover,
-.info-box:hover,
-.featured-guide-card:hover,
-.faq-item:hover,
-.blog-preview-card:hover,
-.ppfd-card-3d:hover,
-.ppfd-card-2d:hover,
-.feeding-card:hover {
-    transform: translateY(-8px) scale(1.01);
-    background: rgba(255, 255, 255, 0.06);
-    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
-    color: #000;
-    background: #34d399;
-    border: none;
-    border-radius: 1rem;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(52, 211, 153, 0.3);
-    text-decoration: none;
-}
-
-.cta-button.secondary {
-    background: rgba(255, 255, 255, 0.1);
-    color: #34d399;
-    border: 1px solid rgba(52, 211, 153, 0.3);
-    box-shadow: none;
-}
-
-.cta-button.secondary:hover {
-    background: rgba(52, 211, 153, 0.2);
-    transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
 }
 
