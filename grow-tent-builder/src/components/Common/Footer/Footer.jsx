@@ -4,21 +4,21 @@ import { useSettings } from '../../../context/SettingsContext';
 import styles from './Footer.module.css';
 
 const Footer = () => {
-  const { language, setLanguage, getBuilderUrl } = useSettings();
+  const { language, setLanguage, getBuilderUrl, t, getLocalizedPath } = useSettings();
 
   return (
     <footer className={styles.landingFooter}>
       <div className={styles.footerContent}>
         <div className={styles.footerBrand}>
           <div className={styles.footerLogo}>🌱 GroWizard</div>
-          <p>© 2025 GroWizard. All rights reserved.</p>
+          <p>{t('footerRights')}</p>
         </div>
 
         <div className={styles.footerLinks}>
-          <Link to="/">Home</Link>
-          <Link to={getBuilderUrl()}>Builder</Link>
-          <Link to="/tools">Tools</Link>
-          <Link to="/blog">Blog</Link>
+          <Link to={getLocalizedPath('/')}>{t('footerHome')}</Link>
+          <Link to={getBuilderUrl()}>{t('footerBuilder')}</Link>
+          <Link to={getLocalizedPath('/tools')}>{t('footerTools')}</Link>
+          <Link to={getLocalizedPath('/blog')}>{t('footerBlog')}</Link>
         </div>
 
         <div className={styles.footerLangToggle}>

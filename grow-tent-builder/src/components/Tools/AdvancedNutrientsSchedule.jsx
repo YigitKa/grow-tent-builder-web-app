@@ -20,7 +20,7 @@ const NUTRIENT_SERIES = [
         name: 'pH Perfect® Connoisseur®',
         badge: 'Premium',
         color: '#DC2626',
-        description: 'Hem standart topraksız tarım hem de coco coir ortamları için özel olarak formüle edilmiş üst düzey besin serisi.',
+        descriptionKey: 'anConnoisseurDesc',
         features: ['pH Perfect', 'Coco & Hydro', 'Top Shelf & Master']
     },
     {
@@ -28,15 +28,15 @@ const NUTRIENT_SERIES = [
         name: 'pH Perfect® Sensi',
         badge: 'Professional',
         color: '#2563EB',
-        description: 'pH dengelemesini otomatikleştiren teknoloji ile donatılmış profesyonel seviye besin sistemi.',
-        features: ['pH Perfect', '2-Part System', 'Coco Formülü']
+        descriptionKey: 'anSensiDesc',
+        features: ['pH Perfect', '2-Part System', 'Coco']
     },
     {
         id: 'iguana',
         name: 'OG Organics™ Iguana Juice®',
         badge: 'Organic',
         color: '#16A34A',
-        description: 'CDFA tarafından "Organik Girdi Malzemesi" olarak tescillenmiş, tamamen organik besin serisi.',
+        descriptionKey: 'anIguanaDesc',
         features: ['CDFA Certified', '100% Organic', 'Vegan']
     },
     {
@@ -44,58 +44,57 @@ const NUTRIENT_SERIES = [
         name: 'pH Perfect® Grow/Micro/Bloom',
         badge: '3-Part',
         color: '#7C3AED',
-        description: 'Esnek 3 parçalı temel sistem ile her aşamada tam kontrol sağlayan besin programı.',
+        descriptionKey: 'anGMBDesc',
         features: ['3-Part System', 'Flexible Ratios', 'All Media']
     }
 ];
 
-const PRO_TIPS = [
-    'Daha uzun vejetatif dönemler için 4. haftanın besleme programı tekrar edilebilir.',
-    'Klonlar ve fideler için 1. haftanın oranları "ön-vejetatif" bir aşama olarak tekrarlanabilir.',
-    'Uç yanığı gibi belirtiler gözlemlenirse, temel besin gücünün %25 oranında azaltılması önerilir.',
-    'Her ürün eklendikten sonra suyun iyice karıştırılması gerekmektedir.',
-    'Besin ihtiyacı bitki genetiği ve yetiştirme ortamına göre değişir.',
-    'Coco coir ortamları en iyi sonucu, bol drenajla birlikte en az günde bir kez beslendiğinde verir.'
+const PRO_TIPS_KEYS = [
+    'anProTip1',
+    'anProTip2',
+    'anProTip3',
+    'anProTip4',
+    'anProTip5',
+    'anProTip6'
 ];
 
 const LIFECYCLE_PHASES = [
     {
         id: 'vegetative',
         icon: '🌿',
-        title: 'Büyüme Döngüsü',
-        titleEn: 'Grow Cycle',
-        duration: '~4 Hafta',
+        titleKey: 'anGrowCycle',
+        durationKey: 'anVegetative',
+        durationWeeks: 4,
         light: '18/6',
         color: '#22C55E',
-        description: 'Bitkinin vejetatif gelişimi için tasarlanmış dönem. Yaprak ve gövde gelişimi ön plandadır.'
+        descriptionKey: 'anGrowCycleDesc'
     },
     {
         id: 'flowering',
         icon: '🌸',
-        title: 'Çiçeklenme Döngüsü',
-        titleEn: 'Bloom Cycle',
-        duration: '~8 Hafta',
+        titleKey: 'anBloomCycle',
+        durationKey: 'anFlowering',
+        durationWeeks: 8,
         light: '12/12',
         color: '#EC4899',
-        description: 'Tomurcuklanma, çiçeklenme ve meyve gelişimi hedeflenir. En kritik dönemdir.'
+        descriptionKey: 'anBloomCycleDesc'
     },
     {
         id: 'flush',
         icon: '💧',
-        title: 'Yıkama Periyodu',
-        titleEn: 'Flush Period',
-        duration: 'Son Hafta',
+        titleKey: 'anFlushPeriod',
+        durationKey: 'anLastWeek',
         light: '12/12',
         color: '#6B7280',
-        description: 'Besin uygulaması durdurulur veya Flawless Finish® gibi özel yıkama solüsyonu kullanılır.'
+        descriptionKey: 'anFlushPeriodDesc'
     }
 ];
 
 const SUPPLEMENT_CATEGORIES = [
-    { icon: '🌳', title: 'Kök Geliştiriciler', description: 'Güçlü kök sistemi için Voodoo Juice, Piranha, Tarantula gibi ürünler.' },
-    { icon: '🌺', title: 'Tomurcuk Büyütücüler', description: 'Big Bud, Overdrive gibi çiçeklenme döneminde verim artırıcılar.' },
-    { icon: '🍬', title: 'Aroma & Tat Artırıcılar', description: 'Bud Candy, Nirvana ile terpene profili ve tat optimizasyonu.' },
-    { icon: '🛡️', title: 'Bitki Sağlığı', description: 'Rhino Skin, Bud Factor X ile strese karşı direnç ve koruma.' }
+    { icon: '🌳', titleKey: 'anRootDevelopers', descriptionKey: 'anRootDevelopersDesc' },
+    { icon: '🌺', titleKey: 'anBudEnlargersTitle', descriptionKey: 'anBudEnlargersDesc' },
+    { icon: '🍬', titleKey: 'anFlavorEnhancersTitle', descriptionKey: 'anFlavorEnhancersDesc' },
+    { icon: '🛡️', titleKey: 'anPlantHealthTitle', descriptionKey: 'anPlantHealthDesc' }
 ];
 
 export default function AdvancedNutrientsSchedule() {
@@ -306,7 +305,7 @@ export default function AdvancedNutrientsSchedule() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
                     >
-                        Profesyonel <span className={styles.heroTitleHighlight}>Besleme Programı</span>
+                        {t('anHeroTitle')}
                     </motion.h1>
                     
                     <motion.p 
@@ -315,8 +314,7 @@ export default function AdvancedNutrientsSchedule() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 }}
                     >
-                        pH Perfect® teknolojisi ile donatılmış, bilimsel formülasyonlarla 
-                        maksimum verim için tasarlanmış interaktif besin hesaplayıcı
+                        {t('anHeroSubtitle')}
                     </motion.p>
 
                     <motion.div 
@@ -329,7 +327,7 @@ export default function AdvancedNutrientsSchedule() {
                             <span className={styles.heroStatIcon}>🔬</span>
                             <div className={styles.heroStatContent}>
                                 <span className={styles.heroStatValue}>12</span>
-                                <span className={styles.heroStatLabel}>Haftalık Program</span>
+                                <span className={styles.heroStatLabel}>{t('anWeeklyProgram')}</span>
                             </div>
                         </div>
                         <div className={styles.heroStatDivider} />
@@ -337,7 +335,7 @@ export default function AdvancedNutrientsSchedule() {
                             <span className={styles.heroStatIcon}>🧪</span>
                             <div className={styles.heroStatContent}>
                                 <span className={styles.heroStatValue}>{Object.keys(PRODUCT_CATEGORIES).length}</span>
-                                <span className={styles.heroStatLabel}>Ürün Kategorisi</span>
+                                <span className={styles.heroStatLabel}>{t('anProductCategory')}</span>
                             </div>
                         </div>
                         <div className={styles.heroStatDivider} />
@@ -358,15 +356,15 @@ export default function AdvancedNutrientsSchedule() {
                     >
                         <div className={styles.heroFeatureItem}>
                             <span className={styles.heroFeatureIcon}>✨</span>
-                            <span>Otomatik pH Dengesi</span>
+                            <span>{t('anAutoPHBalance')}</span>
                         </div>
                         <div className={styles.heroFeatureItem}>
                             <span className={styles.heroFeatureIcon}>🎯</span>
-                            <span>Hassas Dozaj</span>
+                            <span>{t('anPreciseDosage')}</span>
                         </div>
                         <div className={styles.heroFeatureItem}>
                             <span className={styles.heroFeatureIcon}>🏆</span>
-                            <span>%100 Garanti</span>
+                            <span>{t('anFullGuarantee')}</span>
                         </div>
                     </motion.div>
                 </div>
@@ -377,7 +375,7 @@ export default function AdvancedNutrientsSchedule() {
 
                 {/* Base Nutrient Selection - Modern Card Style */}
                 <div className={`${styles.controlGroup} ${styles.fullWidth}`}>
-                    <label className={styles.controlLabel}>{t('selectRecipe')} (Base Nutrient)</label>
+                    <label className={styles.controlLabel}>{t('selectRecipe')} ({t('anBaseNutrient')})</label>
                     <motion.div
                         className={styles.baseNutrientSelector}
                         onClick={() => setShowBaseNutrientSelector(!showBaseNutrientSelector)}
@@ -429,7 +427,7 @@ export default function AdvancedNutrientsSchedule() {
                             <div className={styles.productSelectorInfo}>
                                 <span className={styles.productSelectorName}>{selectedProducts.length} {t('productSelected')}</span>
                                 <span className={styles.productSelectorDesc}>
-                                    {Object.keys(selectedProductsSummary).length} kategoriden seçim yapıldı
+                                    {Object.keys(selectedProductsSummary).length} {t('anCategoriesSelected')}
                                 </span>
                             </div>
                             <span className={styles.productSelectorCount}>{selectedProducts.length}</span>
@@ -456,8 +454,8 @@ export default function AdvancedNutrientsSchedule() {
                         transition={{ duration: 0.3 }}
                     >
                         <div className={styles.baseNutrientDropdownHeader}>
-                            <h3>🌱 Temel Besin Seçimi</h3>
-                            <p>Yetiştirme ortamınıza uygun temel besini seçin</p>
+                            <h3>🌱 {t('anBaseNutrientSelection')}</h3>
+                            <p>{t('anSelectBaseNutrient')}</p>
                         </div>
                         <div className={styles.baseNutrientGrid}>
                             {BASE_NUTRIENT_OPTIONS.map((option, index) => (
@@ -538,7 +536,7 @@ export default function AdvancedNutrientsSchedule() {
                                     onClick={() => setShowProductSelector(false)} 
                                     className={`${styles.actionBtn} ${styles.actionBtnPrimary}`}
                                 >
-                                    ✓ Seçimi Tamamla
+                                    ✓ {t('anCompleteSelection')}
                                 </button>
                             </div>
                         </div>
@@ -548,7 +546,7 @@ export default function AdvancedNutrientsSchedule() {
                             {Object.entries(PRODUCT_CATEGORIES).map(([catKey, category]) => {
                                 const productsInCategory = productsByCategory[catKey] || [];
                                 
-                                // Filtreleme: Base nutrient kategorisinde sadece seçili olanları göster
+                                // Filter: Only show selected base nutrients in base nutrient category
                                 const visibleProducts = catKey === 'base_nutrient' 
                                     ? productsInCategory.filter(p => currentBaseNutrient.products.includes(p.id))
                                     : productsInCategory;
@@ -660,7 +658,7 @@ export default function AdvancedNutrientsSchedule() {
                                                                         <div className={styles.productFunction}>{t(product.function_key)}</div>
                                                                     )}
                                                                     {isCurrentBase && (
-                                                                        <div className={styles.lockedBadge}>🔒 Temel</div>
+                                                                        <div className={styles.lockedBadge}>🔒 {t('anBase')}</div>
                                                                     )}
                                                                 </motion.div>
                                                             );
@@ -688,9 +686,9 @@ export default function AdvancedNutrientsSchedule() {
                             <div className={styles.productSummaryTitle}>
                                 <span className={styles.productSummaryIcon}>📋</span>
                                 <div>
-                                    <h4>Seçili Ürünler</h4>
+                                    <h4>{t('anSelectedProducts')}</h4>
                                     <span className={styles.productSummaryCount}>
-                                        {selectedProducts.length} ürün seçildi
+                                        {selectedProducts.length} {t('anProductsSelected')}
                                     </span>
                                 </div>
                             </div>
@@ -700,7 +698,7 @@ export default function AdvancedNutrientsSchedule() {
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                             >
-                                <span>✏️</span> Düzenle
+                                <span>✏️</span> {t('anEdit')}
                             </motion.button>
                         </div>
                         
@@ -735,7 +733,7 @@ export default function AdvancedNutrientsSchedule() {
                                         ))}
                                         {data.products.length > 3 && (
                                             <span className={styles.productSummaryMore}>
-                                                +{data.products.length - 3} daha
+                                                +{data.products.length - 3} {t('anMore')}
                                             </span>
                                         )}
                                     </div>
@@ -759,10 +757,10 @@ export default function AdvancedNutrientsSchedule() {
                 ))}
             </div>
 
-            {/* Table Controls - Su Miktarı */}
+            {/* Table Controls - Water Amount */}
             <div className={styles.tableControls}>
                 <div className={styles.tableControlsInner}>
-                    {/* Su Miktarı Kontrolü */}
+                    {/* Water Amount Control */}
                     <div className={styles.waterControl}>
                         <div className={styles.waterControlIcon}>💧</div>
                         <div className={styles.waterControlContent}>
@@ -781,19 +779,19 @@ export default function AdvancedNutrientsSchedule() {
                         </div>
                     </div>
 
-                    {/* Toplam Hafta Bilgisi */}
+                    {/* Week Info */}
                     <div className={styles.weekInfo}>
                         <div className={styles.weekInfoItem}>
                             <span className={styles.weekInfoIcon}>🌱</span>
-                            <span className={styles.weekInfoText}>Vejetatif: 4 hafta</span>
+                            <span className={styles.weekInfoText}>{t('anVegetative')}: 4 {t('anWeeks')}</span>
                         </div>
                         <div className={styles.weekInfoItem}>
                             <span className={styles.weekInfoIcon}>🌸</span>
-                            <span className={styles.weekInfoText}>Çiçeklenme: 8 hafta</span>
+                            <span className={styles.weekInfoText}>{t('anFlowering')}: 8 {t('anWeeks')}</span>
                         </div>
                         <div className={styles.weekInfoItem}>
                             <span className={styles.weekInfoIcon}>📅</span>
-                            <span className={styles.weekInfoText}>Toplam: 12 hafta</span>
+                            <span className={styles.weekInfoText}>{t('anTotal')}: 12 {t('anWeeks')}</span>
                         </div>
                     </div>
                 </div>
@@ -927,21 +925,19 @@ export default function AdvancedNutrientsSchedule() {
             >
                 <div className={styles.infoHeroContent}>
                     <h2 className={styles.infoHeroTitle}>
-                        🌱 Advanced Nutrients Besleme Rehberi
+                        🌱 {t('anFeedingGuideTitle')}
                     </h2>
                     <p className={styles.infoHeroDescription}>
-                        Advanced Nutrients tarafından sunulan çeşitli bitki besin serilerine ait besleme programları ve temel ilkeleri. 
-                        Hem organik hem de sentetik yetiştiricilik yöntemlerine yönelik, farklı uzmanlık seviyeleri ve 
-                        yetiştirme ortamları için tasarlanmış ürün serileri.
+                        {t('anFeedingGuideDesc')}
                     </p>
                     <div className={styles.infoHeroStats}>
                         <div className={styles.infoHeroStat}>
                             <span className={styles.infoHeroStatValue}>12</span>
-                            <span className={styles.infoHeroStatLabel}>Haftalık Program</span>
+                            <span className={styles.infoHeroStatLabel}>{t('anWeeklyProgram')}</span>
                         </div>
                         <div className={styles.infoHeroStat}>
                             <span className={styles.infoHeroStatValue}>{BASE_NUTRIENT_OPTIONS.length}</span>
-                            <span className={styles.infoHeroStatLabel}>Besin Serisi</span>
+                            <span className={styles.infoHeroStatLabel}>{t('anNutrientSeries')}</span>
                         </div>
                         <div className={styles.infoHeroStat}>
                             <span className={styles.infoHeroStatValue}>pH</span>
@@ -953,7 +949,7 @@ export default function AdvancedNutrientsSchedule() {
 
             {/* Lifecycle Phases */}
             <div className={styles.lifecycleSection}>
-                <h3 className={styles.seriesSectionTitle}>Yaşam Döngüsü Fazları</h3>
+                <h3 className={styles.seriesSectionTitle}>{t('anLifecyclePhasesTitle')}</h3>
                 <div className={styles.lifecycleGrid}>
                     {LIFECYCLE_PHASES.map((phase, index) => (
                         <motion.div
@@ -966,12 +962,12 @@ export default function AdvancedNutrientsSchedule() {
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                         >
                             <div className={styles.lifecycleIcon}>{phase.icon}</div>
-                            <h4 className={styles.lifecycleTitle}>{phase.title}</h4>
-                            <span className={styles.lifecycleDuration}>{phase.duration}</span>
+                            <h4 className={styles.lifecycleTitle}>{t(phase.titleKey)}</h4>
+                            <span className={styles.lifecycleDuration}>~{phase.durationWeeks || ''} {phase.durationWeeks ? t('anWeeks') : t(phase.durationKey)}</span>
                             <div className={styles.lifecycleLight}>
-                                ☀️ Fotoperiyot: {phase.light}
+                                ☀️ {t('anPhotoperiod')}: {phase.light}
                             </div>
-                            <p className={styles.lifecycleDesc}>{phase.description}</p>
+                            <p className={styles.lifecycleDesc}>{t(phase.descriptionKey)}</p>
                         </motion.div>
                     ))}
                 </div>
@@ -979,7 +975,7 @@ export default function AdvancedNutrientsSchedule() {
 
             {/* Product Series */}
             <div className={styles.seriesSection}>
-                <h3 className={styles.seriesSectionTitle}>Öne Çıkan Besin Serileri</h3>
+                <h3 className={styles.seriesSectionTitle}>{t('anFeaturedNutrientSeries')}</h3>
                 <div className={styles.seriesCards}>
                     {NUTRIENT_SERIES.map((series, index) => (
                         <motion.div
@@ -995,7 +991,7 @@ export default function AdvancedNutrientsSchedule() {
                                 <span className={styles.seriesCardBadge}>{series.badge}</span>
                             </div>
                             <h4 className={styles.seriesCardName}>{series.name}</h4>
-                            <p className={styles.seriesCardDesc}>{series.description}</p>
+                            <p className={styles.seriesCardDesc}>{t(series.descriptionKey)}</p>
                             <div className={styles.seriesCardFeatures}>
                                 {series.features.map((feature, i) => (
                                     <span key={i} className={styles.seriesFeatureTag}>{feature}</span>
@@ -1018,8 +1014,8 @@ export default function AdvancedNutrientsSchedule() {
                         transition={{ duration: 0.4, delay: index * 0.1 }}
                     >
                         <div className={styles.glassCardIcon}>{cat.icon}</div>
-                        <h4 className={styles.glassCardTitle}>{cat.title}</h4>
-                        <p className={styles.glassCardText}>{cat.description}</p>
+                        <h4 className={styles.glassCardTitle}>{t(cat.titleKey)}</h4>
+                        <p className={styles.glassCardText}>{t(cat.descriptionKey)}</p>
                     </motion.div>
                 ))}
             </div>
@@ -1034,10 +1030,10 @@ export default function AdvancedNutrientsSchedule() {
             >
                 <div className={styles.proTipsHeader}>
                     <div className={styles.proTipsIcon}>💡</div>
-                    <h3 className={styles.proTipsTitle}>Profesyonel İpuçları</h3>
+                    <h3 className={styles.proTipsTitle}>{t('anProTipsTitle')}</h3>
                 </div>
                 <div className={styles.proTipsList}>
-                    {PRO_TIPS.map((tip, index) => (
+                    {PRO_TIPS_KEYS.map((tipKey, index) => (
                         <motion.div
                             key={index}
                             className={styles.proTipItem}
@@ -1047,7 +1043,7 @@ export default function AdvancedNutrientsSchedule() {
                             transition={{ duration: 0.3, delay: index * 0.05 }}
                         >
                             <span className={styles.proTipNumber}>{index + 1}</span>
-                            <p className={styles.proTipText}>{tip}</p>
+                            <p className={styles.proTipText}>{t(tipKey)}</p>
                         </motion.div>
                     ))}
                 </div>
@@ -1055,7 +1051,7 @@ export default function AdvancedNutrientsSchedule() {
 
             {/* Application Guidelines Accordion */}
             <div className={styles.accordion}>
-                <h3 className={styles.seriesSectionTitle}>Uygulama Kılavuzu</h3>
+                <h3 className={styles.seriesSectionTitle}>{t('anApplicationGuide')}</h3>
                 
                 <motion.div className={styles.accordionItem} initial={false}>
                     <div 
@@ -1064,7 +1060,7 @@ export default function AdvancedNutrientsSchedule() {
                     >
                         <div className={styles.accordionHeaderLeft}>
                             <span className={styles.accordionIcon}>📏</span>
-                            <span className={styles.accordionTitle}>Uygulama Oranları</span>
+                            <span className={styles.accordionTitle}>{t('anApplicationRates')}</span>
                         </div>
                         <motion.span 
                             className={styles.accordionArrow}
@@ -1082,7 +1078,7 @@ export default function AdvancedNutrientsSchedule() {
                                 exit={{ height: 0, opacity: 0 }}
                                 transition={{ duration: 0.3 }}
                             >
-                                <p>Tüm ürünlerin dozajı <strong>litre başına mililitre (mL/L)</strong> olarak belirtilmiştir. Temel besinlerin oranları genellikle büyüme döneminin ilk haftalarında kademeli olarak artırılır. Yukarıdaki tabloda belirlediğiniz su miktarına göre toplam dozaj otomatik hesaplanmaktadır.</p>
+                                <p>{t('anApplicationRatesDesc')}</p>
                             </motion.div>
                         )}
                     </AnimatePresence>
@@ -1095,7 +1091,7 @@ export default function AdvancedNutrientsSchedule() {
                     >
                         <div className={styles.accordionHeaderLeft}>
                             <span className={styles.accordionIcon}>🚿</span>
-                            <span className={styles.accordionTitle}>Hasat Öncesi Yıkama (Flush)</span>
+                            <span className={styles.accordionTitle}>{t('anPreHarvestFlush')}</span>
                         </div>
                         <motion.span 
                             className={styles.accordionArrow}
@@ -1113,7 +1109,7 @@ export default function AdvancedNutrientsSchedule() {
                                 exit={{ height: 0, opacity: 0 }}
                                 transition={{ duration: 0.3 }}
                             >
-                                <p>Çiçeklenme döneminin <strong>son haftası</strong> genellikle "Flush Periyodu" olarak adlandırılır. Bu dönemde ya besin uygulaması tamamen durdurulur ya da <strong>Flawless Finish®</strong> gibi özel bir yıkama solüsyonu kullanılır. Bu işlem, bitkide biriken mineralleri temizleyerek daha pürüzsüz bir son ürün elde edilmesini sağlar.</p>
+                                <p>{t('anPreHarvestFlushDesc')}</p>
                             </motion.div>
                         )}
                     </AnimatePresence>
@@ -1126,7 +1122,7 @@ export default function AdvancedNutrientsSchedule() {
                     >
                         <div className={styles.accordionHeaderLeft}>
                             <span className={styles.accordionIcon}>🥥</span>
-                            <span className={styles.accordionTitle}>Coco Coir Özel Notları</span>
+                            <span className={styles.accordionTitle}>{t('anCocoNotes')}</span>
                         </div>
                         <motion.span 
                             className={styles.accordionArrow}
@@ -1144,7 +1140,7 @@ export default function AdvancedNutrientsSchedule() {
                                 exit={{ height: 0, opacity: 0 }}
                                 transition={{ duration: 0.3 }}
                             >
-                                <p>Coco coir ortamları, en iyi sonucu <strong>bol drenajla birlikte en az günde bir kez beslendiğinde</strong> verir. Coco'nun doğal yapısı nedeniyle kalsiyum ve magnezyum tutma kapasitesi düşüktür, bu yüzden Sensi Coco veya Connoisseur Coco serileri bu eksikliği gidermek için özel olarak formüle edilmiştir.</p>
+                                <p>{t('anCocoNotesDesc')}</p>
                             </motion.div>
                         )}
                     </AnimatePresence>
@@ -1157,7 +1153,7 @@ export default function AdvancedNutrientsSchedule() {
                     >
                         <div className={styles.accordionHeaderLeft}>
                             <span className={styles.accordionIcon}>⚙️</span>
-                            <span className={styles.accordionTitle}>Kişiselleştirme</span>
+                            <span className={styles.accordionTitle}>{t('anCustomization')}</span>
                         </div>
                         <motion.span 
                             className={styles.accordionArrow}
@@ -1175,7 +1171,7 @@ export default function AdvancedNutrientsSchedule() {
                                 exit={{ height: 0, opacity: 0 }}
                                 transition={{ duration: 0.3 }}
                             >
-                                <p>Her bitki farklıdır! Besin ihtiyacının <strong>bitki genetiği ve yetiştirme ortamına</strong> göre değişeceği unutulmamalıdır. Resmi Advanced Nutrients hesaplayıcısı için <a href="https://www.advancednutrients.com/nutrient-calculator" target="_blank" rel="noopener noreferrer" style={{color: '#22c55e'}}>advancednutrients.com/nutrient-calculator</a> adresini ziyaret edebilirsiniz.</p>
+                                <p>{t('anCustomizationDesc')} <a href="https://www.advancednutrients.com/nutrient-calculator" target="_blank" rel="noopener noreferrer" style={{color: '#22c55e'}}>advancednutrients.com/nutrient-calculator</a></p>
                             </motion.div>
                         )}
                     </AnimatePresence>
@@ -1192,12 +1188,12 @@ export default function AdvancedNutrientsSchedule() {
             >
                 <span className={styles.guaranteeIcon}>🏆</span>
                 <div className={styles.guaranteeContent}>
-                    <h3>Yetiştirici Garantisi</h3>
-                    <p>Grower's Guarantee - %100 Para İadesi</p>
+                    <h3>{t('anGrowerGuarantee')}</h3>
+                    <p>{t('anGrowerGuaranteeDesc')}</p>
                 </div>
                 <div className={styles.guaranteeYear}>
                     <span className={styles.guaranteeYearValue}>1999</span>
-                    <span className={styles.guaranteeYearLabel}>yılından beri</span>
+                    <span className={styles.guaranteeYearLabel}>{t('anSince')}</span>
                 </div>
             </motion.div>
         </motion.div>

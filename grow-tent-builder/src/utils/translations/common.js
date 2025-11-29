@@ -12,6 +12,7 @@ export const commonTranslations = {
     area: 'Area',
     volume: 'Volume',
     width: 'Width',
+    length: 'Length',
     depth: 'Depth',
     height: 'Height',
 
@@ -44,6 +45,7 @@ export const commonTranslations = {
     area: 'Alan',
     volume: 'Hacim',
     width: 'Genişlik',
+    length: 'Uzunluk',
     depth: 'Derinlik',
     height: 'Yükseklik',
 

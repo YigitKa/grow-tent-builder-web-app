@@ -53,7 +53,7 @@ const CO2Calculator = () => {
                         <div className={styles.sectionLabel}>{t('co2CalcDims')}</div>
                         <div className={styles.dimsGrid}>
                             <div className={styles.inputGroup}>
-                                <label>W (cm)</label>
+                                <label>{t('width')} (cm)</label>
                                 <input
                                     type="number"
                                     value={width}
@@ -61,7 +61,7 @@ const CO2Calculator = () => {
                                 />
                             </div>
                             <div className={styles.inputGroup}>
-                                <label>L (cm)</label>
+                                <label>{t('length')} (cm)</label>
                                 <input
                                     type="number"
                                     value={length}
@@ -69,7 +69,7 @@ const CO2Calculator = () => {
                                 />
                             </div>
                             <div className={styles.inputGroup}>
-                                <label>H (cm)</label>
+                                <label>{t('height')} (cm)</label>
                                 <input
                                     type="number"
                                     value={height}
