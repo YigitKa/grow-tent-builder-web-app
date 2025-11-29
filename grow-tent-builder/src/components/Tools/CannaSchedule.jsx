@@ -45,9 +45,9 @@ const staggerContainer = {
 
 const cardVariants = {
     hidden: { opacity: 0, scale: 0.95, y: 10 },
-    visible: { 
-        opacity: 1, 
-        scale: 1, 
+    visible: {
+        opacity: 1,
+        scale: 1,
         y: 0,
         transition: { duration: 0.4, ease: 'easeOut' }
     }
@@ -99,7 +99,7 @@ const SYSTEM_DESCRIPTIONS = {
 
 export default function CannaSchedule() {
     const { t, language } = useSettings();
-    
+
     // State
     const [selectedSystem, setSelectedSystem] = useState(CANNA_SYSTEMS.COCO);
     const [selectedPlant, setSelectedPlant] = useState('general');
@@ -192,17 +192,17 @@ export default function CannaSchedule() {
     // Get week labels from schedule - handle both week-based and stage-based formats
     const weekLabels = useMemo(() => {
         if (!currentSchedule) return [];
-        
+
         // For week-based schedules (general plants)
         if (currentSchedule.weeks && currentSchedule.weeks.length > 0) {
             return currentSchedule.weeks;
         }
-        
+
         // For stage-based schedules (specific plants like wasabi, orchids, etc.)
         if (currentSchedule.stages && currentSchedule.stages.length > 0) {
             return currentSchedule.stages.map(stage => stage.name);
         }
-        
+
         return ['W1', 'W2', 'W3', 'W4', 'W5', 'W6', 'W7', 'W8', 'W9', 'W10', 'W11', 'W12'];
     }, [currentSchedule]);
 
@@ -214,18 +214,18 @@ export default function CannaSchedule() {
     // Get dose for a specific week/stage and product
     const getDoseForWeek = (productId, weekLabel) => {
         if (!currentSchedule) return null;
-        
+
         let products = currentSchedule.products;
-        
+
         // Handle SUBSTRA water type
         if (selectedSystem === 'substra') {
-            products = waterType === 'hard' 
-                ? currentSchedule.products_hard_water 
+            products = waterType === 'hard'
+                ? currentSchedule.products_hard_water
                 : currentSchedule.products_soft_water;
         }
-        
+
         if (!products || !products[productId]) return null;
-        
+
         const dose = products[productId][weekLabel];
         return dose !== undefined ? dose : null;
     };
@@ -276,7 +276,7 @@ export default function CannaSchedule() {
     // Get phase for week (simplified) - handles both phase object format and stage-based
     const getPhaseForWeek = (weekLabel) => {
         if (!currentSchedule) return null;
-        
+
         // For stage-based schedules, extract phase from stage name
         if (isStageBasedSchedule) {
             const stageName = weekLabel.toLowerCase();
@@ -286,13 +286,13 @@ export default function CannaSchedule() {
             if (stageName.includes('final') || stageName.includes('recovery') || stageName.includes('dormancy')) return 'flush';
             return null;
         }
-        
+
         if (!currentSchedule.phases) return null;
-        
+
         for (const [range, phaseName] of Object.entries(currentSchedule.phases)) {
             const [start, end] = range.replace('W', '').split('-').map(n => parseInt(n.replace('W', '')));
             const weekNum = parseInt(weekLabel.replace('W', ''));
-            
+
             if (end) {
                 if (weekNum >= start && weekNum <= end) return phaseName;
             } else {
@@ -327,7 +327,7 @@ export default function CannaSchedule() {
                 <meta name="description" content={t('cannaFeedingScheduleDesc')} />
             </Helmet>
             <Navbar />
-            
+
             <motion.div
                 className={styles.container}
                 initial={{ opacity: 0, y: 20 }}
@@ -348,38 +348,32 @@ export default function CannaSchedule() {
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.1, type: "spring", stiffness: 200 }}
                         >
-                            <img 
-                                src="/images/canna-logo.svg" 
-                                alt="CANNA" 
+                            <img
+                                src="/images/canna-logo.svg"
+                                alt="CANNA"
                                 className={styles.cannaLogo}
                             />
                         </motion.div>
-                        
-                        <motion.h1 
+
+                        <motion.h1
                             className={styles.heroTitle}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
                         >
-                            {language === 'tr' ? 'Profesyonel ' : 'Professional '}
-                            <span className={styles.heroTitleHighlight}>
-                                {language === 'tr' ? 'Beslenme Programı' : 'Feeding Schedule'}
-                            </span>
+                            {t('cannaProfessional')} <span className={styles.heroTitleHighlight}>{t('cannaFeedingSchedule')}</span>
                         </motion.h1>
-                        
-                        <motion.p 
+
+                        <motion.p
                             className={styles.heroSubtitle}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3 }}
                         >
-                            {language === 'tr' 
-                                ? 'AQUA, COCO, COGr, SUBSTRA ve TERRA sistemleri için profesyonel besin hesaplayıcı. Her bitkinin kendine özgü "parmak izi" vardır ve en iyi sonuçlar ancak bu gereksinimler karşılandığında elde edilebilir.'
-                                : 'Professional nutrient calculator for AQUA, COCO, COGr, SUBSTRA and TERRA systems. Each plant has its own unique "fingerprint" and the best results can only be achieved when these requirements are met.'
-                            }
+                            {t('cannaHeroSubtitle')}
                         </motion.p>
 
-                        <motion.div 
+                        <motion.div
                             className={styles.heroStats}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -389,7 +383,7 @@ export default function CannaSchedule() {
                                 <div className={styles.heroStatIcon}>🔬</div>
                                 <div className={styles.heroStatContent}>
                                     <span className={styles.heroStatValue}>5</span>
-                                    <span className={styles.heroStatLabel}>{language === 'tr' ? 'Sistem' : 'Systems'}</span>
+                                    <span className={styles.heroStatLabel}>{t('cannaSystems')}</span>
                                 </div>
                             </div>
                             <div className={styles.heroStatDivider} />
@@ -397,7 +391,7 @@ export default function CannaSchedule() {
                                 <div className={styles.heroStatIcon}>🌱</div>
                                 <div className={styles.heroStatContent}>
                                     <span className={styles.heroStatValue}>7</span>
-                                    <span className={styles.heroStatLabel}>{language === 'tr' ? 'Bitki Tipi' : 'Plant Types'}</span>
+                                    <span className={styles.heroStatLabel}>{t('cannaPlantTypes')}</span>
                                 </div>
                             </div>
                             <div className={styles.heroStatDivider} />
@@ -405,7 +399,7 @@ export default function CannaSchedule() {
                                 <div className={styles.heroStatIcon}>🧪</div>
                                 <div className={styles.heroStatContent}>
                                     <span className={styles.heroStatValue}>20+</span>
-                                    <span className={styles.heroStatLabel}>{language === 'tr' ? 'Ürün' : 'Products'}</span>
+                                    <span className={styles.heroStatLabel}>{t('cannaProducts')}</span>
                                 </div>
                             </div>
                         </motion.div>
@@ -413,7 +407,7 @@ export default function CannaSchedule() {
                 </div>
 
                 {/* System Selection Cards - NEW FEATURE */}
-                <motion.section 
+                <motion.section
                     className={styles.systemInfoSection}
                     variants={staggerContainer}
                     initial="hidden"
@@ -445,7 +439,7 @@ export default function CannaSchedule() {
                                     </div>
                                 </div>
                                 {selectedSystem === system.id && (
-                                    <motion.div 
+                                    <motion.div
                                         className={styles.systemCardCheck}
                                         initial={{ scale: 0 }}
                                         animate={{ scale: 1 }}
@@ -464,7 +458,7 @@ export default function CannaSchedule() {
                     {availablePlants.length > 1 && (
                         <div className={`${styles.controlGroup} ${styles.fullWidth}`}>
                             <label className={styles.controlLabel}>
-                                {language === 'tr' ? 'Bitki Tipi Seçin' : 'Select Plant Type'}
+                                {t('cannaSelectPlantType')}
                             </label>
                             <div className={styles.plantSelector}>
                                 {availablePlants.map(plant => (
@@ -487,7 +481,7 @@ export default function CannaSchedule() {
                     {selectedSystem === 'substra' && (
                         <div className={styles.controlGroup}>
                             <label className={styles.controlLabel}>
-                                {language === 'tr' ? 'Su Tipi' : 'Water Type'}
+                                {t('cannaWaterType')}
                             </label>
                             <div className={styles.waterTypeSelector}>
                                 <motion.button
@@ -496,7 +490,7 @@ export default function CannaSchedule() {
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
                                 >
-                                    💎 {language === 'tr' ? 'Sert Su' : 'Hard Water'}
+                                    💎 {t('cannaHardWater')}
                                 </motion.button>
                                 <motion.button
                                     className={`${styles.waterTypeBtn} ${waterType === 'soft' ? styles.selected : ''}`}
@@ -504,7 +498,7 @@ export default function CannaSchedule() {
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
                                 >
-                                    💧 {language === 'tr' ? 'Yumuşak Su' : 'Soft Water'}
+                                    💧 {t('cannaSoftWater')}
                                 </motion.button>
                             </div>
                         </div>
@@ -513,7 +507,7 @@ export default function CannaSchedule() {
                     {/* Product Selector Toggle */}
                     <div className={`${styles.controlGroup} ${styles.fullWidth}`}>
                         <label className={styles.controlLabel}>
-                            {language === 'tr' ? 'Ürünleri Seç' : 'Select Products'}
+                            {t('cannaSelectProducts')}
                         </label>
                         <motion.button
                             className={styles.productSelectorBtn}
@@ -525,17 +519,17 @@ export default function CannaSchedule() {
                                 <div className={styles.productSelectorIcon}>🧪</div>
                                 <div className={styles.productSelectorInfo}>
                                     <span className={styles.productSelectorName}>
-                                        {language === 'tr' ? 'Ürünler' : 'Products'}
+                                        {t('cannaProducts')}
                                     </span>
                                     <span className={styles.productSelectorDesc}>
-                                        {language === 'tr' ? 'Görüntülenecek ürünleri seçin' : 'Click to select products to display'}
+                                        {t('cannaClickToSelect')}
                                     </span>
                                 </div>
                             </div>
                             <span className={styles.productSelectorCount}>
-                                {selectedProducts.length} {language === 'tr' ? 'seçili' : 'selected'}
+                                {selectedProducts.length} {t('cannaSelected')}
                             </span>
-                            <motion.span 
+                            <motion.span
                                 className={styles.productSelectorArrow}
                                 animate={{ rotate: showProductSelector ? 180 : 0 }}
                                 transition={{ duration: 0.2 }}
@@ -560,16 +554,16 @@ export default function CannaSchedule() {
                                 <h3>{t('selectProducts')}</h3>
                                 <div className={styles.productSelectorActions}>
                                     <button onClick={selectAll} className={styles.actionBtn}>
-                                        {language === 'tr' ? 'Tümünü Seç' : 'Select All'}
+                                        {t('cannaSelectAll')}
                                     </button>
                                     <button onClick={resetToDefault} className={styles.actionBtn}>
                                         {t('resetDefault')}
                                     </button>
-                                    <button 
-                                        onClick={() => setShowProductSelector(false)} 
+                                    <button
+                                        onClick={() => setShowProductSelector(false)}
                                         className={`${styles.actionBtn} ${styles.actionBtnPrimary}`}
                                     >
-                                        ✓ {language === 'tr' ? 'Seçimi Tamamla' : 'Done'}
+                                        ✓ {t('cannaDone')}
                                     </button>
                                 </div>
                             </div>
@@ -589,7 +583,7 @@ export default function CannaSchedule() {
                                             initial={{ opacity: 0, y: 20 }}
                                             animate={{ opacity: 1, y: 0 }}
                                         >
-                                            <motion.div 
+                                            <motion.div
                                                 className={styles.categoryHeader}
                                                 onClick={() => toggleCategory(catKey)}
                                                 style={{ '--category-color': category.color }}
@@ -606,7 +600,7 @@ export default function CannaSchedule() {
                                                     <span className={styles.categoryCount}>
                                                         {selectedCount}/{productsInCategory.length}
                                                     </span>
-                                                    <motion.span 
+                                                    <motion.span
                                                         className={styles.categoryArrow}
                                                         animate={{ rotate: isExpanded ? 180 : 0 }}
                                                     >
@@ -625,7 +619,7 @@ export default function CannaSchedule() {
                                                     >
                                                         {/* Category Description if available */}
                                                         <p className={styles.categoryDescription}>
-                                                            {language === 'tr' 
+                                                            {language === 'tr'
                                                                 ? (category.description_tr || category.name)
                                                                 : (category.description_en || category.name)
                                                             }
@@ -653,8 +647,8 @@ export default function CannaSchedule() {
                                                                     >
                                                                         {product.image && (
                                                                             <div className={styles.productImageContainer}>
-                                                                                <img 
-                                                                                    src={product.image} 
+                                                                                <img
+                                                                                    src={product.image}
                                                                                     alt={product.product_name}
                                                                                     className={styles.productImage}
                                                                                     loading="lazy"
@@ -668,7 +662,7 @@ export default function CannaSchedule() {
                                                                             />
                                                                             <span className={styles.productName}>{product.product_name}</span>
                                                                             {isSelected && (
-                                                                                <motion.span 
+                                                                                <motion.span
                                                                                     className={styles.checkmark}
                                                                                     initial={{ scale: 0 }}
                                                                                     animate={{ scale: 1 }}
@@ -708,7 +702,7 @@ export default function CannaSchedule() {
                 </AnimatePresence>
 
                 {/* Water Amount - Above Table */}
-                <motion.div 
+                <motion.div
                     className={styles.waterAmountSection}
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -727,15 +721,13 @@ export default function CannaSchedule() {
                         <span className={styles.inputUnit}>L</span>
                     </div>
                     <span className={styles.waterAmountHint}>
-                        {language === 'tr' 
-                            ? 'Dozajlar girilen su miktarına göre hesaplanır' 
-                            : 'Dosages are calculated based on entered water amount'}
+                        {t('cannaWaterAmountHint')}
                     </span>
                 </motion.div>
 
                 {/* Schedule Table */}
                 {activeProducts.length > 0 ? (
-                    <motion.div 
+                    <motion.div
                         className={styles.tableContainer}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -744,7 +736,7 @@ export default function CannaSchedule() {
                         {/* EC Range Info */}
                         {currentSchedule?.ec_range && (
                             <div className={styles.ecInfo}>
-                                <span className={styles.ecLabel}>EC+ {language === 'tr' ? 'Aralığı' : 'Range'}:</span>
+                                <span className={styles.ecLabel}>EC+ {t('cannaEcRange')}:</span>
                                 <span className={styles.ecValue}>
                                     {currentSchedule.ec_range.min} - {currentSchedule.ec_range.max} {currentSchedule.ec_range.unit}
                                 </span>
@@ -754,23 +746,23 @@ export default function CannaSchedule() {
                             </div>
                         )}
 
-                        {/* Stages Info Table - NEW */}
+                        {/* Stages Info Table */}
                         {currentSchedule?.stages && currentSchedule.stages.length > 0 && (
-                            <motion.div 
+                            <motion.div
                                 className={styles.stagesInfoSection}
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                             >
                                 <h3 className={styles.stagesTitle}>
-                                    📊 {language === 'tr' ? 'Aşama Detayları' : 'Stage Details'}
+                                    📊 {t('cannaStageDetails')}
                                 </h3>
                                 <div className={styles.stagesTableWrapper}>
                                     <table className={styles.stagesTable}>
                                         <thead>
                                             <tr>
-                                                <th>{language === 'tr' ? 'Aşama' : 'Stage'}</th>
-                                                <th>{language === 'tr' ? 'Süre' : 'Duration'}</th>
-                                                <th>💡 {language === 'tr' ? 'Işık' : 'Light'}</th>
+                                                <th>{t('cannaStage')}</th>
+                                                <th>{t('cannaDuration')}</th>
+                                                <th>💡 {t('cannaLight')}</th>
                                                 <th>EC+</th>
                                                 <th>PPM+</th>
                                             </tr>
@@ -779,14 +771,14 @@ export default function CannaSchedule() {
                                             {currentSchedule.stages.map((stage, index) => (
                                                 <tr key={index}>
                                                     <td className={styles.stageNameCell}>
-                                                        <span className={styles.stageName}>{stage.name}</span>
-                                                        {stage.description && (
-                                                            <span className={styles.stageDesc}>{stage.description}</span>
+                                                        <span className={styles.stageName}>{t(stage.name_key) || stage.name}</span>
+                                                        {(stage.description_key || stage.description) && (
+                                                            <span className={styles.stageDesc}>{t(stage.description_key) || stage.description}</span>
                                                         )}
                                                     </td>
                                                     <td className={styles.stageDuration}>{stage.duration}</td>
                                                     <td className={styles.stageLight}>
-                                                        {stage.light_hours ? `${stage.light_hours}h` : '—'}
+                                                        {stage.light_hours_key ? t(stage.light_hours_key) : (stage.light_hours ? `${stage.light_hours}h` : '—')}
                                                     </td>
                                                     <td className={styles.stageEc}>{stage.ec_plus || '—'}</td>
                                                     <td className={styles.stagePpm}>{stage.ppm_plus || '—'}</td>
@@ -799,25 +791,27 @@ export default function CannaSchedule() {
                         )}
 
                         {/* Phase Legend */}
-                        <motion.div 
+                        <motion.div
                             className={styles.phaseLegend}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                         >
                             {Object.entries(phaseColors).slice(0, 5).map(([phase, color]) => (
                                 <div key={phase} className={styles.phaseItem}>
-                                    <div 
+                                    <div
                                         className={styles.phaseColor}
                                         style={{ backgroundColor: color }}
                                     />
                                     <span className={styles.phaseLabel}>
-                                        {language === 'tr' 
-                                            ? (phase === 'rooting' ? 'Köklendirme' : 
-                                               phase === 'vegetative' ? 'Vejetatif' : 
-                                               phase === 'flowering' ? 'Çiçeklenme' : 
-                                               phase === 'ripening' ? 'Olgunlaşma' : 
-                                               phase === 'flush' ? 'Yıkama' : phase)
-                                            : (phase.charAt(0).toUpperCase() + phase.slice(1))}
+                                        {phase === 'rooting' ? t('cannaPhaseRooting') :
+                                            phase === 'vegetative' ? t('cannaPhaseVegetative') :
+                                                phase === 'flowering' ? t('cannaPhaseFlowering') :
+                                                    phase === 'ripening' ? t('cannaPhaseRipening') :
+                                                        phase === 'flush' ? t('cannaPhaseFlush') :
+                                                            phase === 'generative1' ? t('cannaPhaseGenerative1') :
+                                                                phase === 'generative2' ? t('cannaPhaseGenerative2') :
+                                                                    phase === 'generative3' ? t('cannaPhaseGenerative3') :
+                                                                        (t(phase) || phase)}
                                     </span>
                                 </div>
                             ))}
@@ -828,26 +822,26 @@ export default function CannaSchedule() {
                                 <thead>
                                     <tr>
                                         <th className={styles.productHeader}>
-                                            {language === 'tr' ? 'Ürün' : 'Product'}
+                                            {t('cannaProducts')}
                                         </th>
                                         <th className={styles.unitHeader}>ml/L</th>
                                         {weekLabels.map((label, index) => {
                                             const phase = getPhaseForWeek(label);
                                             const stageInfo = isStageBasedSchedule ? getStageInfo(label) : null;
-                                            
+
                                             return (
-                                                <th 
+                                                <th
                                                     key={label}
                                                     className={`${styles.weekHeader} ${highlightedWeek === index ? styles.highlighted : ''} ${isStageBasedSchedule ? styles.stageHeader : ''}`}
-                                                    style={{ 
-                                                        borderTop: phase ? `3px solid ${phaseColors[phase] || '#6B7280'}` : undefined 
+                                                    style={{
+                                                        borderTop: phase ? `3px solid ${phaseColors[phase] || '#6B7280'}` : undefined
                                                     }}
                                                     onMouseEnter={() => setHighlightedWeek(index)}
                                                     onMouseLeave={() => setHighlightedWeek(null)}
                                                 >
                                                     <span className={styles.weekLabel}>
-                                                        {isStageBasedSchedule 
-                                                            ? (label.length > 15 ? label.substring(0, 15) + '...' : label)
+                                                        {isStageBasedSchedule
+                                                            ? (stageInfo ? (t(stageInfo.name_key) || label) : label)
                                                             : label
                                                         }
                                                     </span>
@@ -857,11 +851,19 @@ export default function CannaSchedule() {
                                                         </span>
                                                     )}
                                                     {!isStageBasedSchedule && phase && (
-                                                        <span 
+                                                        <span
                                                             className={styles.phaseIndicator}
                                                             style={{ color: phaseColors[phase] }}
                                                         >
-                                                            {t(phase) || phase}
+                                                            {phase === 'rooting' ? t('cannaPhaseRooting') :
+                                                                phase === 'vegetative' ? t('cannaPhaseVegetative') :
+                                                                    phase === 'flowering' ? t('cannaPhaseFlowering') :
+                                                                        phase === 'ripening' ? t('cannaPhaseRipening') :
+                                                                            phase === 'flush' ? t('cannaPhaseFlush') :
+                                                                                phase === 'generative1' ? t('cannaPhaseGenerative1') :
+                                                                                    phase === 'generative2' ? t('cannaPhaseGenerative2') :
+                                                                                        phase === 'generative3' ? t('cannaPhaseGenerative3') :
+                                                                                            (t(phase) || phase)}
                                                         </span>
                                                     )}
                                                 </th>
@@ -875,13 +877,13 @@ export default function CannaSchedule() {
                                             <td className={styles.productCell}>
                                                 <div className={styles.productInfo}>
                                                     {product.image ? (
-                                                        <img 
-                                                            src={product.image} 
+                                                        <img
+                                                            src={product.image}
                                                             alt={product.product_name}
                                                             className={styles.productTableImage}
                                                         />
                                                     ) : (
-                                                        <span 
+                                                        <span
                                                             className={styles.productDot}
                                                             style={{ backgroundColor: product.color }}
                                                         />
@@ -891,7 +893,7 @@ export default function CannaSchedule() {
                                             </td>
                                             <td className={styles.unitCell}>{product.dose_unit}</td>
                                             {weekLabels.map((week, index) => (
-                                                <td 
+                                                <td
                                                     key={week}
                                                     className={`${styles.doseCell} ${highlightedWeek === index ? styles.highlighted : ''}`}
                                                     onMouseEnter={() => setHighlightedWeek(index)}
@@ -910,7 +912,7 @@ export default function CannaSchedule() {
                                         {weekLabels.map((week, index) => {
                                             const totals = calculateTotalForWeek(week);
                                             return (
-                                                <td 
+                                                <td
                                                     key={week}
                                                     className={`${styles.totalCell} ${highlightedWeek === index ? styles.highlighted : ''}`}
                                                     onMouseEnter={() => setHighlightedWeek(index)}
@@ -937,19 +939,19 @@ export default function CannaSchedule() {
                     </div>
                 )}
 
-                {/* Plant-Specific Notes - Updated for new format */}
+                {/* Plant-Specific Notes */}
                 {currentSchedule?.notes && currentSchedule.notes.length > 0 && (
-                    <motion.div 
+                    <motion.div
                         className={styles.notesSection}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
                     >
-                        <h3>📝 {language === 'tr' ? 'Önemli Notlar' : 'Important Notes'}</h3>
+                        <h3>📝 {t('cannaImportantNotes')}</h3>
                         <ul className={styles.notesList}>
                             {currentSchedule.notes.map((note, index) => (
                                 <li key={index} className={styles.noteItem}>
-                                    {language === 'tr' ? note.tr : note.en}
+                                    {note.key ? t(note.key) : (language === 'tr' ? note.tr : note.en)}
                                 </li>
                             ))}
                         </ul>
@@ -957,19 +959,23 @@ export default function CannaSchedule() {
                 )}
 
                 {/* Special Requirements */}
-                {currentSchedule?.special_requirements && (
-                    <motion.div 
+                {currentSchedule?.special_requirements && currentSchedule.special_requirements.length > 0 && (
+                    <motion.div
                         className={styles.requirementsSection}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5 }}
                     >
-                        <h3>{language === 'tr' ? 'Özel Gereksinimler' : 'Special Requirements'}</h3>
+                        <h3>{t('cannaSpecialRequirements')}</h3>
                         <div className={styles.requirementsList}>
                             {currentSchedule.special_requirements.map((req, index) => (
                                 <div key={index} className={styles.requirementItem}>
-                                    <span className={styles.requirementLabel}>{t(req.key) || req.key}:</span>
-                                    <span className={styles.requirementValue}>{req.value}</span>
+                                    <span className={styles.requirementLabel}>
+                                        {req.label_key ? t(req.label_key) : (t(req.key) || req.key)}:
+                                    </span>
+                                    <span className={styles.requirementValue}>
+                                        {req.value_key ? t(req.value_key) : req.value}
+                                    </span>
                                 </div>
                             ))}
                         </div>
@@ -977,113 +983,95 @@ export default function CannaSchedule() {
                 )}
 
                 {/* Usage Tips */}
-                <motion.div 
+                <motion.div
                     className={styles.tipsSection}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6 }}
                 >
-                    <h3>{language === 'tr' ? 'Kullanım İpuçları' : 'Usage Tips'}</h3>
+                    <h3>{t('cannaUsageTips')}</h3>
                     <div className={styles.tipsList}>
                         <div className={styles.tipItem}>
                             <span className={styles.tipIcon}>💧</span>
-                            <span>{language === 'tr' 
-                                ? 'Besin çözeltinizin pH değerini ölçtükten sonra karıştırın. Optimal aralık çoğu sistem için 5.8-6.2\'dir.'
-                                : 'Always measure pH after mixing nutrients. Optimal range is 5.8-6.2 for most systems.'}</span>
+                            <span>{t('cannaTip1')}</span>
                         </div>
                         <div className={styles.tipItem}>
                             <span className={styles.tipIcon}>🌡️</span>
-                            <span>{language === 'tr'
-                                ? 'Besin çözeltisi sıcaklığını optimum emilim için 18-22°C arasında tutun.'
-                                : 'Keep nutrient solution temperature between 18-22°C for optimal absorption.'}</span>
+                            <span>{t('cannaTip2')}</span>
                         </div>
                         <div className={styles.tipItem}>
                             <span className={styles.tipIcon}>📏</span>
-                            <span>{language === 'tr'
-                                ? 'Fide ve genç bitkiler için önerilen dozun %50\'si ile başlayın.'
-                                : 'Start with 50% recommended dosage for seedlings and young plants.'}</span>
+                            <span>{t('cannaTip3')}</span>
                         </div>
                         <div className={styles.tipItem}>
                             <span className={styles.tipIcon}>🔄</span>
-                            <span>{language === 'tr'
-                                ? 'Şişeleri kullanmadan önce iyice çalkalayın. Besinleri suya ekleyin, suyu besinlere değil.'
-                                : 'Shake bottles well before use. Add nutrients to water, not water to nutrients.'}</span>
+                            <span>{t('cannaTip4')}</span>
                         </div>
                         <div className={styles.tipItem}>
                             <span className={styles.tipIcon}>📊</span>
-                            <span>{language === 'tr'
-                                ? 'EC seviyelerini düzenli olarak izleyin. Bitki tepkisine göre artırın veya azaltın.'
-                                : 'Monitor EC levels regularly. Increase or decrease based on plant response.'}</span>
+                            <span>{t('cannaTip5')}</span>
                         </div>
                     </div>
                 </motion.div>
 
                 {/* Educational Section */}
-                <motion.section 
+                <motion.section
                     className={styles.educationalSection}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.7 }}
                 >
                     <h2 className={styles.sectionTitle}>
-                        {language === 'tr' ? 'CANNA Besinleri Hakkında' : 'About CANNA Nutrients'}
+                        {t('cannaEduTitle')}
                     </h2>
                     <p className={styles.sectionSubtitle}>
-                        {language === 'tr' 
-                            ? 'CANNA beslenme sistemlerinin arkasındaki bilimi öğrenin'
-                            : 'Learn about the science behind CANNA nutrition systems'}
+                        {t('cannaEduSubtitle')}
                     </p>
 
                     <div className={styles.infoCards}>
-                        <motion.div 
+                        <motion.div
                             className={styles.infoCard}
                             whileHover={{ y: -4 }}
                         >
                             <div className={styles.infoCardIcon}>🔬</div>
                             <h3 className={styles.infoCardTitle}>
-                                {language === 'tr' ? 'Araştırma Tabanlı Formüller' : 'Research-Based Formulas'}
+                                {t('cannaEduResearchTitle')}
                             </h3>
                             <p className={styles.infoCardText}>
-                                {language === 'tr'
-                                    ? 'CANNA besinleri, her büyüme aşaması için optimal besin oranlarını sağlamak üzere kapsamlı bilimsel araştırmalar sonucu geliştirilmiştir.'
-                                    : 'CANNA nutrients are developed through extensive scientific research, ensuring optimal nutrient ratios for each growth stage.'}
+                                {t('cannaEduResearchText')}
                             </p>
                         </motion.div>
 
-                        <motion.div 
+                        <motion.div
                             className={styles.infoCard}
                             whileHover={{ y: -4 }}
                         >
                             <div className={styles.infoCardIcon}>🎯</div>
                             <h3 className={styles.infoCardTitle}>
-                                {language === 'tr' ? 'Hassas Dozlama' : 'Precision Dosing'}
+                                {t('cannaEduPrecisionTitle')}
                             </h3>
                             <p className={styles.infoCardText}>
-                                {language === 'tr'
-                                    ? 'Her ürün hassas dozlama için tasarlanmıştır, tahmin yürütmeyi ortadan kaldırır ve her yetiştirme döngüsünde tutarlı sonuçlar sağlar.'
-                                    : 'Each product is designed for precise dosing, eliminating guesswork and ensuring consistent results every grow cycle.'}
+                                {t('cannaEduPrecisionText')}
                             </p>
                         </motion.div>
 
-                        <motion.div 
+                        <motion.div
                             className={styles.infoCard}
                             whileHover={{ y: -4 }}
                         >
                             <div className={styles.infoCardIcon}>🌍</div>
                             <h3 className={styles.infoCardTitle}>
-                                {language === 'tr' ? 'Premium Kalite' : 'Premium Quality'}
+                                {t('cannaEduQualityTitle')}
                             </h3>
                             <p className={styles.infoCardText}>
-                                {language === 'tr'
-                                    ? 'Tüm CANNA ürünleri yüksek kaliteli bileşenlerden üretilir ve maksimum saflık için sıkı kalite kontrolünden geçer.'
-                                    : 'All CANNA products are made from high-grade ingredients and undergo strict quality control for maximum purity.'}
+                                {t('cannaEduQualityText')}
                             </p>
                         </motion.div>
                     </div>
                 </motion.section>
 
                 {/* Substrate Additives Section */}
-                <motion.section 
+                <motion.section
                     className={styles.additivesSection}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -1092,72 +1080,62 @@ export default function CannaSchedule() {
                     <div className={styles.guideSection}>
                         <div className={styles.guideSectionHeader}>
                             <h2 className={styles.guideSectionTitle}>
-                                🧪 {language === 'tr' ? 'Besin Formülasyonları ve Katkı Maddeleri' : 'Nutrient Formulations & Additives'}
+                                🧪 {t('cannaAdditivesTitle')}
                             </h2>
                             <p className={styles.guideSectionSubtitle}>
-                                {language === 'tr' 
-                                    ? 'Tüm programlar, temel besinler ile bitki gelişiminin belirli aşamalarını desteklemek için tasarlanmış katkı maddelerinin stratejik kullanımına dayanır.'
-                                    : 'All programs rely on base nutrients and strategic use of additives designed to support specific stages of plant development.'}
+                                {t('cannaAdditivesSubtitle')}
                             </p>
                         </div>
 
                         <div className={styles.additivesList}>
                             <motion.div className={styles.additiveItem} whileHover={{ x: 4 }}>
-                                <div className={styles.additiveIcon} style={{'--additive-color-rgb': '139, 92, 246'}}>🌱</div>
+                                <div className={styles.additiveIcon} style={{ '--additive-color-rgb': '139, 92, 246' }}>🌱</div>
                                 <div className={styles.additiveContent}>
                                     <h4 className={styles.additiveName}>RHIZOTONIC</h4>
                                     <p className={styles.additiveDesc}>
-                                        {language === 'tr'
-                                            ? 'Güçlü bir kök sistemi oluşturmak için özellikle başlangıç ve köklenme evrelerinde kullanılır. Sağlıklı bir başlangıç, bitkinin genel performansı için temel oluşturur.'
-                                            : 'Used especially during start and rooting phases to build a strong root system. A healthy start forms the foundation for overall plant performance.'}
+                                        {t('descRhizotonic')}
                                     </p>
                                     <span className={styles.additiveUsage}>
-                                        📅 {language === 'tr' ? 'Başlangıç & Köklenme Evresi' : 'Start & Rooting Phase'}
+                                        📅 {t('usageStartRooting')}
                                     </span>
                                 </div>
                             </motion.div>
 
                             <motion.div className={styles.additiveItem} whileHover={{ x: 4 }}>
-                                <div className={styles.additiveIcon} style={{'--additive-color-rgb': '34, 197, 94'}}>🔄</div>
+                                <div className={styles.additiveIcon} style={{ '--additive-color-rgb': '34, 197, 94' }}>🔄</div>
                                 <div className={styles.additiveContent}>
                                     <h4 className={styles.additiveName}>CANNAZYM</h4>
                                     <p className={styles.additiveDesc}>
-                                        {language === 'tr'
-                                            ? 'Kök ortamını temizleyen ve ölü kök materyalini parçalayan enzimler içerir. Genellikle tüm döngü boyunca kullanılır. Substratın yeniden kullanılması durumunda dozaj iki katına çıkarılmalıdır.'
-                                            : 'Contains enzymes that clean the root environment and break down dead root material. Used throughout the entire cycle. Double the dosage when reusing substrate.'}
+                                        {t('descCannazym')}
                                     </p>
                                     <span className={styles.additiveUsage}>
-                                        📅 {language === 'tr' ? 'Tüm Döngü Boyunca' : 'Throughout Entire Cycle'}
+                                        📅 {t('usageEntireCycle')}
                                     </span>
                                 </div>
                             </motion.div>
 
                             <motion.div className={styles.additiveItem} whileHover={{ x: 4 }}>
-                                <div className={styles.additiveIcon} style={{'--additive-color-rgb': '236, 72, 153'}}>💥</div>
+                                <div className={styles.additiveIcon} style={{ '--additive-color-rgb': '236, 72, 153' }}>💥</div>
                                 <div className={styles.additiveContent}>
                                     <h4 className={styles.additiveName}>PK 13/14</h4>
                                     <p className={styles.additiveDesc}>
-                                        {language === 'tr'
-                                            ? 'Yüksek oranda fosfor (P) ve potasyum (K) içeren bir çiçeklenme uyarıcısıdır. Generatif dönemin ortasında, çiçek ve meyve gelişimini yoğun bir şekilde desteklemek için genellikle sadece bir hafta süreyle kullanılır.'
-                                            : 'A flowering stimulator with high phosphorus (P) and potassium (K). Used for about one week in the middle of the generative period to intensively support flower and fruit development.'}
+                                        {t('descPK1314')}
                                     </p>
                                     <span className={styles.additiveUsage}>
-                                        📅 {language === 'tr' ? 'Generatif Evrenin Ortası (1 Hafta)' : 'Mid-Generative Phase (1 Week)'}
+                                        📅 {t('usageMidGen')}
                                     </span>
                                 </div>
                             </motion.div>
 
                             <motion.div className={styles.additiveItem} whileHover={{ x: 4 }}>
-                                <div className={styles.additiveIcon} style={{'--additive-color-rgb': '251, 191, 36'}}>⚡</div>
+                                <div className={styles.additiveIcon} style={{ '--additive-color-rgb': '251, 191, 36' }}>⚡</div>
                                 <div className={styles.additiveContent}>
                                     <h4 className={styles.additiveName}>CANNABOOST</h4>
                                     <p className={styles.additiveDesc}>
-                                        {language === 'tr'
-                                            ? 'Çiçeklenme ve meyve olgunlaşma sürecini hızlandıran ve kalitesini artıran bir katkı maddesidir. Çiçeklenme gücünü artırmak için generatif evre boyunca kullanılır.'
-                                            : 'An additive that accelerates flowering and fruit ripening while improving quality. Used throughout the generative phase to enhance flowering power.'}
+                                        {t('descCannaboost')}
                                     </p>
                                     <span className={styles.additiveUsage}>
-                                        📅 {language === 'tr' ? 'Generatif Evre Boyunca' : 'Throughout Generative Phase'}
+                                        📅 {t('usageGenPhase')}
                                     </span>
                                 </div>
                             </motion.div>
@@ -1166,7 +1144,7 @@ export default function CannaSchedule() {
                 </motion.section>
 
                 {/* Quick Reference Panel */}
-                <motion.div 
+                <motion.div
                     className={styles.quickRefPanel}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -1176,10 +1154,10 @@ export default function CannaSchedule() {
                         <img src="/images/canna-logo.svg" alt="CANNA" className={styles.quickRefLogo} />
                         <div>
                             <h3 className={styles.quickRefTitle}>
-                                {language === 'tr' ? 'pH Seviyeleri Hızlı Referans' : 'pH Levels Quick Reference'}
+                                {t('cannaQuickRefTitle')}
                             </h3>
                             <p className={styles.quickRefSubtitle}>
-                                {language === 'tr' ? 'Sisteme göre önerilen pH aralıkları' : 'Recommended pH ranges by system'}
+                                {t('cannaQuickRefSubtitle')}
                             </p>
                         </div>
                     </div>
@@ -1213,7 +1191,7 @@ export default function CannaSchedule() {
                 </motion.div>
 
                 {/* Strategic Insights Section */}
-                <motion.section 
+                <motion.section
                     className={styles.insightsSection}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -1222,61 +1200,51 @@ export default function CannaSchedule() {
                     <div className={styles.insightsHeader}>
                         <span className={styles.insightsIcon}>💡</span>
                         <h3 className={styles.insightsTitle}>
-                            {language === 'tr' ? 'Stratejik Öneriler' : 'Strategic Insights'}
+                            {t('cannaInsightsTitle')}
                         </h3>
                     </div>
                     <div className={styles.insightsList}>
                         <div className={styles.insightItem}>
                             <span className={styles.insightNumber}>1</span>
                             <p className={styles.insightText}>
-                                {language === 'tr'
-                                    ? <>Yetiştirme programları tarafından sunulan tablolar ve yönergeler, <span className={styles.insightHighlight}>"demir bir kanun değildir"</span>. Bu programlar, bilimsel temellere dayanan güçlü bir çerçeve sunar, ancak nihai başarı yetiştiricinin gözlem ve adaptasyon yeteneğine bağlıdır.</>
-                                    : <>The tables and guidelines provided by growing programs are <span className={styles.insightHighlight}>"not iron law"</span>. These programs provide a strong scientifically-based framework, but ultimate success depends on the grower's observation and adaptation skills.</>}
+                                {t('cannaInsight1')}
                             </p>
                         </div>
                         <div className={styles.insightItem}>
                             <span className={styles.insightNumber}>2</span>
                             <p className={styles.insightText}>
-                                {language === 'tr'
-                                    ? <>Vejetatif evreden generatif evreye geçildiğinde besin ihtiyacı artar. EC değeri vejetatif evrede <span className={styles.insightHighlight}>0.7-1.3 mS/cm</span> aralığındayken, generatif evrenin zirvesinde <span className={styles.insightHighlight}>1.6-2.0 mS/cm</span> seviyelerine ulaşır.</>
-                                    : <>Nutrient demand increases when transitioning from vegetative to generative phase. EC value ranges from <span className={styles.insightHighlight}>0.7-1.3 mS/cm</span> in vegetative phase to <span className={styles.insightHighlight}>1.6-2.0 mS/cm</span> at the peak of generative phase.</>}
+                                {t('cannaInsight2')}
                             </p>
                         </div>
                         <div className={styles.insightItem}>
                             <span className={styles.insightNumber}>3</span>
                             <p className={styles.insightText}>
-                                {language === 'tr'
-                                    ? <>Bitkinin yaprak rengi, büyüme hızı ve genel sağlığı, uygulanan programın doğruluğu hakkında <span className={styles.insightHighlight}>en iyi geri bildirimi</span> sağlar. Bitkinin verdiği sinyallere göre besin, su ve ışık rejimlerini hassas bir şekilde ayarlayın.</>
-                                    : <>Plant leaf color, growth rate, and overall health provide the <span className={styles.insightHighlight}>best feedback</span> about the accuracy of your program. Fine-tune nutrient, water, and light regimes based on the signals your plant gives.</>}
+                                {t('cannaInsight3')}
                             </p>
                         </div>
                         <div className={styles.insightItem}>
                             <span className={styles.insightNumber}>4</span>
                             <p className={styles.insightText}>
-                                {language === 'tr'
-                                    ? <>Işık süresi, bitkilerin vejetatif büyümeden generatif faza geçişini tetikleyen en önemli çevresel sinyallerden biridir. Genel kural: Vejetatif için <span className={styles.insightHighlight}>18 saat</span>, çiçeklenme için <span className={styles.insightHighlight}>12 saat</span>.</>
-                                    : <>Light duration is one of the most important environmental signals that triggers plants to transition from vegetative to generative phase. General rule: <span className={styles.insightHighlight}>18 hours</span> for vegetative, <span className={styles.insightHighlight}>12 hours</span> for flowering.</>}
+                                {t('cannaInsight4')}
                             </p>
                         </div>
                     </div>
                 </motion.section>
 
                 {/* Notes Section */}
-                <motion.div 
+                <motion.div
                     className={styles.notesSection}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.9 }}
                 >
-                    <h3>{language === 'tr' ? 'Önemli Notlar' : 'Important Notes'}</h3>
+                    <h3>{t('cannaImportantNotes')}</h3>
                     <p>
-                        {language === 'tr'
-                            ? 'Tüm dozlar standart önerilere dayanmaktadır. Gerçek gereksinimler bitki genetiğine, çevre koşullarına ve büyüme aşamasına göre değişebilir. Bitkilerinizi her zaman izleyin ve buna göre ayarlayın. Şüpheniz varsa daha az besin kullanın - her zaman daha fazla ekleyebilirsiniz, ancak fazlasını çıkaramazsınız.'
-                            : 'All dosages are based on standard recommendations. Actual requirements may vary based on plant genetics, environmental conditions, and growth stage. Always monitor your plants and adjust accordingly. When in doubt, use less nutrients - you can always add more, but you cannot remove excess.'}
+                        {t('cannaGeneralNote')}
                     </p>
                 </motion.div>
             </motion.div>
-            
+
             <Footer />
         </div>
     );

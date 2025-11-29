@@ -38,13 +38,14 @@ export default function ElectricCostEstimator({ onClose } = {}) {
   const { state: builderState } = useBuilder();
 
   // Initialize lists: prefer builder-selected items when present, otherwise saved, otherwise sensible defaults
+  // Initialize lists: prefer builder-selected items when present, otherwise saved, otherwise sensible defaults
   const initialLights = (builderState?.selectedItems?.lighting?.length > 0)
     ? fromBuilderItems(builderState.selectedItems.lighting)
-    : (saved?.lights || [{ name: 'LED 300W', watt: 300, quantity: 1 }]);
+    : (saved?.lights || [{ name: t('defaultLightName'), watt: 300, quantity: 1 }]);
 
   const initialFans = (builderState?.selectedItems?.ventilation?.length > 0)
     ? fromBuilderItems(builderState.selectedItems.ventilation)
-    : (saved?.fans || [{ name: 'Inline Fan 100W', watt: 100, quantity: 1 }]);
+    : (saved?.fans || [{ name: t('defaultFanName'), watt: 100, quantity: 1 }]);
 
   const [lights, setLights] = useState(initialLights);
   const [fans, setFans] = useState(initialFans);

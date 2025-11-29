@@ -151,6 +151,35 @@ export const toolsTranslations = {
     ppfdToolLegendExtreme: 'Extreme (>1200)',
     ppfdToolInstructions: 'Drag lights to position. Double click to rotate.',
     ppfdToolUnitToggle: 'Unit System',
+
+    // PPFD Guide Component
+    ppfdGuideBtn: 'PPFD Guide',
+    ppfdHeaderPPFD: 'PPFD (μmol/m²/s)',
+    ppfdHeaderStatus: 'Status',
+    ppfdHeaderDesc: 'Description',
+    ppfdHeaderEffect: 'Effect',
+    ppfdStatusInsufficient: 'Insufficient',
+    ppfdDescInsufficient: 'Photosynthesis does not start, plant dies.',
+    ppfdEffectInsufficient: 'Insufficient Light',
+    ppfdStatusSeedling: 'Seedling / Clone',
+    ppfdDescSeedling: 'Ideal for rooting and initial leaf development.',
+    ppfdEffectSeedling: 'Rooting',
+    ppfdStatusVeg: 'Vegetative',
+    ppfdDescVeg: 'Healthy stem and leaf growth.',
+    ppfdEffectVeg: 'Growth',
+    ppfdStatusFlower: 'Flowering',
+    ppfdDescFlower: 'High yield flower/fruit production.',
+    ppfdEffectFlower: 'Yield',
+    ppfdStatusHigh: 'High Intensity',
+    ppfdDescHigh: 'Experienced grower level. Requires careful feeding.',
+    ppfdEffectHigh: 'Stress Risk',
+    ppfdStatusExtreme: 'CO2 / Burn Risk',
+    ppfdDescExtreme: 'Leaf damage occurs without CO2. Professional systems only.',
+    ppfdEffectExtreme: 'Danger',
+
+    // Electric Cost Estimator Component Defaults
+    defaultLightName: 'LED 300W',
+    defaultFanName: 'Inline Fan 100W',
   },
   tr: {
     // Tools Page
@@ -304,5 +333,34 @@ export const toolsTranslations = {
     ppfdToolLegendExtreme: 'Aşırı (>1200)',
     ppfdToolInstructions: 'Işıkları sürükleyerek konumlandırın. Döndürmek için çift tıklayın.',
     ppfdToolUnitToggle: 'Birim Sistemi',
+
+    // PPFD Guide Component
+    ppfdGuideBtn: 'PPFD Rehberi',
+    ppfdHeaderPPFD: 'PPFD (μmol/m²/s)',
+    ppfdHeaderStatus: 'Durum',
+    ppfdHeaderDesc: 'Açıklama',
+    ppfdHeaderEffect: 'Etki',
+    ppfdStatusInsufficient: 'Yetersiz',
+    ppfdDescInsufficient: 'Fotosentez başlamaz, bitki ölür.',
+    ppfdEffectInsufficient: 'Yetersiz Işık',
+    ppfdStatusSeedling: 'Fide / Klon',
+    ppfdDescSeedling: 'Köklendirme ve ilk yaprak gelişimi için ideal.',
+    ppfdEffectSeedling: 'Köklenme',
+    ppfdStatusVeg: 'Vejetatif',
+    ppfdDescVeg: 'Sağlıklı gövde ve yaprak büyümesi.',
+    ppfdEffectVeg: 'Büyüme',
+    ppfdStatusFlower: 'Çiçeklenme',
+    ppfdDescFlower: 'Yüksek verimli çiçek/meyve üretimi.',
+    ppfdEffectFlower: 'Verim',
+    ppfdStatusHigh: 'Yüksek Yoğunluk',
+    ppfdDescHigh: 'Deneyimli yetiştirici seviyesi. Dikkatli besleme gerektirir.',
+    ppfdEffectHigh: 'Stres Riski',
+    ppfdStatusExtreme: 'CO2 / Yanık Riski',
+    ppfdDescExtreme: 'CO2 olmadan yaprak hasarı oluşur. Sadece profesyonel sistemler.',
+    ppfdEffectExtreme: 'Tehlike',
+
+    // Electric Cost Estimator Component Defaults
+    defaultLightName: 'LED 300W',
+    defaultFanName: 'Kanal Tipi Fan 100W',
   }
 };

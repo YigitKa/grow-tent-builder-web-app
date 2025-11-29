@@ -139,8 +139,8 @@ export const CANNA_PRODUCTS = [
         description_key: 'descAquaVega',
         paired_with: 'aqua-vega-b',
         image: '/images/canna/prod-canna-aqua-vega.png.webp',
-        short_info: { en: 'Recirculating growth nutrient.', tr: 'Devridaimli büyüme besini.' },
-        tags: ['VEGA', 'Hydroponic', 'Growth']
+        short_info_key: 'infoAquaVega',
+        tags: ['tagVEGA', 'tagHydroponic', 'tagGrowth']
     },
     {
         id: 'aqua-vega-b',
@@ -153,8 +153,8 @@ export const CANNA_PRODUCTS = [
         description_key: 'descAquaVega',
         paired_with: 'aqua-vega-a',
         image: '/images/canna/prod-canna-aqua-vega.png.webp',
-        short_info: { en: 'Recirculating growth nutrient.', tr: 'Devridaimli büyüme besini.' },
-        tags: ['VEGA', 'Hydroponic', 'Growth']
+        short_info_key: 'infoAquaVega',
+        tags: ['tagVEGA', 'tagHydroponic', 'tagGrowth']
     },
     {
         id: 'aqua-flores-a',
@@ -167,8 +167,8 @@ export const CANNA_PRODUCTS = [
         description_key: 'descAquaFlores',
         paired_with: 'aqua-flores-b',
         image: '/images/canna/prod-canna-aqua-flores.png.webp',
-        short_info: { en: 'Recirculating bloom nutrient.', tr: 'Devridaimli çiçeklenme besini.' },
-        tags: ['FLORES', 'Hydroponic', 'Bloom']
+        short_info_key: 'infoAquaFlores',
+        tags: ['tagFLORES', 'tagHydroponic', 'tagBloom']
     },
     {
         id: 'aqua-flores-b',
@@ -181,8 +181,8 @@ export const CANNA_PRODUCTS = [
         description_key: 'descAquaFlores',
         paired_with: 'aqua-flores-a',
         image: '/images/canna/prod-canna-aqua-flores.png.webp',
-        short_info: { en: 'Recirculating bloom nutrient.', tr: 'Devridaimli çiçeklenme besini.' },
-        tags: ['FLORES', 'Hydroponic', 'Bloom']
+        short_info_key: 'infoAquaFlores',
+        tags: ['tagFLORES', 'tagHydroponic', 'tagBloom']
     },
 
     // === COCO PRODUCTS ===
@@ -197,8 +197,8 @@ export const CANNA_PRODUCTS = [
         description_key: 'descCoco',
         paired_with: 'coco-b',
         image: '/images/canna/prod-canna-coco-ab.png.webp',
-        short_info: { en: 'Single nutrient blend.', tr: 'Tek besin karışımı.' },
-        tags: ['Coco', 'A&B', 'AllPhases']
+        short_info_key: 'infoCoco',
+        tags: ['tagCoco', 'tagAB', 'tagAllPhases']
     },
     {
         id: 'coco-b',
@@ -211,8 +211,8 @@ export const CANNA_PRODUCTS = [
         description_key: 'descCoco',
         paired_with: 'coco-a',
         image: '/images/canna/prod-canna-coco-ab.png.webp',
-        short_info: { en: 'Single nutrient blend.', tr: 'Tek besin karışımı.' },
-        tags: ['Coco', 'A&B', 'AllPhases']
+        short_info_key: 'infoCoco',
+        tags: ['tagCoco', 'tagAB', 'tagAllPhases']
     },
 
     // === COGr PRODUCTS ===
@@ -227,8 +227,8 @@ export const CANNA_PRODUCTS = [
         description_key: 'descCOGrVega',
         paired_with: 'cogr-vega-b',
         image: '/images/canna/prod-canna-cogr-vega.png.webp',
-        short_info: { en: 'Strong seedlings ensured.', tr: 'Güçlü filizler sağlar.' },
-        tags: ['COGr', 'VEGA', 'Silicon']
+        short_info_key: 'infoCOGrVega',
+        tags: ['tagCOGr', 'tagVEGA', 'tagSilicon']
     },
     {
         id: 'cogr-vega-b',
@@ -241,8 +241,8 @@ export const CANNA_PRODUCTS = [
         description_key: 'descCOGrVega',
         paired_with: 'cogr-vega-a',
         image: '/images/canna/prod-canna-cogr-vega.png.webp',
-        short_info: { en: 'Strong seedlings ensured.', tr: 'Güçlü filizler sağlar.' },
-        tags: ['COGr', 'VEGA', 'Silicon']
+        short_info_key: 'infoCOGrVega',
+        tags: ['tagCOGr', 'tagVEGA', 'tagSilicon']
     },
     {
         id: 'cogr-flores-a',
@@ -255,8 +255,8 @@ export const CANNA_PRODUCTS = [
         description_key: 'descCOGrFlores',
         paired_with: 'cogr-flores-b',
         image: '/images/canna/prod-canna-cogr-flores.png.webp',
-        short_info: { en: 'Stimulates fruit production.', tr: 'Meyve üretimini uyarır.' },
-        tags: ['COGr', 'FLORES', 'FulvicAcid']
+        short_info_key: 'infoCOGrFlores',
+        tags: ['tagCOGr', 'tagFLORES', 'tagFulvicAcid']
     },
     {
         id: 'cogr-flores-b',
@@ -269,8 +269,8 @@ export const CANNA_PRODUCTS = [
         description_key: 'descCOGrFlores',
         paired_with: 'cogr-flores-a',
         image: '/images/canna/prod-canna-cogr-flores.png.webp',
-        short_info: { en: 'Stimulates fruit production.', tr: 'Meyve üretimini uyarır.' },
-        tags: ['COGr', 'FLORES', 'FulvicAcid']
+        short_info_key: 'infoCOGrFlores',
+        tags: ['tagCOGr', 'tagFLORES', 'tagFulvicAcid']
     },
     {
         id: 'cogr-buffer-agent',
@@ -282,8 +282,8 @@ export const CANNA_PRODUCTS = [
         function_key: 'funcBuffer',
         description_key: 'descCOGrBuffer',
         image: '/images/canna/prod-canna-cogr-buffer-agent.png.webp',
-        short_info: { en: 'Soaks & buffers slabs.', tr: 'Levhayı ıslatır, tamponlar.' },
-        tags: ['COGr', 'Buffer', 'SlabPrep']
+        short_info_key: 'infoCOGrBuffer',
+        tags: ['tagCOGr', 'tagBuffer', 'tagSlabPrep']
     },
 
     // === SUBSTRA PRODUCTS ===
@@ -298,8 +298,8 @@ export const CANNA_PRODUCTS = [
         description_key: 'descSubstraVega',
         water_type: 'hard',
         paired_with: 'substra-vega-b-hw',
-        short_info: { en: 'Run-to-waste growth.', tr: 'Açık sistem büyüme besini.' },
-        tags: ['SUBSTRA', 'HardWater', 'VEGA']
+        short_info_key: 'infoSubstraVega',
+        tags: ['tagSUBSTRA', 'tagHardWater', 'tagVEGA']
     },
     {
         id: 'substra-vega-b-hw',
@@ -312,8 +312,8 @@ export const CANNA_PRODUCTS = [
         description_key: 'descSubstraVega',
         water_type: 'hard',
         paired_with: 'substra-vega-a-hw',
-        short_info: { en: 'Run-to-waste growth.', tr: 'Açık sistem büyüme besini.' },
-        tags: ['SUBSTRA', 'HardWater', 'VEGA']
+        short_info_key: 'infoSubstraVega',
+        tags: ['tagSUBSTRA', 'tagHardWater', 'tagVEGA']
     },
     {
         id: 'substra-vega-a-sw',
@@ -326,8 +326,8 @@ export const CANNA_PRODUCTS = [
         description_key: 'descSubstraVega',
         water_type: 'soft',
         paired_with: 'substra-vega-b-sw',
-        short_info: { en: 'Run-to-waste growth.', tr: 'Açık sistem büyüme besini.' },
-        tags: ['SUBSTRA', 'SoftWater', 'VEGA']
+        short_info_key: 'infoSubstraVega',
+        tags: ['tagSUBSTRA', 'tagSoftWater', 'tagVEGA']
     },
     {
         id: 'substra-vega-b-sw',
@@ -340,8 +340,8 @@ export const CANNA_PRODUCTS = [
         description_key: 'descSubstraVega',
         water_type: 'soft',
         paired_with: 'substra-vega-a-sw',
-        short_info: { en: 'Run-to-waste growth.', tr: 'Açık sistem büyüme besini.' },
-        tags: ['SUBSTRA', 'SoftWater', 'VEGA']
+        short_info_key: 'infoSubstraVega',
+        tags: ['tagSUBSTRA', 'tagSoftWater', 'tagVEGA']
     },
     {
         id: 'substra-flores-a-hw',
@@ -354,8 +354,8 @@ export const CANNA_PRODUCTS = [
         description_key: 'descSubstraFlores',
         water_type: 'hard',
         paired_with: 'substra-flores-b-hw',
-        short_info: { en: 'Run-to-waste bloom.', tr: 'Açık sistem çiçeklenme besini.' },
-        tags: ['SUBSTRA', 'HardWater', 'FLORES']
+        short_info_key: 'infoSubstraFlores',
+        tags: ['tagSUBSTRA', 'tagHardWater', 'tagFLORES']
     },
     {
         id: 'substra-flores-b-hw',
@@ -368,8 +368,8 @@ export const CANNA_PRODUCTS = [
         description_key: 'descSubstraFlores',
         water_type: 'hard',
         paired_with: 'substra-flores-a-hw',
-        short_info: { en: 'Run-to-waste bloom.', tr: 'Açık sistem çiçeklenme besini.' },
-        tags: ['SUBSTRA', 'HardWater', 'FLORES']
+        short_info_key: 'infoSubstraFlores',
+        tags: ['tagSUBSTRA', 'tagHardWater', 'tagFLORES']
     },
     {
         id: 'substra-flores-a-sw',
@@ -382,8 +382,8 @@ export const CANNA_PRODUCTS = [
         description_key: 'descSubstraFlores',
         water_type: 'soft',
         paired_with: 'substra-flores-b-sw',
-        short_info: { en: 'Run-to-waste bloom.', tr: 'Açık sistem çiçeklenme besini.' },
-        tags: ['SUBSTRA', 'SoftWater', 'FLORES']
+        short_info_key: 'infoSubstraFlores',
+        tags: ['tagSUBSTRA', 'tagSoftWater', 'tagFLORES']
     },
     {
         id: 'substra-flores-b-sw',
@@ -396,8 +396,8 @@ export const CANNA_PRODUCTS = [
         description_key: 'descSubstraFlores',
         water_type: 'soft',
         paired_with: 'substra-flores-a-sw',
-        short_info: { en: 'Run-to-waste bloom.', tr: 'Açık sistem çiçeklenme besini.' },
-        tags: ['SUBSTRA', 'SoftWater', 'FLORES']
+        short_info_key: 'infoSubstraFlores',
+        tags: ['tagSUBSTRA', 'tagSoftWater', 'tagFLORES']
     },
 
     // === TERRA PRODUCTS ===
@@ -411,8 +411,8 @@ export const CANNA_PRODUCTS = [
         function_key: 'funcBaseNutrientVeg',
         description_key: 'descTerraVega',
         image: '/images/canna/prod-canna-terra-vega.png.webp',
-        short_info: { en: 'Soil-based growth nutrient.', tr: 'Toprak bazlı büyüme besini.' },
-        tags: ['TERRA', 'Soil', 'Growth']
+        short_info_key: 'infoTerraVega',
+        tags: ['tagTERRA', 'tagSoil', 'tagGrowth']
     },
     {
         id: 'terra-flores',
@@ -424,8 +424,8 @@ export const CANNA_PRODUCTS = [
         function_key: 'funcBaseNutrientBloom',
         description_key: 'descTerraFlores',
         image: '/images/canna/prod-canna-terra-flores.png.webp',
-        short_info: { en: 'Soil-based bloom nutrient.', tr: 'Toprak bazlı çiçeklenme besini.' },
-        tags: ['TERRA', 'Soil', 'Bloom']
+        short_info_key: 'infoTerraFlores',
+        tags: ['tagTERRA', 'tagSoil', 'tagBloom']
     },
 
     // === UNIVERSAL ADDITIVES (work with all systems) ===
@@ -439,8 +439,8 @@ export const CANNA_PRODUCTS = [
         function_key: 'funcRootStim',
         description_key: 'descRhizotonic',
         image: '/images/canna/prod-additives-canna-rhizotonic.png.webp',
-        short_info: { en: 'Supports root development.', tr: 'Kök oluşumunu destekler.' },
-        tags: ['RootDev', 'StartPhase', 'Growth']
+        short_info_key: 'infoRhizotonic',
+        tags: ['tagRootDev', 'tagStartPhase', 'tagGrowth']
     },
     {
         id: 'cannazym',
@@ -452,8 +452,8 @@ export const CANNA_PRODUCTS = [
         function_key: 'funcEnzymes',
         description_key: 'descCannazym',
         image: '/images/canna/prod-additives-cannazym.png.webp',
-        short_info: { en: 'For substrate reuse.', tr: 'Substrat yeniden kullanımında.' },
-        tags: ['Enzyme', 'SubstrateRenew', 'AllPhases']
+        short_info_key: 'infoCannazym',
+        tags: ['tagEnzyme', 'tagSubstrateRenew', 'tagAllPhases']
     },
     {
         id: 'pk-13-14',
@@ -465,8 +465,8 @@ export const CANNA_PRODUCTS = [
         function_key: 'funcBloomBooster',
         description_key: 'descPK1314',
         image: '/images/canna/prod-additives-canna-pk-1314.png.webp',
-        short_info: { en: 'Develops mass & weight.', tr: 'Kütle, ağırlık geliştirir.' },
-        tags: ['PK', 'MassBoost', 'Generative']
+        short_info_key: 'infoPK1314',
+        tags: ['tagPK', 'tagMassBoost', 'tagGenerative']
     },
     {
         id: 'cannaboost',
@@ -478,8 +478,8 @@ export const CANNA_PRODUCTS = [
         function_key: 'funcBooster',
         description_key: 'descCannaboost',
         image: '/images/canna/prod-additives-cannaboost.png.webp',
-        short_info: { en: 'Extra flowering power.', tr: 'Ekstra çiçeklenme gücü.' },
-        tags: ['BloomBoost', 'Accelerator', 'IntenseFlower']
+        short_info_key: 'infoCannaboost',
+        tags: ['tagBloomBoost', 'tagAccelerator', 'tagIntenseFlower']
     }
 ];
 
@@ -558,19 +558,19 @@ export const AQUA_SCHEDULES = {
         },
         ec_range: { min: 0.7, max: 2.0, unit: 'mS/cm' },
         notes: [
-            { key: 'aquaNote1', en: 'This period varies depending on the species and number of plants per m². Mother plants remain in this phase until the end (6-12 months).', tr: 'Bu süre türe ve metrekareye düşen bitki sayısına göre değişir. Ana bitkiler bu aşamada sonuna kadar kalır (6-12 ay).' },
-            { key: 'aquaNote2', en: 'The changeover from 18 to 12 hours varies depending on the variety. The rule of thumb is to change after 2 weeks.', tr: '18 saatten 12 saate geçiş çeşide göre değişir. Genel kural 2 hafta sonra değiştirmektir.' },
-            { key: 'aquaNote3', en: 'Reduce hours of light if ripening goes too fast. Watch out for increasing Relative Humidity.', tr: 'Olgunlaşma çok hızlı giderse ışık saatlerini azaltın. Artan Bağıl Neme dikkat edin.' },
-            { key: 'aquaNote4', en: 'Double CANNAZYM dosage to 5 ml/L if substrate is reused.', tr: 'Substrat yeniden kullanılıyorsa CANNAZYM dozunu 5 ml/L\'ye iki katına çıkarın.' },
-            { key: 'aquaNote5', en: '2 ml/L standard. Increase to a maximum of 4 ml/L for extra flowering power.', tr: '2 ml/L standart. Ekstra çiçeklenme gücü için maksimum 4 ml/L\'ye çıkarın.' }
+            { key: 'aquaNote1' },
+            { key: 'aquaNote2' },
+            { key: 'aquaNote3' },
+            { key: 'aquaNote4' },
+            { key: 'aquaNote5' }
         ]
     },
     wasabi: {
         plant_type: 'Wasabi',
         stages: [
-            { name: 'Start', name_key: 'stageStart', description: 'Formation of roots from the plugs', duration: '3-5 weeks', light_hours: 14, ec_plus: '0.3-0.9', ppm_plus: '200-560' },
-            { name: 'Vegetative stage', name_key: 'stageVeg', description: 'Fast growth', duration: '18-24 months', light_hours: 14, ec_plus: '0.3-0.9', ppm_plus: '200-560' },
-            { name: 'Final stage', name_key: 'stageFinal', description: 'Plants approaching size', duration: '2 weeks', light_hours: 12, ec_plus: '0.3-0.9', ppm_plus: '200-560' }
+            { name: 'Start', name_key: 'stageStart', description_key: 'descStageStartPlugs', duration: '3-5 weeks', light_hours_key: 'valShade', ec_plus: '0.3-0.9', ppm_plus: '200-560' },
+            { name: 'Vegetative stage', name_key: 'stageVeg', description_key: 'descStageVeg', duration: '18-24 months', light_hours_key: 'valShade', ec_plus: '0.3-0.9', ppm_plus: '200-560' },
+            { name: 'Final stage', name_key: 'stageFinal', description_key: 'descStageFinal', duration: '2 weeks', light_hours_key: 'valShade', ec_plus: '0.3-0.9', ppm_plus: '200-560' }
         ],
         products: {
             // Doses in ml/L (converted from ml/gallon)
@@ -579,18 +579,18 @@ export const AQUA_SCHEDULES = {
             'aqua-vega-b': { 'Start': 1.3, 'Vegetative stage': 1.3, 'Final stage': 1.3 }
         },
         notes: [
-            { key: 'wasabiNote1', en: 'Timing on stages is dependent on cropping method, whether flowering is included, and if the plant has to go through a dormant period based on winter temperatures.', tr: 'Aşamaların zamanlaması yetiştirme yöntemine, çiçeklenmenin dahil olup olmadığına ve bitkinin kış sıcaklıklarına göre dinlenme dönemine girmesi gerekip gerekmediğine bağlıdır.' },
-            { key: 'wasabiNote2', en: 'Water temperatures should run 11-14°C, while air temperatures should be between 8-18°C for growth. Warmer periods require higher humidity levels.', tr: 'Su sıcaklığı 11-14°C, hava sıcaklığı büyüme için 8-18°C arasında olmalıdır. Sıcak dönemler daha yüksek nem seviyesi gerektirir.' },
-            { key: 'wasabiNote3', en: 'Starting EC should be less than 0.1 or 100 ppm.', tr: 'Başlangıç EC değeri 0.1 veya 100 ppm\'den az olmalıdır.' },
-            { key: 'wasabiNote4', en: 'This is a low light plant, while it can be grown under light cover (50%) in the mountains of Japan, it will need shade, approximately 50-80%, in other locations.', tr: 'Düşük ışıklı bir bitkidir, Japonya dağlarında %50 örtü altında yetiştirilebilirken, diğer yerlerde yaklaşık %50-80 gölge gerektirir.' },
-            { key: 'wasabiNote5', en: 'Harvest when main plant rhizomes or stems are 15-20 cm long and about 1.25-2.5 cm thick.', tr: 'Ana bitki rizomu veya sapları 15-20 cm uzunluğunda ve yaklaşık 1.25-2.5 cm kalınlığında olduğunda hasat edin.' },
-            { key: 'wasabiNote6', en: 'Higher temperatures can cause an increase in disease and general dieback of the plants.', tr: 'Yüksek sıcaklıklar hastalık artışına ve bitkilerin genel olarak solmasına neden olabilir.' }
+            { key: 'wasabiNote1' },
+            { key: 'wasabiNote2' },
+            { key: 'wasabiNote3' },
+            { key: 'wasabiNote4' },
+            { key: 'wasabiNote5' },
+            { key: 'wasabiNote6' }
         ],
         special_requirements: [
-            { key: 'wasabiLight', value: '50-80% shade depending on latitude' },
-            { key: 'wasabiWaterTemp', value: '11-14°C' },
-            { key: 'wasabiAirTemp', value: '8-18°C' },
-            { key: 'wasabiStartEC', value: '<0.1 mS/cm or 100 ppm' }
+            { key: 'wasabiLight', label_key: 'wasabiLight', value_key: 'valWasabiLight' },
+            { key: 'wasabiWaterTemp', label_key: 'wasabiWaterTemp', value_key: 'valWasabiWaterTemp' },
+            { key: 'wasabiAirTemp', label_key: 'wasabiAirTemp', value_key: 'valWasabiAirTemp' },
+            { key: 'wasabiStartEC', label_key: 'wasabiStartEC', value_key: 'valWasabiStartEC' }
         ]
     }
 };
@@ -610,13 +610,13 @@ export const COCO_SCHEDULES = {
             'W11-W12': 'generative4'
         },
         stages: [
-            { name: 'Start / rooting', name_key: 'stageRooting', duration: '<1 week', light_hours: 18, ec_plus: '0.7-1.1', ppm_plus: '520-810' },
-            { name: 'Vegetative phase I', name_key: 'stageVeg1', duration: '0-3 weeks', light_hours: 18, ec_plus: '0.9-1.3', ppm_plus: '670-960' },
-            { name: 'Vegetative phase II', name_key: 'stageVeg2', duration: '2-4 weeks', light_hours: 12, ec_plus: '1.1-1.5', ppm_plus: '810-1110' },
-            { name: 'Generative Period I', name_key: 'stageGen1', duration: '2-3 weeks', light_hours: 12, ec_plus: '1.4-1.8', ppm_plus: '1040-1330' },
-            { name: 'Generative Period II', name_key: 'stageGen2', duration: '1 week', light_hours: 12, ec_plus: '1.6-2.0', ppm_plus: '1180-1480' },
-            { name: 'Generative Period III', name_key: 'stageGen3', duration: '2-3 weeks', light_hours: 12, ec_plus: '1.0-1.4', ppm_plus: '740-1040' },
-            { name: 'Generative Period IV', name_key: 'stageGen4', duration: '1-2 weeks', light_hours: '10-12', ec_plus: '0.0', ppm_plus: '0' }
+            { name: 'Start / rooting', name_key: 'stageRooting', duration: '<1 week', light_hours: 18, ec_plus: '0.7-1.1', ppm_plus: '520-810', description_key: 'descStageStart' },
+            { name: 'Vegetative phase I', name_key: 'stageVeg1', duration: '0-3 weeks', light_hours: 18, ec_plus: '0.9-1.3', ppm_plus: '670-960', description_key: 'descStageVeg' },
+            { name: 'Vegetative phase II', name_key: 'stageVeg2', duration: '2-4 weeks', light_hours: 12, ec_plus: '1.1-1.5', ppm_plus: '810-1110', description_key: 'descStageVegDev' },
+            { name: 'Generative Period I', name_key: 'stageGen1', duration: '2-3 weeks', light_hours: 12, ec_plus: '1.4-1.8', ppm_plus: '1040-1330', description_key: 'descStageGen1' },
+            { name: 'Generative Period II', name_key: 'stageGen2', duration: '1 week', light_hours: 12, ec_plus: '1.6-2.0', ppm_plus: '1180-1480', description_key: 'descStageGen2Fruit' },
+            { name: 'Generative Period III', name_key: 'stageGen3', duration: '2-3 weeks', light_hours: 12, ec_plus: '1.0-1.4', ppm_plus: '740-1040', description_key: 'descStageGen3Fruit' },
+            { name: 'Generative Period IV', name_key: 'stageGen4', duration: '1-2 weeks', light_hours: '10-12', ec_plus: '0.0', ppm_plus: '0', description_key: 'descStageRecovery' }
         ],
         products: {
             // Doses in ml/L (converted from ml/gallon ÷3.785)
@@ -629,19 +629,19 @@ export const COCO_SCHEDULES = {
         },
         ec_range: { min: 0.7, max: 2.2, unit: 'mS/cm' },
         notes: [
-            { key: 'cocoNote1', en: 'This period varies depending on the species and number of plants per m². Mother plants remain in this phase until the end (6-12 months).', tr: 'Bu süre türe ve metrekareye düşen bitki sayısına göre değişir. Ana bitkiler bu aşamada sonuna kadar kalır (6-12 ay).' },
-            { key: 'cocoNote2', en: 'The changeover from 18 to 12 hours varies depending on the variety. The rule of thumb is to change after 2 weeks.', tr: '18 saatten 12 saate geçiş çeşide göre değişir. Genel kural 2 hafta sonra değiştirmektir.' },
-            { key: 'cocoNote3', en: 'Double CANNAZYM dosage to 5 ml/L if substrate is reused.', tr: 'Substrat yeniden kullanılıyorsa CANNAZYM dozunu 5 ml/L\'ye iki katına çıkarın.' },
-            { key: 'cocoNote4', en: '2 ml/L standard. Increase to a maximum of 4 ml/L for extra flowering power.', tr: '2 ml/L standart. Ekstra çiçeklenme gücü için maksimum 4 ml/L\'ye çıkarın.' },
-            { key: 'cocoNote5', en: 'pH: Recommended pH is between 5.5 and 6.2. Adding pH- can increase EC.', tr: 'pH: Önerilen pH 5.5 ile 6.2 arasındadır. pH- eklemek EC\'yi artırabilir.' }
+            { key: 'cocoNote1' },
+            { key: 'cocoNote2' },
+            { key: 'cocoNote3' },
+            { key: 'cocoNote4' },
+            { key: 'cocoNote5' }
         ]
     },
     basil: {
         plant_type: 'Basil',
         stages: [
-            { name: 'Start', name_key: 'stageStart', description: 'Formation of roots', duration: '~1 week', light_hours: 11, ec_plus: '0.8-1.2', ppm_plus: '560-840' },
-            { name: 'Vegetative stage', name_key: 'stageVeg', description: 'Fast growth', duration: '1-3 weeks', light_hours: 11, ec_plus: '1.1-1.5', ppm_plus: '840-1120' },
-            { name: 'Generative stage 1', name_key: 'stageGen1', description: 'Continued growth', duration: '1-10 weeks', light_hours: 11, ec_plus: '1.2-1.6', ppm_plus: '840-1260' }
+            { name: 'Start', name_key: 'stageStart', description_key: 'descStageStart', duration: '~1 week', light_hours: 11, ec_plus: '0.8-1.2', ppm_plus: '560-840' },
+            { name: 'Vegetative stage', name_key: 'stageVeg', description_key: 'descStageVeg', duration: '1-3 weeks', light_hours: 11, ec_plus: '1.1-1.5', ppm_plus: '840-1120' },
+            { name: 'Generative stage 1', name_key: 'stageGen1', description_key: 'descStageGen1', duration: '1-10 weeks', light_hours: 11, ec_plus: '1.2-1.6', ppm_plus: '840-1260' }
         ],
         products: {
             'coco-a': { 'Start': 2.4, 'Vegetative stage': 3, 'Generative stage 1': 3.3 },
@@ -650,18 +650,18 @@ export const COCO_SCHEDULES = {
             'cannazym': { 'Vegetative stage': 2.5, 'Generative stage 1': 2.5 }
         },
         notes: [
-            { key: 'basilNote1', en: 'The recommended EC levels are based on a tap water EC of 0.0 mS/cm. If your tap water EC is 0.5 the recommended EC from the table should be 0.5 higher.', tr: 'Önerilen EC seviyeleri 0.0 mS/cm musluk suyu EC değerine dayanmaktadır. Musluk suyunuz 0.5 ise tablodaki önerilen EC 0.5 daha yüksek olmalıdır.' },
-            { key: 'basilNote2', en: 'Maximum EC level is 2.8 mS/cm. Recommended pH 5.2-6.2.', tr: 'Maksimum EC seviyesi 2.8 mS/cm\'dir. Önerilen pH 5.2-6.2.' }
+            { key: 'basilNote1' },
+            { key: 'basilNote2' }
         ]
     },
     cucumber: {
         plant_type: 'Cucumber',
         stages: [
-            { name: 'Start at Seedling', name_key: 'stageSeedling', description: 'Transplant, Formation of roots', duration: '~1 week', light_hours: 14, ec_plus: '1.0-1.2', ppm_plus: '700-840' },
-            { name: 'Vegetative stage', name_key: 'stageVeg', description: 'Fast growth', duration: '1-3 weeks', light_hours: 14, ec_plus: '1.0-1.4', ppm_plus: '700-1120' },
-            { name: 'Generative stage 1', name_key: 'stageGen1', description: 'Stagnation of Growth, first signs of fruit formation', duration: '1-2 weeks', light_hours: 14, ec_plus: '1.2-1.6', ppm_plus: '840-1120' },
-            { name: 'Generative stage 2', name_key: 'stageGen2', description: 'All branches with small fruits', duration: '~1 week', light_hours: 14, ec_plus: '1.2-1.6', ppm_plus: '840-1120' },
-            { name: 'Generative stage 3', name_key: 'stageGen3', description: 'Increase of fruit, size to crop end', duration: '2-3 weeks', light_hours: 14, ec_plus: '1.2-1.6', ppm_plus: '840-1120' }
+            { name: 'Start at Seedling', name_key: 'stageSeedling', description_key: 'descStageSeedling', duration: '~1 week', light_hours: 14, ec_plus: '1.0-1.2', ppm_plus: '700-840' },
+            { name: 'Vegetative stage', name_key: 'stageVeg', description_key: 'descStageVeg', duration: '1-3 weeks', light_hours: 14, ec_plus: '1.0-1.4', ppm_plus: '700-1120' },
+            { name: 'Generative stage 1', name_key: 'stageGen1', description_key: 'descStageGen1Fruit', duration: '1-2 weeks', light_hours: 14, ec_plus: '1.2-1.6', ppm_plus: '840-1120' },
+            { name: 'Generative stage 2', name_key: 'stageGen2', description_key: 'descStageGen2Fruit', duration: '~1 week', light_hours: 14, ec_plus: '1.2-1.6', ppm_plus: '840-1120' },
+            { name: 'Generative stage 3', name_key: 'stageGen3', description_key: 'descStageGen3Fruit', duration: '2-3 weeks', light_hours: 14, ec_plus: '1.2-1.6', ppm_plus: '840-1120' }
         ],
         products: {
             'coco-a': { 'Start at Seedling': 2.4, 'Vegetative stage': 3.2, 'Generative stage 1': 3.2, 'Generative stage 2': 3.2, 'Generative stage 3': 3.2 },
@@ -670,18 +670,18 @@ export const COCO_SCHEDULES = {
             'cannazym': { 'Vegetative stage': 2.5, 'Generative stage 1': 2.5, 'Generative stage 2': 2.5, 'Generative stage 3': 2.5 }
         },
         notes: [
-            { key: 'cucumberNote1', en: 'The recommended EC levels are based on a tap water EC of 0.0 mS/cm.', tr: 'Önerilen EC seviyeleri 0.0 mS/cm musluk suyu EC değerine dayanmaktadır.' },
-            { key: 'cucumberNote2', en: 'Maximum EC level is 2.8 mS/cm. Recommended pH 5.2-6.2.', tr: 'Maksimum EC seviyesi 2.8 mS/cm\'dir. Önerilen pH 5.2-6.2.' }
+            { key: 'cucumberNote1' },
+            { key: 'cucumberNote2' }
         ]
     },
     tomatoes: {
         plant_type: 'Tomatoes',
         stages: [
-            { name: 'Start', name_key: 'stageStart', description: 'Formation of roots', duration: '~1 week', light_hours: 14, ec_plus: '0.8-1.2', ppm_plus: '560-840' },
-            { name: 'Vegetative stage', name_key: 'stageVeg', description: 'Fast growth', duration: '1-3 weeks', light_hours: 14, ec_plus: '1.2-1.6', ppm_plus: '840-1120' },
-            { name: 'Generative stage 1', name_key: 'stageGen1', description: 'Stagnation of Growth, first signs of fruit formation', duration: '1-2 weeks', light_hours: 14, ec_plus: '1.2-1.8', ppm_plus: '840-1260' },
-            { name: 'Generative stage 2', name_key: 'stageGen2', description: 'All branches with small fruits', duration: '~1 week', light_hours: 14, ec_plus: '1.2-1.8', ppm_plus: '840-1260' },
-            { name: 'Generative stage 3', name_key: 'stageGen3', description: 'Increase in size', duration: '2-3 weeks', light_hours: 14, ec_plus: '1.2-1.8', ppm_plus: '840-1260' }
+            { name: 'Start', name_key: 'stageStart', description_key: 'descStageStart', duration: '~1 week', light_hours: 14, ec_plus: '0.8-1.2', ppm_plus: '560-840' },
+            { name: 'Vegetative stage', name_key: 'stageVeg', description_key: 'descStageVeg', duration: '1-3 weeks', light_hours: 14, ec_plus: '1.2-1.6', ppm_plus: '840-1120' },
+            { name: 'Generative stage 1', name_key: 'stageGen1', description_key: 'descStageGen1Fruit', duration: '1-2 weeks', light_hours: 14, ec_plus: '1.2-1.8', ppm_plus: '840-1260' },
+            { name: 'Generative stage 2', name_key: 'stageGen2', description_key: 'descStageGen2Fruit', duration: '~1 week', light_hours: 14, ec_plus: '1.2-1.8', ppm_plus: '840-1260' },
+            { name: 'Generative stage 3', name_key: 'stageGen3', description_key: 'descStageGen3Size', duration: '2-3 weeks', light_hours: 14, ec_plus: '1.2-1.8', ppm_plus: '840-1260' }
         ],
         products: {
             'coco-a': { 'Start': 2.4, 'Vegetative stage': 3.3, 'Generative stage 1': 3.4, 'Generative stage 2': 3.4, 'Generative stage 3': 3.4 },
@@ -690,17 +690,17 @@ export const COCO_SCHEDULES = {
             'cannazym': { 'Vegetative stage': 2.5, 'Generative stage 1': 2.5, 'Generative stage 2': 2.5, 'Generative stage 3': 2.5 }
         },
         notes: [
-            { key: 'tomatoNote1', en: 'The recommended EC levels are based on a tap water EC of 0.0 mS/cm.', tr: 'Önerilen EC seviyeleri 0.0 mS/cm musluk suyu EC değerine dayanmaktadır.' },
-            { key: 'tomatoNote2', en: 'Maximum EC level is 2.8 mS/cm. Recommended pH 5.2-6.2.', tr: 'Maksimum EC seviyesi 2.8 mS/cm\'dir. Önerilen pH 5.2-6.2.' }
+            { key: 'tomatoNote1' },
+            { key: 'tomatoNote2' }
         ]
     },
     orchids: {
         plant_type: 'Orchids',
         stages: [
-            { name: 'Start', name_key: 'stageStart', description: 'Formation of roots into the medium (from cutting, division, or offset)', duration: '2-8 weeks', light_hours: 12, ec_plus: '0.6-0.8', ppm_plus: '600-770' },
-            { name: 'Vegetative stage', name_key: 'stageVeg', description: 'Plant development', duration: '18-52 weeks', light_hours: 12, ec_plus: '0.8-1.0', ppm_plus: '770-840' },
-            { name: 'Flower stage', name_key: 'stageFlower', description: 'Blooming period', duration: '4+ weeks', light_hours: 12, ec_plus: '0.8-1.0', ppm_plus: '770-840' },
-            { name: 'Recovery stage', name_key: 'stageRecovery', description: 'Post-bloom recovery', duration: 'Variable (based on seasonality)', light_hours: 12, ec_plus: '0.8-1.0', ppm_plus: '770-840' }
+            { name: 'Start', name_key: 'stageStart', description_key: 'descStageStartCuttings', duration: '2-8 weeks', light_hours: 12, ec_plus: '0.6-0.8', ppm_plus: '600-770' },
+            { name: 'Vegetative stage', name_key: 'stageVeg', description_key: 'descStageVegDev', duration: '18-52 weeks', light_hours: 12, ec_plus: '0.8-1.0', ppm_plus: '770-840' },
+            { name: 'Flower stage', name_key: 'stageFlower', description_key: 'descStageFlower', duration: '4+ weeks', light_hours: 12, ec_plus: '0.8-1.0', ppm_plus: '770-840' },
+            { name: 'Recovery stage', name_key: 'stageRecovery', description_key: 'descStageRecovery', duration: 'Variable (based on seasonality)', light_hours: 12, ec_plus: '0.8-1.0', ppm_plus: '770-840' }
         ],
         products: {
             'coco-a': { 'Start': 1.8, 'Vegetative stage': 2.5, 'Flower stage': 2.5, 'Recovery stage': 2.5 },
@@ -709,18 +709,18 @@ export const COCO_SCHEDULES = {
             'cannazym': { 'Vegetative stage': 2.4, 'Flower stage': 2.4, 'Recovery stage': 2.4 }
         },
         notes: [
-            { key: 'orchidNote1', en: 'Use of this chart is designed for growers with some experience as the amount of variability between species is great (800+ General).', tr: 'Bu tablo biraz deneyimli yetiştiriciler için tasarlanmıştır çünkü türler arasındaki değişkenlik çok fazladır (800+ tür).' },
-            { key: 'orchidNote2', en: 'Timing on stages is dependent on cropping method, container size, finish size, and most importantly variety.', tr: 'Aşamaların zamanlaması yetiştirme yöntemine, saksı boyutuna, bitiş boyutuna ve en önemlisi çeşide bağlıdır.' },
-            { key: 'orchidNote3', en: 'Temperatures should range 21-30°C daytime with lower limit at night of 13-21°C.', tr: 'Sıcaklıklar gündüz 21-30°C, gece en düşük 13-21°C arasında olmalıdır.' },
-            { key: 'orchidNote4', en: 'Overwatering is the leading cause of death and disease in Orchids. Water thoroughly with good quality water and allow the container to leach well.', tr: 'Aşırı sulama Orkidelerde ölüm ve hastalığın başlıca nedenidir. Kaliteli su ile iyice sulayın ve saksının iyi süzülmesine izin verin.' },
-            { key: 'orchidNote5', en: 'Fertilize every other watering or less if plant seems \'pushed\'.', tr: 'Her iki sulamada bir veya bitki "zorlanmış" görünüyorsa daha az gübre verin.' }
+            { key: 'orchidNote1' },
+            { key: 'orchidNote2' },
+            { key: 'orchidNote3' },
+            { key: 'orchidNote4' },
+            { key: 'orchidNote5' }
         ],
         special_requirements: [
-            { key: 'orchidDayTemp', value: '21-30°C' },
-            { key: 'orchidNightTemp', value: '13-21°C' },
-            { key: 'orchidWatering', value: 'Avoid overwatering - main cause of death' },
-            { key: 'orchidFeeding', value: 'Every other watering unless plant is stressed' },
-            { key: 'orchidStartEC', value: '<0.3 mS/cm water quality' }
+            { key: 'orchidDayTemp', label_key: 'orchidDayTemp', value_key: 'valOrchidDayTemp' },
+            { key: 'orchidNightTemp', label_key: 'orchidNightTemp', value_key: 'valOrchidNightTemp' },
+            { key: 'orchidWatering', label_key: 'orchidWatering', value_key: 'valOrchidWatering' },
+            { key: 'orchidFeeding', label_key: 'orchidFeeding', value_key: 'valOrchidFeeding' },
+            { key: 'orchidStartEC', label_key: 'orchidStartEC', value_key: 'valOrchidStartEC' }
         ]
     }
 };
@@ -740,13 +740,13 @@ export const COGR_SCHEDULES = {
             'W11-W12': 'generative4'
         },
         stages: [
-            { name: 'Start / rooting', name_key: 'stageRooting', duration: '<1 week', light_hours: 18, ec_plus: '0.7-1.1', ppm_plus: '520-810' },
-            { name: 'Vegetative phase I', name_key: 'stageVeg1', duration: '0-3 weeks', light_hours: 18, ec_plus: '0.9-1.3', ppm_plus: '670-960' },
-            { name: 'Vegetative phase II', name_key: 'stageVeg2', duration: '2-4 weeks', light_hours: 12, ec_plus: '1.2-1.6', ppm_plus: '890-1180' },
-            { name: 'Generative Period I', name_key: 'stageGen1', duration: '2-3 weeks', light_hours: 12, ec_plus: '1.4-1.8', ppm_plus: '1040-1330' },
-            { name: 'Generative Period II', name_key: 'stageGen2', duration: '1 week', light_hours: 12, ec_plus: '1.6-2.0', ppm_plus: '1180-1480' },
-            { name: 'Generative Period III', name_key: 'stageGen3', duration: '2-3 weeks', light_hours: 12, ec_plus: '1.0-1.4', ppm_plus: '740-1040' },
-            { name: 'Generative Period IV', name_key: 'stageGen4', duration: '1-2 weeks', light_hours: '10-12', ec_plus: '0.0', ppm_plus: '0' }
+            { name: 'Start / rooting', name_key: 'stageRooting', duration: '<1 week', light_hours: 18, ec_plus: '0.7-1.1', ppm_plus: '520-810', description_key: 'descStageStart' },
+            { name: 'Vegetative phase I', name_key: 'stageVeg1', duration: '0-3 weeks', light_hours: 18, ec_plus: '0.9-1.3', ppm_plus: '670-960', description_key: 'descStageVeg' },
+            { name: 'Vegetative phase II', name_key: 'stageVeg2', duration: '2-4 weeks', light_hours: 12, ec_plus: '1.2-1.6', ppm_plus: '890-1180', description_key: 'descStageVegDev' },
+            { name: 'Generative Period I', name_key: 'stageGen1', duration: '2-3 weeks', light_hours: 12, ec_plus: '1.4-1.8', ppm_plus: '1040-1330', description_key: 'descStageGen1' },
+            { name: 'Generative Period II', name_key: 'stageGen2', duration: '1 week', light_hours: 12, ec_plus: '1.6-2.0', ppm_plus: '1180-1480', description_key: 'descStageGen2Fruit' },
+            { name: 'Generative Period III', name_key: 'stageGen3', duration: '2-3 weeks', light_hours: 12, ec_plus: '1.0-1.4', ppm_plus: '740-1040', description_key: 'descStageGen3Fruit' },
+            { name: 'Generative Period IV', name_key: 'stageGen4', duration: '1-2 weeks', light_hours: '10-12', ec_plus: '0.0', ppm_plus: '0', description_key: 'descStageRecovery' }
         ],
         products: {
             'cogr-vega-a': { 'W1': 2, 'W2': 2.5, 'W3': 3, 'W4': 3, 'W5': null },
@@ -760,17 +760,13 @@ export const COGR_SCHEDULES = {
         },
         ec_range: { min: 0.7, max: 2.2, unit: 'mS/cm' },
         notes: [
-            { key: 'cogrNote1', en: 'This period varies depending on the species and number of plants per m². Mother plants remain in this phase until the end (6-12 months).', tr: 'Bu süre türe ve metrekareye düşen bitki sayısına göre değişir. Ana bitkiler bu aşamada sonuna kadar kalır (6-12 ay).' },
-            { key: 'cogrNote2', en: 'The changeover from 18 to 12 hours varies depending on the variety. The rule of thumb is to change after 2 weeks.', tr: '18 saatten 12 saate geçiş çeşide göre değişir. Genel kural 2 hafta sonra değiştirmektir.' },
-            { key: 'cogrNote3', en: 'Double CANNAZYM dosage to 5 ml/L if substrate is reused.', tr: 'Substrat yeniden kullanılıyorsa CANNAZYM dozunu 5 ml/L\'ye iki katına çıkarın.' },
-            { key: 'cogrNote4', en: '2 ml/L standard. Increase to a maximum of 4 ml/L for extra flowering power.', tr: '2 ml/L standart. Ekstra çiçeklenme gücü için maksimum 4 ml/L\'ye çıkarın.' },
-            { key: 'cogrNote5', en: 'pH: Recommended pH is between 5.8 and 6.2. Adding pH- can increase EC.', tr: 'pH: Önerilen pH 5.8 ile 6.2 arasındadır. pH- eklemek EC\'yi artırabilir.' }
-        ],
-        buffer_note: {
-            key: 'cogrBufferNote',
-            en: 'COGr slabs must be buffered with COGr Buffer Agent before first use. This prepares the substrate for optimal nutrient uptake.',
-            tr: 'COGr levhaları ilk kullanımdan önce COGr Buffer Agent ile tamponlanmalıdır. Bu, substratı optimum besin alımı için hazırlar.'
-        }
+            { key: 'cogrNote1' },
+            { key: 'cogrNote2' },
+            { key: 'cogrNote3' },
+            { key: 'cogrNote4' },
+            { key: 'cogrNote5' },
+            { key: 'cogrBufferNote' }
+        ]
     }
 };
 
@@ -888,12 +884,12 @@ export const TERRA_SCHEDULES = {
     grape: {
         plant_type: 'Grape',
         stages: [
-            { name: 'Start', name_key: 'stageStart', description: 'Bud Break, Formation of roots', duration: '~1 week', light_hours: 'Natural', ec_plus: '1.0-1.2', ppm_plus: '700-840' },
-            { name: 'Vegetative stage 1', name_key: 'stageVeg1', description: 'Fast growth', duration: '1-2 weeks', light_hours: 'Natural', ec_plus: '1.0-1.2', ppm_plus: '700-840' },
-            { name: 'Generative stage 1', name_key: 'stageGen1', description: 'Onset of Flowering', duration: '2-4 weeks', light_hours: 'Natural', ec_plus: '0.9-1.2', ppm_plus: '630-840' },
-            { name: 'Generative stage 2', name_key: 'stageGen2', description: 'Fruit Set to Veraison', duration: '~2 weeks', light_hours: 'Natural', ec_plus: '0.6-0.7', ppm_plus: '420-490' },
-            { name: 'Generative stage 3', name_key: 'stageGen3', description: 'To Veraison', duration: '~2 weeks', light_hours: 'Natural', ec_plus: '0.8-0.9', ppm_plus: '560-630' },
-            { name: 'Harvest to dormancy', name_key: 'stageDormancy', description: 'Post-harvest hold', duration: 'Hold', light_hours: 'Natural', ec_plus: '-', ppm_plus: '-' }
+            { name: 'Start', name_key: 'stageStart', description_key: 'descStageStart', duration: '~1 week', light_hours_key: 'valNatural', ec_plus: '1.0-1.2', ppm_plus: '700-840' },
+            { name: 'Vegetative stage 1', name_key: 'stageVeg1', description_key: 'descStageVeg', duration: '1-2 weeks', light_hours_key: 'valNatural', ec_plus: '1.0-1.2', ppm_plus: '700-840' },
+            { name: 'Generative stage 1', name_key: 'stageGen1', description_key: 'descStageGen1', duration: '2-4 weeks', light_hours_key: 'valNatural', ec_plus: '0.9-1.2', ppm_plus: '630-840' },
+            { name: 'Generative stage 2', name_key: 'stageGen2', description_key: 'descStageGen2Fruit', duration: '~2 weeks', light_hours_key: 'valNatural', ec_plus: '0.6-0.7', ppm_plus: '420-490' },
+            { name: 'Generative stage 3', name_key: 'stageGen3', description_key: 'descStageGen3Fruit', duration: '~2 weeks', light_hours_key: 'valNatural', ec_plus: '0.8-0.9', ppm_plus: '560-630' },
+            { name: 'Harvest to dormancy', name_key: 'stageDormancy', description_key: 'descStageRecovery', duration: 'Hold', light_hours_key: 'valNatural', ec_plus: '-', ppm_plus: '-' }
         ],
         products: {
             'terra-vega': { 'Start': 2.5, 'Vegetative stage 1': 3, 'Generative stage 1': 2.5 },

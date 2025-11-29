@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
+import { useSettings } from '../context/SettingsContext';
 import styles from './PPFDGuide.module.css';
 
 export default function PPFDGuide() {
     const [isOpen, setIsOpen] = useState(false);
+    const { t } = useSettings();
 
     const data = [
-        { range: '0 - 100', color: '#000000', bg: '#333', label: 'Yetersiz', desc: 'Fotosentez başlamaz, bitki ölür.', effect: 'Yetersiz Işık' },
-        { range: '100 - 300', color: '#0000FF', bg: 'rgba(0, 0, 255, 0.2)', label: 'Fide / Klon', desc: 'Köklendirme ve ilk yaprak gelişimi için ideal.', effect: 'Köklenme' },
-        { range: '300 - 600', color: '#008000', bg: 'rgba(0, 128, 0, 0.2)', label: 'Vejetatif', desc: 'Sağlıklı gövde ve yaprak büyümesi.', effect: 'Büyüme' },
-        { range: '600 - 900', color: '#FFA500', bg: 'rgba(255, 165, 0, 0.2)', label: 'Çiçeklenme', desc: 'Yüksek verimli çiçek/meyve üretimi.', effect: 'Verim' },
-        { range: '900 - 1200', color: '#FF0000', bg: 'rgba(255, 0, 0, 0.2)', label: 'Yüksek Yoğunluk', desc: 'Deneyimli yetiştirici seviyesi. Dikkatli besleme gerektirir.', effect: 'Stres Riski' },
-        { range: '> 1200', color: '#FFFFFF', bg: 'rgba(255, 255, 255, 0.3)', label: 'CO2 / Yanık Riski', desc: 'CO2 olmadan yaprak hasarı oluşur. Sadece profesyonel sistemler.', effect: 'Tehlike' },
+        { range: '0 - 100', color: '#000000', bg: '#333', label: t('ppfdStatusInsufficient'), desc: t('ppfdDescInsufficient'), effect: t('ppfdEffectInsufficient') },
+        { range: '100 - 300', color: '#0000FF', bg: 'rgba(0, 0, 255, 0.2)', label: t('ppfdStatusSeedling'), desc: t('ppfdDescSeedling'), effect: t('ppfdEffectSeedling') },
+        { range: '300 - 600', color: '#008000', bg: 'rgba(0, 128, 0, 0.2)', label: t('ppfdStatusVeg'), desc: t('ppfdDescVeg'), effect: t('ppfdEffectVeg') },
+        { range: '600 - 900', color: '#FFA500', bg: 'rgba(255, 165, 0, 0.2)', label: t('ppfdStatusFlower'), desc: t('ppfdDescFlower'), effect: t('ppfdEffectFlower') },
+        { range: '900 - 1200', color: '#FF0000', bg: 'rgba(255, 0, 0, 0.2)', label: t('ppfdStatusHigh'), desc: t('ppfdDescHigh'), effect: t('ppfdEffectHigh') },
+        { range: '> 1200', color: '#FFFFFF', bg: 'rgba(255, 255, 255, 0.3)', label: t('ppfdStatusExtreme'), desc: t('ppfdDescExtreme'), effect: t('ppfdEffectExtreme') },
     ];
 
     return (
@@ -34,7 +36,7 @@ export default function PPFDGuide() {
                     justifyContent: 'center'
                 }}
             >
-                ℹ️ PPFD Rehberi {isOpen ? '▲' : '▼'}
+                ℹ️ {t('ppfdGuideBtn')} {isOpen ? '▲' : '▼'}
             </button>
 
             {isOpen && (
@@ -52,10 +54,10 @@ export default function PPFDGuide() {
                         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
                             <thead>
                                 <tr style={{ borderBottom: '1px solid var(--border-color)', color: 'var(--text-secondary)' }}>
-                                    <th style={{ padding: '0.75rem', textAlign: 'left' }}>PPFD (μmol/m²/s)</th>
-                                    <th style={{ padding: '0.75rem', textAlign: 'left' }}>Durum</th>
-                                    <th style={{ padding: '0.75rem', textAlign: 'left' }}>Açıklama</th>
-                                    <th style={{ padding: '0.75rem', textAlign: 'left' }}>Etki</th>
+                                    <th style={{ padding: '0.75rem', textAlign: 'left' }}>{t('ppfdHeaderPPFD')}</th>
+                                    <th style={{ padding: '0.75rem', textAlign: 'left' }}>{t('ppfdHeaderStatus')}</th>
+                                    <th style={{ padding: '0.75rem', textAlign: 'left' }}>{t('ppfdHeaderDesc')}</th>
+                                    <th style={{ padding: '0.75rem', textAlign: 'left' }}>{t('ppfdHeaderEffect')}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -117,7 +119,7 @@ export default function PPFDGuide() {
                                     {row.desc}
                                 </div>
                                 <div style={{ fontSize: '0.8rem', fontStyle: 'italic', color: 'var(--text-muted)', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '0.5rem' }}>
-                                    Etki: {row.effect}
+                                    {t('ppfdHeaderEffect')}: {row.effect}
                                 </div>
                             </div>
                         ))}

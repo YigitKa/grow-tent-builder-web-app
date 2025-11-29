@@ -323,32 +323,32 @@ export const feedingTranslations = {
     cannaScheduleTitle: 'CANNA',
     cannaScheduleSubtitle: 'Professional nutrient system for indoor growing',
     navCanna: 'CANNA',
-    
+
     // CANNA Systems
     cannaAquaName: 'CANNA AQUA',
     cannaAquaDesc: 'Specially developed for recirculating hydroponic systems (like NFT) where drain water is reused.',
     cannaAquaFeature1: 'Recirculating Systems',
     cannaAquaFeature2: 'pH Self-Regulating',
     cannaAquaFeature3: 'NFT Compatible',
-    
+
     cannaCocoName: 'CANNA COCO',
     cannaCocoDesc: 'Designed for coconut coir substrate, combining organic feel of soil with precision of Rockwool.',
     cannaCocoFeature1: 'Coco Substrate',
     cannaCocoFeature2: 'Combined A&B Formula',
     cannaCocoFeature3: 'Organic Feel + Precision',
-    
+
     cannaCOGrName: 'CANNA COGr',
     cannaCOGrDesc: 'Complete coco growing method using compressed unbuffered coco slabs, designed for experienced growers.',
     cannaCOGrFeature1: 'Compressed Coco Slabs',
     cannaCOGrFeature2: 'Buffering Required',
     cannaCOGrFeature3: 'Expert Level',
-    
+
     cannaSubstraName: 'CANNA SUBSTRA',
     cannaSubstraDesc: 'Developed for run-to-waste systems where drain water is not returned to the nutrient tank.',
     cannaSubstraFeature1: 'Run-to-Waste',
     cannaSubstraFeature2: 'Hard/Soft Water Versions',
     cannaSubstraFeature3: 'Inert Media',
-    
+
     cannaTerraName: 'CANNA TERRA',
     cannaTerraDesc: 'For soil-based growing in containers or beds, suitable for indoor and outdoor cultivation.',
     cannaTerraFeature1: 'Soil-Based',
@@ -380,6 +380,23 @@ export const feedingTranslations = {
     cannaPhaseDormancy: 'Dormancy',
     cannaPhaseRipening: 'Ripening',
 
+    // CANNA Stage Names
+    stageRooting: 'Start / Rooting',
+    stageVeg1: 'Vegetative Phase I',
+    stageVeg2: 'Vegetative Phase II',
+    stageVeg: 'Vegetative Stage',
+    stageGen1: 'Generative Period I',
+    stageGen2: 'Generative Period II',
+    stageGen3: 'Generative Period III',
+    stageGen4: 'Generative Period IV',
+    stageStart: 'Start',
+    stageFinal: 'Final Stage',
+    stageSeedling: 'Seedling',
+    stageFlower: 'Flowering',
+    stageBudBreak: 'Bud Break',
+    stageDormancy: 'Dormancy',
+    stageRecovery: 'Recovery',
+
     // CANNA Products
     descAquaVega: 'Base nutrient for vegetative phase in recirculating systems',
     descAquaFlores: 'Base nutrient for flowering phase in recirculating systems',
@@ -401,6 +418,22 @@ export const feedingTranslations = {
     funcBuffer: 'Buffering Agent',
     funcBooster: 'Growth Accelerator',
 
+    // CANNA Product Short Info
+    infoAquaVega: 'Recirculating growth nutrient.',
+    infoAquaFlores: 'Recirculating bloom nutrient.',
+    infoCoco: 'Single nutrient blend.',
+    infoCOGrVega: 'Strong seedlings ensured.',
+    infoCOGrFlores: 'Stimulates fruit production.',
+    infoCOGrBuffer: 'Soaks & buffers slabs.',
+    infoSubstraVega: 'Run-to-waste growth.',
+    infoSubstraFlores: 'Run-to-waste bloom.',
+    infoTerraVega: 'Soil-based growth nutrient.',
+    infoTerraFlores: 'Soil-based bloom nutrient.',
+    infoRhizotonic: 'Supports root development.',
+    infoCannazym: 'For substrate reuse.',
+    infoPK1314: 'Develops mass & weight.',
+    infoCannaboost: 'Extra flowering power.',
+
     // CANNA Notes
     wasabiNotes: 'Wasabi requires low light (50-80% shade) and cool water temperatures (11-14°C). Very long growth cycle of 18-24 months.',
     orchidNotes: 'Over 800 species with varying requirements. Overwatering is the leading cause of death. Fertilize every other watering unless plant is stressed.',
@@ -418,6 +451,197 @@ export const feedingTranslations = {
     orchidFeeding: 'Feeding Frequency',
     grapeCalcium: 'Calcium Note',
     grapeContainer: 'Container Growing',
+
+    // CANNA Tags
+    tagVEGA: 'VEGA',
+    tagHydroponic: 'Hydroponic',
+    tagGrowth: 'Growth',
+    tagFLORES: 'FLORES',
+    tagBloom: 'Bloom',
+    tagCoco: 'Coco',
+    tagAB: 'A&B',
+    tagAllPhases: 'All Phases',
+    tagCOGr: 'COGr',
+    tagSilicon: 'Silicon',
+    tagFulvicAcid: 'Fulvic Acid',
+    tagBuffer: 'Buffer',
+    tagSlabPrep: 'Slab Prep',
+    tagSUBSTRA: 'SUBSTRA',
+    tagHardWater: 'Hard Water',
+    tagSoftWater: 'Soft Water',
+    tagTERRA: 'TERRA',
+    tagSoil: 'Soil',
+    tagRootDev: 'Root Dev',
+    tagStartPhase: 'Start Phase',
+    tagEnzyme: 'Enzyme',
+    tagSubstrateRenew: 'Substrate Renew',
+    tagPK: 'PK',
+    tagMassBoost: 'Mass Boost',
+    tagGenerative: 'Generative',
+    tagBloomBoost: 'Bloom Boost',
+    tagAccelerator: 'Accelerator',
+    tagIntenseFlower: 'Intense Flower',
+
+    // CANNA Stage Descriptions
+    descStageStart: 'Formation of roots',
+    descStageStartPlugs: 'Formation of roots from the plugs',
+    descStageStartCuttings: 'Formation of roots into the medium (from cutting, division, or offset)',
+    descStageSeedling: 'Transplant, Formation of roots',
+    descStageVeg: 'Fast growth',
+    descStageVegDev: 'Plant development',
+    descStageFinal: 'Plants approaching size',
+    descStageGen1: 'Continued growth',
+    descStageGen1Fruit: 'Stagnation of Growth, first signs of fruit formation',
+    descStageGen2Fruit: 'All branches with small fruits',
+    descStageGen3Fruit: 'Increase of fruit, size to crop end',
+    descStageGen3Size: 'Increase in size',
+    descStageFlower: 'Blooming period',
+    descStageRecovery: 'Post-bloom recovery',
+
+    // CANNA Notes (Aqua)
+    aquaNote1: 'This period varies depending on the species and number of plants per m². Mother plants remain in this phase until the end (6-12 months).',
+    aquaNote2: 'The changeover from 18 to 12 hours varies depending on the variety. The rule of thumb is to change after 2 weeks.',
+    aquaNote3: 'Reduce hours of light if ripening goes too fast. Watch out for increasing Relative Humidity.',
+    aquaNote4: 'Double CANNAZYM dosage to 5 ml/L if substrate is reused.',
+    aquaNote5: '2 ml/L standard. Increase to a maximum of 4 ml/L for extra flowering power.',
+
+    // CANNA Notes (Wasabi)
+    wasabiNote1: 'Timing on stages is dependent on cropping method, whether flowering is included, and if the plant has to go through a dormant period based on winter temperatures.',
+    wasabiNote2: 'Water temperatures should run 11-14°C, while air temperatures should be between 8-18°C for growth. Warmer periods require higher humidity levels.',
+    wasabiNote3: 'Starting EC should be less than 0.1 or 100 ppm.',
+    wasabiNote4: 'This is a low light plant, while it can be grown under light cover (50%) in the mountains of Japan, it will need shade, approximately 50-80%, in other locations.',
+    wasabiNote5: 'Harvest when main plant rhizomes or stems are 15-20 cm long and about 1.25-2.5 cm thick.',
+    wasabiNote6: 'Higher temperatures can cause an increase in disease and general dieback of the plants.',
+
+    // CANNA Notes (Coco)
+    cocoNote1: 'This period varies depending on the species and number of plants per m². Mother plants remain in this phase until the end (6-12 months).',
+    cocoNote2: 'The changeover from 18 to 12 hours varies depending on the variety. The rule of thumb is to change after 2 weeks.',
+    cocoNote3: 'Double CANNAZYM dosage to 5 ml/L if substrate is reused.',
+    cocoNote4: '2 ml/L standard. Increase to a maximum of 4 ml/L for extra flowering power.',
+    cocoNote5: 'pH: Recommended pH is between 5.5 and 6.2. Adding pH- can increase EC.',
+
+    // CANNA Notes (Basil)
+    basilNote1: 'The recommended EC levels are based on a tap water EC of 0.0 mS/cm. If your tap water EC is 0.5 the recommended EC from the table should be 0.5 higher.',
+    basilNote2: 'Maximum EC level is 2.8 mS/cm. Recommended pH 5.2-6.2.',
+
+    // CANNA Notes (Cucumber)
+    cucumberNote1: 'The recommended EC levels are based on a tap water EC of 0.0 mS/cm.',
+    cucumberNote2: 'Maximum EC level is 2.8 mS/cm. Recommended pH 5.2-6.2.',
+
+    // CANNA Notes (Tomato)
+    tomatoNote1: 'The recommended EC levels are based on a tap water EC of 0.0 mS/cm.',
+    tomatoNote2: 'Maximum EC level is 2.8 mS/cm. Recommended pH 5.2-6.2.',
+
+    // CANNA Notes (Orchid)
+    orchidNote1: 'Use of this chart is designed for growers with some experience as the amount of variability between species is great (800+ General).',
+    orchidNote2: 'Timing on stages is dependent on cropping method, container size, finish size, and most importantly variety.',
+    orchidNote3: 'Temperatures should range 21-30°C daytime with lower limit at night of 13-21°C.',
+    orchidNote4: 'Overwatering is the leading cause of death and disease in Orchids. Water thoroughly with good quality water and allow the container to leach well.',
+    orchidNote5: 'Fertilize every other watering or less if plant seems \'pushed\'.',
+
+    // CANNA Notes (COGr)
+    cogrNote1: 'This period varies depending on the species and number of plants per m². Mother plants remain in this phase until the end (6-12 months).',
+    cogrNote2: 'The changeover from 18 to 12 hours varies depending on the variety. The rule of thumb is to change after 2 weeks.',
+    cogrNote3: 'Double CANNAZYM dosage to 5 ml/L if substrate is reused.',
+    cogrNote4: '2 ml/L standard. Increase to a maximum of 4 ml/L for extra flowering power.',
+    cogrNote5: 'pH: Recommended pH is between 5.8 and 6.2. Adding pH- can increase EC.',
+    cogrBufferNote: 'COGr slabs must be buffered with COGr Buffer Agent before first use. This prepares the substrate for optimal nutrient uptake.',
+
+    // Special Requirements Values
+    valWasabiLight: '50-80% shade depending on latitude',
+    valWasabiWaterTemp: '11-14°C',
+    valWasabiAirTemp: '8-18°C',
+    valWasabiStartEC: '<0.1 mS/cm or 100 ppm',
+    valOrchidDayTemp: '21-30°C',
+    valOrchidNightTemp: '13-21°C',
+    valOrchidWatering: 'Avoid overwatering - main cause of death',
+    valOrchidFeeding: 'Every other watering unless plant is stressed',
+    valOrchidFeeding: 'Every other watering unless plant is stressed',
+    valOrchidStartEC: '<0.3 mS/cm water quality',
+    valShade: 'Shade',
+    valNatural: 'Natural',
+
+    // Canna UI
+    cannaProfessional: 'Professional',
+    cannaFeedingSchedule: 'Feeding Schedule',
+    cannaHeroSubtitle: 'Professional nutrient calculator for AQUA, COCO, COGr, SUBSTRA and TERRA systems. Each plant has its own unique "fingerprint" and the best results can only be achieved when these requirements are met.',
+    cannaSystems: 'Systems',
+    cannaPlantTypes: 'Plant Types',
+    cannaProducts: 'Products',
+    cannaSelectPlantType: 'Select Plant Type',
+    cannaWaterType: 'Water Type',
+    cannaHardWater: 'Hard Water',
+    cannaSoftWater: 'Soft Water',
+    cannaSelectProducts: 'Select Products',
+    cannaClickToSelect: 'Click to select products to display',
+    cannaSelected: 'selected',
+    cannaSelectAll: 'Select All',
+    cannaDone: 'Done',
+    cannaWaterAmountHint: 'Dosages are calculated based on entered water amount',
+    cannaEcRange: 'Range',
+    cannaStageDetails: 'Stage Details',
+    cannaStage: 'Stage',
+    cannaDuration: 'Duration',
+    cannaLight: 'Light',
+
+    // Phases
+    cannaPhaseRooting: 'Rooting',
+    cannaPhaseVegetative: 'Vegetative',
+    cannaPhaseFlowering: 'Flowering',
+    cannaPhaseRipening: 'Ripening',
+    cannaPhaseFlush: 'Flush',
+    cannaPhaseGenerative1: 'Generative I',
+    cannaPhaseGenerative2: 'Generative II',
+    cannaPhaseGenerative3: 'Generative III',
+
+    // Tips
+    cannaUsageTips: 'Usage Tips',
+    cannaTip1: 'Always measure pH after mixing nutrients. Optimal range is 5.8-6.2 for most systems.',
+    cannaTip2: 'Keep nutrient solution temperature between 18-22°C for optimal absorption.',
+    cannaTip3: 'Start with 50% recommended dosage for seedlings and young plants.',
+    cannaTip4: 'Shake bottles well before use. Add nutrients to water, not water to nutrients.',
+    cannaTip5: 'Monitor EC levels regularly. Increase or decrease based on plant response.',
+
+    // Education
+    cannaEduTitle: 'About CANNA Nutrients',
+    cannaEduSubtitle: 'Learn about the science behind CANNA nutrition systems',
+    cannaEduResearchTitle: 'Research-Based Formulas',
+    cannaEduResearchText: 'CANNA nutrients are developed through extensive scientific research, ensuring optimal nutrient ratios for each growth stage.',
+    cannaEduPrecisionTitle: 'Precision Dosing',
+    cannaEduPrecisionText: 'Each product is designed for precise dosing, eliminating guesswork and ensuring consistent results every grow cycle.',
+    cannaEduQualityTitle: 'Premium Quality',
+    cannaEduQualityText: 'All CANNA products are made from high-grade ingredients and undergo strict quality control for maximum purity.',
+
+    // Additives Section
+    cannaAdditivesTitle: 'Nutrient Formulations & Additives',
+    cannaAdditivesSubtitle: 'All programs rely on base nutrients and strategic use of additives designed to support specific stages of plant development.',
+    descRhizotonic: 'Used especially during start and rooting phases to build a strong root system. A healthy start forms the foundation for overall plant performance.',
+    descCannazym: 'Contains enzymes that clean the root environment and break down dead root material. Used throughout the entire cycle. Double the dosage when reusing substrate.',
+    descPK1314: 'A flowering stimulator with high phosphorus (P) and potassium (K). Used for about one week in the middle of the generative period to intensively support flower and fruit development.',
+    descCannaboost: 'An additive that accelerates flowering and fruit ripening while improving quality. Used throughout the generative phase to enhance flowering power.',
+    usageStartRooting: 'Start & Rooting Phase',
+    usageEntireCycle: 'Throughout Entire Cycle',
+    usageMidGen: 'Mid-Generative Phase (1 Week)',
+    usageGenPhase: 'Throughout Generative Phase',
+
+    // Quick Reference
+    cannaQuickRefTitle: 'pH Levels Quick Reference',
+    cannaQuickRefSubtitle: 'Recommended pH ranges by system',
+
+    // Insights
+    cannaInsightsTitle: 'Strategic Insights',
+    cannaInsight1: 'The tables and guidelines provided by growing programs are "not iron law". These programs provide a strong scientifically-based framework, but ultimate success depends on the grower\'s observation and adaptation skills.',
+    cannaInsight2: 'Nutrient demand increases when transitioning from vegetative to generative phase. EC value ranges from 0.7-1.3 mS/cm in vegetative phase to 1.6-2.0 mS/cm at the peak of generative phase.',
+    cannaInsight3: 'Plant leaf color, growth rate, and overall health provide the best feedback about the accuracy of your program. Fine-tune nutrient, water, and light regimes based on the signals your plant gives.',
+    cannaInsight4: 'Light duration is one of the most important environmental signals that triggers plants to transition from vegetative to generative phase. General rule: 18 hours for vegetative, 12 hours for flowering.',
+
+    // Notes
+    cannaImportantNotes: 'Important Notes',
+    cannaSpecialRequirements: 'Special Requirements',
+    cannaGeneralNote: 'All dosages are based on standard recommendations. Actual requirements may vary based on plant genetics, environmental conditions, and growth stage. Always monitor your plants and adjust accordingly. When in doubt, use less nutrients - you can always add more, but you cannot remove excess.',
+    cannaTotalForWater: 'Total for',
+    cannaNoProductsSelected: 'No Products Selected',
+    cannaSelectProductsPrompt: 'Please select products from the menu to view the schedule.',
   },
   tr: {
     // Feeding Schedule Tool
@@ -737,38 +961,54 @@ export const feedingTranslations = {
     funcEnzymes: 'Enzimler',
     funcFlush: 'Yıkama Ajanı',
 
+    // CANNA Product Short Info
+    infoAquaVega: 'Devridaimli büyüme besini.',
+    infoAquaFlores: 'Devridaimli çiçeklenme besini.',
+    infoCoco: 'Tek besin karışımı.',
+    infoCOGrVega: 'Güçlü filizler sağlar.',
+    infoCOGrFlores: 'Meyve üretimini uyarır.',
+    infoCOGrBuffer: 'Levhayı ıslatır, tamponlar.',
+    infoSubstraVega: 'Açık sistem büyüme besini.',
+    infoSubstraFlores: 'Açık sistem çiçeklenme besini.',
+    infoTerraVega: 'Toprak bazlı büyüme besini.',
+    infoTerraFlores: 'Toprak bazlı çiçeklenme besini.',
+    infoRhizotonic: 'Kök oluşumunu destekler.',
+    infoCannazym: 'Substrat yeniden kullanımında.',
+    infoPK1314: 'Kütle, ağırlık geliştirir.',
+    infoCannaboost: 'Ekstra çiçeklenme gücü.',
+
     // CANNA Feeding Schedule
     cannaFeedingScheduleTitle: 'CANNA Beslenme Programı',
     cannaFeedingScheduleDesc: 'CANNA yetiştirme sistemleri için profesyonel besin hesaplayıcı',
     cannaScheduleTitle: 'CANNA',
     cannaScheduleSubtitle: 'İç mekan yetiştiriciliği için profesyonel besin sistemi',
     navCanna: 'CANNA',
-    
+
     // CANNA Systems
     cannaAquaName: 'CANNA AQUA',
     cannaAquaDesc: 'Drenaj suyunun yeniden kullanıldığı devridaimli (NFT gibi) hidroponik sistemler için özel olarak geliştirilmiştir.',
     cannaAquaFeature1: 'Devridaimli Sistemler',
     cannaAquaFeature2: 'Kendi Kendine pH Düzenleme',
     cannaAquaFeature3: 'NFT Uyumlu',
-    
+
     cannaCocoName: 'CANNA COCO',
     cannaCocoDesc: 'Toprağın organik yapısını Rockwool\'un hassasiyetiyle birleştiren hindistan cevizi kabuğu substratı için tasarlanmıştır.',
     cannaCocoFeature1: 'Coco Substratı',
     cannaCocoFeature2: 'Birleşik A&B Formülü',
     cannaCocoFeature3: 'Organik His + Hassasiyet',
-    
+
     cannaCOGrName: 'CANNA COGr',
     cannaCOGrDesc: 'Deneyimli kullanıcılar için sıkıştırılmış tamponlanmamış coco levhalarını kullanan kapsamlı coco yetiştirme yöntemi.',
     cannaCOGrFeature1: 'Sıkıştırılmış Coco Levhaları',
     cannaCOGrFeature2: 'Tamponlama Gerekli',
     cannaCOGrFeature3: 'Uzman Seviyesi',
-    
+
     cannaSubstraName: 'CANNA SUBSTRA',
     cannaSubstraDesc: 'Drenaj suyunun besin tankına geri döndürülmeyip dışarı atıldığı (Run-to-Waste) sistemler için özel olarak geliştirilmiştir.',
     cannaSubstraFeature1: 'Tek Kullanımlık Drenaj',
     cannaSubstraFeature2: 'Sert/Yumuşak Su Versiyonları',
     cannaSubstraFeature3: 'Atıl Ortamlar',
-    
+
     cannaTerraName: 'CANNA TERRA',
     cannaTerraDesc: 'Hem kaplarda hem de yataklarda, iç mekan ve dış mekan yetiştiriciliği için kullanılan toprak bazlı sistemler.',
     cannaTerraFeature1: 'Toprak Bazlı',
@@ -798,7 +1038,214 @@ export const feedingTranslations = {
     cannaPhaseStart: 'Başlangıç',
     cannaPhaseBudBreak: 'Göz Kırılması',
     cannaPhaseDormancy: 'Uyku Dönemi',
+
+    // CANNA Stage Names
+    stageRooting: 'Başlangıç / Köklenme',
+    stageVeg1: 'Vejetatif Faz I',
+    stageVeg2: 'Vejetatif Faz II',
+    stageVeg: 'Vejetatif Aşama',
+    stageGen1: 'Generatif Dönem I',
+    stageGen2: 'Generatif Dönem II',
+    stageGen3: 'Generatif Dönem III',
+    stageGen4: 'Generatif Dönem IV',
+    stageStart: 'Başlangıç',
+    stageFinal: 'Son Aşama',
+    stageSeedling: 'Fide',
+    stageFlower: 'Çiçeklenme',
+    stageBudBreak: 'Göz Kırılması',
+    stageDormancy: 'Uyku Dönemi',
+    stageRecovery: 'İyileşme',
+
+    // CANNA Tags
+    tagVEGA: 'VEGA',
+    tagHydroponic: 'Hidroponik',
+    tagGrowth: 'Büyüme',
+    tagFLORES: 'FLORES',
+    tagBloom: 'Çiçeklenme',
+    tagCoco: 'Coco',
+    tagAB: 'A&B',
+    tagAllPhases: 'Tüm Evreler',
+    tagCOGr: 'COGr',
+    tagSilicon: 'Silikon',
+    tagFulvicAcid: 'Fulvik Asit',
+    tagBuffer: 'Tampon',
+    tagSlabPrep: 'Levha Hazırlığı',
+    tagSUBSTRA: 'SUBSTRA',
+    tagHardWater: 'Sert Su',
+    tagSoftWater: 'Yumuşak Su',
+    tagTERRA: 'TERRA',
+    tagSoil: 'Toprak',
+    tagRootDev: 'Kök Gelişimi',
+    tagStartPhase: 'Başlangıç',
+    tagEnzyme: 'Enzim',
+    tagSubstrateRenew: 'Substrat Yenileme',
+    tagPK: 'PK',
+    tagMassBoost: 'Kütle Artışı',
+    tagGenerative: 'Generatif',
+    tagBloomBoost: 'Çiçeklenme Artışı',
+    tagAccelerator: 'Hızlandırıcı',
+    tagIntenseFlower: 'Yoğun Çiçek',
+
+    // CANNA Stage Descriptions
+    descStageStart: 'Kök oluşumu',
+    descStageStartPlugs: 'Tıkaçlardan kök oluşumu',
+    descStageStartCuttings: 'Ortama kök salma (çelik, ayırma veya ofsetten)',
+    descStageSeedling: 'Nakil, Kök oluşumu',
+    descStageVeg: 'Hızlı büyüme',
+    descStageVegDev: 'Bitki gelişimi',
+    descStageFinal: 'Bitkiler boyuta yaklaşıyor',
+    descStageGen1: 'Sürekli büyüme',
+    descStageGen1Fruit: 'Büyüme duraklaması, meyve oluşumunun ilk belirtileri',
+    descStageGen2Fruit: 'Tüm dallarda küçük meyveler',
+    descStageGen3Fruit: 'Meyve artışı, hasat sonuna kadar boyutlanma',
+    descStageGen3Size: 'Boyut artışı',
+    descStageFlower: 'Çiçeklenme dönemi',
+    descStageRecovery: 'Çiçeklenme sonrası iyileşme',
+
+    // CANNA Notes (Aqua)
+    aquaNote1: 'Bu süre türe ve metrekareye düşen bitki sayısına göre değişir. Ana bitkiler bu aşamada sonuna kadar kalır (6-12 ay).',
+    aquaNote2: '18 saatten 12 saate geçiş çeşide göre değişir. Genel kural 2 hafta sonra değiştirmektir.',
+    aquaNote3: 'Olgunlaşma çok hızlı giderse ışık saatlerini azaltın. Artan Bağıl Neme dikkat edin.',
+    aquaNote4: 'Substrat yeniden kullanılıyorsa CANNAZYM dozunu 5 ml/L\'ye iki katına çıkarın.',
+    aquaNote5: '2 ml/L standart. Ekstra çiçeklenme gücü için maksimum 4 ml/L\'ye çıkarın.',
+
+    // CANNA Notes (Wasabi)
+    wasabiNote1: 'Aşamaların zamanlaması yetiştirme yöntemine, çiçeklenmenin dahil olup olmadığına ve bitkinin kış sıcaklıklarına göre dinlenme dönemine girmesi gerekip gerekmediğine bağlıdır.',
+    wasabiNote2: 'Su sıcaklığı 11-14°C, hava sıcaklığı büyüme için 8-18°C arasında olmalıdır. Sıcak dönemler daha yüksek nem seviyesi gerektirir.',
+    wasabiNote3: 'Başlangıç EC değeri 0.1 veya 100 ppm\'den az olmalıdır.',
+    wasabiNote4: 'Düşük ışıklı bir bitkidir, Japonya dağlarında %50 örtü altında yetiştirilebilirken, diğer yerlerde yaklaşık %50-80 gölge gerektirir.',
+    wasabiNote5: 'Ana bitki rizomu veya sapları 15-20 cm uzunluğunda ve yaklaşık 1.25-2.5 cm kalınlığında olduğunda hasat edin.',
+    wasabiNote6: 'Yüksek sıcaklıklar hastalık artışına ve bitkilerin genel olarak solmasına neden olabilir.',
+
+    // CANNA Notes (Coco)
+    cocoNote1: 'Bu süre türe ve metrekareye düşen bitki sayısına göre değişir. Ana bitkiler bu aşamada sonuna kadar kalır (6-12 ay).',
+    cocoNote2: '18 saatten 12 saate geçiş çeşide göre değişir. Genel kural 2 hafta sonra değiştirmektir.',
+    cocoNote3: 'Substrat yeniden kullanılıyorsa CANNAZYM dozunu 5 ml/L\'ye iki katına çıkarın.',
+    cocoNote4: '2 ml/L standart. Ekstra çiçeklenme gücü için maksimum 4 ml/L\'ye çıkarın.',
+    cocoNote5: 'pH: Önerilen pH 5.5 ile 6.2 arasındadır. pH- eklemek EC\'yi artırabilir.',
+
+    // CANNA Notes (Basil)
+    basilNote1: 'Önerilen EC seviyeleri 0.0 mS/cm musluk suyu EC değerine dayanmaktadır. Musluk suyunuz 0.5 ise tablodaki önerilen EC 0.5 daha yüksek olmalıdır.',
+    basilNote2: 'Maksimum EC seviyesi 2.8 mS/cm\'dir. Önerilen pH 5.2-6.2.',
+
+    // CANNA Notes (Cucumber)
+    cucumberNote1: 'Önerilen EC seviyeleri 0.0 mS/cm musluk suyu EC değerine dayanmaktadır.',
+    cucumberNote2: 'Maksimum EC seviyesi 2.8 mS/cm\'dir. Önerilen pH 5.2-6.2.',
+
+    // CANNA Notes (Tomato)
+    tomatoNote1: 'Önerilen EC seviyeleri 0.0 mS/cm musluk suyu EC değerine dayanmaktadır.',
+    tomatoNote2: 'Maksimum EC seviyesi 2.8 mS/cm\'dir. Önerilen pH 5.2-6.2.',
+
+    // CANNA Notes (Orchid)
+    orchidNote1: 'Bu tablo biraz deneyimli yetiştiriciler için tasarlanmıştır çünkü türler arasındaki değişkenlik çok fazladır (800+ tür).',
+    orchidNote2: 'Aşamaların zamanlaması yetiştirme yöntemine, saksı boyutuna, bitiş boyutuna ve en önemlisi çeşide bağlıdır.',
+    orchidNote3: 'Sıcaklıklar gündüz 21-30°C, gece en düşük 13-21°C arasında olmalıdır.',
+    orchidNote4: 'Aşırı sulama Orkidelerde ölüm ve hastalığın başlıca nedenidir. Kaliteli su ile iyice sulayın ve saksının iyi süzülmesine izin verin.',
+    orchidNote5: 'Her iki sulamada bir veya bitki "zorlanmış" görünüyorsa daha az gübre verin.',
+
+    // CANNA Notes (COGr)
+    cogrNote1: 'Bu süre türe ve metrekareye düşen bitki sayısına göre değişir. Ana bitkiler bu aşamada sonuna kadar kalır (6-12 ay).',
+    cogrNote2: '18 saatten 12 saate geçiş çeşide göre değişir. Genel kural 2 hafta sonra değiştirmektir.',
+    cogrNote3: 'Substrat yeniden kullanılıyorsa CANNAZYM dozunu 5 ml/L\'ye iki katına çıkarın.',
+    cogrNote4: '2 ml/L standart. Ekstra çiçeklenme gücü için maksimum 4 ml/L\'ye çıkarın.',
+    cogrNote5: 'pH: Önerilen pH 5.8 ile 6.2 arasındadır. pH- eklemek EC\'yi artırabilir.',
+    cogrBufferNote: 'COGr levhaları ilk kullanımdan önce COGr Buffer Agent ile tamponlanmalıdır. Bu, substratı optimum besin alımı için hazırlar.',
+
+    // Special Requirements Values
+    valWasabiLight: 'Enleme bağlı olarak %50-80 gölge',
+    valWasabiWaterTemp: '11-14°C',
+    valWasabiAirTemp: '8-18°C',
+    valWasabiStartEC: '<0.1 mS/cm veya 100 ppm',
+    valOrchidDayTemp: '21-30°C',
+    valOrchidNightTemp: '13-21°C',
+    valOrchidWatering: 'Aşırı sulamadan kaçının - ana ölüm nedeni',
+    valOrchidFeeding: 'Bitki stresli değilse her iki sulamada bir',
+    valOrchidFeeding: 'Bitki stresli değilse her iki sulamada bir',
+    valOrchidStartEC: '<0.3 mS/cm su kalitesi',
+    valShade: 'Gölge',
+    valNatural: 'Doğal',
+
+    // Canna UI
+    cannaProfessional: 'Profesyonel',
+    cannaFeedingSchedule: 'Beslenme Programı',
+    cannaHeroSubtitle: 'AQUA, COCO, COGr, SUBSTRA ve TERRA sistemleri için profesyonel besin hesaplayıcı. Her bitkinin kendine özgü "parmak izi" vardır ve en iyi sonuçlar ancak bu gereksinimler karşılandığında elde edilebilir.',
+    cannaSystems: 'Sistem',
+    cannaPlantTypes: 'Bitki Tipi',
+    cannaProducts: 'Ürün',
+    cannaSelectPlantType: 'Bitki Tipi Seçin',
+    cannaWaterType: 'Su Tipi',
+    cannaHardWater: 'Sert Su',
+    cannaSoftWater: 'Yumuşak Su',
+    cannaSelectProducts: 'Ürünleri Seç',
+    cannaClickToSelect: 'Görüntülenecek ürünleri seçin',
+    cannaSelected: 'seçili',
+    cannaSelectAll: 'Tümünü Seç',
+    cannaDone: 'Seçimi Tamamla',
+    cannaWaterAmountHint: 'Dozajlar girilen su miktarına göre hesaplanır',
+    cannaEcRange: 'Aralığı',
+    cannaStageDetails: 'Aşama Detayları',
+    cannaStage: 'Aşama',
+    cannaDuration: 'Süre',
+    cannaLight: 'Işık',
+
+    // Phases
+    cannaPhaseRooting: 'Köklendirme',
+    cannaPhaseVegetative: 'Vejetatif',
+    cannaPhaseFlowering: 'Çiçeklenme',
     cannaPhaseRipening: 'Olgunlaşma',
+    cannaPhaseFlush: 'Yıkama',
+    cannaPhaseGenerative1: 'Generatif I',
+    cannaPhaseGenerative2: 'Generatif II',
+    cannaPhaseGenerative3: 'Generatif III',
+
+    // Tips
+    cannaUsageTips: 'Kullanım İpuçları',
+    cannaTip1: 'Besin çözeltinizin pH değerini ölçtükten sonra karıştırın. Optimal aralık çoğu sistem için 5.8-6.2\'dir.',
+    cannaTip2: 'Besin çözeltisi sıcaklığını optimum emilim için 18-22°C arasında tutun.',
+    cannaTip3: 'Fide ve genç bitkiler için önerilen dozun %50\'si ile başlayın.',
+    cannaTip4: 'Şişeleri kullanmadan önce iyice çalkalayın. Besinleri suya ekleyin, suyu besinlere değil.',
+    cannaTip5: 'EC seviyelerini düzenli olarak izleyin. Bitki tepkisine göre artırın veya azaltın.',
+
+    // Education
+    cannaEduTitle: 'CANNA Besinleri Hakkında',
+    cannaEduSubtitle: 'CANNA beslenme sistemlerinin arkasındaki bilimi öğrenin',
+    cannaEduResearchTitle: 'Araştırma Tabanlı Formüller',
+    cannaEduResearchText: 'CANNA besinleri, her büyüme aşaması için optimal besin oranlarını sağlamak üzere kapsamlı bilimsel araştırmalar sonucu geliştirilmiştir.',
+    cannaEduPrecisionTitle: 'Hassas Dozlama',
+    cannaEduPrecisionText: 'Her ürün hassas dozlama için tasarlanmıştır, tahmin yürütmeyi ortadan kaldırır ve her yetiştirme döngüsünde tutarlı sonuçlar sağlar.',
+    cannaEduQualityTitle: 'Premium Kalite',
+    cannaEduQualityText: 'Tüm CANNA ürünleri yüksek kaliteli bileşenlerden üretilir ve maksimum saflık için sıkı kalite kontrolünden geçer.',
+
+    // Additives Section
+    cannaAdditivesTitle: 'Besin Formülasyonları ve Katkı Maddeleri',
+    cannaAdditivesSubtitle: 'Tüm programlar, temel besinler ile bitki gelişiminin belirli aşamalarını desteklemek için tasarlanmış katkı maddelerinin stratejik kullanımına dayanır.',
+    descRhizotonic: 'Güçlü bir kök sistemi oluşturmak için özellikle başlangıç ve köklenme evrelerinde kullanılır. Sağlıklı bir başlangıç, bitkinin genel performansı için temel oluşturur.',
+    descCannazym: 'Kök ortamını temizleyen ve ölü kök materyalini parçalayan enzimler içerir. Genellikle tüm döngü boyunca kullanılır. Substratın yeniden kullanılması durumunda dozaj iki katına çıkarılmalıdır.',
+    descPK1314: 'Yüksek oranda fosfor (P) ve potasyum (K) içeren bir çiçeklenme uyarıcısıdır. Generatif dönemin ortasında, çiçek ve meyve gelişimini yoğun bir şekilde desteklemek için genellikle sadece bir hafta süreyle kullanılır.',
+    descCannaboost: 'Çiçeklenme ve meyve olgunlaşma sürecini hızlandıran ve kalitesini artıran bir katkı maddesidir. Çiçeklenme gücünü artırmak için generatif evre boyunca kullanılır.',
+    usageStartRooting: 'Başlangıç & Köklenme Evresi',
+    usageEntireCycle: 'Tüm Döngü Boyunca',
+    usageMidGen: 'Generatif Evrenin Ortası (1 Hafta)',
+    usageGenPhase: 'Generatif Evre Boyunca',
+
+    // Quick Reference
+    cannaQuickRefTitle: 'pH Seviyeleri Hızlı Referans',
+    cannaQuickRefSubtitle: 'Sisteme göre önerilen pH aralıkları',
+
+    // Insights
+    cannaInsightsTitle: 'Stratejik Öneriler',
+    cannaInsight1: 'Yetiştirme programları tarafından sunulan tablolar ve yönergeler, "demir bir kanun değildir". Bu programlar, bilimsel temellere dayanan güçlü bir çerçeve sunar, ancak nihai başarı yetiştiricinin gözlem ve adaptasyon yeteneğine bağlıdır.',
+    cannaInsight2: 'Vejetatif evreden generatif evreye geçildiğinde besin ihtiyacı artar. EC değeri vejetatif evrede 0.7-1.3 mS/cm aralığındayken, generatif evrenin zirvesinde 1.6-2.0 mS/cm seviyelerine ulaşır.',
+    cannaInsight3: 'Bitkinin yaprak rengi, büyüme hızı ve genel sağlığı, uygulanan programın doğruluğu hakkında en iyi geri bildirimi sağlar. Bitkinin verdiği sinyallere göre besin, su ve ışık rejimlerini hassas bir şekilde ayarlayın.',
+    cannaInsight4: 'Işık süresi, bitkilerin vejetatif büyümeden generatif faza geçişini tetikleyen en önemli çevresel sinyallerden biridir. Genel kural: Vejetatif için 18 saat, çiçeklenme için 12 saat.',
+
+    // Notes
+    cannaImportantNotes: 'Önemli Notlar',
+    cannaSpecialRequirements: 'Özel Gereksinimler',
+    cannaGeneralNote: 'Tüm dozlar standart önerilere dayanmaktadır. Gerçek gereksinimler bitki genetiğine, çevre koşullarına ve büyüme aşamasına göre değişebilir. Bitkilerinizi her zaman izleyin ve buna göre ayarlayın. Şüpheniz varsa daha az besin kullanın - her zaman daha fazla ekleyebilirsiniz, ancak fazlasını çıkaramazsınız.',
+    cannaTotalForWater: 'Toplam',
+    cannaNoProductsSelected: 'Ürün Seçilmedi',
+    cannaSelectProductsPrompt: 'Programı görüntülemek için lütfen menüden ürün seçin.',
 
     // CANNA Products
     descAquaVega: 'Devridaimli sistemlerde vejetatif dönem için temel besin',
