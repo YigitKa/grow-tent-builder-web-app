@@ -33,7 +33,7 @@ const fromBuilderItems = (items = []) => items.map(i => ({
 }));
 
 export default function ElectricCostEstimator({ onClose } = {}) {
-  const { currency } = useSettings();
+  const { currency, t } = useSettings();
   const saved = loadState();
   const { state: builderState } = useBuilder();
 
@@ -77,22 +77,22 @@ export default function ElectricCostEstimator({ onClose } = {}) {
   return (
     <div className={styles.estimatorContainer}>
       <div className={styles.estimatorHeader}>
-        <strong>Elektrik Maliyet Tahmincisi</strong>
+        <strong>{t('estTitle')}</strong>
         <div style={{ display: 'flex', gap: 8 }}>
-          <button className={`${styles.btn} ${styles.btnSmall}`} onClick={() => { saveState({ lights, fans, pricePerKwh, daysPerMonth }); if (onClose) onClose(); }}>Kapat</button>
+          <button className={`${styles.btn} ${styles.btnSmall}`} onClick={() => { saveState({ lights, fans, pricePerKwh, daysPerMonth }); if (onClose) onClose(); }}>{t('estClose')}</button>
         </div>
       </div>
 
       <div className={styles.estimatorInputsGrid}>
         <div>
-          <label style={{ fontSize: 12 }}>Elektrik fiyatı (kWh)</label>
+          <label style={{ fontSize: 12 }}>{t('estElectricityPrice')}</label>
           <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
             <input type="number" step="0.01" min="0" value={pricePerKwh} onChange={(e) => setPricePerKwh(e.target.value)} className={styles.input} />
             <span style={{ fontSize: 14 }}>{currency}</span>
           </div>
         </div>
         <div>
-          <label style={{ fontSize: 12 }}>Gün/ay</label>
+          <label style={{ fontSize: 12 }}>{t('estDaysPerMonth')}</label>
           <input type="number" min="1" max="31" value={daysPerMonth} onChange={(e) => setDaysPerMonth(e.target.value)} className={styles.input} />
         </div>
       </div>
@@ -102,8 +102,8 @@ export default function ElectricCostEstimator({ onClose } = {}) {
       <div className={styles.estimatorDevicesFlex}>
         <div className={styles.deviceSection}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <strong>Işıklar</strong>
-            <button className={`${styles.btn} ${styles.btnSmall}`} onClick={() => addDevice(lights, setLights, { name: 'Yeni ışık', watt: 100, quantity: 1 })}>Ekle</button>
+            <strong>{t('estLights')}</strong>
+            <button className={`${styles.btn} ${styles.btnSmall}`} onClick={() => addDevice(lights, setLights, { name: t('estNewLight'), watt: 100, quantity: 1 })}>{t('estAdd')}</button>
           </div>
           <div style={{ marginTop: 8 }}>
             {lights.map((d, i) => (
@@ -111,7 +111,7 @@ export default function ElectricCostEstimator({ onClose } = {}) {
                 <input value={d.name} onChange={(e) => updateDevice(lights, setLights, i, { name: e.target.value })} className={`${styles.input} ${styles.inputDeviceName}`} />
                 <input type="number" value={d.watt} onChange={(e) => updateDevice(lights, setLights, i, { watt: Number(e.target.value) })} className={`${styles.input} ${styles.inputTiny}`} />
                 <input type="number" value={d.quantity} min={1} onChange={(e) => updateDevice(lights, setLights, i, { quantity: Number(e.target.value) })} className={`${styles.input} ${styles.inputTiny}`} />
-                <button className={`${styles.btn} ${styles.btnDanger}`} onClick={() => removeDevice(lights, setLights, i)}>Sil</button>
+                <button className={`${styles.btn} ${styles.btnDanger}`} onClick={() => removeDevice(lights, setLights, i)}>{t('estDelete')}</button>
               </div>
             ))}
           </div>
@@ -119,8 +119,8 @@ export default function ElectricCostEstimator({ onClose } = {}) {
 
         <div className={styles.deviceSection}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <strong>Fanlar</strong>
-            <button className={`${styles.btn} ${styles.btnSmall}`} onClick={() => addDevice(fans, setFans, { name: 'Yeni fan', watt: 50, quantity: 1 })}>Ekle</button>
+            <strong>{t('estFans')}</strong>
+            <button className={`${styles.btn} ${styles.btnSmall}`} onClick={() => addDevice(fans, setFans, { name: t('estNewFan'), watt: 50, quantity: 1 })}>{t('estAdd')}</button>
           </div>
           <div style={{ marginTop: 8 }}>
             {fans.map((d, i) => (
@@ -128,7 +128,7 @@ export default function ElectricCostEstimator({ onClose } = {}) {
                 <input value={d.name} onChange={(e) => updateDevice(fans, setFans, i, { name: e.target.value })} className={`${styles.input} ${styles.inputDeviceName}`} />
                 <input type="number" value={d.watt} onChange={(e) => updateDevice(fans, setFans, i, { watt: Number(e.target.value) })} className={`${styles.input} ${styles.inputTiny}`} />
                 <input type="number" value={d.quantity} min={1} onChange={(e) => updateDevice(fans, setFans, i, { quantity: Number(e.target.value) })} className={`${styles.input} ${styles.inputTiny}`} />
-                <button className={`${styles.btn} ${styles.btnDanger}`} onClick={() => removeDevice(fans, setFans, i)}>Sil</button>
+                <button className={`${styles.btn} ${styles.btnDanger}`} onClick={() => removeDevice(fans, setFans, i)}>{t('estDelete')}</button>
               </div>
             ))}
           </div>
@@ -140,18 +140,18 @@ export default function ElectricCostEstimator({ onClose } = {}) {
       {report && (
         <div>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <strong>Büyüme (18/6)</strong>
+            <strong>{t('estGrowPhase')}</strong>
             <span>{report.veg.totalKwh} kWh — {(report.veg.totalCost).toFixed(2)} {currency}</span>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 6 }}>
-            <strong>Çiçeklenme (12/12)</strong>
+            <strong>{t('estFlowerPhase')}</strong>
             <span>{report.flower.totalKwh} kWh — {(report.flower.totalCost).toFixed(2)} {currency}</span>
           </div>
 
           <details style={{ marginTop: 10 }}>
-            <summary style={{ cursor: 'pointer' }}>Detaylı döküm</summary>
+            <summary style={{ cursor: 'pointer' }}>{t('estDetailedBreakdown')}</summary>
             <div style={{ marginTop: 8 }}>
-              <strong>Işıklar ve Fanlar (aylık kWh / adet)</strong>
+              <strong>{t('estLightsAndFans')}</strong>
               <ul className={styles.estList}>
                 {report.veg.items.map((it, idx) => (
                   <li key={idx}>{it.name}: {it.monthlyKwh} kWh</li>

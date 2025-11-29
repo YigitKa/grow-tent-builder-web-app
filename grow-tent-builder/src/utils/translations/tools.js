@@ -60,6 +60,22 @@ export const toolsTranslations = {
     costCalcFaq4Q: 'Is 100 kWh per day a lot?',
     costCalcFaq4A: 'Yes. 100 kWh/day = 3000 kWh/month, which exceeds the U.S. average of 893 kWh/month.',
 
+    // Electric Cost Estimator Widget
+    estTitle: 'Electric Cost Estimator',
+    estClose: 'Close',
+    estElectricityPrice: 'Electricity price (kWh)',
+    estDaysPerMonth: 'Days/month',
+    estLights: 'Lights',
+    estFans: 'Fans',
+    estAdd: 'Add',
+    estDelete: 'Delete',
+    estNewLight: 'New light',
+    estNewFan: 'New fan',
+    estGrowPhase: 'Growth (18/6)',
+    estFlowerPhase: 'Flowering (12/12)',
+    estDetailedBreakdown: 'Detailed breakdown',
+    estLightsAndFans: 'Lights and Fans (monthly kWh / unit)',
+
     // CO2 Calculator Tool
     co2CalcTitle: 'CO₂ Grow Room Calculator',
     co2CalcSubtitle: 'Optimize your grow space with precise CO₂ calculations',
@@ -196,6 +212,22 @@ export const toolsTranslations = {
     costCalcFaq3A: 'Elektrikli ısıtıcılar, su ısıtıcıları ve HVAC sistemleri çok fazla elektrik tüketir.',
     costCalcFaq4Q: 'Günde 100 kWh çok mu?',
     costCalcFaq4A: 'Evet. Günde 100 kWh = ayda 3000 kWh, bu da ortalamanın oldukça üzerindedir.',
+
+    // Electric Cost Estimator Widget
+    estTitle: 'Elektrik Maliyet Tahmincisi',
+    estClose: 'Kapat',
+    estElectricityPrice: 'Elektrik fiyatı (kWh)',
+    estDaysPerMonth: 'Gün/ay',
+    estLights: 'Işıklar',
+    estFans: 'Fanlar',
+    estAdd: 'Ekle',
+    estDelete: 'Sil',
+    estNewLight: 'Yeni ışık',
+    estNewFan: 'Yeni fan',
+    estGrowPhase: 'Büyüme (18/6)',
+    estFlowerPhase: 'Çiçeklenme (12/12)',
+    estDetailedBreakdown: 'Detaylı döküm',
+    estLightsAndFans: 'Işıklar ve Fanlar (aylık kWh / adet)',
 
     // CO2 Calculator Tool
     co2CalcTitle: 'CO₂ Yetiştirme Odası Hesaplayıcı',
