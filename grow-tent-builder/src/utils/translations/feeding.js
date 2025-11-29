@@ -251,6 +251,8 @@ export const feedingTranslations = {
     // CANNA Feeding Schedule
     cannaFeedingScheduleTitle: 'CANNA Feeding Schedule',
     cannaFeedingScheduleDesc: 'Professional nutrient calculator for CANNA growing systems',
+    cannaScheduleTitle: 'CANNA',
+    cannaScheduleSubtitle: 'Professional nutrient system for indoor growing',
     navCanna: 'CANNA',
     
     // CANNA Systems
@@ -294,20 +296,20 @@ export const feedingTranslations = {
     plantGrape: 'Grape',
 
     // CANNA Phases
-    phaseRooting: 'Rooting',
-    phaseVegetative: 'Vegetative',
-    phaseVegetative1: 'Vegetative 1',
-    phaseGenerative1: 'Generative 1',
-    phaseGenerative2: 'Generative 2',
-    phaseGenerative3: 'Generative 3',
-    phaseFinal: 'Final',
-    phaseFlowering: 'Flowering',
-    phaseRecovery: 'Recovery',
-    phaseSeedling: 'Seedling',
-    phaseStart: 'Start',
-    phaseBudBreak: 'Bud Break',
-    phaseDormancy: 'Dormancy',
-    phaseRipening: 'Ripening',
+    cannaPhaseRooting: 'Rooting',
+    cannaPhaseVegetative: 'Vegetative',
+    cannaPhaseVegetative1: 'Vegetative 1',
+    cannaPhaseGenerative1: 'Generative 1',
+    cannaPhaseGenerative2: 'Generative 2',
+    cannaPhaseGenerative3: 'Generative 3',
+    cannaPhaseFinal: 'Final',
+    cannaPhaseFlowering: 'Flowering',
+    cannaPhaseRecovery: 'Recovery',
+    cannaPhaseSeedling: 'Seedling',
+    cannaPhaseStart: 'Start',
+    cannaPhaseBudBreak: 'Bud Break',
+    cannaPhaseDormancy: 'Dormancy',
+    cannaPhaseRipening: 'Ripening',
 
     // CANNA Products
     descAquaVega: 'Base nutrient for vegetative phase in recirculating systems',
@@ -600,6 +602,8 @@ export const feedingTranslations = {
     // CANNA Feeding Schedule
     cannaFeedingScheduleTitle: 'CANNA Beslenme Programı',
     cannaFeedingScheduleDesc: 'CANNA yetiştirme sistemleri için profesyonel besin hesaplayıcı',
+    cannaScheduleTitle: 'CANNA',
+    cannaScheduleSubtitle: 'İç mekan yetiştiriciliği için profesyonel besin sistemi',
     navCanna: 'CANNA',
     
     // CANNA Systems
@@ -643,20 +647,20 @@ export const feedingTranslations = {
     plantGrape: 'Üzüm',
 
     // CANNA Phases
-    phaseRooting: 'Köklenme',
-    phaseVegetative: 'Vejetatif',
-    phaseVegetative1: 'Vejetatif 1',
-    phaseGenerative1: 'Generatif 1',
-    phaseGenerative2: 'Generatif 2',
-    phaseGenerative3: 'Generatif 3',
-    phaseFinal: 'Son Aşama',
-    phaseFlowering: 'Çiçeklenme',
-    phaseRecovery: 'İyileşme',
-    phaseSeedling: 'Fide',
-    phaseStart: 'Başlangıç',
-    phaseBudBreak: 'Göz Kırılması',
-    phaseDormancy: 'Uyku Dönemi',
-    phaseRipening: 'Olgunlaşma',
+    cannaPhaseRooting: 'Köklenme',
+    cannaPhaseVegetative: 'Vejetatif',
+    cannaPhaseVegetative1: 'Vejetatif 1',
+    cannaPhaseGenerative1: 'Generatif 1',
+    cannaPhaseGenerative2: 'Generatif 2',
+    cannaPhaseGenerative3: 'Generatif 3',
+    cannaPhaseFinal: 'Son Aşama',
+    cannaPhaseFlowering: 'Çiçeklenme',
+    cannaPhaseRecovery: 'İyileşme',
+    cannaPhaseSeedling: 'Fide',
+    cannaPhaseStart: 'Başlangıç',
+    cannaPhaseBudBreak: 'Göz Kırılması',
+    cannaPhaseDormancy: 'Uyku Dönemi',
+    cannaPhaseRipening: 'Olgunlaşma',
 
     // CANNA Products
     descAquaVega: 'Devridaimli sistemlerde vejetatif dönem için temel besin',

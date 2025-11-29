@@ -487,34 +487,34 @@ export const CANNA_PRODUCTS = [
 export const PHASE_INFO = {
     // Standard phases (general growing)
     standard: {
-        rooting: { label_key: 'phaseRooting', color: '#8B5CF6', icon: '🌱' },
-        vegetative: { label_key: 'phaseVegetative', color: '#22C55E', icon: '🌿' },
-        generative1: { label_key: 'phaseGenerative1', color: '#F59E0B', icon: '🌼' },
-        generative2: { label_key: 'phaseGenerative2', color: '#EC4899', icon: '🌸' },
-        generative3: { label_key: 'phaseGenerative3', color: '#EF4444', icon: '🍎' },
-        final: { label_key: 'phaseFinal', color: '#6B7280', icon: '🏁' }
+        rooting: { label_key: 'cannaPhaseRooting', color: '#8B5CF6', icon: '🌱' },
+        vegetative: { label_key: 'cannaPhaseVegetative', color: '#22C55E', icon: '🌿' },
+        generative1: { label_key: 'cannaPhaseGenerative1', color: '#F59E0B', icon: '🌼' },
+        generative2: { label_key: 'cannaPhaseGenerative2', color: '#EC4899', icon: '🌸' },
+        generative3: { label_key: 'cannaPhaseGenerative3', color: '#EF4444', icon: '🍎' },
+        final: { label_key: 'cannaPhaseFinal', color: '#6B7280', icon: '🏁' }
     },
     // Wasabi specific (long cycle)
     wasabi: {
-        rooting: { label_key: 'phaseRooting', color: '#8B5CF6', weeks: '3-5 weeks' },
-        vegetative: { label_key: 'phaseVegetative', color: '#22C55E', weeks: '18-24 months' },
-        final: { label_key: 'phaseFinal', color: '#6B7280', weeks: '2 weeks' }
+        rooting: { label_key: 'cannaPhaseRooting', color: '#8B5CF6', weeks: '3-5 weeks' },
+        vegetative: { label_key: 'cannaPhaseVegetative', color: '#22C55E', weeks: '18-24 months' },
+        final: { label_key: 'cannaPhaseFinal', color: '#6B7280', weeks: '2 weeks' }
     },
     // Orchid specific
     orchids: {
-        start: { label_key: 'phaseStart', color: '#8B5CF6', weeks: '2-8 weeks' },
-        vegetative: { label_key: 'phaseVegetative', color: '#22C55E', weeks: '18-52 weeks' },
-        flowering: { label_key: 'phaseFlowering', color: '#EC4899', weeks: '4+ weeks' },
-        recovery: { label_key: 'phaseRecovery', color: '#6B7280', weeks: 'Variable' }
+        start: { label_key: 'cannaPhaseStart', color: '#8B5CF6', weeks: '2-8 weeks' },
+        vegetative: { label_key: 'cannaPhaseVegetative', color: '#22C55E', weeks: '18-52 weeks' },
+        flowering: { label_key: 'cannaPhaseFlowering', color: '#EC4899', weeks: '4+ weeks' },
+        recovery: { label_key: 'cannaPhaseRecovery', color: '#6B7280', weeks: 'Variable' }
     },
     // Grape specific
     grape: {
-        budBreak: { label_key: 'phaseBudBreak', color: '#8B5CF6', weeks: '1 week' },
-        vegetative: { label_key: 'phaseVegetative', color: '#22C55E', weeks: '1-2 weeks' },
-        generative1: { label_key: 'phaseGenerative1', color: '#F59E0B', weeks: '2-4 weeks' },
-        generative2: { label_key: 'phaseGenerative2', color: '#EC4899', weeks: '2 weeks' },
-        generative3: { label_key: 'phaseGenerative3', color: '#EF4444', weeks: '2 weeks' },
-        dormancy: { label_key: 'phaseDormancy', color: '#6B7280', weeks: 'Hold' }
+        budBreak: { label_key: 'cannaPhaseBudBreak', color: '#8B5CF6', weeks: '1 week' },
+        vegetative: { label_key: 'cannaPhaseVegetative', color: '#22C55E', weeks: '1-2 weeks' },
+        generative1: { label_key: 'cannaPhaseGenerative1', color: '#F59E0B', weeks: '2-4 weeks' },
+        generative2: { label_key: 'cannaPhaseGenerative2', color: '#EC4899', weeks: '2 weeks' },
+        generative3: { label_key: 'cannaPhaseGenerative3', color: '#EF4444', weeks: '2 weeks' },
+        dormancy: { label_key: 'cannaPhaseDormancy', color: '#6B7280', weeks: 'Hold' }
     }
 };
 
