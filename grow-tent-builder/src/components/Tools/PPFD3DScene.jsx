@@ -132,6 +132,20 @@ const VoxelGrid = ({ dimensions, activeLights, width, depth, height, unit, activ
 
     // Animation State
     const [revealedCount, setRevealedCount] = useState(0);
+    const prevCountRef = useRef(count);
+    const prevActiveLightsRef = useRef(activeLights);
+
+    // Reset animation when data changes
+    useEffect(() => {
+        // Only reset if count or activeLights actually changed
+        // This pattern is intentional for synchronizing state with prop changes
+        if (prevCountRef.current !== count || prevActiveLightsRef.current !== activeLights) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
+            setRevealedCount(0);
+            prevCountRef.current = count;
+            prevActiveLightsRef.current = activeLights;
+        }
+    }, [count, activeLights]);
 
     useFrame((state, delta) => {
         if (revealedCount < count) {
@@ -147,11 +161,6 @@ const VoxelGrid = ({ dimensions, activeLights, width, depth, height, unit, activ
             }
         }
     });
-
-    useEffect(() => {
-        // Reset animation when data changes
-        setRevealedCount(0);
-    }, [count, activeLights]); // Trigger restart on light change too
 
     useEffect(() => {
         if (!meshRef.current) return;
@@ -196,96 +205,97 @@ const VoxelGrid = ({ dimensions, activeLights, width, depth, height, unit, activ
     );
 };
 
-const GuideLines = ({ width, depth, height, unit, dimensions }) => {
-    const scaleFactor = unit === 'cm' ? 0.1 : 3.0;
-    const interval = unit === 'cm' ? 10 : 1; // 10cm or 1ft
+// RulerAxis component - must be defined outside parent to avoid recreating on each render
+const RulerAxis = ({ size, actualSize, color, axis, position, labelOffset, scaleFactor, interval, unit }) => {
+    const ticks = [];
+    const count = Math.floor(actualSize / interval);
 
-    const RulerAxis = ({ size, actualSize, color, axis, position, labelOffset }) => {
-        const ticks = [];
-        const count = Math.floor(actualSize / interval);
+    for (let i = 0; i <= count; i++) {
+        const val = i * interval;
+        if (val === 0 && i !== 0) continue;
+        const pos = val * scaleFactor;
 
-        for (let i = 0; i <= count; i++) {
-            const val = i * interval;
-            if (val === 0 && i !== 0) continue;
-            const pos = val * scaleFactor;
-
-            // Tick Geometry
-            let tickArgs = [0.05, 0.05, 0.05];
-            let tickPos = [0, 0, 0];
-
-            if (axis === 'x') {
-                tickArgs = [0.02, 0.02, 0.3];
-                tickPos = [pos, 0, 0.15];
-            } else if (axis === 'z') {
-                tickArgs = [0.3, 0.02, 0.02];
-                tickPos = [-0.15, 0, pos];
-            } else if (axis === 'y') {
-                tickArgs = [0.3, 0.02, 0.02];
-                tickPos = [-0.15, pos, 0];
-            }
-
-            ticks.push(
-                <group key={i}>
-                    <mesh position={tickPos}>
-                        <boxGeometry args={tickArgs} />
-                        <meshBasicMaterial color={color} />
-                    </mesh>
-                    <Text
-                        position={[
-                            axis === 'x' ? pos : labelOffset[0],
-                            axis === 'y' ? pos : labelOffset[1],
-                            axis === 'z' ? pos : labelOffset[2]
-                        ]}
-                        fontSize={0.25}
-                        color={color}
-                        anchorX="center"
-                        anchorY="middle"
-                        rotation={axis === 'z' ? [-Math.PI / 2, 0, 0] : [0, 0, 0]}
-                    >
-                        {val}
-                    </Text>
-                </group>
-            );
-        }
-
-        // Main Line Geometry
-        let lineArgs = [0.05, 0.05, 0.05];
-        let linePos = [0, 0, 0];
+        // Tick Geometry
+        let tickArgs = [0.05, 0.05, 0.05];
+        let tickPos = [0, 0, 0];
 
         if (axis === 'x') {
-            lineArgs = [size, 0.05, 0.05];
-            linePos = [size / 2, 0, 0];
+            tickArgs = [0.02, 0.02, 0.3];
+            tickPos = [pos, 0, 0.15];
         } else if (axis === 'z') {
-            lineArgs = [0.05, 0.05, size];
-            linePos = [0, 0, size / 2];
+            tickArgs = [0.3, 0.02, 0.02];
+            tickPos = [-0.15, 0, pos];
         } else if (axis === 'y') {
-            lineArgs = [0.05, size, 0.05];
-            linePos = [0, size / 2, 0];
+            tickArgs = [0.3, 0.02, 0.02];
+            tickPos = [-0.15, pos, 0];
         }
 
-        return (
-            <group position={position}>
-                <mesh position={linePos}>
-                    <boxGeometry args={lineArgs} />
+        ticks.push(
+            <group key={i}>
+                <mesh position={tickPos}>
+                    <boxGeometry args={tickArgs} />
                     <meshBasicMaterial color={color} />
                 </mesh>
-                {ticks}
-                {/* Axis Label */}
                 <Text
                     position={[
-                        axis === 'x' ? size + 0.5 : 0,
-                        axis === 'y' ? size + 0.5 : 0,
-                        axis === 'z' ? size + 0.5 : 0
+                        axis === 'x' ? pos : labelOffset[0],
+                        axis === 'y' ? pos : labelOffset[1],
+                        axis === 'z' ? pos : labelOffset[2]
                     ]}
-                    fontSize={0.3}
+                    fontSize={0.25}
                     color={color}
-                    fontWeight="bold"
+                    anchorX="center"
+                    anchorY="middle"
+                    rotation={axis === 'z' ? [-Math.PI / 2, 0, 0] : [0, 0, 0]}
                 >
-                    {unit}
+                    {val}
                 </Text>
             </group>
         );
-    };
+    }
+
+    // Main Line Geometry
+    let lineArgs = [0.05, 0.05, 0.05];
+    let linePos = [0, 0, 0];
+
+    if (axis === 'x') {
+        lineArgs = [size, 0.05, 0.05];
+        linePos = [size / 2, 0, 0];
+    } else if (axis === 'z') {
+        lineArgs = [0.05, 0.05, size];
+        linePos = [0, 0, size / 2];
+    } else if (axis === 'y') {
+        lineArgs = [0.05, size, 0.05];
+        linePos = [0, size / 2, 0];
+    }
+
+    return (
+        <group position={position}>
+            <mesh position={linePos}>
+                <boxGeometry args={lineArgs} />
+                <meshBasicMaterial color={color} />
+            </mesh>
+            {ticks}
+            {/* Axis Label */}
+            <Text
+                position={[
+                    axis === 'x' ? size + 0.5 : 0,
+                    axis === 'y' ? size + 0.5 : 0,
+                    axis === 'z' ? size + 0.5 : 0
+                ]}
+                fontSize={0.3}
+                color={color}
+                fontWeight="bold"
+            >
+                {unit}
+            </Text>
+        </group>
+    );
+};
+
+const GuideLines = ({ width, depth, height, unit, dimensions }) => {
+    const scaleFactor = unit === 'cm' ? 0.1 : 3.0;
+    const interval = unit === 'cm' ? 10 : 1; // 10cm or 1ft
 
     return (
         <group>
@@ -297,6 +307,9 @@ const GuideLines = ({ width, depth, height, unit, dimensions }) => {
                 axis="x"
                 position={[-width / 2, -0.1, depth / 2 + 0.5]}
                 labelOffset={[0, 0, 0.5]}
+                scaleFactor={scaleFactor}
+                interval={interval}
+                unit={unit}
             />
 
             {/* Depth (Z) - Left */}
@@ -307,6 +320,9 @@ const GuideLines = ({ width, depth, height, unit, dimensions }) => {
                 axis="z"
                 position={[-width / 2 - 0.5, -0.1, -depth / 2]}
                 labelOffset={[-0.5, 0, 0]}
+                scaleFactor={scaleFactor}
+                interval={interval}
+                unit={unit}
             />
 
             {/* Height (Y) - Back Left */}
@@ -317,6 +333,9 @@ const GuideLines = ({ width, depth, height, unit, dimensions }) => {
                 axis="y"
                 position={[-width / 2 - 0.5, 0, -depth / 2 - 0.5]}
                 labelOffset={[-0.5, 0, 0]}
+                scaleFactor={scaleFactor}
+                interval={interval}
+                unit={unit}
             />
         </group>
     );
@@ -374,9 +393,12 @@ const CameraRig = ({ targetPosition }) => {
     const { camera } = useThree();
     const initialPos = useRef(null);
     const [isAnimating, setIsAnimating] = useState(true);
-    const startTime = useRef(Date.now());
+    const startTime = useRef(null);
 
     useEffect(() => {
+        // Initialize start time in useEffect to avoid impure function call during render
+        startTime.current = Date.now();
+        
         // Set initial position further away
         if (!initialPos.current) {
             initialPos.current = camera.position.clone();
@@ -387,10 +409,10 @@ const CameraRig = ({ targetPosition }) => {
                 targetPosition[2] * 2.5
             );
         }
-    }, []);
+    }, [camera.position, targetPosition]);
 
     useFrame((state, delta) => {
-        if (!isAnimating) return;
+        if (!isAnimating || !startTime.current) return;
 
         const elapsed = (Date.now() - startTime.current) / 1000;
         if (elapsed > 2.0) { // Stop after 2 seconds
