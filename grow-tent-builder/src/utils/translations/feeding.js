@@ -545,7 +545,6 @@ export const feedingTranslations = {
     cogrNote3: 'Double CANNAZYM dosage to 5 ml/L if substrate is reused.',
     cogrNote4: '2 ml/L standard. Increase to a maximum of 4 ml/L for extra flowering power.',
     cogrNote5: 'pH: Recommended pH is between 5.8 and 6.2. Adding pH- can increase EC.',
-    cogrBufferNote: 'COGr slabs must be buffered with COGr Buffer Agent before first use. This prepares the substrate for optimal nutrient uptake.',
 
     // Special Requirements Values
     valWasabiLight: '50-80% shade depending on latitude',
@@ -555,7 +554,6 @@ export const feedingTranslations = {
     valOrchidDayTemp: '21-30°C',
     valOrchidNightTemp: '13-21°C',
     valOrchidWatering: 'Avoid overwatering - main cause of death',
-    valOrchidFeeding: 'Every other watering unless plant is stressed',
     valOrchidFeeding: 'Every other watering unless plant is stressed',
     valOrchidStartEC: '<0.3 mS/cm water quality',
     valShade: 'Shade',
@@ -584,15 +582,8 @@ export const feedingTranslations = {
     cannaDuration: 'Duration',
     cannaLight: 'Light',
 
-    // Phases
-    cannaPhaseRooting: 'Rooting',
-    cannaPhaseVegetative: 'Vegetative',
-    cannaPhaseFlowering: 'Flowering',
-    cannaPhaseRipening: 'Ripening',
+    // Additional Phase: Flush (not duplicated from earlier section)
     cannaPhaseFlush: 'Flush',
-    cannaPhaseGenerative1: 'Generative I',
-    cannaPhaseGenerative2: 'Generative II',
-    cannaPhaseGenerative3: 'Generative III',
 
     // Tips
     cannaUsageTips: 'Usage Tips',
@@ -615,10 +606,6 @@ export const feedingTranslations = {
     // Additives Section
     cannaAdditivesTitle: 'Nutrient Formulations & Additives',
     cannaAdditivesSubtitle: 'All programs rely on base nutrients and strategic use of additives designed to support specific stages of plant development.',
-    descRhizotonic: 'Used especially during start and rooting phases to build a strong root system. A healthy start forms the foundation for overall plant performance.',
-    descCannazym: 'Contains enzymes that clean the root environment and break down dead root material. Used throughout the entire cycle. Double the dosage when reusing substrate.',
-    descPK1314: 'A flowering stimulator with high phosphorus (P) and potassium (K). Used for about one week in the middle of the generative period to intensively support flower and fruit development.',
-    descCannaboost: 'An additive that accelerates flowering and fruit ripening while improving quality. Used throughout the generative phase to enhance flowering power.',
     usageStartRooting: 'Start & Rooting Phase',
     usageEntireCycle: 'Throughout Entire Cycle',
     usageMidGen: 'Mid-Generative Phase (1 Week)',
@@ -1038,6 +1025,8 @@ export const feedingTranslations = {
     cannaPhaseStart: 'Başlangıç',
     cannaPhaseBudBreak: 'Göz Kırılması',
     cannaPhaseDormancy: 'Uyku Dönemi',
+    cannaPhaseRipening: 'Olgunlaşma',
+    cannaPhaseFlush: 'Yıkama',
 
     // CANNA Stage Names
     stageRooting: 'Başlangıç / Köklenme',
@@ -1160,7 +1149,6 @@ export const feedingTranslations = {
     valOrchidNightTemp: '13-21°C',
     valOrchidWatering: 'Aşırı sulamadan kaçının - ana ölüm nedeni',
     valOrchidFeeding: 'Bitki stresli değilse her iki sulamada bir',
-    valOrchidFeeding: 'Bitki stresli değilse her iki sulamada bir',
     valOrchidStartEC: '<0.3 mS/cm su kalitesi',
     valShade: 'Gölge',
     valNatural: 'Doğal',
@@ -1187,16 +1175,6 @@ export const feedingTranslations = {
     cannaStage: 'Aşama',
     cannaDuration: 'Süre',
     cannaLight: 'Işık',
-
-    // Phases
-    cannaPhaseRooting: 'Köklendirme',
-    cannaPhaseVegetative: 'Vejetatif',
-    cannaPhaseFlowering: 'Çiçeklenme',
-    cannaPhaseRipening: 'Olgunlaşma',
-    cannaPhaseFlush: 'Yıkama',
-    cannaPhaseGenerative1: 'Generatif I',
-    cannaPhaseGenerative2: 'Generatif II',
-    cannaPhaseGenerative3: 'Generatif III',
 
     // Tips
     cannaUsageTips: 'Kullanım İpuçları',
@@ -1258,10 +1236,6 @@ export const feedingTranslations = {
     descSubstraFlores: 'Tek kullanımlık drenaj sistemleri için temel çiçeklenme besini',
     descTerraVega: 'Toprak bazlı yetiştirme için vejetatif besin',
     descTerraFlores: 'Toprak bazlı yetiştirme için çiçeklenme besini',
-    descRhizotonic: 'Güçlü kök gelişimi için etkili kök stimülatörü',
-    descCannazym: 'Ölü kök materyalini parçalayan yüksek kaliteli enzim ürünü',
-    descPK1314: 'Çiçeklenme dönemi için güçlü PK takviyesi',
-    descCannaboost: 'Verim ve tadı artıran çiçeklenme hızlandırıcı',
 
     // CANNA Functions
     funcBaseNutrientAll: 'Temel Beslenme (Tüm Aşamalar)',
@@ -1273,7 +1247,6 @@ export const feedingTranslations = {
     orchidNotes: '800\'den fazla tür, farklı gereksinimlerle. Aşırı sulama ölümün önde gelen nedenidir. Bitki stresli görünmüyorsa her iki sulamada bir gübreleyin.',
     basilTerraNote: 'Sadece sürekli besleme yapılmalı, aralıklı sade su uygulamaları olmamalıdır.',
     grapeNotes: 'Kalsiyum sınırlayıcı bir faktör olabilir - gerekirse sıvı kalsiyum ekleyin. Uzun süreli kaplarda yetiştirme önerilmez.',
-    cogrBufferNote: 'COGr levhaları ilk kullanımdan önce COGr Buffering Agent ile ıslatılmalıdır.',
 
     // Special Requirements
     wasabiLight: 'Işık Gereksinimi',
