@@ -409,7 +409,7 @@ const CameraRig = ({ targetPosition }) => {
                 targetPosition[2] * 2.5
             );
         }
-    }, [camera.position, targetPosition]);
+    }, [camera, targetPosition]);
 
     useFrame((state, delta) => {
         if (!isAnimating || !startTime.current) return;
