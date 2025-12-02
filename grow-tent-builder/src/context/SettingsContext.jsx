@@ -5,9 +5,9 @@ const SettingsContext = createContext();
 // Trigger HMR update
 
 export const CURRENCIES = {
-    USD: { symbol: '$', rate: 1 },
-    EUR: { symbol: '€', rate: 0.92 },
-    TRY: { symbol: '₺', rate: 32.50 }
+    USD: { symbol: '$', rate: 0.0308 }, // 1 TRY = 0.0308 USD (1/32.50)
+    EUR: { symbol: '€', rate: 0.0283 }, // 1 TRY = 0.0283 EUR
+    TRY: { symbol: '₺', rate: 1 }       // Base currency - prices stored in TRY
 };
 
 export const UNITS = {
@@ -97,9 +97,17 @@ export function SettingsProvider({ children }) {
         return text;
     };
 
-    const formatPrice = (priceUSD) => {
+    const formatPrice = (priceTRY) => {
         const { symbol, rate } = CURRENCIES[currency];
-        return `${symbol}${(priceUSD * rate).toFixed(2)}`;
+        const convertedPrice = priceTRY * rate;
+        
+        // Format with thousand separators
+        const formatted = convertedPrice.toLocaleString(language === 'tr' ? 'tr-TR' : 'en-US', {
+            minimumFractionDigits: currency === 'TRY' ? 0 : 2,
+            maximumFractionDigits: currency === 'TRY' ? 0 : 2
+        });
+        
+        return `${symbol}${formatted}`;
     };
 
     const formatUnit = (value, type = 'length') => {

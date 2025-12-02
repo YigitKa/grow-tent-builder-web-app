@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Layout from './Layout';
+import PresetSetSelector from '../features/PresetSetSelector';
 import TentSelection from '../features/TentSelection';
 import LightingSelection from '../features/LightingSelection';
 import VentilationSelection from '../features/VentilationSelection';
@@ -24,6 +25,7 @@ function StepRenderer() {
     }, [currentStep]);
 
     switch (currentStep) {
+        case 0: return <PresetSetSelector />;
         case 1: return <TentSelection />;
         case 2: return <LightingSelection />;
         case 3: return <VentilationSelection />;
@@ -32,7 +34,7 @@ function StepRenderer() {
         case 6: return <NutrientSelection />;
         case 7: return <MonitoringSelection />;
         case 8: return <SummaryView />;
-        default: return <TentSelection />;
+        default: return <PresetSetSelector />;
     }
 }
 

@@ -1,12 +1,16 @@
 import { useBuilder } from '../context/BuilderContext';
 import { useSettings } from '../context/SettingsContext';
+import { PRESET_SETS } from '../data/presetSets';
 import ElectricCostEstimator from '../components/ElectricCostEstimator';
 import styles from './SummaryView.module.css';
 
 export default function SummaryView() {
     const { state, dispatch } = useBuilder();
-    const { t, formatPrice, formatUnit, getUnitLabel } = useSettings();
-    const { tentSize, selectedItems, totals } = state;
+    const { t, language, formatPrice, formatUnit, getUnitLabel } = useSettings();
+    const { tentSize, selectedItems, totals, selectedPreset, mediaType } = state;
+
+    // Find preset info if a preset was selected
+    const presetInfo = selectedPreset ? PRESET_SETS.find(p => p.id === selectedPreset) : null;
 
     const handleRestart = () => {
         if (window.confirm(t('restartConfirm'))) {
@@ -16,6 +20,11 @@ export default function SummaryView() {
 
     const handleBack = () => {
         dispatch({ type: 'PREV_STEP' });
+    };
+
+    const handleEditSet = () => {
+        dispatch({ type: 'CLEAR_PRESET' });
+        dispatch({ type: 'SET_STEP', payload: 1 });
     };
 
     const area = tentSize.width * tentSize.depth;
@@ -36,16 +45,77 @@ export default function SummaryView() {
     }
 
     const categories = [
+        { key: 'tent', label: t('step1') },
         { key: 'lighting', label: t('step2') },
         { key: 'ventilation', label: t('step3') },
         { key: 'environment', label: t('step4') },
-        { key: 'nutrients', label: t('step5') },
-        { key: 'monitoring', label: t('step6') },
+        { key: 'substrates', label: language === 'tr' ? 'Substrat' : 'Substrate' },
+        { key: 'nutrients', label: t('step6') },
+        { key: 'monitoring', label: t('step7') },
+        { key: 'accessories', label: language === 'tr' ? 'Aksesuarlar' : 'Accessories' },
     ];
 
     return (
         <div>
             <h2 style={{ marginBottom: '1rem', color: 'var(--color-primary)' }}>{t('yourSetup')}</h2>
+
+            {/* Preset Banner */}
+            {presetInfo && (
+                <div style={{ 
+                    marginBottom: '2rem', 
+                    padding: '1.5rem', 
+                    background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1))',
+                    border: '1px solid rgba(16, 185, 129, 0.3)', 
+                    borderRadius: 'var(--radius-md)',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    flexWrap: 'wrap',
+                    gap: '1rem'
+                }}>
+                    <div>
+                        <div style={{ 
+                            fontSize: '0.75rem', 
+                            color: 'var(--color-primary)', 
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.05em',
+                            marginBottom: '0.25rem'
+                        }}>
+                            {language === 'tr' ? 'Seçilen Hazır Set' : 'Selected Preset'}
+                        </div>
+                        <div style={{ 
+                            fontSize: '1.25rem', 
+                            fontWeight: 'bold',
+                            color: 'var(--text-primary)'
+                        }}>
+                            {presetInfo.name[language]}
+                        </div>
+                        <div style={{ 
+                            fontSize: '0.875rem', 
+                            color: 'var(--text-secondary)',
+                            marginTop: '0.25rem'
+                        }}>
+                            {presetInfo.description[language]}
+                        </div>
+                    </div>
+                    <button
+                        className="no-print"
+                        onClick={handleEditSet}
+                        style={{
+                            padding: '0.75rem 1.5rem',
+                            background: 'transparent',
+                            border: '1px solid var(--color-primary)',
+                            color: 'var(--color-primary)',
+                            borderRadius: 'var(--radius-sm)',
+                            cursor: 'pointer',
+                            fontSize: '0.875rem',
+                            fontWeight: '500'
+                        }}
+                    >
+                        {language === 'tr' ? '✏️ Seti Düzenle' : '✏️ Customize Set'}
+                    </button>
+                </div>
+            )}
 
             {warnings.length > 0 && (
                 <div className="no-print" style={{ marginBottom: '2rem', padding: '1rem', background: 'rgba(255, 82, 82, 0.1)', border: '1px solid #ff5252', borderRadius: 'var(--radius-md)' }}>

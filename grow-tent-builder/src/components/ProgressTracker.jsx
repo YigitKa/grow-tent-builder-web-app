@@ -4,10 +4,11 @@ import styles from './ProgressTracker.module.css';
 
 export default function ProgressTracker() {
     const { state, dispatch } = useBuilder();
-    const { t } = useSettings();
+    const { t, language } = useSettings();
     const { currentStep } = state;
 
     const steps = [
+        { num: 0, key: 'step0_preset', label: { en: 'Presets', tr: 'Setler' } },
         { num: 1, key: 'step1' },
         { num: 2, key: 'step2' },
         { num: 3, key: 'step3' },
@@ -18,7 +19,19 @@ export default function ProgressTracker() {
         { num: 8, key: 'step8' }
     ];
 
-    const progress = (currentStep / steps.length) * 100;
+    const progress = ((currentStep + 1) / steps.length) * 100;
+
+    // Find current step in array
+    const currentStepIndex = steps.findIndex(s => s.num === currentStep);
+    const currentStepData = steps[currentStepIndex] || steps[0];
+    
+    // Get step label
+    const getStepLabel = (step) => {
+        if (step.label) {
+            return step.label[language] || step.label.en;
+        }
+        return t(step.key);
+    };
 
     return (
         <>
@@ -34,10 +47,10 @@ export default function ProgressTracker() {
                     marginBottom: '0.5rem'
                 }}>
                     <span style={{ fontSize: '0.875rem', fontWeight: '600', color: 'var(--color-primary)' }}>
-                        {t(steps[currentStep - 1].key)}
+                        {getStepLabel(currentStepData)}
                     </span>
                     <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-                        {currentStep} / {steps.length}
+                        {currentStepIndex + 1} / {steps.length}
                     </span>
                 </div>
                 <div style={{
@@ -99,7 +112,7 @@ export default function ProgressTracker() {
                                 transition: 'all 0.3s ease',
                                 boxShadow: isActive ? '0 0 0 4px rgba(16, 185, 129, 0.2)' : 'none'
                             }}>
-                                {isCompleted ? '✓' : step.num}
+                                {isCompleted ? '✓' : step.num === 0 ? '📦' : step.num}
                             </div>
                             <span style={{
                                 marginTop: '0.5rem',
@@ -110,7 +123,7 @@ export default function ProgressTracker() {
                                 textTransform: 'uppercase',
                                 letterSpacing: '0.05em'
                             }}>
-                                {t(step.key)}
+                                {getStepLabel(step)}
                             </span>
                             {idx < steps.length - 1 && (
                                 <div style={{

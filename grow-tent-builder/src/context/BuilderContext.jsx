@@ -3,15 +3,19 @@ import { createContext, useContext, useReducer } from 'react';
 export const BuilderContext = createContext();
 
 const initialState = {
-    currentStep: 1,
+    currentStep: 0, // Start with preset selection
     tentSize: { width: 4, depth: 4, height: 7, unit: 'ft' },
     mediaType: null,
+    selectedPreset: null, // ID of the loaded preset set
     selectedItems: {
+        tent: [],
         lighting: [],
         ventilation: [],
         environment: [],
         nutrients: [],
-        monitoring: []
+        monitoring: [],
+        substrates: [],
+        accessories: []
     },
     totals: {
         cost: 0,
@@ -42,7 +46,7 @@ function builderReducer(state, action) {
         case 'NEXT_STEP':
             return { ...state, currentStep: Math.min(state.currentStep + 1, 8) };
         case 'PREV_STEP':
-            return { ...state, currentStep: Math.max(state.currentStep - 1, 1) };
+            return { ...state, currentStep: Math.max(state.currentStep - 1, 0) };
         case 'SET_STEP':
             return { ...state, currentStep: action.payload };
         case 'SET_TENT_SIZE': {
@@ -132,6 +136,24 @@ function builderReducer(state, action) {
             };
             return { ...state, selectedItems: newItems };
         }
+        case 'LOAD_PRESET': {
+            // Load a preset set configuration
+            const { preset, tentDims, items, mediaType } = action.payload;
+            const newState = {
+                ...state,
+                selectedPreset: preset.id,
+                tentSize: tentDims,
+                mediaType: mediaType,
+                selectedItems: items,
+                currentStep: 1 // Start from step 1, products already selected
+            };
+            return { ...newState, totals: calculateTotals(newState) };
+        }
+        case 'CLEAR_PRESET':
+            return {
+                ...state,
+                selectedPreset: null
+            };
         case 'RESET':
             return initialState;
         default:

@@ -1,20 +1,30 @@
 import { useBuilder } from '../context/BuilderContext';
 import { useSettings } from '../context/SettingsContext';
+import { MONITORING_PRODUCTS, TIMER_PRODUCTS } from '../data/builderProducts';
 
+// Combine monitoring and timer products
 const MONITORING_OPTIONS = [
-    { id: 'hygro', name: 'Digital Thermo-Hygrometer', type: 'Sensor', price: 15, description: 'Basic temp/humidity' },
-    { id: 'smart-sensor', name: 'WiFi Smart Sensor', type: 'Sensor', price: 45, description: 'App connected logging' },
-    { id: 'ph-pen', name: 'pH Pen Tester', type: 'Tester', price: 20, description: 'Essential for water checks' },
-    { id: 'ec-pen', name: 'EC/TDS Meter', type: 'Tester', price: 15, description: 'Measure nutrient strength' },
-    { id: 'timer-mech', name: 'Mechanical Timer', type: 'Controller', price: 10, description: 'Simple light control' },
-    { id: 'timer-digital', name: 'Digital Timer Strip', type: 'Controller', price: 25, description: 'Programmable outlets' },
-    { id: 'env-controller', name: 'Environmental Controller', type: 'Controller', price: 150, description: 'Auto fan/temp control' },
-    { id: 'camera', name: 'WiFi Camera', type: 'Controller', price: 35, description: 'Monitor from anywhere' },
+    ...MONITORING_PRODUCTS.map(m => ({
+        id: m.id,
+        name: m.fullName || m.name,
+        type: m.type || 'Sensor',
+        price: m.price,
+        description: m.features?.join(', ') || '',
+        tier: m.tier
+    })),
+    ...TIMER_PRODUCTS.map(t => ({
+        id: t.id,
+        name: t.fullName || t.name,
+        type: 'Timer',
+        price: t.price,
+        description: t.features?.join(', ') || '',
+        tier: t.tier
+    }))
 ];
 
 export default function MonitoringSelection() {
     const { state, dispatch } = useBuilder();
-    const { t, formatPrice } = useSettings();
+    const { t, language, formatPrice } = useSettings();
     const selectedMonitoring = state.selectedItems.monitoring;
 
     const handleToggleItem = (item) => {
@@ -34,12 +44,79 @@ export default function MonitoringSelection() {
         dispatch({ type: 'PREV_STEP' });
     };
 
+    const totalSelectedPrice = selectedMonitoring.reduce((sum, m) => sum + (m.price * (m.quantity || 1)), 0);
+
     return (
         <div>
             <h2 style={{ marginBottom: '1rem', color: 'var(--color-primary)' }}>{t('step6')}</h2>
             <p style={{ marginBottom: '2rem', color: 'var(--text-secondary)' }}>
                 {t('monitorDesc')}
             </p>
+
+            {/* Show selected monitoring items */}
+            {selectedMonitoring.length > 0 && (
+                <div style={{
+                    marginBottom: '2rem',
+                    padding: '1rem 1.5rem',
+                    background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05))',
+                    border: '2px solid var(--color-primary)',
+                    borderRadius: 'var(--radius-md)',
+                }}>
+                    <div style={{ 
+                        fontSize: '0.75rem', 
+                        color: 'var(--color-primary)', 
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.05em',
+                        marginBottom: '0.75rem'
+                    }}>
+                        ✓ {language === 'tr' ? 'Seçili İzleme Ekipmanları' : 'Selected Monitoring Equipment'} ({selectedMonitoring.length})
+                    </div>
+                    {selectedMonitoring.map((item, idx) => (
+                        <div key={item.id} style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            padding: '0.5rem 0',
+                            borderBottom: idx < selectedMonitoring.length - 1 ? '1px solid rgba(255,255,255,0.1)' : 'none'
+                        }}>
+                            <span style={{ fontWeight: 'bold', color: 'var(--text-primary)' }}>
+                                {item.quantity > 1 && `${item.quantity}x `}{item.name}
+                            </span>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                                <span style={{ color: 'var(--color-primary)', fontWeight: 'bold' }}>
+                                    {formatPrice(item.price * (item.quantity || 1))}
+                                </span>
+                                <button
+                                    onClick={() => dispatch({ type: 'REMOVE_ITEM', payload: { category: 'monitoring', itemId: item.id } })}
+                                    style={{
+                                        background: 'rgba(255,82,82,0.2)',
+                                        border: 'none',
+                                        color: '#ff5252',
+                                        padding: '0.25rem 0.5rem',
+                                        borderRadius: 'var(--radius-sm)',
+                                        cursor: 'pointer',
+                                        fontSize: '0.75rem'
+                                    }}
+                                >
+                                    ✕
+                                </button>
+                            </div>
+                        </div>
+                    ))}
+                    <div style={{
+                        marginTop: '0.75rem',
+                        paddingTop: '0.75rem',
+                        borderTop: '1px solid rgba(255,255,255,0.2)',
+                        display: 'flex',
+                        justifyContent: 'flex-end',
+                        fontSize: '0.875rem'
+                    }}>
+                        <span style={{ fontWeight: 'bold', color: 'var(--color-primary)' }}>
+                            {formatPrice(totalSelectedPrice)}
+                        </span>
+                    </div>
+                </div>
+            )}
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
                 {MONITORING_OPTIONS.map((item) => {

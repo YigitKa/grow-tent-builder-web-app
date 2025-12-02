@@ -2,20 +2,32 @@ import { useState } from 'react';
 import { useBuilder } from '../context/BuilderContext';
 import { useSettings } from '../context/SettingsContext';
 import LightPlacementCanvas from '../components/LightPlacementCanvas';
+import { LED_PRODUCTS } from '../data/builderProducts';
 
-const LIGHT_OPTIONS = [
-    { id: 'led-100', name: 'Quantum Board 100W LED', type: 'LED', watts: 100, price: 85, coverage: 4, physicalWidth: 1, physicalDepth: 1, maxPPFD: 800, beamAngle: 120, recommendedHeight: 12 }, // ~30x30cm
-    { id: 'led-240', name: 'Quantum Board 240W LED', type: 'LED', watts: 240, price: 180, coverage: 9, physicalWidth: 2, physicalDepth: 1, maxPPFD: 1800, beamAngle: 120, recommendedHeight: 18 }, // ~60x30cm
-    { id: 'led-480', name: 'Bar Style 480W LED', type: 'LED', watts: 480, price: 420, coverage: 16, physicalWidth: 3, physicalDepth: 3, maxPPFD: 2200, beamAngle: 120, recommendedHeight: 24 }, // ~90x90cm
-    { id: 'led-650', name: 'Bar Style 650W LED', type: 'LED', watts: 650, price: 600, coverage: 25, physicalWidth: 3.6, physicalDepth: 3.6, maxPPFD: 2600, beamAngle: 120, recommendedHeight: 30 }, // ~110x110cm
-    { id: 'hps-600', name: '600W HPS Kit', type: 'HPS', watts: 600, price: 150, coverage: 16, physicalWidth: 1.6, physicalDepth: 1, maxPPFD: 1100, beamAngle: 140, recommendedHeight: 24 }, // ~50x30cm
-    { id: 'hps-1000', name: '1000W DE HPS Kit', type: 'HPS', watts: 1000, price: 220, coverage: 25, physicalWidth: 2.3, physicalDepth: 1.1, maxPPFD: 1800, beamAngle: 140, recommendedHeight: 36 }, // ~70x35cm
-];
+// Convert LED_PRODUCTS to light options format
+const LIGHT_OPTIONS = LED_PRODUCTS.map(led => ({
+    id: led.id,
+    name: led.fullName || led.name,
+    brand: led.brand,
+    type: 'LED',
+    watts: led.watts || led.specs?.wattage || 0,
+    price: led.price,
+    coverage: led.coverage || led.specs?.coverage || 0,
+    physicalWidth: led.physicalWidth || (led.specs?.dimensions?.width || 30) / 30.48, // Convert cm to feet
+    physicalDepth: led.physicalDepth || (led.specs?.dimensions?.depth || 30) / 30.48,
+    maxPPFD: led.maxPPFD || led.specs?.ppfd || 0,
+    beamAngle: led.beamAngle || 120,
+    recommendedHeight: led.recommendedHeight || 18,
+    tier: led.tier,
+    spectrum: led.spectrum || led.specs?.spectrum,
+    efficiency: led.efficiency || led.specs?.efficiency,
+    features: led.features
+}));
 
 export default function LightingSelection() {
     const { state, dispatch } = useBuilder();
-    const { t, formatPrice, formatUnit, getUnitLabel } = useSettings();
-    const { tentSize, selectedItems } = state;
+    const { t, language, formatPrice, formatUnit, getUnitLabel } = useSettings();
+    const { tentSize, selectedItems, selectedPreset } = state;
     const selectedLights = selectedItems.lighting;
     const [conflictError, setConflictError] = useState(null);
 
@@ -78,6 +90,10 @@ export default function LightingSelection() {
 
     const areaLabel = getUnitLabel('area');
 
+    // Calculate total from selected lights
+    const totalSelectedWatts = selectedLights.reduce((sum, l) => sum + (l.watts * (l.quantity || 1)), 0);
+    const totalSelectedPrice = selectedLights.reduce((sum, l) => sum + (l.price * (l.quantity || 1)), 0);
+
     return (
         <div>
             <h2 style={{ marginBottom: '1rem', color: 'var(--color-primary)' }}>💡 {t('step2')}</h2>
@@ -98,6 +114,79 @@ export default function LightingSelection() {
                     textAlign: 'center'
                 }}>
                     {conflictError}
+                </div>
+            )}
+
+            {/* Show selected lights summary from preset */}
+            {selectedLights.length > 0 && (
+                <div style={{
+                    marginBottom: '2rem',
+                    padding: '1rem 1.5rem',
+                    background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05))',
+                    border: '2px solid var(--color-primary)',
+                    borderRadius: 'var(--radius-md)',
+                }}>
+                    <div style={{ 
+                        fontSize: '0.75rem', 
+                        color: 'var(--color-primary)', 
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.05em',
+                        marginBottom: '0.75rem'
+                    }}>
+                        ✓ {language === 'tr' ? 'Seçili Aydınlatma' : 'Selected Lighting'} ({selectedLights.length})
+                    </div>
+                    {selectedLights.map((light, idx) => (
+                        <div key={light.id} style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            padding: '0.5rem 0',
+                            borderBottom: idx < selectedLights.length - 1 ? '1px solid rgba(255,255,255,0.1)' : 'none'
+                        }}>
+                            <div>
+                                <span style={{ fontWeight: 'bold', color: 'var(--text-primary)' }}>
+                                    {light.quantity > 1 && `${light.quantity}x `}{light.name}
+                                </span>
+                                <span style={{ marginLeft: '0.5rem', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
+                                    {light.watts}W
+                                </span>
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                                <span style={{ color: 'var(--color-primary)', fontWeight: 'bold' }}>
+                                    {formatPrice(light.price * (light.quantity || 1))}
+                                </span>
+                                <button
+                                    onClick={() => dispatch({ type: 'REMOVE_ITEM', payload: { category: 'lighting', itemId: light.id } })}
+                                    style={{
+                                        background: 'rgba(255,82,82,0.2)',
+                                        border: 'none',
+                                        color: '#ff5252',
+                                        padding: '0.25rem 0.5rem',
+                                        borderRadius: 'var(--radius-sm)',
+                                        cursor: 'pointer',
+                                        fontSize: '0.75rem'
+                                    }}
+                                >
+                                    ✕
+                                </button>
+                            </div>
+                        </div>
+                    ))}
+                    <div style={{
+                        marginTop: '0.75rem',
+                        paddingTop: '0.75rem',
+                        borderTop: '1px solid rgba(255,255,255,0.2)',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        fontSize: '0.875rem'
+                    }}>
+                        <span style={{ color: 'var(--text-secondary)' }}>
+                            {language === 'tr' ? 'Toplam' : 'Total'}: {totalSelectedWatts}W
+                        </span>
+                        <span style={{ fontWeight: 'bold', color: 'var(--color-primary)' }}>
+                            {formatPrice(totalSelectedPrice)}
+                        </span>
+                    </div>
                 </div>
             )}
 
