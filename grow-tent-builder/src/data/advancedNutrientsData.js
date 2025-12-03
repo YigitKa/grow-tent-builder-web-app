@@ -171,7 +171,12 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#DC2626',
         function_key: 'funcBaseNutrientVeg',
+        function_detailed: 'Premium Coco Vejetatif (A Bileşeni)',
+        key_properties: 'En üst düzey profesyonel coco serisi. pH Perfect teknolojisi ile otomatik pH ayarı. Kelp, fulvik asit ve amino asit zenginleştirilmiş.',
         image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Connoisseur-Coco-Grow-Bloom-1L.png',
+        available_packaging: ['500ML', '1L', '4L', '10L'],
+        price: 1200,
+        icon: '👑',
         schedule_default: { 'Grow W1': 1, 'Grow W2': 2, 'Grow W3': 3, 'Grow W4': 4 }
     },
     {
@@ -181,7 +186,12 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#DC2626',
         function_key: 'funcBaseNutrientVeg',
+        function_detailed: 'Premium Coco Vejetatif (B Bileşeni)',
+        key_properties: 'En üst düzey profesyonel coco serisi. pH Perfect teknolojisi ile otomatik pH ayarı. Kelp, fulvik asit ve amino asit zenginleştirilmiş.',
         image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Connoisseur-Coco-Grow-Bloom-1L.png',
+        available_packaging: ['500ML', '1L', '4L', '10L'],
+        price: 1200,
+        icon: '👑',
         schedule_default: { 'Grow W1': 1, 'Grow W2': 2, 'Grow W3': 3, 'Grow W4': 4 }
     },
     {
@@ -191,7 +201,12 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#DB2777',
         function_key: 'funcBaseNutrientBloom',
+        function_detailed: 'Premium Coco Çiçeklenme (A Bileşeni)',
+        key_properties: 'Coco ortamlarında maksimum çiçeklenme için formüle edilmiş premium besin. Otomatik pH dengesi ve zengin mikro besin profili.',
         image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Connoisseur-Coco-Grow-Bloom-1L.png',
+        available_packaging: ['500ML', '1L', '4L', '10L'],
+        price: 1250,
+        icon: '👑',
         schedule_default: { 'Bloom W1': 4, 'Bloom W2': 4, 'Bloom W3': 4, 'Bloom W4': 4, 'Bloom W5': 4, 'Bloom W6': 4, 'Bloom W7': 4 }
     },
     {
@@ -201,7 +216,12 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#DB2777',
         function_key: 'funcBaseNutrientBloom',
+        function_detailed: 'Premium Coco Çiçeklenme (B Bileşeni)',
+        key_properties: 'Coco ortamlarında maksimum çiçeklenme için formüle edilmiş premium besin. Otomatik pH dengesi ve zengin mikro besin profili.',
         image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Connoisseur-Coco-Grow-Bloom-1L.png',
+        available_packaging: ['500ML', '1L', '4L', '10L'],
+        price: 1250,
+        icon: '👑',
         schedule_default: { 'Bloom W1': 4, 'Bloom W2': 4, 'Bloom W3': 4, 'Bloom W4': 4, 'Bloom W5': 4, 'Bloom W6': 4, 'Bloom W7': 4 }
     },
     // Sensi Coco
@@ -212,7 +232,12 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#16A34A',
         function_key: 'funcBaseNutrientVeg',
+        function_detailed: 'Coco Vejetatif Besin (A Bileşeni)',
+        key_properties: 'Coco coir için özel tasarlanmış profesyonel besin. pH Perfect teknolojisi ile 5.5-6.3 pH aralığında otomatik stabilizasyon.',
         image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Sensi-Coco-Grow-Bloom-1L.png',
+        available_packaging: ['500ML', '1L', '4L', '10L'],
+        price: 850,
+        icon: '🥥',
         schedule_default: { 'Grow W1': 1, 'Grow W2': 2, 'Grow W3': 3, 'Grow W4': 4 }
     },
     {
@@ -222,7 +247,12 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#16A34A',
         function_key: 'funcBaseNutrientVeg',
+        function_detailed: 'Coco Vejetatif Besin (B Bileşeni)',
+        key_properties: 'Coco coir için özel tasarlanmış profesyonel besin. pH Perfect teknolojisi ile 5.5-6.3 pH aralığında otomatik stabilizasyon.',
         image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Sensi-Coco-Grow-Bloom-1L.png',
+        available_packaging: ['500ML', '1L', '4L', '10L'],
+        price: 850,
+        icon: '🥥',
         schedule_default: { 'Grow W1': 1, 'Grow W2': 2, 'Grow W3': 3, 'Grow W4': 4 }
     },
     {
@@ -232,7 +262,12 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#BE185D',
         function_key: 'funcBaseNutrientBloom',
+        function_detailed: 'Coco Çiçeklenme Besin (A Bileşeni)',
+        key_properties: 'Coco ortamlarında çiçeklenme için optimize edilmiş PK oranları. pH Perfect ile pH ayarı gerektirmez.',
         image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Sensi-Coco-Grow-Bloom-1L.png',
+        available_packaging: ['500ML', '1L', '4L', '10L'],
+        price: 880,
+        icon: '🥥',
         schedule_default: { 'Bloom W1': 4, 'Bloom W2': 4, 'Bloom W3': 4, 'Bloom W4': 4, 'Bloom W5': 4, 'Bloom W6': 4, 'Bloom W7': 4 }
     },
     {
@@ -242,7 +277,12 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#BE185D',
         function_key: 'funcBaseNutrientBloom',
+        function_detailed: 'Coco Çiçeklenme Besin (B Bileşeni)',
+        key_properties: 'Coco ortamlarında çiçeklenme için optimize edilmiş PK oranları. pH Perfect ile pH ayarı gerektirmez.',
         image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Sensi-Coco-Grow-Bloom-1L.png',
+        available_packaging: ['500ML', '1L', '4L', '10L'],
+        price: 880,
+        icon: '🥥',
         schedule_default: { 'Bloom W1': 4, 'Bloom W2': 4, 'Bloom W3': 4, 'Bloom W4': 4, 'Bloom W5': 4, 'Bloom W6': 4, 'Bloom W7': 4 }
     },
     // Sensi (Hydro/Soil)
@@ -253,7 +293,12 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#059669',
         function_key: 'funcBaseNutrientVeg',
+        function_detailed: 'Profesyonel Vejetatif Besin (A Bileşeni)',
+        key_properties: 'Toprak ve hidroponik sistemler için profesyonel 2 parçalı besin sistemi. pH Perfect teknolojisi ile otomatik pH dengesi sağlar.',
         image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Sensi-Grow-Bloom-1L.png',
+        available_packaging: ['500ML', '1L', '4L', '10L'],
+        price: 800,
+        icon: '💧',
         schedule_default: { 'Grow W1': 1, 'Grow W2': 2, 'Grow W3': 3, 'Grow W4': 4 }
     },
     {
@@ -263,7 +308,12 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#059669',
         function_key: 'funcBaseNutrientVeg',
+        function_detailed: 'Profesyonel Vejetatif Besin (B Bileşeni)',
+        key_properties: 'Toprak ve hidroponik sistemler için profesyonel 2 parçalı besin sistemi. pH Perfect teknolojisi ile otomatik pH dengesi sağlar.',
         image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Sensi-Grow-Bloom-1L.png',
+        available_packaging: ['500ML', '1L', '4L', '10L'],
+        price: 800,
+        icon: '💧',
         schedule_default: { 'Grow W1': 1, 'Grow W2': 2, 'Grow W3': 3, 'Grow W4': 4 }
     },
     {
@@ -273,7 +323,12 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#9D174D',
         function_key: 'funcBaseNutrientBloom',
+        function_detailed: 'Profesyonel Çiçeklenme Besin (A Bileşeni)',
+        key_properties: 'Çiçeklenme döneminde maksimum verim için optimize edilmiş PK oranları. pH Perfect teknolojisi dahil.',
         image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Sensi-Grow-Bloom-1L.png',
+        available_packaging: ['500ML', '1L', '4L', '10L'],
+        price: 820,
+        icon: '💧',
         schedule_default: { 'Bloom W1': 4, 'Bloom W2': 4, 'Bloom W3': 4, 'Bloom W4': 4, 'Bloom W5': 4, 'Bloom W6': 4, 'Bloom W7': 4 }
     },
     {
@@ -283,7 +338,12 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#9D174D',
         function_key: 'funcBaseNutrientBloom',
+        function_detailed: 'Profesyonel Çiçeklenme Besin (B Bileşeni)',
+        key_properties: 'Çiçeklenme döneminde maksimum verim için optimize edilmiş PK oranları. pH Perfect teknolojisi dahil.',
         image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Sensi-Grow-Bloom-1L.png',
+        available_packaging: ['500ML', '1L', '4L', '10L'],
+        price: 820,
+        icon: '💧',
         schedule_default: { 'Bloom W1': 4, 'Bloom W2': 4, 'Bloom W3': 4, 'Bloom W4': 4, 'Bloom W5': 4, 'Bloom W6': 4, 'Bloom W7': 4 }
     },
     // Connoisseur (Hydro/Soil) - NEW
@@ -294,7 +354,12 @@ export const ADVANCED_NUTRIENTS_DATA = [
         dose_unit: 'ml/L',
         color: '#DC2626',
         function_key: 'funcBaseNutrientVeg',
+        function_detailed: 'Premium Vejetatif Besin (A Bileşeni)',
+        key_properties: 'En üst düzey profesyonel seri. Kelp, fulvik asit, L-amino asitler ve humatlar içeren zengin formül. pH Perfect teknolojisi.',
         image: '/images/advanced-nutrients/Advanced-Nutrients-pH-Perfect-Connoisseur-Grow-Bloom-1L-v2.png',
+        available_packaging: ['500ML', '1L', '4L', '10L'],
+        price: 1150,
+        icon: '🏆',
         schedule_default: { 'Grow W1': 1, 'Grow W2': 2, 'Grow W3': 3, 'Grow W4': 4 }
     },
     {

@@ -136,11 +136,16 @@ export const CANNA_PRODUCTS = [
         dose_unit: 'ml/L',
         color: '#22C55E',
         function_key: 'funcBaseNutrientVeg',
+        function_detailed: 'Vejetatif Dönem Beslenmesi (Hydroponic)',
+        key_properties: 'NFT ve sirkülasyonlu hidroponik sistemler için özel formül. pH dengeli, hızlı emilim sağlar. A ve B birlikte kullanılır.',
         description_key: 'descAquaVega',
         paired_with: 'aqua-vega-b',
         image: '/images/canna/prod-canna-aqua-vega.png.webp',
         short_info_key: 'infoAquaVega',
-        tags: ['tagVEGA', 'tagHydroponic', 'tagGrowth']
+        tags: ['tagVEGA', 'tagHydroponic', 'tagGrowth'],
+        available_packaging: ['1L', '5L', '10L'],
+        price: 650,
+        icon: '💧'
     },
     {
         id: 'aqua-vega-b',
@@ -150,11 +155,16 @@ export const CANNA_PRODUCTS = [
         dose_unit: 'ml/L',
         color: '#22C55E',
         function_key: 'funcBaseNutrientVeg',
+        function_detailed: 'Vejetatif Dönem Beslenmesi (Hydroponic)',
+        key_properties: 'NFT ve sirkülasyonlu hidroponik sistemler için özel formül. pH dengeli, hızlı emilim sağlar. A ve B birlikte kullanılır.',
         description_key: 'descAquaVega',
         paired_with: 'aqua-vega-a',
         image: '/images/canna/prod-canna-aqua-vega.png.webp',
         short_info_key: 'infoAquaVega',
-        tags: ['tagVEGA', 'tagHydroponic', 'tagGrowth']
+        tags: ['tagVEGA', 'tagHydroponic', 'tagGrowth'],
+        available_packaging: ['1L', '5L', '10L'],
+        price: 650,
+        icon: '💧'
     },
     {
         id: 'aqua-flores-a',
@@ -164,11 +174,16 @@ export const CANNA_PRODUCTS = [
         dose_unit: 'ml/L',
         color: '#EC4899',
         function_key: 'funcBaseNutrientBloom',
+        function_detailed: 'Çiçeklenme Dönemi Beslenmesi (Hydroponic)',
+        key_properties: 'Sirkülasyonlu hidroponik sistemlerde çiçeklenme için optimize edilmiş PK oranları. Yoğun çiçek ve meyve üretimini destekler.',
         description_key: 'descAquaFlores',
         paired_with: 'aqua-flores-b',
         image: '/images/canna/prod-canna-aqua-flores.png.webp',
         short_info_key: 'infoAquaFlores',
-        tags: ['tagFLORES', 'tagHydroponic', 'tagBloom']
+        tags: ['tagFLORES', 'tagHydroponic', 'tagBloom'],
+        available_packaging: ['1L', '5L', '10L'],
+        price: 680,
+        icon: '🌸'
     },
     {
         id: 'aqua-flores-b',
@@ -178,11 +193,16 @@ export const CANNA_PRODUCTS = [
         dose_unit: 'ml/L',
         color: '#EC4899',
         function_key: 'funcBaseNutrientBloom',
+        function_detailed: 'Çiçeklenme Dönemi Beslenmesi (Hydroponic)',
+        key_properties: 'Sirkülasyonlu hidroponik sistemlerde çiçeklenme için optimize edilmiş PK oranları. Yoğun çiçek ve meyve üretimini destekler.',
         description_key: 'descAquaFlores',
         paired_with: 'aqua-flores-a',
         image: '/images/canna/prod-canna-aqua-flores.png.webp',
         short_info_key: 'infoAquaFlores',
-        tags: ['tagFLORES', 'tagHydroponic', 'tagBloom']
+        tags: ['tagFLORES', 'tagHydroponic', 'tagBloom'],
+        available_packaging: ['1L', '5L', '10L'],
+        price: 680,
+        icon: '🌸'
     },
 
     // === COCO PRODUCTS ===
@@ -194,11 +214,16 @@ export const CANNA_PRODUCTS = [
         dose_unit: 'ml/L',
         color: '#78350F',
         function_key: 'funcBaseNutrientAll',
+        function_detailed: 'Coco Ortamı İçin Tam Dönem Besini',
+        key_properties: 'Coco coir ortamının özel ihtiyaçları için tasarlanmış A+B sistemi. Kalsiyum ve demir zenginleştirilmiş formül, tüm büyüme dönemlerinde kullanılabilir.',
         description_key: 'descCoco',
         paired_with: 'coco-b',
         image: '/images/canna/prod-canna-coco-ab.png.webp',
         short_info_key: 'infoCoco',
-        tags: ['tagCoco', 'tagAB', 'tagAllPhases']
+        tags: ['tagCoco', 'tagAB', 'tagAllPhases'],
+        available_packaging: ['1L', '5L', '10L'],
+        price: 620,
+        icon: '🥥'
     },
     {
         id: 'coco-b',
@@ -208,11 +233,16 @@ export const CANNA_PRODUCTS = [
         dose_unit: 'ml/L',
         color: '#78350F',
         function_key: 'funcBaseNutrientAll',
+        function_detailed: 'Coco Ortamı İçin Tam Dönem Besini',
+        key_properties: 'Coco coir ortamının özel ihtiyaçları için tasarlanmış A+B sistemi. Kalsiyum ve demir zenginleştirilmiş formül, tüm büyüme dönemlerinde kullanılabilir.',
         description_key: 'descCoco',
         paired_with: 'coco-a',
         image: '/images/canna/prod-canna-coco-ab.png.webp',
         short_info_key: 'infoCoco',
-        tags: ['tagCoco', 'tagAB', 'tagAllPhases']
+        tags: ['tagCoco', 'tagAB', 'tagAllPhases'],
+        available_packaging: ['1L', '5L', '10L'],
+        price: 620,
+        icon: '🥥'
     },
 
     // === COGr PRODUCTS ===
@@ -224,11 +254,16 @@ export const CANNA_PRODUCTS = [
         dose_unit: 'ml/L',
         color: '#92400E',
         function_key: 'funcBaseNutrientVeg',
+        function_detailed: 'COGr Slab Vejetatif Besleme',
+        key_properties: 'Sıkıştırılmış coco slab sistemleri için optimize edilmiş büyüme besini. Silikon zenginleştirilmiş formül ile güçlü gövde yapısı sağlar.',
         description_key: 'descCOGrVega',
         paired_with: 'cogr-vega-b',
         image: '/images/canna/prod-canna-cogr-vega.png.webp',
         short_info_key: 'infoCOGrVega',
-        tags: ['tagCOGr', 'tagVEGA', 'tagSilicon']
+        tags: ['tagCOGr', 'tagVEGA', 'tagSilicon'],
+        available_packaging: ['1L', '5L', '10L'],
+        price: 700,
+        icon: '📦'
     },
     {
         id: 'cogr-vega-b',
@@ -238,11 +273,16 @@ export const CANNA_PRODUCTS = [
         dose_unit: 'ml/L',
         color: '#92400E',
         function_key: 'funcBaseNutrientVeg',
+        function_detailed: 'COGr Slab Vejetatif Besleme',
+        key_properties: 'Sıkıştırılmış coco slab sistemleri için optimize edilmiş büyüme besini. Silikon zenginleştirilmiş formül ile güçlü gövde yapısı sağlar.',
         description_key: 'descCOGrVega',
         paired_with: 'cogr-vega-a',
         image: '/images/canna/prod-canna-cogr-vega.png.webp',
         short_info_key: 'infoCOGrVega',
-        tags: ['tagCOGr', 'tagVEGA', 'tagSilicon']
+        tags: ['tagCOGr', 'tagVEGA', 'tagSilicon'],
+        available_packaging: ['1L', '5L', '10L'],
+        price: 700,
+        icon: '📦'
     },
     {
         id: 'cogr-flores-a',
@@ -252,11 +292,16 @@ export const CANNA_PRODUCTS = [
         dose_unit: 'ml/L',
         color: '#EC4899',
         function_key: 'funcBaseNutrientBloom',
+        function_detailed: 'COGr Slab Çiçeklenme Besleme',
+        key_properties: 'COGr sistemlerinde çiçeklenme için fulvik asit zenginleştirilmiş formül. Yoğun çiçek ve meyve üretimini destekler.',
         description_key: 'descCOGrFlores',
         paired_with: 'cogr-flores-b',
         image: '/images/canna/prod-canna-cogr-flores.png.webp',
         short_info_key: 'infoCOGrFlores',
-        tags: ['tagCOGr', 'tagFLORES', 'tagFulvicAcid']
+        tags: ['tagCOGr', 'tagFLORES', 'tagFulvicAcid'],
+        available_packaging: ['1L', '5L', '10L'],
+        price: 720,
+        icon: '🌺'
     },
     {
         id: 'cogr-flores-b',
@@ -266,11 +311,16 @@ export const CANNA_PRODUCTS = [
         dose_unit: 'ml/L',
         color: '#EC4899',
         function_key: 'funcBaseNutrientBloom',
+        function_detailed: 'COGr Slab Çiçeklenme Besleme',
+        key_properties: 'COGr sistemlerinde çiçeklenme için fulvik asit zenginleştirilmiş formül. Yoğun çiçek ve meyve üretimini destekler.',
         description_key: 'descCOGrFlores',
         paired_with: 'cogr-flores-a',
         image: '/images/canna/prod-canna-cogr-flores.png.webp',
         short_info_key: 'infoCOGrFlores',
-        tags: ['tagCOGr', 'tagFLORES', 'tagFulvicAcid']
+        tags: ['tagCOGr', 'tagFLORES', 'tagFulvicAcid'],
+        available_packaging: ['1L', '5L', '10L'],
+        price: 720,
+        icon: '🌺'
     },
     {
         id: 'cogr-buffer-agent',
@@ -280,10 +330,15 @@ export const CANNA_PRODUCTS = [
         dose_unit: 'ml/L',
         color: '#6366F1',
         function_key: 'funcBuffer',
+        function_detailed: 'COGr Slab Tamponlama',
+        key_properties: 'COGr slablarını kullanmadan önce tamponlamak için gerekli ürün. Kalsiyum ve magnezyum dengesini optimize eder.',
         description_key: 'descCOGrBuffer',
         image: '/images/canna/prod-canna-cogr-buffer-agent.png.webp',
         short_info_key: 'infoCOGrBuffer',
-        tags: ['tagCOGr', 'tagBuffer', 'tagSlabPrep']
+        tags: ['tagCOGr', 'tagBuffer', 'tagSlabPrep'],
+        available_packaging: ['1L', '5L'],
+        price: 480,
+        icon: '⚗️'
     },
 
     // === SUBSTRA PRODUCTS ===
@@ -295,11 +350,16 @@ export const CANNA_PRODUCTS = [
         dose_unit: 'ml/L',
         color: '#7C3AED',
         function_key: 'funcBaseNutrientVeg',
+        function_detailed: 'Run-to-Waste Vejetatif (Sert Su)',
+        key_properties: 'İnert ortamlar (perlit, kaya yünü) için run-to-waste sistemi. Sert su için özel formül, kalsiyum dengelenmiş.',
         description_key: 'descSubstraVega',
         water_type: 'hard',
         paired_with: 'substra-vega-b-hw',
         short_info_key: 'infoSubstraVega',
-        tags: ['tagSUBSTRA', 'tagHardWater', 'tagVEGA']
+        tags: ['tagSUBSTRA', 'tagHardWater', 'tagVEGA'],
+        available_packaging: ['1L', '5L', '10L'],
+        price: 680,
+        icon: '🔬'
     },
     {
         id: 'substra-vega-b-hw',
@@ -309,11 +369,16 @@ export const CANNA_PRODUCTS = [
         dose_unit: 'ml/L',
         color: '#7C3AED',
         function_key: 'funcBaseNutrientVeg',
+        function_detailed: 'Run-to-Waste Vejetatif (Sert Su)',
+        key_properties: 'İnert ortamlar (perlit, kaya yünü) için run-to-waste sistemi. Sert su için özel formül, kalsiyum dengelenmiş.',
         description_key: 'descSubstraVega',
         water_type: 'hard',
         paired_with: 'substra-vega-a-hw',
         short_info_key: 'infoSubstraVega',
-        tags: ['tagSUBSTRA', 'tagHardWater', 'tagVEGA']
+        tags: ['tagSUBSTRA', 'tagHardWater', 'tagVEGA'],
+        available_packaging: ['1L', '5L', '10L'],
+        price: 680,
+        icon: '🔬'
     },
     {
         id: 'substra-vega-a-sw',
@@ -323,11 +388,16 @@ export const CANNA_PRODUCTS = [
         dose_unit: 'ml/L',
         color: '#A78BFA',
         function_key: 'funcBaseNutrientVeg',
+        function_detailed: 'Run-to-Waste Vejetatif (Yumuşak Su)',
+        key_properties: 'İnert ortamlar için run-to-waste sistemi. Yumuşak su veya RO su kullanıcıları için ekstra kalsiyum eklenmiş formül.',
         description_key: 'descSubstraVega',
         water_type: 'soft',
         paired_with: 'substra-vega-b-sw',
         short_info_key: 'infoSubstraVega',
-        tags: ['tagSUBSTRA', 'tagSoftWater', 'tagVEGA']
+        tags: ['tagSUBSTRA', 'tagSoftWater', 'tagVEGA'],
+        available_packaging: ['1L', '5L', '10L'],
+        price: 680,
+        icon: '🔬'
     },
     {
         id: 'substra-vega-b-sw',
@@ -337,11 +407,16 @@ export const CANNA_PRODUCTS = [
         dose_unit: 'ml/L',
         color: '#A78BFA',
         function_key: 'funcBaseNutrientVeg',
+        function_detailed: 'Run-to-Waste Vejetatif (Yumuşak Su)',
+        key_properties: 'İnert ortamlar için run-to-waste sistemi. Yumuşak su veya RO su kullanıcıları için ekstra kalsiyum eklenmiş formül.',
         description_key: 'descSubstraVega',
         water_type: 'soft',
         paired_with: 'substra-vega-a-sw',
         short_info_key: 'infoSubstraVega',
-        tags: ['tagSUBSTRA', 'tagSoftWater', 'tagVEGA']
+        tags: ['tagSUBSTRA', 'tagSoftWater', 'tagVEGA'],
+        available_packaging: ['1L', '5L', '10L'],
+        price: 680,
+        icon: '🔬'
     },
     {
         id: 'substra-flores-a-hw',
@@ -351,11 +426,16 @@ export const CANNA_PRODUCTS = [
         dose_unit: 'ml/L',
         color: '#EC4899',
         function_key: 'funcBaseNutrientBloom',
+        function_detailed: 'Run-to-Waste Çiçeklenme (Sert Su)',
+        key_properties: 'Run-to-waste sistemlerinde çiçeklenme için optimize edilmiş PK oranları. Sert su formülü.',
         description_key: 'descSubstraFlores',
         water_type: 'hard',
         paired_with: 'substra-flores-b-hw',
         short_info_key: 'infoSubstraFlores',
-        tags: ['tagSUBSTRA', 'tagHardWater', 'tagFLORES']
+        tags: ['tagSUBSTRA', 'tagHardWater', 'tagFLORES'],
+        available_packaging: ['1L', '5L', '10L'],
+        price: 700,
+        icon: '🌸'
     },
     {
         id: 'substra-flores-b-hw',
@@ -365,11 +445,16 @@ export const CANNA_PRODUCTS = [
         dose_unit: 'ml/L',
         color: '#EC4899',
         function_key: 'funcBaseNutrientBloom',
+        function_detailed: 'Run-to-Waste Çiçeklenme (Sert Su)',
+        key_properties: 'Run-to-waste sistemlerinde çiçeklenme için optimize edilmiş PK oranları. Sert su formülü.',
         description_key: 'descSubstraFlores',
         water_type: 'hard',
         paired_with: 'substra-flores-a-hw',
         short_info_key: 'infoSubstraFlores',
-        tags: ['tagSUBSTRA', 'tagHardWater', 'tagFLORES']
+        tags: ['tagSUBSTRA', 'tagHardWater', 'tagFLORES'],
+        available_packaging: ['1L', '5L', '10L'],
+        price: 700,
+        icon: '🌸'
     },
     {
         id: 'substra-flores-a-sw',
@@ -379,11 +464,16 @@ export const CANNA_PRODUCTS = [
         dose_unit: 'ml/L',
         color: '#F472B6',
         function_key: 'funcBaseNutrientBloom',
+        function_detailed: 'Run-to-Waste Çiçeklenme (Yumuşak Su)',
+        key_properties: 'Run-to-waste sistemlerinde çiçeklenme için optimize edilmiş formül. Yumuşak su veya RO su için tasarlanmış.',
         description_key: 'descSubstraFlores',
         water_type: 'soft',
         paired_with: 'substra-flores-b-sw',
         short_info_key: 'infoSubstraFlores',
-        tags: ['tagSUBSTRA', 'tagSoftWater', 'tagFLORES']
+        tags: ['tagSUBSTRA', 'tagSoftWater', 'tagFLORES'],
+        available_packaging: ['1L', '5L', '10L'],
+        price: 700,
+        icon: '🌸'
     },
     {
         id: 'substra-flores-b-sw',
@@ -393,11 +483,16 @@ export const CANNA_PRODUCTS = [
         dose_unit: 'ml/L',
         color: '#F472B6',
         function_key: 'funcBaseNutrientBloom',
+        function_detailed: 'Run-to-Waste Çiçeklenme (Yumuşak Su)',
+        key_properties: 'Run-to-waste sistemlerinde çiçeklenme için optimize edilmiş formül. Yumuşak su veya RO su için tasarlanmış.',
         description_key: 'descSubstraFlores',
         water_type: 'soft',
         paired_with: 'substra-flores-a-sw',
         short_info_key: 'infoSubstraFlores',
-        tags: ['tagSUBSTRA', 'tagSoftWater', 'tagFLORES']
+        tags: ['tagSUBSTRA', 'tagSoftWater', 'tagFLORES'],
+        available_packaging: ['1L', '5L', '10L'],
+        price: 700,
+        icon: '🌸'
     },
 
     // === TERRA PRODUCTS ===
@@ -409,10 +504,15 @@ export const CANNA_PRODUCTS = [
         dose_unit: 'ml/L',
         color: '#15803D',
         function_key: 'funcBaseNutrientVeg',
+        function_detailed: 'Toprak Ortamı Vejetatif Besleme',
+        key_properties: 'Toprak ve turba bazlı ortamlar için geliştirilmiş vejetatif dönem besini. Yavaş salınımlı formül ile aşırı beslenme riskini azaltır.',
         description_key: 'descTerraVega',
         image: '/images/canna/prod-canna-terra-vega.png.webp',
         short_info_key: 'infoTerraVega',
-        tags: ['tagTERRA', 'tagSoil', 'tagGrowth']
+        tags: ['tagTERRA', 'tagSoil', 'tagGrowth'],
+        available_packaging: ['1L', '5L', '10L'],
+        price: 580,
+        icon: '🌱'
     },
     {
         id: 'terra-flores',
@@ -422,10 +522,15 @@ export const CANNA_PRODUCTS = [
         dose_unit: 'ml/L',
         color: '#EC4899',
         function_key: 'funcBaseNutrientBloom',
+        function_detailed: 'Toprak Ortamı Çiçeklenme Besleme',
+        key_properties: 'Toprak ortamlarında çiçeklenme için optimize edilmiş PK oranları. Meyve ve çiçek oluşumunu destekler, tat ve aroma geliştirici.',
         description_key: 'descTerraFlores',
         image: '/images/canna/prod-canna-terra-flores.png.webp',
         short_info_key: 'infoTerraFlores',
-        tags: ['tagTERRA', 'tagSoil', 'tagBloom']
+        tags: ['tagTERRA', 'tagSoil', 'tagBloom'],
+        available_packaging: ['1L', '5L', '10L'],
+        price: 600,
+        icon: '🌸'
     },
 
     // === UNIVERSAL ADDITIVES (work with all systems) ===
@@ -437,10 +542,15 @@ export const CANNA_PRODUCTS = [
         dose_unit: 'ml/L',
         color: '#8B5CF6',
         function_key: 'funcRootStim',
+        function_detailed: 'Kök Stimülatörü',
+        key_properties: 'Oligosakkaritler ve vitaminler içeren güçlü kök stimülatörü. Stresli bitkileri canlandırır, kök gelişimini hızlandırır. Çelik köklendirmede de etkili.',
         description_key: 'descRhizotonic',
         image: '/images/canna/prod-additives-canna-rhizotonic.png.webp',
         short_info_key: 'infoRhizotonic',
-        tags: ['tagRootDev', 'tagStartPhase', 'tagGrowth']
+        tags: ['tagRootDev', 'tagStartPhase', 'tagGrowth'],
+        available_packaging: ['250ML', '500ML', '1L', '5L', '10L'],
+        price: 750,
+        icon: '🌳'
     },
     {
         id: 'cannazym',
@@ -450,10 +560,15 @@ export const CANNA_PRODUCTS = [
         dose_unit: 'ml/L',
         color: '#34D399',
         function_key: 'funcEnzymes',
+        function_detailed: 'Enzim Kompleksi',
+        key_properties: '20\'den fazla enzim içeren yüksek kaliteli ürün. Ölü kök kalıntılarını parçalar, besin döngüsünü iyileştirir. Substrat yeniden kullanımında dozaj iki katına çıkarılabilir.',
         description_key: 'descCannazym',
         image: '/images/canna/prod-additives-cannazym.png.webp',
         short_info_key: 'infoCannazym',
-        tags: ['tagEnzyme', 'tagSubstrateRenew', 'tagAllPhases']
+        tags: ['tagEnzyme', 'tagSubstrateRenew', 'tagAllPhases'],
+        available_packaging: ['250ML', '500ML', '1L', '5L', '10L'],
+        price: 680,
+        icon: '🔬'
     },
     {
         id: 'pk-13-14',
@@ -463,10 +578,15 @@ export const CANNA_PRODUCTS = [
         dose_unit: 'ml/L',
         color: '#EC4899',
         function_key: 'funcBloomBooster',
+        function_detailed: 'Çiçeklenme Destekleyici (PK)',
+        key_properties: 'Fosfor ve potasyum konsantresi. Çiçeklenmenin kritik döneminde tek seferlik veya kısa süreli kullanım için. Meyve/çiçek ağırlığını ve yoğunluğunu artırır.',
         description_key: 'descPK1314',
         image: '/images/canna/prod-additives-canna-pk-1314.png.webp',
         short_info_key: 'infoPK1314',
-        tags: ['tagPK', 'tagMassBoost', 'tagGenerative']
+        tags: ['tagPK', 'tagMassBoost', 'tagGenerative'],
+        available_packaging: ['250ML', '500ML', '1L', '5L', '10L'],
+        price: 520,
+        icon: '💪'
     },
     {
         id: 'cannaboost',
@@ -476,10 +596,15 @@ export const CANNA_PRODUCTS = [
         dose_unit: 'ml/L',
         color: '#F59E0B',
         function_key: 'funcBooster',
+        function_detailed: 'Metabolizma Hızlandırıcı',
+        key_properties: 'Bitkinin metabolizmasını hızlandıran doğal çiçeklenme destekleyici. Verim artışı ve tat geliştirme sağlar. Tüm CANNA sistemleriyle uyumlu.',
         description_key: 'descCannaboost',
         image: '/images/canna/prod-additives-cannaboost.png.webp',
         short_info_key: 'infoCannaboost',
-        tags: ['tagBloomBoost', 'tagAccelerator', 'tagIntenseFlower']
+        tags: ['tagBloomBoost', 'tagAccelerator', 'tagIntenseFlower'],
+        available_packaging: ['250ML', '500ML', '1L', '5L', '10L'],
+        price: 980,
+        icon: '🚀'
     }
 ];
 
