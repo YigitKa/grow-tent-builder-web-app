@@ -9,10 +9,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.join(__dirname, '..', '.env.local') });
 
-// Supabase client
+// Supabase client - only create if credentials are available
 const supabaseUrl = process.env.VITE_SUPABASE_URL;
 const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+const hasSupabaseCredentials = supabaseUrl && supabaseKey;
+const supabase = hasSupabaseCredentials ? createClient(supabaseUrl, supabaseKey) : null;
 
 const BASE_URL = 'https://growizard.app';
 const LANGUAGES = ['en', 'tr'];
@@ -30,15 +31,22 @@ const STATIC_ROUTES = [
 ];
 
 const generateSitemap = async () => {
-    // Fetch blog posts from Supabase
-    const { data: blogPosts, error } = await supabase
-        .from('blog_posts')
-        .select('slug')
-        .eq('is_published', true);
+    let blogPosts = [];
     
-    if (error) {
-        console.error('Error fetching blog posts:', error.message);
-        return;
+    // Fetch blog posts from Supabase only if credentials are available
+    if (supabase) {
+        const { data, error } = await supabase
+            .from('blog_posts')
+            .select('slug')
+            .eq('is_published', true);
+        
+        if (error) {
+            console.error('Error fetching blog posts:', error.message);
+        } else {
+            blogPosts = data || [];
+        }
+    } else {
+        console.warn('Supabase credentials not available. Generating sitemap with static routes only.');
     }
 
     let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
