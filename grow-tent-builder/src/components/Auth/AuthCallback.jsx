@@ -173,18 +173,3 @@ export default function AuthCallback() {
         </div>
     );
 }
-            <div style={{ textAlign: 'center' }}>
-                <div className="loading-spinner" style={{ 
-                    width: '40px', 
-                    height: '40px', 
-                    border: '3px solid var(--border-color)', 
-                    borderTop: '3px solid var(--color-primary)', 
-                    borderRadius: '50%', 
-                    animation: 'spin 1s linear infinite',
-                    margin: '0 auto 1rem'
-                }}></div>
-                <p>{language === 'tr' ? 'Giriş yapılıyor...' : 'Signing in...'}</p>
-            </div>
-        </div>
-    );
-}
