@@ -31,22 +31,23 @@ const STATIC_ROUTES = [
 ];
 
 const generateSitemap = async () => {
+    // Skip sitemap generation if Supabase credentials are not available
+    // This preserves the existing sitemap.xml with blog posts in CI environments
+    if (!supabase) {
+        console.log('Supabase credentials not available. Skipping sitemap generation (using existing sitemap.xml).');
+        return;
+    }
+
     let blogPosts = [];
+    const { data, error } = await supabase
+        .from('blog_posts')
+        .select('slug')
+        .eq('is_published', true);
     
-    // Fetch blog posts from Supabase only if credentials are available
-    if (supabase) {
-        const { data, error } = await supabase
-            .from('blog_posts')
-            .select('slug')
-            .eq('is_published', true);
-        
-        if (error) {
-            console.error('Error fetching blog posts:', error.message);
-        } else {
-            blogPosts = data || [];
-        }
+    if (error) {
+        console.error('Error fetching blog posts:', error.message);
     } else {
-        console.warn('Supabase credentials not available. Generating sitemap with static routes only.');
+        blogPosts = data || [];
     }
 
     let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
