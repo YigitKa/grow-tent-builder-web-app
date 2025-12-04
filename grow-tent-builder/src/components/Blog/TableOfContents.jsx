@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useSettings } from '../../context/SettingsContext';
+import styles from './BlogPost.module.css';
 
 const TableOfContents = ({ headings, activeId }) => {
     const [isMobileOpen, setIsMobileOpen] = useState(false);
+    const { language } = useSettings();
 
     const handleClick = (e, id) => {
         e.preventDefault();
@@ -17,21 +20,21 @@ const TableOfContents = ({ headings, activeId }) => {
     if (!headings || headings.length === 0) return null;
 
     return (
-        <nav className="toc-container">
-            <div className="toc-header" onClick={() => setIsMobileOpen(!isMobileOpen)}>
+        <nav className={styles.tocContainer}>
+            <div className={styles.tocHeader} onClick={() => setIsMobileOpen(!isMobileOpen)}>
                 <h3>
-                    <span className="icon">📑</span>
-                    İÇİNDEKİLER
+                    <span className={styles.icon}>📑</span>
+                    {language === 'tr' ? 'İÇİNDEKİLER' : 'TABLE OF CONTENTS'}
                 </h3>
-                <span className={`mobile-toggle ${isMobileOpen ? 'open' : ''}`}>▼</span>
+                <span className={`${styles.mobileToggle} ${isMobileOpen ? styles.open : ''}`}>▼</span>
             </div>
 
-            <ul className={`toc-list ${isMobileOpen ? 'open' : ''}`}>
+            <ul className={`${styles.tocList} ${isMobileOpen ? styles.tocListOpen : ''}`}>
                 {headings.map((heading) => (
-                    <li key={heading.id} className={`toc-item level-${heading.level}`}>
+                    <li key={heading.id} className={`${styles.tocItem} ${heading.level === 3 ? styles.tocItemLevel3 : ''}`}>
                         <a
                             href={`#${heading.id}`}
-                            className={`toc-link ${activeId === heading.id ? 'active' : ''}`}
+                            className={`${styles.tocLink} ${activeId === heading.id ? styles.tocLinkActive : ''}`}
                             onClick={(e) => handleClick(e, heading.id)}
                         >
                             {heading.text}

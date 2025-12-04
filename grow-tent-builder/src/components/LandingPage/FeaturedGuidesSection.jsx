@@ -1,11 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { blogPosts } from '../Blog/blogData';
+import { getBlogPosts } from '../../services/blogApi';
 import { useSettings } from '../../context/SettingsContext';
 
 export default function FeaturedGuidesSection() {
     const [currentSlide, setCurrentSlide] = useState(0);
     const { language, t, getLocalizedPath } = useSettings();
+    const [blogPosts, setBlogPosts] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function fetchPosts() {
+            const posts = await getBlogPosts(language);
+            setBlogPosts(posts);
+            setLoading(false);
+        }
+        fetchPosts();
+    }, [language]);
+
+    if (loading || blogPosts.length === 0) {
+        return null; // Don't show section while loading
+    }
 
     const displayedPosts = blogPosts.slice(0, 4);
     const totalSlides = Math.ceil(displayedPosts.length / 2);
@@ -36,11 +51,11 @@ export default function FeaturedGuidesSection() {
                         {Array.from({ length: totalSlides }).map((_, groupIndex) => (
                             <div key={groupIndex} className="slider-slide">
                                 {displayedPosts.slice(groupIndex * 2, groupIndex * 2 + 2).map((post) => (
-                                    <Link to={getLocalizedPath(`/blog/${post.slug[language]}`)} key={`featured-${post.id}`} className="featured-guide-card">
+                                    <Link to={getLocalizedPath(`/blog/${post.slug?.[language] || post.slug?.tr}`)} key={`featured-${post.id}`} className="featured-guide-card">
                                         <div className="guide-content">
                                             <span className="guide-tag">{post.category}</span>
-                                            <h3>{post.title[language]}</h3>
-                                            <p>{post.excerpt[language]}</p>
+                                            <h3>{post.title?.[language] || post.title?.tr}</h3>
+                                            <p>{post.excerpt?.[language] || post.excerpt?.tr}</p>
                                             <span className="read-more">{t('landingReadMore')}</span>
                                         </div>
                                         <div className="guide-image" style={{ backgroundImage: `url(${post.image})` }} />

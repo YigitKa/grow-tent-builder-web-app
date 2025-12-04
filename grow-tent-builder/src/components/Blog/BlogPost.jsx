@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useSettings } from '../../context/SettingsContext';
-import { blogPosts } from './blogData';
+import { getBlogPosts, getBlogPostBySlug } from '../../services/blogApi';
 import Footer from '../Footer';
 import styles from './BlogPost.module.css';
 
@@ -153,9 +153,19 @@ const BlogPost = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const [activeId, setActiveId] = useState('');
+  const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // Find post by checking both English and Turkish slugs
-  const post = blogPosts.find(p => p.slug.en === slug || p.slug.tr === slug);
+  // Fetch post from Supabase
+  useEffect(() => {
+    async function fetchPost() {
+      setLoading(true);
+      const fetchedPost = await getBlogPostBySlug(slug, language);
+      setPost(fetchedPost);
+      setLoading(false);
+    }
+    fetchPost();
+  }, [slug, language]);
 
   // When slug changes via navigation, sync language to match the URL
   useEffect(() => {
@@ -261,6 +271,18 @@ const BlogPost = () => {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, [headings, activeId]);
+
+  if (loading) {
+    return (
+      <div className={styles.notFoundContainer}>
+        <Navbar />
+        <div style={{ textAlign: 'center', padding: '4rem' }}>
+          <div className="loading-spinner" style={{ margin: '0 auto 1rem' }}></div>
+          <p>{language === 'tr' ? 'Yükleniyor...' : 'Loading...'}</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!post) {
     return (

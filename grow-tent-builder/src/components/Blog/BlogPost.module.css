@@ -98,6 +98,15 @@
 
 .tocContainer {
   margin-bottom: 3rem;
+  background: var(--bg-surface);
+  border-radius: 12px;
+  padding: 1.25rem;
+  border: 1px solid var(--border-color);
+}
+
+.tocHeader {
+  cursor: pointer;
+  user-select: none;
 }
 
 .tocHeader h3 {
@@ -107,16 +116,34 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 1rem;
+  margin: 0;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
+.icon {
+  font-size: 1rem;
+}
+
+.mobileToggle {
+  display: none;
+  transition: transform 0.3s ease;
+}
+
+.mobileToggle.open {
+  transform: rotate(180deg);
+}
+
 .tocList {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 1rem 0 0 0;
   border-left: 2px solid var(--border-color);
+}
+
+.tocListOpen {
+  display: block;
 }
 
 .tocItem {

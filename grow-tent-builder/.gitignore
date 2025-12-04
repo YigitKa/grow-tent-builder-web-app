@@ -10,6 +10,20 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+
+# ============================================
+# Environment Variables - SENSITIVE!
+# ============================================
+# .env.example is safe to commit (template only)
+# All other .env files contain secrets - NEVER commit!
+.env
+.env.local
+.env.development
+.env.development.local
+.env.production
+.env.production.local
+.env.test
+.env.test.local
 *.local
 
 # Editor directories and files
