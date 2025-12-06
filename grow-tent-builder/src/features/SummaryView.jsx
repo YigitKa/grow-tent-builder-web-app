@@ -1,6 +1,7 @@
+import { useState, useEffect } from 'react';
 import { useBuilder } from '../context/BuilderContext';
 import { useSettings } from '../context/SettingsContext';
-import { PRESET_SETS } from '../data/presetSets';
+import { fetchPresetSetById } from '../services/api/presetSetsApi';
 import ElectricCostEstimator from '../components/ElectricCostEstimator';
 import styles from './SummaryView.module.css';
 
@@ -9,8 +10,25 @@ export default function SummaryView() {
     const { t, language, formatPrice, formatUnit, getUnitLabel } = useSettings();
     const { tentSize, selectedItems, totals, selectedPreset, mediaType } = state;
 
-    // Find preset info if a preset was selected
-    const presetInfo = selectedPreset ? PRESET_SETS.find(p => p.id === selectedPreset) : null;
+    const [presetInfo, setPresetInfo] = useState(null);
+
+    // Fetch preset info if a preset was selected
+    useEffect(() => {
+        async function loadPresetInfo() {
+            if (selectedPreset) {
+                try {
+                    const info = await fetchPresetSetById(selectedPreset);
+                    setPresetInfo(info);
+                } catch (err) {
+                    console.error('Error loading preset info:', err);
+                    setPresetInfo(null);
+                }
+            } else {
+                setPresetInfo(null);
+            }
+        }
+        loadPresetInfo();
+    }, [selectedPreset]);
 
     const handleRestart = () => {
         if (window.confirm(t('restartConfirm'))) {

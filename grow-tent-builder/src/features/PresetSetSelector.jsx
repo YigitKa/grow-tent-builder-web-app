@@ -1,7 +1,7 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useBuilder } from '../context/BuilderContext';
 import { useSettings } from '../context/SettingsContext';
-import { PRESET_SETS } from '../data/presetSets';
+import { fetchPresetSets } from '../services/api/presetSetsApi';
 import { 
     TENT_PRODUCTS, 
     LED_PRODUCTS,
@@ -227,21 +227,38 @@ const convertPresetToBuilderItems = (preset) => {
 
 // Get tent dimensions from preset
 const getTentDimensions = (preset) => {
-    const tent = findProduct(preset.items.tent, TENT_PRODUCTS);
-    if (tent && tent.dimensionsFt) {
-        return {
-            width: tent.dimensionsFt.width,
-            depth: tent.dimensionsFt.depth,
-            height: tent.dimensionsFt.height,
-            unit: 'ft'
-        };
+    // Try to find tent product from items
+    if (preset.items && preset.items.tent) {
+        const tent = findProduct(preset.items.tent, TENT_PRODUCTS);
+        if (tent && tent.dimensionsFt) {
+            return {
+                width: tent.dimensionsFt.width,
+                depth: tent.dimensionsFt.depth,
+                height: tent.dimensionsFt.height,
+                unit: 'ft'
+            };
+        }
     }
-    // Fallback: parse from tentSize string (e.g., "60x60x180")
-    const [w, d, h] = preset.tentSize.split('x').map(Number);
+    
+    // Fallback: parse from tentSize string (e.g., "60x60x180" or "150x150x200")
+    if (preset.tentSize && typeof preset.tentSize === 'string') {
+        const parts = preset.tentSize.split('x').map(Number);
+        if (parts.length >= 3 && parts.every(n => !isNaN(n))) {
+            const [w, d, h] = parts;
+            return {
+                width: w / 30.48,
+                depth: d / 30.48,
+                height: h / 30.48,
+                unit: 'ft'
+            };
+        }
+    }
+    
+    // Default fallback for 60x60 tent
     return {
-        width: w / 30.48,
-        depth: d / 30.48,
-        height: h / 30.48,
+        width: 2,
+        depth: 2,
+        height: 6,
         unit: 'ft'
     };
 };
@@ -250,23 +267,44 @@ export default function PresetSetSelector() {
     const { dispatch } = useBuilder();
     const { language } = useSettings();
     
+    const [presetSets, setPresetSets] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const [selectedTier, setSelectedTier] = useState('all');
     const [selectedBrand, setSelectedBrand] = useState('all');
 
+    // Fetch preset sets from Supabase
+    useEffect(() => {
+        async function loadPresetSets() {
+            try {
+                setLoading(true);
+                const data = await fetchPresetSets();
+                setPresetSets(data);
+                setError(null);
+            } catch (err) {
+                console.error('Error loading preset sets:', err);
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        }
+        loadPresetSets();
+    }, []);
+
     // Filter presets
     const filteredPresets = useMemo(() => {
-        return PRESET_SETS.filter(preset => {
+        return presetSets.filter(preset => {
             if (selectedTier !== 'all' && preset.tier !== selectedTier) return false;
             if (selectedBrand !== 'all' && preset.nutrientBrand !== selectedBrand) return false;
             return true;
         });
-    }, [selectedTier, selectedBrand]);
+    }, [selectedTier, selectedBrand, presetSets]);
 
     // Get unique brands
     const brands = useMemo(() => {
-        const uniqueBrands = [...new Set(PRESET_SETS.map(p => p.nutrientBrand))];
+        const uniqueBrands = [...new Set(presetSets.map(p => p.nutrientBrand))];
         return uniqueBrands;
-    }, []);
+    }, [presetSets]);
 
     const handleSelectPreset = (preset) => {
         const items = convertPresetToBuilderItems(preset);
@@ -292,6 +330,42 @@ export default function PresetSetSelector() {
         standard: { en: 'Standard', tr: 'Standart' },
         pro: { en: 'Professional', tr: 'Profesyonel' }
     };
+
+    // Loading state
+    if (loading) {
+        return (
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '3rem' }}>
+                <span style={{ fontSize: '3rem' }}>🌱</span>
+                <p style={{ marginTop: '1rem', color: 'var(--text-secondary)' }}>
+                    {language === 'tr' ? 'Hazır setler yükleniyor...' : 'Loading preset sets...'}
+                </p>
+            </div>
+        );
+    }
+
+    // Error state
+    if (error) {
+        return (
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '3rem' }}>
+                <span style={{ fontSize: '3rem' }}>⚠️</span>
+                <p style={{ marginTop: '1rem', color: 'var(--color-danger)' }}>{error}</p>
+                <button
+                    onClick={handleSkipToCustom}
+                    style={{
+                        marginTop: '1rem',
+                        padding: '0.75rem 1.5rem',
+                        background: 'var(--color-primary)',
+                        color: '#000',
+                        border: 'none',
+                        borderRadius: 'var(--radius-sm)',
+                        cursor: 'pointer'
+                    }}
+                >
+                    {language === 'tr' ? 'Özel Set Oluştur' : 'Create Custom Set'}
+                </button>
+            </div>
+        );
+    }
 
     return (
         <div>

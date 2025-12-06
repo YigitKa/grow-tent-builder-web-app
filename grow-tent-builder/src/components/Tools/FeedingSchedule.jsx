@@ -1,21 +1,31 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useSettings } from '../../context/SettingsContext';
 import {
-  FEEDING_SCHEDULE_DATA,
-  WEEK_LABELS,
-  PHASE_INFO,
-  DEFAULT_SELECTED_PRODUCTS,
-  PRODUCT_CATEGORIES,
-  SUBSTRATE_TYPES
-} from '../../data/feedingScheduleData';
+  fetchFeedingScheduleProducts,
+  getWeekLabels,
+  getPhaseInfo,
+  getDefaultSelectedProducts,
+  getProductCategories,
+  getSubstrateTypes
+} from '../../services/api/feedingScheduleApi';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
 import styles from './FeedingSchedule.module.css';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// Static constants from API
+const WEEK_LABELS = getWeekLabels();
+const PHASE_INFO = getPhaseInfo();
+const DEFAULT_SELECTED_PRODUCTS = getDefaultSelectedProducts();
+const PRODUCT_CATEGORIES = getProductCategories();
+const SUBSTRATE_TYPES = getSubstrateTypes();
+
 export default function FeedingSchedule() {
   const { t } = useSettings();
+  const [feedingScheduleData, setFeedingScheduleData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [selectedProducts, setSelectedProducts] = useState(DEFAULT_SELECTED_PRODUCTS);
   const [waterAmount, setWaterAmount] = useState(10); // Litre
   const [growType, setGrowType] = useState('indoor'); // indoor or outdoor
@@ -23,9 +33,27 @@ export default function FeedingSchedule() {
   const [showProductSelector, setShowProductSelector] = useState(false);
   const [highlightedWeek, setHighlightedWeek] = useState(null);
 
+  // Fetch feeding schedule data from Supabase
+  useEffect(() => {
+    async function loadData() {
+      try {
+        setLoading(true);
+        const data = await fetchFeedingScheduleProducts();
+        setFeedingScheduleData(data);
+        setError(null);
+      } catch (err) {
+        console.error('Error loading feeding schedule:', err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadData();
+  }, []);
+
   // Seçilen ürünleri filtrele ve çevir
   const activeProducts = useMemo(() => {
-    return FEEDING_SCHEDULE_DATA.filter(product =>
+    return feedingScheduleData.filter(product =>
       selectedProducts.includes(product.id) && product.schedule !== null
     ).map(product => ({
       ...product,
@@ -37,7 +65,7 @@ export default function FeedingSchedule() {
       note: product.note_key ? t(product.note_key) : null,
       foliar_dose: product.foliar_dose_key ? t(product.foliar_dose_key) : null
     }));
-  }, [selectedProducts, t]);
+  }, [selectedProducts, t, feedingScheduleData]);
 
   // Ürün seçimi toggle
   const toggleProduct = (productId) => {
@@ -50,7 +78,7 @@ export default function FeedingSchedule() {
 
   // Tüm ürünleri seç
   const selectAll = () => {
-    setSelectedProducts(FEEDING_SCHEDULE_DATA.filter(p => p.schedule !== null).map(p => p.id));
+    setSelectedProducts(feedingScheduleData.filter(p => p.schedule !== null).map(p => p.id));
   };
 
   // Varsayılana dön
@@ -165,6 +193,44 @@ export default function FeedingSchedule() {
       </div>
     );
   };
+
+  // Loading state
+  if (loading) {
+    return (
+      <div className={styles.pageContainer}>
+        <Helmet>
+          <title>{t('feedingScheduleTitle')} | GroWizard</title>
+        </Helmet>
+        <Navbar />
+        <div className={styles.container} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '50vh' }}>
+          <div style={{ textAlign: 'center' }}>
+            <span style={{ fontSize: '3rem' }}>🌱</span>
+            <p style={{ marginTop: '1rem', color: 'var(--text-secondary)' }}>{t('loading') || 'Yükleniyor...'}</p>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <div className={styles.pageContainer}>
+        <Helmet>
+          <title>{t('feedingScheduleTitle')} | GroWizard</title>
+        </Helmet>
+        <Navbar />
+        <div className={styles.container} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '50vh' }}>
+          <div style={{ textAlign: 'center' }}>
+            <span style={{ fontSize: '3rem' }}>⚠️</span>
+            <p style={{ marginTop: '1rem', color: 'var(--color-danger)' }}>{error}</p>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 
   const content = (
     <motion.div
@@ -321,7 +387,7 @@ export default function FeedingSchedule() {
             </div>
 
             <div className={styles.productGrid}>
-              {FEEDING_SCHEDULE_DATA.filter(p => p.schedule !== null).map(product => (
+              {feedingScheduleData.filter(p => p.schedule !== null).map(product => (
                 <motion.div
                   key={product.id}
                   className={`${styles.productCard} ${selectedProducts.includes(product.id) ? styles.selected : ''}`}
